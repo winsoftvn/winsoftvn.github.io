@@ -1,0 +1,35 @@
+.vienphi-danhmuc-title {
+    font-weight: bold;
+}
+
+//icon
+.vienphi-danhmuc-icon-modify {
+    display: flex;
+    height: 20px;
+    width: 20px;
+    justify-content: center;
+}
+//
+.scroll {
+    overflow-y: scroll;
+    // height: 100vh;
+}
+.scroll::-webkit-scrollbar {
+    display: none;
+}
+.scroll {
+    scrollbar-width: none;
+}
+
+//
+.vienphi-danhmuc-btn {
+    background-color: #0067ac;
+    color: #fff;
+}
+.vienphi-danhmuc-add {
+    font-size: 14px;
+    font-weight: bold;
+    padding: 0px;
+    margin: 0px;
+    line-height: 0px;
+}

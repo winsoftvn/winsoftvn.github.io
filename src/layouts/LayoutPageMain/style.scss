@@ -1,0 +1,94 @@
+//layout main
+.bg-frame {
+    background: rgb(0, 103, 172);
+    background: linear-gradient(157deg, rgba(0, 103, 172, 1) 22%, rgba(218, 10, 76, 1) 78%);
+}
+
+span.anticon.anticon-menu-fold {
+    color: aliceblue;
+}
+span.anticon.anticon-menu-unfold {
+    color: aliceblue;
+}
+
+.ant-menu-item-selected {
+    background-color: #0067ac !important;
+    color: white !important;
+    margin: 2px !important;
+    border-radius: 10px !important;
+    font-weight: bold !important;
+}
+ul.ant-menu-overflow.ant-menu.ant-menu-root.ant-menu-horizontal.ant-menu-light.rounded.b-header.css-dev-only-do-not-override-pr0fja {
+    line-height: 30px;
+}
+li.ant-menu-overflow-item.ant-menu-item.ant-menu-item-only-child {
+    padding: 0px 6px;
+}
+
+//img logo dọc
+.img-logo {
+    width: 50px;
+    height: 50px;
+    text-align: center;
+}
+
+//icon open-close menu
+.menu-box-icon {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    transition: 0.2s ease-in-out;
+}
+.menu-box-icon-click {
+    position: absolute;
+    left: 187px;
+    top: 2px;
+    transition: 0.2s ease-in-out;
+}
+
+.menu-btn-icon {
+    font-size: "16px";
+    width: 40px;
+    height: 30px;
+    background-color: #0067ac;
+    align-items: "center";
+    display: "flex";
+    justify-content: "center";
+    &:hover {
+        border: rgb(12, 106, 170) solid 1px;
+        background-color: #3897d6 !important;
+    }
+}
+.menu-btn-icon-avtive {
+    font-size: "16px";
+    width: 40px;
+    height: 30px;
+    background-color: #ffffff;
+    align-items: "center";
+    display: "flex";
+    justify-content: "center";
+    z-index: 1;
+    svg {
+        color: #000 !important;
+    }
+    &:hover {
+        border: rgb(12, 106, 170) solid 1px;
+        background-color: #3897d6 !important;
+        svg {
+            color: #ffffff !important;
+        }
+    }
+}
+
+//menu
+.ant-menu-inline > .ant-menu-item,
+.ant-menu-vertical .ant-menu-inline > .ant-menu-submenu > .ant-menu-submenu-title,
+.ant-menu-vertical > .ant-menu-submenu > .ant-menu-submenu-title {
+    height: 30px !important;
+}
+
+//navlink
+.menu-navlink {
+    text-decoration: none;
+    font-weight: bold;
+}

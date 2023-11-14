@@ -1,0 +1,32 @@
+.khambenh-phieukham-right-input-label {
+    width: 94px;
+}
+.khambenh-phieukham-left-input-label {
+    width: 88px;
+}
+.border-input {
+    border: none !important;
+}
+.tabphieukham-position {
+    position: relative;
+}
+.phieukham-input-position {
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 1;
+}
+// modal
+.ant-modal,
+.ant-modal-content {
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.ant-modal .ant-modal-content {
+    padding: 15px 10px;
+}

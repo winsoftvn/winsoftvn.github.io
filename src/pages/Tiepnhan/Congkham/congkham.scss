@@ -1,0 +1,63 @@
+//title
+.tiepnhan-congkham-title {
+    background-color: #0067ac;
+    color: white;
+    font-weight: bold;
+    padding: 5px 20px;
+    border-radius: 5px;
+    font-size: 13px;
+}
+//icon
+.tiepcan-congkham-icon {
+    display: flex;
+    div {
+        border: 1px solid black;
+        margin: 0px 1px;
+        padding: 2px;
+        width: 24px;
+    }
+}
+//row
+.tiepnhan-congkham-row {
+    height: 22px !important;
+}
+//input
+.form-control {
+    font-size: 9px !important;
+    padding: 2px 4px !important;
+    width: 100vw;
+    border-radius: 0px !important;
+}
+.form-control-select {
+    font-size: 11px !important;
+    padding: 0 !important;
+    border-radius: none !important;
+}
+// lable input
+.tiepnhan-congkham-form-input-label {
+    font-size: 12px;
+    width: 80px;
+}
+.tiepnhan-congkham-form-input-label-right {
+    font-size: 12px;
+    width: 54px;
+}
+.tiepnhan-congkham-form-input-label-right-form-last {
+    font-size: 12px;
+    width: 72px;
+}
+//select
+.ant-select-selector {
+    height: 25px !important;
+}
+input[type="search"] {
+    height: 25px !important;
+    border-radius: 0px !important;
+}
+.input-select .ant-select .ant-select-selector {
+    border-radius: 0px !important;
+}
+//
+.tiepnhan-congkham-border {
+    border-left: 1px solid rgb(182, 182, 182);
+}

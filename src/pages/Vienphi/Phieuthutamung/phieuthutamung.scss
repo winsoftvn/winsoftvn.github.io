@@ -1,0 +1,21 @@
+li.ant-menu-item.ant-menu-item-only-child {
+    line-height: normal !important;
+    height: max-content !important;
+}
+
+//menu ngang
+.vienphi-menu {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.vienphi-phieuthutamung-danhsachchothu {
+    position: relative;
+    display: block;
+    margin: auto;
+    .vienphi-phieuthutamung-danhsachchothu-btn-thaotac {
+        position: absolute;
+        z-index: 1;
+        right: 10px;
+        top: -30px;
+        margin: auto;
+    }
+}
