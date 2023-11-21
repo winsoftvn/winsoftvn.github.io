@@ -32,8 +32,11 @@
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.10.0",
     "react-scripts": "5.0.1",
+    "react-to-print": "^2.14.15",
     "react-toastify": "^9.1.2",
     "sass": "^1.60.0",
+    "suneditor": "^2.45.1",
+    "suneditor-react": "^3.6.1",
     "sweetalert2": "^11.4.8",
     "web-vitals": "^2.1.4"
   },

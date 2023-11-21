@@ -15,7 +15,7 @@ function Bienbantuvong(props) {
     const { open, setOpen } = props;
     const items1 = [
         {
-            label: <div className="form-input-label khambenh-form-input-label">F2 - Mới</div>,
+            label: <div className="form-input-label">F2 - Mới</div>,
             key: "1",
             icon: (
                 <div className="color-icon-edit blue">
@@ -24,12 +24,12 @@ function Bienbantuvong(props) {
             ),
         },
         {
-            label: <div className="form-input-label khambenh-form-input-label">F3 - Lưu</div>,
+            label: <div className="form-input-label">F3 - Lưu</div>,
             key: "2",
             icon: <FontAwesomeIcon icon={faSave} />,
         },
         {
-            label: <div className="form-input-label khambenh-form-input-label">Sửa</div>,
+            label: <div className="form-input-label">Sửa</div>,
             key: "3",
             icon: (
                 <div className="color-icon-edit yellow">
@@ -40,7 +40,7 @@ function Bienbantuvong(props) {
         },
         {
             label: (
-                <div className="form-input-label khambenh-form-input-label">F6 - In biên bản</div>
+                <div className="form-input-label">F6 - In biên bản</div>
             ),
             key: "4",
             icon: (
@@ -50,7 +50,7 @@ function Bienbantuvong(props) {
             ),
         },
         {
-            label: <div className="form-input-label khambenh-form-input-label">Hủy</div>,
+            label: <div className="form-input-label">Hủy</div>,
             key: "5",
             icon: (
                 <div className="">
@@ -59,7 +59,7 @@ function Bienbantuvong(props) {
             ),
         },
         {
-            label: <div className="form-input-label khambenh-form-input-label">Thoát</div>,
+            label: <div className="form-input-label">Thoát</div>,
             key: "6",
             icon: (
                 <div>

@@ -178,7 +178,7 @@ input[type="search"] {
     color: #fff;
 }
 .bg-label {
-    background-color: #e8e3e3;
+    background-color: #f3f0f0;
 }
 //tab
 .ant-tabs-tab {
@@ -217,14 +217,7 @@ input[type="search"] {
         border: 1px solid black;
     }
 }
-//model
-.model-label {
-    font-size: 14px;
-    font-weight: bold;
-    padding: 0px;
-    margin: 0px;
-    line-height: 0px;
-}
+
 //collapse
 .ant-collapse > .ant-collapse-item > .ant-collapse-header {
     padding: 2px;
@@ -255,7 +248,7 @@ input[type="search"] {
     font-size: 12px !important;
 }
 
-//
+// modal
 .modal-label {
     font-size: 14px !important;
     font-weight: bold;

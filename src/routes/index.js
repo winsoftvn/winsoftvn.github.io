@@ -1,6 +1,7 @@
 import Canlamsan from "../pages/Canlamsan";
 import Home from "../pages/Home";
 import Khambenh from "../pages/Khambenh";
+import Khamsuckhoe from "../pages/Khamsuckhoe";
 import Phauthuatthuthuat from "../pages/Phauthuatthuthuat";
 import Tiepnhan from "../pages/Tiepnhan";
 import VLTL_YHCT from "../pages/VLTL_YHCT";
@@ -154,6 +155,12 @@ const PageWeb = [
     {
         path: "/vltl-yhct",
         page: VLTL_YHCT,
+        isMainLayout: true,
+    },
+    //Khám sức khỏe
+    {
+        path: "/khamsuckhoe",
+        page:Khamsuckhoe,
         isMainLayout: true,
     },
 ];

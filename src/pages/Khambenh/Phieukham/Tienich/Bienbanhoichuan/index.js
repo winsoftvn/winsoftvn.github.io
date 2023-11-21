@@ -32,7 +32,7 @@ function Bienbanhoichuan(props) {
     ];
     const items1 = [
         {
-            label: <div className="form-input-label khambenh-form-input-label">F2 - Mới</div>,
+            label: <div className="form-input-label">F2 - Mới</div>,
             key: "1",
             icon: (
                 <div className="color-icon-edit blue">
@@ -41,12 +41,12 @@ function Bienbanhoichuan(props) {
             ),
         },
         {
-            label: <div className="form-input-label khambenh-form-input-label">F3 - Lưu</div>,
+            label: <div className="form-input-label">F3 - Lưu</div>,
             key: "2",
             icon: <FontAwesomeIcon icon={faSave} />,
         },
         {
-            label: <div className="form-input-label khambenh-form-input-label">Sửa</div>,
+            label: <div className="form-input-label">Sửa</div>,
             key: "3",
             icon: (
                 <div className="color-icon-edit yellow">
@@ -56,9 +56,7 @@ function Bienbanhoichuan(props) {
             ),
         },
         {
-            label: (
-                <div className="form-input-label khambenh-form-input-label">F6 - In biên bản</div>
-            ),
+            label: <div className="form-input-label">F6 - In biên bản</div>,
             key: "4",
             icon: (
                 <div className="color-icon-edit red">
@@ -67,7 +65,7 @@ function Bienbanhoichuan(props) {
             ),
         },
         {
-            label: <div className="form-input-label khambenh-form-input-label">Hủy</div>,
+            label: <div className="form-input-label">Hủy</div>,
             key: "5",
             icon: (
                 <div className="">
@@ -76,7 +74,7 @@ function Bienbanhoichuan(props) {
             ),
         },
         {
-            label: <div className="form-input-label khambenh-form-input-label">Thoát</div>,
+            label: <div className="form-input-label">Thoát</div>,
             key: "6",
             icon: (
                 <div>
@@ -351,8 +349,10 @@ function Bienbanhoichuan(props) {
                                     }
                                 >
                                     <TextArea
-                                        maxLength={5}
-                                        minLength={3}
+                                        autoSize={{
+                                            minRows: 3,
+                                            maxRows: 3,
+                                        }}
                                         className="form-control"
                                     />
                                 </Form.Item>
@@ -363,8 +363,10 @@ function Bienbanhoichuan(props) {
                                     label={<div className="form-input-label">1. Tiểu sử bệnh</div>}
                                 >
                                     <TextArea
-                                        maxLength={5}
-                                        minLength={3}
+                                        autoSize={{
+                                            minRows: 3,
+                                            maxRows: 3,
+                                        }}
                                         className="form-control"
                                     />
                                 </Form.Item>

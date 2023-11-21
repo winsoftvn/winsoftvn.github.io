@@ -21,14 +21,14 @@ import {
     faPen,
     faPenToSquare,
     faSearchDollar,
-    faTablets,
     faCircleXmark,
 } from "@fortawesome/free-solid-svg-icons";
 import TextArea from "antd/es/input/TextArea";
 import "./phieukham.scss";
 import ds from "../../../util/data";
+import ReactToPrint, { useReactToPrint } from "react-to-print";
 import Toathuoctaicho from "./Toathuoctaicho";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Toamuangoai from "./Toamuangoai";
 import Thuoctutruc from "./Thuoctutruc";
 import Chidinh from "./Chidinh";
@@ -37,6 +37,9 @@ import ChidinhKB from "./ChidinhKB";
 import Bienbanhoichuan from "./Tienich/Bienbanhoichuan";
 import Bienbantuvong from "./Tienich/Bienbantuvong";
 import Ghinhantheodosinhhieu from "./Tienich/Ghinhantheodoisinhhieu";
+import Lapphieutheodoidieutri from "./Tienich/Lapphieutheodoidieutri";
+import Lapphieuchamsoc from "./Tienich/Lapphieuchamsoc";
+import Lapphieutheodoitruyendich from "./Tienich/Lapphieutheodoitruyendich";
 function Phieukham() {
     const [openModelChidinh, setModelChidinh] = useState(false);
     const [openModelToathuoctainha, setModelToathuoctainha] = useState(false);
@@ -45,7 +48,14 @@ function Phieukham() {
     const [openModelBienbanhoichuan, setModelBienbanhoichuan] = useState(false);
     const [openModelBienbantuvong, setModelBienbantuvong] = useState(false);
     const [openModelTheodoisinhhieu, setModelTheodoisinhhieu] = useState(false);
-
+    const [openModelLapphieutheodoidieutri, setModelLapphieutheodoidieutri] = useState(false);
+    const [openModelLapphieuchamsoc, setModelLapphieuchamsoc] = useState(false);
+    const [openModelLapphieutheodoitruyendich, setModelLapphieutheodoitruyendich] = useState(false);
+    // const handlePrint = useReactToPrint({
+    //     content: () => test.current,
+    //     documentTitle: "emp-data",
+    //     onafterprint: () => alert("Print Success"),
+    // });
     const handleSetOpen = (a) => {
         if (a === "1") {
             setModelChidinh(true);
@@ -55,6 +65,21 @@ function Phieukham() {
             setModelToamuangoai(true);
         } else if (a === "4") {
             setModelThuoctutruc(true);
+        }
+    };
+    const onClickDropdownTienich = ({ key }) => {
+        if (key === "1") {
+            setModelBienbanhoichuan(true);
+        } else if (key === "2") {
+            setModelBienbantuvong(true);
+        } else if (key === "3") {
+            setModelTheodoisinhhieu(true);
+        } else if (key === "5") {
+            setModelLapphieutheodoidieutri(true);
+        } else if (key === "6") {
+            setModelLapphieuchamsoc(true);
+        } else if (key === "7") {
+            setModelLapphieutheodoitruyendich(true);
         }
     };
     const items1 = [
@@ -245,15 +270,7 @@ function Phieukham() {
             ),
         },
     ];
-    const onClickDropdownTienich = ({ key }) => {
-        if (key === "1") {
-            setModelBienbanhoichuan(true);
-        } else if (key === "2") {
-            setModelBienbantuvong(true);
-        } else if (key === "3") {
-            setModelTheodoisinhhieu(true);
-        }
-    };
+
     const menuProps = {
         items,
         onClick: onClickDropdownTienich,
@@ -434,6 +451,18 @@ function Phieukham() {
                     <Ghinhantheodosinhhieu
                         open={openModelTheodoisinhhieu}
                         setOpen={setModelTheodoisinhhieu}
+                    />
+                    <Lapphieutheodoidieutri
+                        open={openModelLapphieutheodoidieutri}
+                        setOpen={setModelLapphieutheodoidieutri}
+                    />
+                    <Lapphieuchamsoc
+                        open={openModelLapphieuchamsoc}
+                        setOpen={setModelLapphieuchamsoc}
+                    />
+                    <Lapphieutheodoitruyendich
+                        open={openModelLapphieutheodoitruyendich}
+                        setOpen={setModelLapphieutheodoitruyendich}
                     />
                     {/* /// */}
                     <div className=" py-2">
