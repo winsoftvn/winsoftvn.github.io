@@ -161,7 +161,6 @@ function Toathuoctaicho(props) {
                 }}
                 onCancel={() => setOpen(false)}
                 width={"100vw"}
-                className="khambenh"
             >
                 <div className="text-center">
                     <Form onFinish={""}>

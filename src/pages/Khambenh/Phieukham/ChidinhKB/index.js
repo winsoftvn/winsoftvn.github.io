@@ -97,7 +97,7 @@ function ChidinhKB() {
                                         columns={columns}
                                         pagination={false}
                                         scroll={{ x: true, y: "100vh" }}
-                                        size="small"
+                                      
                                         bordered={true}
                                     />
                                 </div>

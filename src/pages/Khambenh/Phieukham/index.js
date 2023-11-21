@@ -35,12 +35,16 @@ import Chidinh from "./Chidinh";
 import Donthuoc from "./Donthuoc";
 import ChidinhKB from "./ChidinhKB";
 import Bienbanhoichuan from "./Tienich/Bienbanhoichuan";
+import Bienbantuvong from "./Tienich/Bienbantuvong";
+import Ghinhantheodosinhhieu from "./Tienich/Ghinhantheodoisinhhieu";
 function Phieukham() {
     const [openModelChidinh, setModelChidinh] = useState(false);
     const [openModelToathuoctainha, setModelToathuoctainha] = useState(false);
     const [openModelToamuangoai, setModelToamuangoai] = useState(false);
     const [openModelThuoctutruc, setModelThuoctutruc] = useState(false);
     const [openModelBienbanhoichuan, setModelBienbanhoichuan] = useState(false);
+    const [openModelBienbantuvong, setModelBienbantuvong] = useState(false);
+    const [openModelTheodoisinhhieu, setModelTheodoisinhhieu] = useState(false);
 
     const handleSetOpen = (a) => {
         if (a === "1") {
@@ -244,6 +248,10 @@ function Phieukham() {
     const onClickDropdownTienich = ({ key }) => {
         if (key === "1") {
             setModelBienbanhoichuan(true);
+        } else if (key === "2") {
+            setModelBienbantuvong(true);
+        } else if (key === "3") {
+            setModelTheodoisinhhieu(true);
         }
     };
     const menuProps = {
@@ -369,6 +377,20 @@ function Phieukham() {
             ),
         },
     ];
+
+    const column1 = [
+        {
+            title: "Mã ",
+            dataIndex: "TDV",
+            fixed: "left",
+            render: (TDV) => <div> {TDV} </div>,
+        },
+        {
+            title: "Tên",
+            dataIndex: "TDVVT",
+            render: (TDVVT) => <div> {TDVVT} </div>,
+        },
+    ];
     return (
         <>
             <div>
@@ -407,6 +429,11 @@ function Phieukham() {
                     <Bienbanhoichuan
                         open={openModelBienbanhoichuan}
                         setOpen={setModelBienbanhoichuan}
+                    />
+                    <Bienbantuvong open={openModelBienbantuvong} setOpen={setModelBienbantuvong} />
+                    <Ghinhantheodosinhhieu
+                        open={openModelTheodoisinhhieu}
+                        setOpen={setModelTheodoisinhhieu}
                     />
                     {/* /// */}
                     <div className=" py-2">
@@ -470,7 +497,7 @@ function Phieukham() {
                                             <Input className="form-control" />
                                         </Form.Item>
                                     </div>
-                                    <div>
+                                    <div className="row form-row">
                                         <Form.Item
                                             className="m-0"
                                             label={
@@ -484,7 +511,7 @@ function Phieukham() {
                                             </div>
                                         </Form.Item>
                                     </div>
-                                    <div className="row">
+                                    <div className="row form-row">
                                         <Form.Item
                                             label={
                                                 <div className="form-input-label khambenh-phieukham-left-input-label ">
@@ -493,16 +520,12 @@ function Phieukham() {
                                             }
                                             className="col-md-12 m-0"
                                         >
-                                            <TextArea
-                                                className="form-control"
-                                                autoSize={{
-                                                    minRows: 4,
-                                                    maxRows: 7,
-                                                }}
-                                            />
+                                            <div className="input-select">
+                                                <Select />
+                                            </div>
                                         </Form.Item>
                                     </div>
-                                    <div className="row">
+                                    <div className="row ">
                                         <Form.Item
                                             label={
                                                 <div className="form-input-label khambenh-phieukham-left-input-label ">
@@ -514,9 +537,18 @@ function Phieukham() {
                                             <div className="input-select">
                                                 <Select />
                                             </div>
+                                            <div className="color-border">
+                                                <Table
+                                                    dataSource={ds}
+                                                    columns={column1}
+                                                    scroll={{ X: true, y: 50 }}
+                                                    pagination={false}
+                                                    size="small"
+                                                />
+                                            </div>
                                         </Form.Item>
                                     </div>
-                                    <div>
+                                    <div className="row form-row">
                                         <Form.Item
                                             label={
                                                 <div className="form-input-label khambenh-phieukham-left-input-label ">
@@ -528,8 +560,8 @@ function Phieukham() {
                                             <TextArea
                                                 className="form-control"
                                                 autoSize={{
-                                                    minRows: 3,
-                                                    maxRows: 5,
+                                                    minRows: 1,
+                                                    maxRows: 1,
                                                 }}
                                             />
                                         </Form.Item>
@@ -551,7 +583,7 @@ function Phieukham() {
                                             className="m-0  form-row"
                                             label={
                                                 <div className="form-input-label khambenh-phieukham-right-input-label">
-                                                    Huyết áp(mm/Hg)
+                                                    H.áp(mm/Hg)
                                                 </div>
                                             }
                                         >
@@ -571,7 +603,7 @@ function Phieukham() {
                                             className="m-0  form-row"
                                             label={
                                                 <div className="form-input-label khambenh-phieukham-right-input-label">
-                                                    Nhịp thở(lần/phút)
+                                                    N.thở(lần/phút)
                                                 </div>
                                             }
                                         >
@@ -587,27 +619,30 @@ function Phieukham() {
                                         >
                                             <Input className="form-control text-center" />
                                         </Form.Item>
+                                    </div>
+                                    <div className="row form-row">
                                         <Form.Item
-                                            className="m-0  form-row"
+                                            className="  w-55"
                                             label={
                                                 <div className="form-input-label khambenh-phieukham-right-input-label">
-                                                    Chiều cao (cm)
+                                                    Ch.Cao (cm)
+                                                </div>
+                                            }
+                                        >
+                                            <Input className="form-control text-center" />
+                                        </Form.Item>
+
+                                        <Form.Item
+                                            className=" w-45"
+                                            label={
+                                                <div className="form-input-label khambenh-phieukham-right-input-label-cannang">
+                                                    C.Nặng(kg)
                                                 </div>
                                             }
                                         >
                                             <Input className="form-control text-center" />
                                         </Form.Item>
                                     </div>
-                                    <Form.Item
-                                        className="m-0  form-row"
-                                        label={
-                                            <div className="form-input-label khambenh-phieukham-right-input-label">
-                                                Cân nặng(kg)
-                                            </div>
-                                        }
-                                    >
-                                        <Input className="form-control text-center" />
-                                    </Form.Item>
                                     <Form.Item
                                         className="m-0 mt-2"
                                         label={

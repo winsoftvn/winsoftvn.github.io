@@ -1,6 +1,9 @@
+import Canlamsan from "../pages/Canlamsan";
 import Home from "../pages/Home";
 import Khambenh from "../pages/Khambenh";
+import Phauthuatthuthuat from "../pages/Phauthuatthuthuat";
 import Tiepnhan from "../pages/Tiepnhan";
+import VLTL_YHCT from "../pages/VLTL_YHCT";
 import KhaibaoDVKTbatbuoccoketquakhiKQđieutrituvong from "../pages/Vienphi/Danhmuc/KhaibaoDVKTbatbuoccoketquakhiKQđieutrituvong/List";
 import KhaibaoDVKTkhongchophepchidinhdongthoi from "../pages/Vienphi/Danhmuc/KhaibaoDVKTkhongchophepchidinhdongthoi/List";
 import KhaibaoDVKTthuchienphauthuatxuatXML5 from "../pages/Vienphi/Danhmuc/KhaibaoDVKTthuchienphauthuatxuatXML5/List";
@@ -32,7 +35,7 @@ const PageWeb = [
         page: Tiepnhan,
         isMainLayout: true,
     },
-    //Khám bệnh 
+    //Khám bệnh
     {
         path: "/khambenh",
         page: Khambenh,
@@ -132,6 +135,25 @@ const PageWeb = [
     {
         path: "/vienphi/danhmuc/khaibaoDVKTthuchienphauthuatxuatXML5",
         page: KhaibaoDVKTthuchienphauthuatxuatXML5,
+        isMainLayout: true,
+    },
+    //Phẩu thuật thủ thuật
+    {
+        path: "/pttt",
+        page: Phauthuatthuthuat,
+        isMainLayout: true,
+    },
+
+    //Cận lâm sàn
+    {
+        path: "/canlamsan",
+        page: Canlamsan,
+        isMainLayout: true,
+    },
+    //VLTL_YHCT
+    {
+        path: "/vltl-yhct",
+        page: VLTL_YHCT,
         isMainLayout: true,
     },
 ];

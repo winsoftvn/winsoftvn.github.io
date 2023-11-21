@@ -63,7 +63,7 @@ function LayoutPageMain({ children }) {
             <FontAwesomeIcon icon={faCircleDollarToSlot} />
         ),
         getItem(
-            <NavLink className="menu-navlink" to="/phauthuatthuthuat">
+            <NavLink className="menu-navlink" to="/pttt">
                 Phẩu thuật thủ thuật
             </NavLink>,
             "4",

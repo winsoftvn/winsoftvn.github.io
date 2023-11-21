@@ -1,4 +1,4 @@
-import { Table, Button, Dropdown, Form, Input, Radio } from "antd";
+import { Table, Button, Dropdown, Form, Input, Radio, Tree } from "antd";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
     faEdit,
@@ -12,6 +12,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import { motion } from "framer-motion";
+import imguser from "../../../assets/image/user.png";
 import "./danhsachleft.scss";
 import ds from "../../../util/data";
 function Danhsachleft() {
@@ -22,6 +23,42 @@ function Danhsachleft() {
     const handleClick = () => {
         setClick(!click);
     };
+    const treeData = [
+        {
+            title: <div className="color-text fw-bold">18/05/2021</div>,
+            key: "0-0",
+            children: [
+                {
+                    title: "Loại xét nghiệp: Xét nghiệp huyết học",
+                    key: "0-0-0",
+                    children: [
+                        {
+                            title: "Tổng quan tinh tế bào máu ngoại vi",
+                            key: "0-0-0-0",
+                        },
+                        {
+                            title: "Tổng quan tinh tế bào máu ngoại vi",
+                            key: "0-0-0-1",
+                        },
+                    ],
+                },
+                {
+                    title: "Loại xét nghiệp: Xét nghiệp huyết học",
+                    key: "0-0-1",
+                    children: [
+                        {
+                            title: "Tổng quan tinh tế bào máu ngoại vi",
+                            key: "0-0-1-0",
+                        },
+                        {
+                            title: "Tổng quan tinh tế bào máu ngoại vi",
+                            key: "0-0-1-1",
+                        },
+                    ],
+                },
+            ],
+        },
+    ];
     const items = [
         {
             key: "1",
@@ -44,7 +81,7 @@ function Danhsachleft() {
             title: "STT",
             dataIndex: "TDV",
             fixed: "left",
-            render: (TDV) => <div style={{ width: "200px" }}> {TDV} </div>,
+            render: (TDV) => <div style={{ width: "100px" }}> {TDV} </div>,
         },
         {
             title: "Mã BN",
@@ -198,18 +235,16 @@ function Danhsachleft() {
                 exit={{ opacity: 0, transition: { duration: 0.8 } }}
             >
                 <div className="div-shadow v5">
-                    <div className="text-muted">
-                        <Form className="mx-1">
+                    <div>
+                        <div className="fw-bold bg-title p-1">DANH SÁCH CHỜ THỰC HIỆN</div>
+                        <Form className="my-2 mx-1">
                             <div className="row form-row">
                                 <Radio.Group className="d-flex align-items-center justify-content-around">
                                     <Radio value={1} className="form-input-label">
-                                        Chờ khám
+                                        Chưa thực hiên
                                     </Radio>
                                     <Radio value={2} className="form-input-label">
-                                        Đã khám
-                                    </Radio>
-                                    <Radio value={3} className="form-input-label">
-                                        Kết thúc
+                                        Đã thực hiện
                                     </Radio>
                                 </Radio.Group>
                             </div>
@@ -249,23 +284,11 @@ function Danhsachleft() {
                                 columns={column0}
                                 dataSource={ds}
                                 // loading={loading}
-                                scroll={{ x: true, y: 400 }}
+                                scroll={{ x: true, y: "100vh" }}
                                 size="small"
                                 pagination={false}
                             />
                             <div className="fw-bold mx-1">Tổng:1000</div>
-                        </div>
-                        <div className="fw-bold color-text mx-2">Lịch sử khám bệnh</div>
-                        <div className="m-1">
-                            <Table
-                                columns={column1}
-                                dataSource={ds}
-                                // loading={loading}
-                                scroll={{ x: true, y: 155 }}
-                                size="small"
-                                bordered={true}
-                                pagination={false}
-                            />
                         </div>
                     </div>
                 </div>

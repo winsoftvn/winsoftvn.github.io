@@ -1,6 +1,6 @@
 const ds = [
     {
-      
+        ID: "1",
         TDV: "Siêu âm tuyến giáp",
         TDVVT: "Siêu âm tuyến giáp",
         MADVKT: " 18.0001.0001",
@@ -29,7 +29,36 @@ const ds = [
         MVP: "DV000383",
     },
     {
-        ID:"2",
+        ID: "2",
+        TDV: "123",
+        TDVVT: "Siêu âm tuyến giáp",
+        MADVKT: " 18.0001.0001",
+        TDVKT: "132",
+        DVT: "Lần",
+        PTH: "PHÒNG SIÊU ÂM",
+        MKPBYT: "",
+        LBN: "Khám bệnh",
+        MTDBHYT: "18.0001.0001",
+        MTT37: "",
+        TTTT37: "",
+        MTT50: "",
+        TTT50: "",
+        GM: 0,
+        K: 0,
+        GC: "",
+        GCD: 0,
+        BBHC: 0,
+        MNBHYT9324_AX: "CHUẨN ĐOÁN HÌNH ẢNH",
+        STT: 2,
+        CDTTD: 0,
+        CDHTTK: 0,
+        CDTTL: 0,
+        NI: "Siêu âm",
+        VATXHD: "",
+        MVP: "DV000383",
+    },
+    {
+        ID: "3",
         TDV: "Siêu âm tuyến giáp",
         TDVVT: "Siêu âm tuyến giáp",
         MADVKT: " 18.0001.0001",
@@ -56,8 +85,8 @@ const ds = [
         NI: "Siêu âm",
         VATXHD: "",
         MVP: "DV000383",
-    }, {
-        ID:"3",
+    },
+    {
         TDV: "Siêu âm tuyến giáp",
         TDVVT: "Siêu âm tuyến giáp",
         MADVKT: " 18.0001.0001",
@@ -84,7 +113,8 @@ const ds = [
         NI: "Siêu âm",
         VATXHD: "",
         MVP: "DV000383",
-    }, {
+    },
+    {
         TDV: "Siêu âm tuyến giáp",
         TDVVT: "Siêu âm tuyến giáp",
         MADVKT: " 18.0001.0001",
@@ -111,7 +141,8 @@ const ds = [
         NI: "Siêu âm",
         VATXHD: "",
         MVP: "DV000383",
-    }, {
+    },
+    {
         TDV: "Siêu âm tuyến giáp",
         TDVVT: "Siêu âm tuyến giáp",
         MADVKT: " 18.0001.0001",
@@ -138,7 +169,8 @@ const ds = [
         NI: "Siêu âm",
         VATXHD: "",
         MVP: "DV000383",
-    }, {
+    },
+    {
         TDV: "Siêu âm tuyến giáp",
         TDVVT: "Siêu âm tuyến giáp",
         MADVKT: " 18.0001.0001",
@@ -165,7 +197,8 @@ const ds = [
         NI: "Siêu âm",
         VATXHD: "",
         MVP: "DV000383",
-    }, {
+    },
+    {
         TDV: "Siêu âm tuyến giáp",
         TDVVT: "Siêu âm tuyến giáp",
         MADVKT: " 18.0001.0001",
@@ -192,7 +225,8 @@ const ds = [
         NI: "Siêu âm",
         VATXHD: "",
         MVP: "DV000383",
-    }, {
+    },
+    {
         TDV: "Siêu âm tuyến giáp",
         TDVVT: "Siêu âm tuyến giáp",
         MADVKT: " 18.0001.0001",
@@ -219,7 +253,8 @@ const ds = [
         NI: "Siêu âm",
         VATXHD: "",
         MVP: "DV000383",
-    }, {
+    },
+    {
         TDV: "Siêu âm tuyến giáp",
         TDVVT: "Siêu âm tuyến giáp",
         MADVKT: " 18.0001.0001",
@@ -246,7 +281,8 @@ const ds = [
         NI: "Siêu âm",
         VATXHD: "",
         MVP: "DV000383",
-    }, {
+    },
+    {
         TDV: "Siêu âm tuyến giáp",
         TDVVT: "Siêu âm tuyến giáp",
         MADVKT: " 18.0001.0001",
@@ -273,7 +309,8 @@ const ds = [
         NI: "Siêu âm",
         VATXHD: "",
         MVP: "DV000383",
-    }, {
+    },
+    {
         TDV: "Siêu âm tuyến giáp",
         TDVVT: "Siêu âm tuyến giáp",
         MADVKT: " 18.0001.0001",
@@ -300,7 +337,8 @@ const ds = [
         NI: "Siêu âm",
         VATXHD: "",
         MVP: "DV000383",
-    }, {
+    },
+    {
         TDV: "Siêu âm tuyến giáp",
         TDVVT: "Siêu âm tuyến giáp",
         MADVKT: " 18.0001.0001",
@@ -327,7 +365,8 @@ const ds = [
         NI: "Siêu âm",
         VATXHD: "",
         MVP: "DV000383",
-    }, {
+    },
+    {
         TDV: "Siêu âm tuyến giáp",
         TDVVT: "Siêu âm tuyến giáp",
         MADVKT: " 18.0001.0001",
@@ -354,7 +393,8 @@ const ds = [
         NI: "Siêu âm",
         VATXHD: "",
         MVP: "DV000383",
-    }, {
+    },
+    {
         TDV: "Siêu âm tuyến giáp",
         TDVVT: "Siêu âm tuyến giáp",
         MADVKT: " 18.0001.0001",
@@ -381,34 +421,8 @@ const ds = [
         NI: "Siêu âm",
         VATXHD: "",
         MVP: "DV000383",
-    }, {
-        TDV: "Siêu âm tuyến giáp",
-        TDVVT: "Siêu âm tuyến giáp",
-        MADVKT: " 18.0001.0001",
-        TDVKT: "Siêu âm tuyến giáp",
-        DVT: "Lần",
-        PTH: "PHÒNG SIÊU ÂM",
-        MKPBYT: "",
-        LBN: "Khám bệnh",
-        MTDBHYT: "18.0001.0001",
-        MTT37: "",
-        TTTT37: "",
-        MTT50: "",
-        TTT50: "",
-        GM: 0,
-        K: 0,
-        GC: "",
-        GCD: 0,
-        BBHC: 0,
-        MNBHYT9324_AX: "CHUẨN ĐOÁN HÌNH ẢNH",
-        STT: 2,
-        CDTTD: 0,
-        CDHTTK: 0,
-        CDTTL: 0,
-        NI: "Siêu âm",
-        VATXHD: "",
-        MVP: "DV000383",
-    }, {
+    },
+    {
         TDV: "Siêu âm tuyến giáp",
         TDVVT: "Siêu âm tuyến giáp",
         MADVKT: " 18.0001.0001",
@@ -605,4 +619,5 @@ const ds = [
         MVP: "DV000383",
     },
 ];
+
 export default ds;

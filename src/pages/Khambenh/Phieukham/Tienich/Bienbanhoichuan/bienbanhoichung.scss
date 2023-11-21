@@ -1,0 +1,18 @@
+.scroll {
+    overflow-y: scroll;
+    height: max-content;
+}
+// .scroll::-webkit-scrollbar {
+//     display: none;
+// }
+// .scroll {
+//     scrollbar-width: none;
+// }
+
+.title-highlight-note {
+    font-weight: bold;
+    background-color: #f2f2f2;
+    padding: 1px;
+    margin: 5px 0px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 8px 0px;
+}
