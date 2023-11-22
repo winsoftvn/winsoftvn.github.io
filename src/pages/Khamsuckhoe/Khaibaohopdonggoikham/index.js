@@ -4,9 +4,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button, Form, Input, Table } from "antd";
 import FormItem from "antd/es/form/FormItem";
 import TextArea from "antd/es/input/TextArea";
-import ds from "../../../util/data";
+import ds2 from "../../../util/data2";
+import TimHD from "./TimHD";
+import { useState } from "react";
+import ThemmoiCongty from "./ThemmoiCty";
 
 function Khaibaohophong() {
+    const [openModalTimHD, setModalTimHD] = useState(false);
+    const [openModalThemmoiCty, setModalThemmoiCty] = useState(false);
+
     const column0 = [
         {
             title: "Mã",
@@ -69,6 +75,9 @@ function Khaibaohophong() {
     return (
         <>
             <div className="w-100">
+                <TimHD open={openModalTimHD} setOpen={setModalTimHD} />
+                <ThemmoiCongty open={openModalThemmoiCty} setOpen={setModalThemmoiCty} />
+
                 <Form>
                     <div className="color-border p-1">
                         <div className="bg-title px-2 py-1 fw-bold">
@@ -85,7 +94,12 @@ function Khaibaohophong() {
                                             <Input className="form-control" />
                                         </FormItem>
                                         <div className="col-md-2">
-                                            <Button className="d-flex justify-content-center align-items-center form-btn">
+                                            <Button
+                                                className="d-flex justify-content-center align-items-center form-btn"
+                                                onClick={() => {
+                                                    setModalTimHD(true);
+                                                }}
+                                            >
                                                 <FontAwesomeIcon icon={faSearch} />
                                                 <span className="mx-1 form-input-label">
                                                     Tìm HĐ
@@ -93,7 +107,10 @@ function Khaibaohophong() {
                                             </Button>
                                         </div>
                                         <div className="col-md-2">
-                                            <Button className="d-flex justify-content-center align-items-center form-btn">
+                                            <Button
+                                                className="d-flex justify-content-center align-items-center form-btn"
+                                                onClick={() => setModalThemmoiCty(true)}
+                                            >
                                                 <FontAwesomeIcon icon={faAdd} />
                                                 <span className="mx-1 form-input-label">
                                                     Thêm mới Cty
@@ -191,7 +208,7 @@ function Khaibaohophong() {
                             </div>
                         </div>
                     </div>
-                    <div className="mt-2 row form-row p-0 ">
+                    <div className="mt-2 row form-row p-0 m-0">
                         <div className="d-flex justify-content-between">
                             <div className="w-40 d-flex">
                                 <FormItem className="w-60 m-0">
@@ -210,16 +227,26 @@ function Khaibaohophong() {
                                 </Button>
                             </div>
                         </div>
-
-                        
-                    </div><div className="mt-3"><Table
+                    </div>
+                    <div className="mt-3">
+                        <Table
                             columns={column0}
-                            dataSource={ds}
+                            dataSource={ds2}
                             // loading={loading}
                             scroll={{ x: true, y: 300 }}
                             size="small"
-                            pagination={false}/></div>
-                        
+                            // rowKey={(record) => record.ID}
+                            // expandable={{
+                            //     expandedRowRender: (record) => (
+                            //         <p style={{ margin: 0 }}>
+
+                            //         </p>
+                            //     ),
+                            //     rowExpandable: (record) => record.TDV !== "Not Expandable",
+                            // }}
+                            pagination={false}
+                        />
+                    </div>
                 </Form>
             </div>
         </>

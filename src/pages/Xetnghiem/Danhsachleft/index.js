@@ -78,13 +78,13 @@ function Danhsachleft() {
     ];
     const column0 = [
         {
-            title: "STT",
+            title: "Ngày lấy mẫu",
             dataIndex: "TDV",
             fixed: "left",
             render: (TDV) => <div style={{ width: "100px" }}> {TDV} </div>,
         },
         {
-            title: "Mã BN",
+            title: "ID mẫu",
             dataIndex: "TDVVT",
             render: (TDVVT) => <div style={{ width: "600px" }}> {TDVVT} </div>,
         },
@@ -94,7 +94,7 @@ function Danhsachleft() {
             render: (TDVVT) => <div style={{ width: "200px" }}> {TDVVT} </div>,
         },
         {
-            title: "Năm sinh",
+            title: "Mã BN",
             dataIndex: "TDVVT",
             render: (TDVVT) => <div style={{ width: "200px" }}> {TDVVT} </div>,
         },
@@ -104,42 +104,19 @@ function Danhsachleft() {
             align: "center",
         },
         {
+            title: "Năm sinh",
+            dataIndex: "MADVKT",
+            align: "center",
+        },
+        {
             title: "Đối tượng",
             dataIndex: "MADVKT",
             align: "center",
         },
-        ,
         {
-            title: "Thao tác",
-            dataIndex: "",
+            title: "Phòng chỉ định",
+            dataIndex: "MADVKT",
             align: "center",
-            fixed: "right",
-            render: (record) => (
-                <div className="d-flex justify-content-center">
-                    <Dropdown
-                        menu={{
-                            items,
-                        }}
-                        placement="left"
-                        arrow={{
-                            pointAtCenter: true,
-                        }}
-                    >
-                        <Button
-                            className="bg-light vienphi-danhmuc-icon-modify"
-                            onClick={() => {
-                                setActiveModify(!activeModify);
-                            }}
-                        >
-                            <FontAwesomeIcon
-                                icon={faEdit}
-                                style={{ fontSize: "10px" }}
-                                className="text-dark"
-                            />
-                        </Button>
-                    </Dropdown>
-                </div>
-            ),
         },
     ];
     const column1 = [
@@ -241,10 +218,10 @@ function Danhsachleft() {
                             <div className="row form-row">
                                 <Radio.Group className="d-flex align-items-center justify-content-around">
                                     <Radio value={1} className="form-input-label">
-                                        Chưa thực hiên
+                                        Chờ lấy mẫu
                                     </Radio>
                                     <Radio value={2} className="form-input-label">
-                                        Đã thực hiện
+                                        Đã lấy mẫu
                                     </Radio>
                                 </Radio.Group>
                             </div>
@@ -284,7 +261,7 @@ function Danhsachleft() {
                                 columns={column0}
                                 dataSource={ds}
                                 // loading={loading}
-                                scroll={{ x: true, y: 400 }}
+                                scroll={{ x: true, y: 300 }}
                                 size="small"
                                 pagination={false}
                             />
@@ -367,8 +344,8 @@ function Danhsachleft() {
                                 </Form>
                             </div>
                             <div>
-                                <div className="fw-bold bg-label color-text mt-1 p-1 text-center">
-                                    LỊCH SỬ THỰC HIỆN
+                                <div className="fw-bold bg-label color-text p-1 text-center">
+                                    Các xét nghiệm đã thực hiện
                                 </div>
                                 <div className="fw-bold mx-2">Kỹ thuật</div>
                                 <Tree treeData={treeData} className="form-input-label" />

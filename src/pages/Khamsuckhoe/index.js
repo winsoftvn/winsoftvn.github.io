@@ -2,6 +2,8 @@ import { faDiagramProject, faPoll, faVials } from "@fortawesome/free-solid-svg-i
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Tabs } from "antd";
 import Khaibaohophong from "./Khaibaohopdonggoikham";
+import Intraketquahsksk from "./Intraketquahsksk";
+import Laymautrakqxetnghiemksk from "./Laymautrakqxetnghiemksk";
 
 function Khamsuckhoe() {
     const items = [
@@ -27,7 +29,11 @@ function Khamsuckhoe() {
                     <span className="mx-1">Lấy mẫu - Trả KQ xét nghiệm KSK</span>
                 </div>
             ),
-            children: <div className="">{/* <Timkiem /> */}</div>,
+            children: (
+                <div className="">
+                    <Laymautrakqxetnghiemksk />
+                </div>
+            ),
         },
         {
             key: "3",
@@ -37,7 +43,11 @@ function Khamsuckhoe() {
                     <span className="mx-1">In trả kết quả HS KSK</span>
                 </div>
             ),
-            children: <div className="">{/* <CDinhhentruoc /> */}</div>,
+            children: (
+                <div className="">
+                    <Intraketquahsksk />
+                </div>
+            ),
         },
     ];
     return (

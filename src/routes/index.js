@@ -1,4 +1,5 @@
 import Canlamsan from "../pages/Canlamsan";
+import Duoc from "../pages/Duoc";
 import Home from "../pages/Home";
 import Khambenh from "../pages/Khambenh";
 import Khamsuckhoe from "../pages/Khamsuckhoe";
@@ -24,6 +25,7 @@ import Nhomvienphihethong from "../pages/Vienphi/Danhmuc/Nhomvienphihethong/List
 import Nhantrathebhyt from "../pages/Vienphi/NhantratheBHYT";
 import Phieuthutamung from "../pages/Vienphi/Phieuthutamung";
 import Phieuthutien from "../pages/Vienphi/Phieuthutien";
+import Xetnghiem from "../pages/Xetnghiem";
 const PageWeb = [
     {
         path: "/",
@@ -151,6 +153,12 @@ const PageWeb = [
         page: Canlamsan,
         isMainLayout: true,
     },
+    //Xét nghiệm
+    {
+        path: "/xetnghiem",
+        page: Xetnghiem,
+        isMainLayout: true,
+    },
     //VLTL_YHCT
     {
         path: "/vltl-yhct",
@@ -160,7 +168,13 @@ const PageWeb = [
     //Khám sức khỏe
     {
         path: "/khamsuckhoe",
-        page:Khamsuckhoe,
+        page: Khamsuckhoe,
+        isMainLayout: true,
+    },
+    //Dược
+    {
+        path: "/duoc",
+        page: Duoc,
         isMainLayout: true,
     },
 ];

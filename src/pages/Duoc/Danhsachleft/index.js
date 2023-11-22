@@ -12,7 +12,6 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import imguser from "../../../assets/image/user.png";
 import "./danhsachleft.scss";
 import ds from "../../../util/data";
 function Danhsachleft() {
@@ -23,42 +22,7 @@ function Danhsachleft() {
     const handleClick = () => {
         setClick(!click);
     };
-    const treeData = [
-        {
-            title: <div className="color-text fw-bold">18/05/2021</div>,
-            key: "0-0",
-            children: [
-                {
-                    title: "Loại xét nghiệp: Xét nghiệp huyết học",
-                    key: "0-0-0",
-                    children: [
-                        {
-                            title: "Tổng quan tinh tế bào máu ngoại vi",
-                            key: "0-0-0-0",
-                        },
-                        {
-                            title: "Tổng quan tinh tế bào máu ngoại vi",
-                            key: "0-0-0-1",
-                        },
-                    ],
-                },
-                {
-                    title: "Loại xét nghiệp: Xét nghiệp huyết học",
-                    key: "0-0-1",
-                    children: [
-                        {
-                            title: "Tổng quan tinh tế bào máu ngoại vi",
-                            key: "0-0-1-0",
-                        },
-                        {
-                            title: "Tổng quan tinh tế bào máu ngoại vi",
-                            key: "0-0-1-1",
-                        },
-                    ],
-                },
-            ],
-        },
-    ];
+    
     const items = [
         {
             key: "1",
@@ -284,96 +248,11 @@ function Danhsachleft() {
                                 columns={column0}
                                 dataSource={ds}
                                 // loading={loading}
-                                scroll={{ x: true, y: 400 }}
+                                scroll={{ x: true, y: "100vh" }}
                                 size="small"
                                 pagination={false}
                             />
                             <div className="fw-bold mx-1">Tổng:1000</div>
-                        </div>
-                        <div>
-                            <div className="fw-bold bg-title p-1">THÔNG TIN BỆNH NHÂN</div>
-                            <div className="m-1">
-                                <Form>
-                                    <div className="d-flex">
-                                        <div className="w-30">
-                                            <img src={imguser} width={90} />
-                                        </div>
-
-                                        <div className="w-70">
-                                            <div className="row form-row">
-                                                <Form.Item
-                                                    label={
-                                                        <div className="fw-bold form-input-label">
-                                                            Mã số
-                                                        </div>
-                                                    }
-                                                >
-                                                    <div className="d-flex">
-                                                        <div className="w-60">
-                                                            <Input className="form-control" />
-                                                        </div>
-                                                        <div className="w-40 fw-bold text-danger">
-                                                            THU PHÍ
-                                                        </div>
-                                                    </div>
-                                                </Form.Item>
-                                            </div>
-                                            <div className="row form-row">
-                                                <Form.Item
-                                                    label={
-                                                        <div className="fw-bold form-input-label">
-                                                            Họ tên
-                                                        </div>
-                                                    }
-                                                >
-                                                    <Input className="form-control" />
-                                                </Form.Item>
-                                            </div>
-                                            <div className="row form-row">
-                                                <Form.Item
-                                                    label={
-                                                        <div className="fw-bold form-input-label">
-                                                            G.tính
-                                                        </div>
-                                                    }
-                                                >
-                                                    <Input className="form-control" />
-                                                </Form.Item>
-                                            </div>
-                                            <div className="row form-row">
-                                                <Form.Item
-                                                    label={
-                                                        <div className="fw-bold form-input-label">
-                                                            N.sinh
-                                                        </div>
-                                                    }
-                                                >
-                                                    <Input className="form-control" />
-                                                </Form.Item>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="row form-row">
-                                        <Form.Item
-                                            label={
-                                                <div className="fw-bold form-input-label">
-                                                    Địa chỉ
-                                                </div>
-                                            }
-                                        >
-                                            <Input className="form-control" />
-                                        </Form.Item>
-                                    </div>
-                                </Form>
-                            </div>
-                            <div>
-                                <div className="fw-bold bg-label color-text mt-1 p-1 text-center">
-                                    LỊCH SỬ THỰC HIỆN
-                                </div>
-                                <div className="fw-bold mx-2">Kỹ thuật</div>
-                                <Tree treeData={treeData} className="form-input-label" />
-                                <Tree treeData={treeData} className="form-input-label" />
-                            </div>
                         </div>
                     </div>
                 </div>

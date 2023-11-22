@@ -10,6 +10,8 @@ import {
     faPrint,
     faReply,
     faPlus,
+    faXmarkCircle,
+    faAdd,
 } from "@fortawesome/free-solid-svg-icons";
 import "./tiepnhan.scss";
 import Congkham from "./Congkham";
@@ -65,33 +67,47 @@ function Tiepnhan() {
     };
     const items1 = [
         {
-            label: "Mới - F1",
+            label: <div className="form-input-label ">Mới</div>,
             key: "1",
-            icon: <FontAwesomeIcon icon={faPlus} />,
+            icon: <FontAwesomeIcon icon={faAdd} />,
         },
         {
-            label: "Lưu - F2",
+            label: <div className="form-input-label ">F3 - Lưu</div>,
             key: "2",
-            icon: <FontAwesomeIcon icon={faSave} />,
+            icon: (
+                <div className="color-icon-edit blue">
+                    <FontAwesomeIcon icon={faSave} />
+                </div>
+            ),
         },
+
         {
-            label: "Bỏ qua",
+            label: <div className="form-input-label ">Bỏ qua</div>,
             key: "3",
-            icon: <FontAwesomeIcon icon={faReply} />,
+            icon: (
+                <div className="color-icon-edit red">
+                    {" "}
+                    <FontAwesomeIcon icon={faXmarkCircle} />
+                </div>
+            ),
         },
         {
-            label: "Sửa - F4",
+            label: <div className="form-input-label ">Sửa</div>,
             key: "4",
             icon: (
-                <div className="color-icon-edit">
+                <div className="color-icon-edit yellow">
                     <FontAwesomeIcon icon={faPenToSquare} />
                 </div>
             ),
         },
         {
-            label: "In - F9",
+            label: <div className="form-input-label ">F6 - In KQ</div>,
             key: "5",
-            icon: <FontAwesomeIcon icon={faPrint} />,
+            icon: (
+                <div className="color-icon-edit green">
+                    <FontAwesomeIcon icon={faPrint} />
+                </div>
+            ),
         },
     ];
     return (
