@@ -85,55 +85,34 @@ function Toathuoctaicho(props) {
     ];
     const items1 = [
         {
-            label: <div className="form-input-label khambenh-form-input-label">F2 - Mới</div>,
+            label: <div className="form-input-label ">F2 - Mới</div>,
             key: "1",
-            icon: (
-                <div className="color-icon-edit blue">
-                    <FontAwesomeIcon icon={faPowerOff} />
-                </div>
-            ),
+            icon: <FontAwesomeIcon icon={faPowerOff} />,
         },
         {
-            label: <div className="form-input-label khambenh-form-input-label">F3 - Lưu</div>,
+            label: <div className="form-input-label ">F3 - Lưu</div>,
             key: "2",
             icon: <FontAwesomeIcon icon={faSave} />,
         },
         {
-            label: <div className="form-input-label khambenh-form-input-label">Bỏ qua</div>,
+            label: <div className="form-input-label ">Bỏ qua</div>,
             key: "3",
-            icon: (
-                <div className="color-icon-edit yellow">
-                    {" "}
-                    <FontAwesomeIcon icon={faFastForward} />
-                </div>
-            ),
+            icon: <FontAwesomeIcon icon={faFastForward} />,
         },
         {
-            label: <div className="form-input-label khambenh-form-input-label">In CD</div>,
+            label: <div className="form-input-label ">In CD</div>,
             key: "4",
-            icon: (
-                <div className="color-icon-edit red">
-                    <FontAwesomeIcon icon={faPrint} />
-                </div>
-            ),
+            icon: <FontAwesomeIcon icon={faPrint} />,
         },
         {
-            label: <div className="form-input-label khambenh-form-input-label">Hủy</div>,
+            label: <div className="form-input-label ">Hủy</div>,
             key: "5",
-            icon: (
-                <div className="">
-                    <FontAwesomeIcon icon={faTrashCan} />
-                </div>
-            ),
+            icon: <FontAwesomeIcon icon={faTrashCan} />,
         },
         {
-            label: <div className="form-input-label khambenh-form-input-label">Thoát</div>,
+            label: <div className="form-input-label ">Thoát</div>,
             key: "6",
-            icon: (
-                <div>
-                    <FontAwesomeIcon icon={faCircleXmark} />
-                </div>
-            ),
+            icon: <FontAwesomeIcon icon={faCircleXmark} />,
         },
     ];
     return (
@@ -141,8 +120,24 @@ function Toathuoctaicho(props) {
             <Modal
                 title={
                     <>
-                        <div className="fw-bold text-center model-label color-text">
-                            Thông tin chi tiết
+                        <div className="d-flex justify-content-between align-items-center">
+                            <div>TOA THUỐC TẠI CHỔ</div>
+                            <div>
+                                <div className="d-flex justify-content-end align-items-center">
+                                    <Form.Item
+                                        className="m-0 p-0"
+                                        label={<div className="form-input-label">Thuốc DV</div>}
+                                    >
+                                        <Checkbox />
+                                    </Form.Item>
+                                    {items1.map((item) => (
+                                        <Button className="form-btn bg mx-1 px-1" key={item.key}>
+                                            {item.icon}
+                                            <div className="mx-1 fw-bold">{item.label}</div>
+                                        </Button>
+                                    ))}
+                                </div>
+                            </div>
                         </div>
                         <hr />
                     </>
@@ -273,31 +268,6 @@ function Toathuoctaicho(props) {
                                         </Collapse>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div>
-                            <div className="d-flex mt-2 justify-content-end">
-                                <div className="d-flex align-items-center mx-2">
-                                    <Form.Item
-                                        className="m-0 p-0"
-                                        label={
-                                            <div className="form-input-label khambenh-form-input-label">
-                                                Thuốc DV
-                                            </div>
-                                        }
-                                    >
-                                        <Checkbox />
-                                    </Form.Item>
-                                </div>
-                                {items1.map((item) => (
-                                    <Button
-                                        className="form-btn color-text mx-1 px-1"
-                                        key={item.key}
-                                    >
-                                        {item.icon}
-                                        <div className="mx-1">{item.label}</div>
-                                    </Button>
-                                ))}
                             </div>
                         </div>
                     </Form>

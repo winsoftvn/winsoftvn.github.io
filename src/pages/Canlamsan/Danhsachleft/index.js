@@ -11,17 +11,27 @@ import {
     faAngleLeft,
 } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { motion } from "framer-motion";
-import imguser from "../../../assets/image/user.png";
 import "./danhsachleft.scss";
 import ds from "../../../util/data";
+import Doctraketquasieuam from "./Doctraketquasieuam";
+import { setDataSieuAm } from "../../../slices/dataAdd";
+import { CheckOutlined } from "@ant-design/icons";
 function Danhsachleft() {
     const [open, setOpen] = useState(false);
     const [click, setClick] = useState(false);
+    const [chitiet, setChiTiet] = useState("");
     const [activeModify, setActiveModify] = useState(false);
-
+    //store
+    const dispatch = useDispatch();
     const handleClick = () => {
         setClick(!click);
+    };
+    const handleOpenModel = (a) => {
+        dispatch(setDataSieuAm(a));
+        setChiTiet(a);
+        setOpen(true);
     };
     const treeData = [
         {
@@ -108,125 +118,8 @@ function Danhsachleft() {
             dataIndex: "MADVKT",
             align: "center",
         },
-        ,
-        {
-            title: "Thao tác",
-            dataIndex: "",
-            align: "center",
-            fixed: "right",
-            render: (record) => (
-                <div className="d-flex justify-content-center">
-                    <Dropdown
-                        menu={{
-                            items,
-                        }}
-                        placement="left"
-                        arrow={{
-                            pointAtCenter: true,
-                        }}
-                    >
-                        <Button
-                            className="bg-light vienphi-danhmuc-icon-modify"
-                            onClick={() => {
-                                setActiveModify(!activeModify);
-                            }}
-                        >
-                            <FontAwesomeIcon
-                                icon={faEdit}
-                                style={{ fontSize: "10px" }}
-                                className="text-dark"
-                            />
-                        </Button>
-                    </Dropdown>
-                </div>
-            ),
-        },
     ];
-    const column1 = [
-        {
-            title: "",
-            dataIndex: "",
-            fixed: "left",
-            // render: (TDV) => <div style={{ width: "200px" }}> {TDV} </div>,
-        },
-        {
-            title: "Ngày khám",
-            dataIndex: "TDVVT",
-            render: (TDVVT) => <div style={{ width: "200px" }}> {TDVVT} </div>,
-        },
-        {
-            title: "ICD-10",
-            dataIndex: "MADVKT",
-            render: (TDVVT) => <div style={{ width: "200px" }}> {TDVVT} </div>,
-        },
-        {
-            title: "CD ICD10",
-            dataIndex: "TDVVT",
-            render: (TDVVT) => <div style={{ width: "200px" }}> {TDVVT} </div>,
-        },
-        {
-            title: "CĐ Sơ bộ",
-            dataIndex: "MADVKT",
-            align: "center",
-        },
-        {
-            title: "STT",
-            dataIndex: "MADVKT",
-            align: "center",
-        },
-        {
-            title: "P.Thực hiện",
-            dataIndex: "MADVKT",
-            align: "center",
-        },
-        {
-            title: "Ghi chú",
-            dataIndex: "MADVKT",
-            align: "center",
-        },
-        {
-            title: "Th.Hiện",
-            dataIndex: "MADVKT",
-            align: "center",
-        },
-        {
-            title: "TT",
-            dataIndex: "MADVKT",
-            align: "center",
-        },
-        {
-            title: "",
-            dataIndex: "",
-            align: "center",
-            fixed: "right",
-            render: (record) => (
-                <div className="d-flex justify-content-center">
-                    <Dropdown
-                        menu={{
-                            items,
-                        }}
-                        placement="left"
-                        arrow={{
-                            pointAtCenter: true,
-                        }}
-                    >
-                        <Button
-                            className="bg-light vienphi-danhmuc-icon-modify"
-                            onClick={() => {
-                                setActiveModify(!activeModify);
-                            }}
-                        >
-                            <FontAwesomeIcon
-                                icon={faEdit}
-                                style={{ fontSize: "10px" }}
-                                className="text-dark"
-                            />
-                        </Button>
-                    </Dropdown>
-                </div>
-            ),
-        },
-    ];
+
     return (
         <>
             <motion.div
@@ -287,9 +180,15 @@ function Danhsachleft() {
                                 scroll={{ x: true, y: "100vh" }}
                                 size="small"
                                 pagination={false}
+                                onRow={(record) => ({
+                                    onClick: () => {
+                                        handleOpenModel(record);
+                                    },
+                                })}
                             />
                             <div className="fw-bold mx-1">Tổng:1000</div>
                         </div>
+                        <Doctraketquasieuam open={open} setOpen={setOpen} chitiet={chitiet} />
                     </div>
                 </div>
             </motion.div>

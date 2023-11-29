@@ -1,0 +1,29 @@
+//
+.scroll {
+    overflow-y: scroll;
+    overflow-x: scroll;
+}
+.scroll::-webkit-scrollbar {
+    display: none;
+}
+.scroll {
+    scrollbar-width: none;
+}
+.scroll1 {
+    overflow-y: scroll;
+    overflow-x: scroll;
+}
+.scroll1::-webkit-scrollbar {
+    display: none;
+}
+.ant-tree-treenode {
+    height: 18px !important;
+}
+.phanquyenkhoaphong {
+    height: 250px;
+    overflow-y: scroll;
+}
+.ant-checkbox-group {
+    display: flex;
+    flex-direction: column;
+  }

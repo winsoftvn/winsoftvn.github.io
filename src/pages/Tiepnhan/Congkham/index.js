@@ -89,7 +89,7 @@ function Congkham() {
                     <div className="d-flex">
                         <div className="w-70 m-1">
                             <div className="tiepnhan-congkham-title">THÔNG TIN HÀNH CHÍNH</div>
-                            <div className="row">
+                            <div className="row m-0 p-0">
                                 <div className="col-md-2 ">
                                     <div className="d-flex justify-content-center ">
                                         <div className="text-center align-items-center">
@@ -113,7 +113,7 @@ function Congkham() {
                                 </div>
                                 <div className="col-md-10">
                                     <div>
-                                        <div className="row tiepnhan-congkham-row">
+                                        <div className="row form-row">
                                             <Form.Item
                                                 label={
                                                     <div className="tiepnhan-congkham-form-input-label">
@@ -129,7 +129,7 @@ function Congkham() {
                                                 <img src={imgiconcheck} width={30} />
                                             </div>
                                         </div>
-                                        <div className="row tiepnhan-congkham-row">
+                                        <div className="row form-row">
                                             <Form.Item
                                                 className="col-md-3 m-0"
                                                 label={
@@ -161,7 +161,7 @@ function Congkham() {
                                                 <Input className="form-control"></Input>
                                             </Form.Item>
                                         </div>
-                                        <div className="row tiepnhan-congkham-row">
+                                        <div className="row form-row">
                                             <Form.Item
                                                 className="col-md-4 m-0"
                                                 label={
@@ -200,7 +200,7 @@ function Congkham() {
                                                 <Input className="form-control"></Input>
                                             </Form.Item>
                                         </div>
-                                        <div className="row tiepnhan-congkham-row">
+                                        <div className="row form-row">
                                             <Form.Item
                                                 label={
                                                     <div className="tiepnhan-congkham-form-input-label">
@@ -212,7 +212,7 @@ function Congkham() {
                                                 <Input className="form-control" />
                                             </Form.Item>
                                         </div>
-                                        <div className="row tiepnhan-congkham-row">
+                                        <div className="row form-row">
                                             <Form.Item
                                                 className="col-md-4 m-0"
                                                 label={
@@ -245,7 +245,7 @@ function Congkham() {
                                                 <Input className="form-control"></Input>
                                             </Form.Item>
                                         </div>
-                                        <div className="row tiepnhan-congkham-row">
+                                        <div className="row form-row">
                                             <Form.Item
                                                 className="col-md-6 m-0"
                                                 label={
@@ -270,7 +270,7 @@ function Congkham() {
                                                 </div>
                                             </Form.Item>
                                         </div>
-                                        <div className="row tiepnhan-congkham-row">
+                                        <div className="row form-row">
                                             <Form.Item
                                                 className="col-md-6 m-0"
                                                 label={
@@ -303,8 +303,8 @@ function Congkham() {
                             <div className="tiepnhan-congkham-title">
                                 THÔNG TIN THẺ BẢO HIỂM Y TẾ
                             </div>
-                            <div className="row">
-                                <div className="row tiepnhan-congkham-row">
+                            <div className="row m-0 p-0">
+                                <div className="row form-row">
                                     <Form.Item
                                         label={
                                             <div className="tiepnhan-congkham-form-input-label-right">
@@ -326,7 +326,7 @@ function Congkham() {
                                         <Input className="form-control" />
                                     </Form.Item>
                                 </div>
-                                <div className="row tiepnhan-congkham-row">
+                                <div className="row form-row">
                                     <Form.Item
                                         label={
                                             <div className="tiepnhan-congkham-form-input-label-right">
@@ -352,7 +352,7 @@ function Congkham() {
                                         <Input className="form-control" type="date" />
                                     </Form.Item>
                                 </div>
-                                <div className="row tiepnhan-congkham-row">
+                                <div className="row form-row">
                                     <Form.Item
                                         label={
                                             <div className="tiepnhan-congkham-form-input-label-right">
@@ -374,7 +374,7 @@ function Congkham() {
                                         <Input className="form-control" type="date" />
                                     </Form.Item>
                                 </div>
-                                <div className="row tiepnhan-congkham-row">
+                                <div className="row form-row">
                                     <Form.Item
                                         label={
                                             <div className="tiepnhan-congkham-form-input-label-right">
@@ -396,7 +396,7 @@ function Congkham() {
                                         <Input className="form-control" />
                                     </Form.Item>
                                 </div>
-                                <div className="row tiepnhan-congkham-row">
+                                <div className="row form-row">
                                     <Form.Item
                                         label={
                                             <div className="tiepnhan-congkham-form-input-label-right">
@@ -418,7 +418,7 @@ function Congkham() {
                                         <Input className="form-control" />
                                     </Form.Item>
                                 </div>
-                                <div className="row tiepnhan-congkham-row">
+                                <div className="row form-row">
                                     <Form.Item
                                         label={
                                             <div className="tiepnhan-congkham-form-input-label-right-form-last">
@@ -435,9 +435,9 @@ function Congkham() {
                     </div>
                     <div className="m-1">
                         <div className="tiepnhan-congkham-title mt-2">THÔNG TIN ĐĂNG KÝ KHÁM</div>
-                        <div className="row">
+                        <div className="row m-0 p-0">
                             <div className="col-md-7">
-                                <div className="row tiepnhan-congkham-row">
+                                <div className="row form-row">
                                     <Form.Item
                                         label={
                                             <div className="tiepnhan-congkham-form-input-label">
@@ -449,7 +449,7 @@ function Congkham() {
                                         <Input className="form-control " />
                                     </Form.Item>
                                 </div>
-                                <div className="row tiepnhan-congkham-row">
+                                <div className="row form-row">
                                     <Form.Item
                                         label={
                                             <div className="tiepnhan-congkham-form-input-label">
@@ -473,7 +473,7 @@ function Congkham() {
                                         </div>
                                     </Form.Item>
                                 </div>
-                                <div className="row tiepnhan-congkham-row">
+                                <div className="row form-row">
                                     <Form.Item
                                         label={
                                             <div className="tiepnhan-congkham-form-input-label">
@@ -511,7 +511,7 @@ function Congkham() {
                                         </div>
                                     </Form.Item>
                                 </div>
-                                <div className="row tiepnhan-congkham-row">
+                                <div className="row form-row">
                                     <Form.Item
                                         label={
                                             <div className="tiepnhan-congkham-form-input-label">
@@ -554,7 +554,7 @@ function Congkham() {
                                         <Checkbox />
                                     </Form.Item>
                                 </div>
-                                <div className="row tiepnhan-congkham-row">
+                                <div className="row form-row">
                                     <Form.Item
                                         label={
                                             <div className="tiepnhan-congkham-form-input-label">

@@ -12,7 +12,6 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import imguser from "../../../assets/image/user.png";
 import "./danhsachleft.scss";
 import ds from "../../../util/data";
 function Danhsachleft() {

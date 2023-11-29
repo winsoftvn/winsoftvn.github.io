@@ -33,7 +33,7 @@ function Phieuthutamung() {
                 </div>
             ),
             children: (
-                <div className="tiepnhan-tab">
+                <div>
                     <Danhsachchothu />
                 </div>
             ),
@@ -46,7 +46,7 @@ function Phieuthutamung() {
                 </div>
             ),
             children: (
-                <div className="tiepnhan-tab">
+                <div>
                     <Bangkekhaitamung />
                 </div>
             ),

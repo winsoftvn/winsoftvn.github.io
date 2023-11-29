@@ -1,10 +1,10 @@
 import { Form, Input, Table, Button, InputNumber, Checkbox, Select } from "antd";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck, faCircleXmark } from "@fortawesome/free-solid-svg-icons";
+import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import ds1 from "../../../../util/data1";
 import { useEffect, useState } from "react";
-import { DataGrid, GridColumn } from "rc-easyui";
-import st from "../../../../util/test";
+// import { DataGrid, GridColumn } from "rc-easyui";
+// import st from "../../../../util/test";
 import ModelDonthuoc from "./modeldonthuoc";
 
 function Donthuoc() {

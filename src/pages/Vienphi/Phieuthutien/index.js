@@ -42,7 +42,7 @@ function Phieuthutien() {
             key: "2",
             label: (
                 <div className="p-0 m-0">
-                    <FontAwesomeIcon icon={faMoneyCheckDollar} /> Bảng kê thu tạm ứng
+                    <FontAwesomeIcon icon={faMoneyCheckDollar} /> Bảng kê thu tiền
                 </div>
             ),
             children: (
@@ -94,7 +94,7 @@ function Phieuthutien() {
         <>
             <Menuvienphi />
 
-            <div className="mx-1">
+            <div className="m-1">
                 <Tabs defaultActiveKey="1" type="card" size="small" items={tabvienphi} />
             </div>
         </>

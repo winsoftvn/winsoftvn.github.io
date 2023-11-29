@@ -18,11 +18,12 @@ import {
     faTools,
     faUser,
     faCogs,
+    faUserAltSlash,
 } from "@fortawesome/free-solid-svg-icons";
 import "./style.scss";
 import logo from "../../assets/image/logo.png";
 
-const { Sider, Content, Header } = Layout;
+const { Sider, Content } = Layout;
 
 function LayoutPageMain({ children }) {
     //khai báo
@@ -40,6 +41,7 @@ function LayoutPageMain({ children }) {
         };
     }
     const items = [
+        getItem(<div className="fw-bold">Chức năng</div>, "grp", null, [], "group"),
         getItem(
             <NavLink className="menu-navlink" to="/tiepnhan">
                 Tiếp nhận
@@ -71,11 +73,60 @@ function LayoutPageMain({ children }) {
         ),
 
         getItem(
-            <NavLink className="menu-navlink" to="/canlamsan">
-                Cận lâm sàn
-            </NavLink>,
+            <div className="fw-bold">Cận lâm sàn</div>,
             "5",
-            <FontAwesomeIcon icon={faRestroom} />
+            <FontAwesomeIcon icon={faRestroom} />,
+            [
+                getItem(
+                    <NavLink className="menu-navlink" to="/canlamsan/sieuam">
+                        Siêu âm
+                    </NavLink>,
+                    "5.1",
+                    <FontAwesomeIcon icon={faRestroom} />
+                ),
+                getItem(
+                    <NavLink className="menu-navlink" to="/canlamsan/noisoi">
+                        Nội soi
+                    </NavLink>,
+                    "5.2",
+                    <FontAwesomeIcon icon={faRestroom} />
+                ),
+                getItem(
+                    <NavLink className="menu-navlink" to="/canlamsan/xquang">
+                        X-Quang
+                    </NavLink>,
+                    "5.3",
+                    <FontAwesomeIcon icon={faRestroom} />
+                ),
+                getItem(
+                    <NavLink className="menu-navlink" to="/canlamsan/scanner">
+                        CT Scanner
+                    </NavLink>,
+                    "5.4",
+                    <FontAwesomeIcon icon={faRestroom} />
+                ),
+                getItem(
+                    <NavLink className="menu-navlink" to="/canlamsan/mri">
+                        MRI
+                    </NavLink>,
+                    "5.5",
+                    <FontAwesomeIcon icon={faRestroom} />
+                ),
+                getItem(
+                    <NavLink className="menu-navlink" to="/canlamsan/dientimhohapky">
+                        Điện tim - Hô hấp ký
+                    </NavLink>,
+                    "5.6",
+                    <FontAwesomeIcon icon={faRestroom} />
+                ),
+                getItem(
+                    <NavLink className="menu-navlink" to="/canlamsan/domatdxuong">
+                        Đo mật độ xương
+                    </NavLink>,
+                    "5.7",
+                    <FontAwesomeIcon icon={faRestroom} />
+                ),
+            ]
         ),
 
         getItem(
@@ -132,13 +183,24 @@ function LayoutPageMain({ children }) {
             "12",
             <FontAwesomeIcon icon={faTools} />
         ),
-        getItem(
-            <NavLink className="menu-navlink" to="/khaibaodichvukythuat">
-                Tài khoản
-            </NavLink>,
-            "13",
-            <FontAwesomeIcon icon={faUser} />
-        ),
+        getItem(<div className="fw-bold">Quản lý</div>, "grp", null, [], "group"),
+
+        getItem(<div className="fw-bold">Tài khoản</div>, "13", <FontAwesomeIcon icon={faUser} />, [
+            getItem(
+                <NavLink className="menu-navlink" to="/taikhoan/khaibaouser">
+                    Khai báo user
+                </NavLink>,
+                "13.1",
+                <FontAwesomeIcon icon={faUserPlus} />
+            ),
+            getItem(
+                <NavLink className="menu-navlink" to="/taikhoan/phanquyen">
+                    Phân quyền
+                </NavLink>,
+                "13.2",
+                <FontAwesomeIcon icon={faUserAltSlash} />
+            ),
+        ]),
         getItem(
             <NavLink className="menu-navlink" to="/caidat">
                 Cài đặt
@@ -183,7 +245,7 @@ function LayoutPageMain({ children }) {
                 )}
             </Sider>
             <Layout className="bg-frame">
-                <Content className="m-1 b-content" style={{ backgroundColor: "#fff" }}>
+                <Content className="b-content" style={{ backgroundColor: "#fff" }}>
                     {children}
                 </Content>
             </Layout>

@@ -1,4 +1,4 @@
-import { Modal, Tabs, Button, Form, Input, Checkbox } from "antd";
+import { Button, Form, Input, Checkbox } from "antd";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
     faBook,
@@ -16,11 +16,11 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 
-import "./canlamsan.scss";
-import Danhsachleft from "./Danhsachleft";
+import "./sieuam.scss";
+import Danhsachleft from "../Danhsachleft";
 import TextArea from "antd/es/input/TextArea";
 
-function Canlamsan() {
+function Sieuam() {
     //khaibao
     const [click, setClick] = useState(false);
     //truyền props
@@ -30,7 +30,7 @@ function Canlamsan() {
             label: <div className="form-input-label ">F3 - Lưu</div>,
             key: "1",
             icon: (
-                <div className="color-icon-edit blue">
+                <div>
                     <FontAwesomeIcon icon={faSave} />
                 </div>
             ),
@@ -44,8 +44,7 @@ function Canlamsan() {
             label: <div className="form-input-label ">F4 - Sửa</div>,
             key: "3",
             icon: (
-                <div className="color-icon-edit yellow">
-                    {" "}
+                <div>
                     <FontAwesomeIcon icon={faPenToSquare} />
                 </div>
             ),
@@ -54,7 +53,7 @@ function Canlamsan() {
             label: <div className="form-input-label ">Hủy</div>,
             key: "4",
             icon: (
-                <div className="color-icon-edit red">
+                <div>
                     <FontAwesomeIcon icon={faFileExcel} />
                 </div>
             ),
@@ -81,7 +80,7 @@ function Canlamsan() {
             label: <div className="form-input-label ">PỨ Thuốc</div>,
             key: "7",
             icon: (
-                <div className="color-icon-edit green">
+                <div>
                     <FontAwesomeIcon icon={faSpinner} type="regular" />
                 </div>
             ),
@@ -90,7 +89,7 @@ function Canlamsan() {
             label: <div className="form-input-label ">Tr.Dịch</div>,
             key: "8",
             icon: (
-                <div className="color-icon-edit red">
+                <div>
                     <FontAwesomeIcon icon={faDroplet} />
                 </div>
             ),
@@ -112,9 +111,9 @@ function Canlamsan() {
                         </div>
                     </Form>
                     {items1.map((item) => (
-                        <Button className="form-btn color-text mx-1 px-1" key={item.key}>
+                        <Button className="form-btn bg mx-1 px-1" key={item.key}>
                             {item.icon}
-                            <div className="mx-1">{item.label}</div>
+                            <div className="mx-1 fw-bold">{item.label}</div>
                         </Button>
                     ))}
                 </div>
@@ -158,7 +157,7 @@ function Canlamsan() {
                                 <div className="row form-row">
                                     <Form.Item
                                         label={
-                                            <div className="form-input-label canlamsan-form-input-label">
+                                            <div className="form-input-label sieuam-form-input-label">
                                                 BS chỉ định
                                             </div>
                                         }
@@ -168,7 +167,7 @@ function Canlamsan() {
                                     </Form.Item>
                                     <Form.Item
                                         label={
-                                            <div className="form-input-label canlamsan-form-input-label">
+                                            <div className="form-input-label sieuam-form-input-label">
                                                 BS trả KQ
                                             </div>
                                         }
@@ -180,7 +179,7 @@ function Canlamsan() {
                                 <div className="row form-row">
                                     <Form.Item
                                         label={
-                                            <div className="form-input-label canlamsan-form-input-label">
+                                            <div className="form-input-label sieuam-form-input-label">
                                                 CĐ sơ bộ
                                             </div>
                                         }
@@ -192,7 +191,7 @@ function Canlamsan() {
                                 <div className="row form-row">
                                     <Form.Item
                                         label={
-                                            <div className="form-input-label canlamsan-form-input-label">
+                                            <div className="form-input-label sieuam-form-input-label">
                                                 Chỉ định
                                             </div>
                                         }
@@ -202,7 +201,7 @@ function Canlamsan() {
                                     </Form.Item>
                                     <Form.Item
                                         label={
-                                            <div className="form-input-label canlamsan-form-input-label">
+                                            <div className="form-input-label sieuam-form-input-label">
                                                 Mô tả mẫu
                                             </div>
                                         }
@@ -251,4 +250,4 @@ function Canlamsan() {
     );
 }
 
-export default Canlamsan;
+export default Sieuam;

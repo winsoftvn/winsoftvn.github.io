@@ -40,6 +40,15 @@ import Ghinhantheodosinhhieu from "./Tienich/Ghinhantheodoisinhhieu";
 import Lapphieutheodoidieutri from "./Tienich/Lapphieutheodoidieutri";
 import Lapphieuchamsoc from "./Tienich/Lapphieuchamsoc";
 import Lapphieutheodoitruyendich from "./Tienich/Lapphieutheodoitruyendich";
+import InTest from "./Tienich/In/Intest";
+import Intheodoidieutri from "./Tienich/In/Intheodoidieutri";
+import Inphieuchamsoc from "./Tienich/In/Inphieuchamsoc";
+import Incongkhaisudungthuoc from "./Tienich/In/Incongkhaisudungthuoc";
+import Intheodoichucnangsong from "./Tienich/In/Intheodoichucnangsong";
+import Intheodoitruyendich from "./Tienich/In/Intheodoitruyendich";
+import Inphieukhambenh from "./Tienich/In/Inphieukhambenh";
+import Inhosongoaitru from "./Tienich/In/Inhosongoaitru";
+
 function Phieukham() {
     const [openModelChidinh, setModelChidinh] = useState(false);
     const [openModelToathuoctainha, setModelToathuoctainha] = useState(false);
@@ -51,11 +60,26 @@ function Phieukham() {
     const [openModelLapphieutheodoidieutri, setModelLapphieutheodoidieutri] = useState(false);
     const [openModelLapphieuchamsoc, setModelLapphieuchamsoc] = useState(false);
     const [openModelLapphieutheodoitruyendich, setModelLapphieutheodoitruyendich] = useState(false);
-    // const handlePrint = useReactToPrint({
-    //     content: () => test.current,
-    //     documentTitle: "emp-data",
-    //     onafterprint: () => alert("Print Success"),
-    // });
+
+    const [refInTest, setRefInTest] = useState("");
+    const [refIntheodoidieutri, setRefIntheodoidieutri] = useState("");
+    const [refInphieuchamsoc, setRefInphieuchamsoc] = useState("");
+    const [refIncongkhaisudungthuoc, setRefIncongkhaisudungthuoc] = useState("");
+    const [refIntheodoichucnangsong, setRefIntheodoichucnangsong] = useState("");
+    const [refIntheodoitruyendich, setRefIntheodoitruyendich] = useState("");
+    const [refInphieukhambenh, setRefInphieukhambenh] = useState("");
+    const [refInhosongoaitru, setRefInhosongoaitru] = useState("");
+
+    const handlePrint1 = useReactToPrint({
+        content: () => refInTest,
+        documentTitle: "emp-data",
+        onafterprint: () => alert("Print Success"),
+    });
+    const handlePrint2 = useReactToPrint({
+        content: () => refIntheodoidieutri,
+        documentTitle: "emp-data",
+        onafterprint: () => alert("Print Success"),
+    });
     const handleSetOpen = (a) => {
         if (a === "1") {
             setModelChidinh(true);
@@ -171,7 +195,11 @@ function Phieukham() {
         },
         <hr />,
         {
-            label: <div className="form-input-label">In - Test</div>,
+            label: (
+                <div className="form-input-label" onClick={handlePrint1}>
+                    In - Test
+                </div>
+            ),
             key: "8",
             icon: (
                 <div>
@@ -180,7 +208,11 @@ function Phieukham() {
             ),
         },
         {
-            label: <div className="form-input-label">In - Phiếu theo dõi điều trị</div>,
+            label: (
+                <div className="form-input-label" onClick={handlePrint2}>
+                    In - Phiếu theo dõi điều trị
+                </div>
+            ),
             key: "9",
             icon: (
                 <div>
@@ -424,7 +456,7 @@ function Phieukham() {
                                     <div className="mx-1 fw-bold ">{item.label}</div>
                                 </Button>
                             ))}
-                            <Dropdown menu={menuProps} onClick={(a) => console.log(a.key)}>
+                            <Dropdown menu={menuProps}>
                                 <Button className="form-btn">
                                     <Space>
                                         <div className="fw-bold form-input-label">Tiện ích</div>
@@ -436,6 +468,7 @@ function Phieukham() {
                     </div>
 
                     {/* Modal hien thi */}
+
                     <Chidinh open={openModelChidinh} setOpen={setModelChidinh} />
                     <Toathuoctaicho
                         open={openModelToathuoctainha}
@@ -460,10 +493,12 @@ function Phieukham() {
                         open={openModelLapphieuchamsoc}
                         setOpen={setModelLapphieuchamsoc}
                     />
-                    <Lapphieutheodoitruyendich
-                        open={openModelLapphieutheodoitruyendich}
-                        setOpen={setModelLapphieutheodoitruyendich}
-                    />
+                    <div>
+                        <Lapphieutheodoitruyendich
+                            open={openModelLapphieutheodoitruyendich}
+                            setOpen={setModelLapphieutheodoitruyendich}
+                        />
+                    </div>
                     {/* /// */}
                     <div className=" py-2">
                         <Form>
@@ -765,6 +800,17 @@ function Phieukham() {
                         </div>
                     </div>
                 </div>
+            </div>
+            {/* Page In  */}
+            <div className="d-none">
+                <InTest setRef={setRefInTest}></InTest>
+                <Intheodoidieutri setRef={setRefIntheodoidieutri}></Intheodoidieutri>
+                <Inphieuchamsoc setRef={setRefInphieuchamsoc}></Inphieuchamsoc>
+                <Incongkhaisudungthuoc setRef={setRefIncongkhaisudungthuoc}></Incongkhaisudungthuoc>
+                <Intheodoichucnangsong setRef={setRefIntheodoichucnangsong}></Intheodoichucnangsong>
+                <Intheodoitruyendich setRef={setRefIntheodoitruyendich}></Intheodoitruyendich>
+                <Inphieukhambenh setRef={setRefInphieukhambenh}></Inphieukhambenh>
+                <Inhosongoaitru setRef={setRefInhosongoaitru}></Inhosongoaitru>
             </div>
         </>
     );

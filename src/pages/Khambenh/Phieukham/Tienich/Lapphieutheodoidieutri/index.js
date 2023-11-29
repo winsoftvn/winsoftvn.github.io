@@ -56,7 +56,7 @@ function Lapphieutheodoidieutri(props) {
             label: <div className="form-input-label ">F2 - Mới</div>,
             key: "1",
             icon: (
-                <div className="color-icon-edit blue">
+                <div >
                     <FontAwesomeIcon icon={faPowerOff} />
                 </div>
             ),
@@ -70,7 +70,7 @@ function Lapphieutheodoidieutri(props) {
             label: <div className="form-input-label ">Sửa</div>,
             key: "3",
             icon: (
-                <div className="color-icon-edit yellow">
+                <div >
                     <FontAwesomeIcon icon={faPenToSquare} />
                 </div>
             ),
@@ -89,7 +89,7 @@ function Lapphieutheodoidieutri(props) {
             label: <div className="form-input-label ">F6 - In biên bản</div>,
             key: "4",
             icon: (
-                <div className="color-icon-edit green">
+                <div >
                     <FontAwesomeIcon icon={faPrint} />
                 </div>
             ),
@@ -100,17 +100,14 @@ function Lapphieutheodoidieutri(props) {
             <Modal
                 title={
                     <>
-                        <div className="d-flex justify-content-between">
+                          <div className="d-flex justify-content-between">
                             <div>PHIẾU THEO DÕI ĐIỀU TRỊ</div>
                             <div>
-                                <div className="d-flex  justify-content-end">
+                                <div className="d-flex justify-content-end">
                                     {items1.map((item) => (
-                                        <Button
-                                            className="form-btn color-text mx-1 px-1"
-                                            key={item.key}
-                                        >
+                                        <Button className="form-btn bg mx-1 px-1" key={item.key}>
                                             {item.icon}
-                                            <div className="mx-1">{item.label}</div>
+                                            <div className="mx-1 fw-bold">{item.label}</div>
                                         </Button>
                                     ))}
                                 </div>

@@ -34,6 +34,7 @@
     "react-scripts": "5.0.1",
     "react-to-print": "^2.14.15",
     "react-toastify": "^9.1.2",
+    "react-webcam": "^7.2.0",
     "sass": "^1.60.0",
     "suneditor": "^2.45.1",
     "suneditor-react": "^3.6.1",

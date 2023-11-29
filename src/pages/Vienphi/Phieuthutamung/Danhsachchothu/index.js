@@ -181,7 +181,7 @@ function Danhsachchothu() {
                         <div className="vienphi-phieuthutamung-danhsachchothu-btn-thaotac ">
                             <div className="d-flex">
                                 {items1.map((item) => (
-                                    <Button className="form-btn color-text mx-1" key={item.key}>
+                                    <Button className="form-btn bg mx-1" key={item.key}>
                                         {item.icon}
                                         <div className="mx-1 fw-bold ">{item.label}</div>
                                     </Button>

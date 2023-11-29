@@ -1,33 +1,9 @@
-.color-icon-edit {
-    &.yellow {
-        svg {
-            color: #ffc107 !important;
-        }
-    }
-    &.red {
-        svg {
-            color: rgb(233, 58, 58) !important;
-        }
-    }
-    &.blue {
-        svg {
-            color: rgb(7, 63, 246) !important;
-        }
-    }
-    &.green {
-        svg {
-            color: rgb(9, 180, 49) !important;
-        }
-    }
-    &.black {
-        svg {
-            color: rgb(29, 29, 29) !important;
-        }
-    }
-}
 
 .pttt-form-input-label {
     width: 80px;
+}
+.pttt-form-input-label-col-4 {
+    width: 30px;
 }
 .pttt-form-input-label-right {
     width: 120px;

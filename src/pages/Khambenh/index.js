@@ -45,7 +45,7 @@ function Khambenh() {
             label: <div className="form-input-label khambenh-form-input-label">F3 - Lưu</div>,
             key: "1",
             icon: (
-                <div className="color-icon-edit blue">
+                <div>
                     <FontAwesomeIcon icon={faSave} />
                 </div>
             ),
@@ -59,8 +59,7 @@ function Khambenh() {
             label: <div className="form-input-label khambenh-form-input-label">F4 - Sửa</div>,
             key: "3",
             icon: (
-                <div className="color-icon-edit yellow">
-                    {" "}
+                <div>
                     <FontAwesomeIcon icon={faPenToSquare} />
                 </div>
             ),
@@ -69,7 +68,7 @@ function Khambenh() {
             label: <div className="form-input-label khambenh-form-input-label">Hủy</div>,
             key: "4",
             icon: (
-                <div className="color-icon-edit red">
+                <div>
                     <FontAwesomeIcon icon={faFileExcel} />
                 </div>
             ),
@@ -78,7 +77,7 @@ function Khambenh() {
             label: <div className="form-input-label khambenh-form-input-label">F5 - In toa</div>,
             key: "5",
             icon: (
-                <div className="">
+                <div>
                     <FontAwesomeIcon icon={faFileExcel} />
                 </div>
             ),
@@ -96,7 +95,7 @@ function Khambenh() {
             label: <div className="form-input-label khambenh-form-input-label">CĐ hẹn TK</div>,
             key: "7",
             icon: (
-                <div className="color-icon-edit green">
+                <div>
                     <FontAwesomeIcon icon={faCalendarCheck} type="regular" />
                 </div>
             ),
@@ -105,7 +104,7 @@ function Khambenh() {
             label: <div className="form-input-label khambenh-form-input-label">Đóng HS</div>,
             key: "8",
             icon: (
-                <div className="color-icon-edit red">
+                <div>
                     <FontAwesomeIcon icon={faBook} />
                 </div>
             ),
@@ -129,11 +128,13 @@ function Khambenh() {
                                 <Checkbox />
                             </Form.Item>
                         </div>
+                        
                     </Form>
+
                     {items1.map((item) => (
-                        <Button className="form-btn color-text mx-1 px-1" key={item.key}>
+                        <Button className="form-btn bg mx-1" key={item.key}>
                             {item.icon}
-                            <div className="mx-1">{item.label}</div>
+                            <div className="mx-1 fw-bold ">{item.label}</div>
                         </Button>
                     ))}
                 </div>

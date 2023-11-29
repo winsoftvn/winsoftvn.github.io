@@ -85,40 +85,39 @@ function Toamuangoai(props) {
     ];
     const items1 = [
         {
-            label: <div className="form-input-label khambenh-form-input-label">F2 - Mới</div>,
+            label: <div className="form-input-label ">F2 - Mới</div>,
             key: "1",
             icon: (
-                <div className="color-icon-edit blue">
+                <div>
                     <FontAwesomeIcon icon={faPowerOff} />
                 </div>
             ),
         },
         {
-            label: <div className="form-input-label khambenh-form-input-label">F3 - Lưu</div>,
+            label: <div className="form-input-label ">F3 - Lưu</div>,
             key: "2",
             icon: <FontAwesomeIcon icon={faSave} />,
         },
         {
-            label: <div className="form-input-label khambenh-form-input-label">Bỏ qua</div>,
+            label: <div className="form-input-label ">Bỏ qua</div>,
             key: "3",
             icon: (
-                <div className="color-icon-edit yellow">
-                    {" "}
+                <div>
                     <FontAwesomeIcon icon={faFastForward} />
                 </div>
             ),
         },
         {
-            label: <div className="form-input-label khambenh-form-input-label">In CD</div>,
+            label: <div className="form-input-label ">In CD</div>,
             key: "4",
             icon: (
-                <div className="color-icon-edit red">
+                <div>
                     <FontAwesomeIcon icon={faPrint} />
                 </div>
             ),
         },
         {
-            label: <div className="form-input-label khambenh-form-input-label">Hủy</div>,
+            label: <div className="form-input-label ">Hủy</div>,
             key: "5",
             icon: (
                 <div className="">
@@ -127,7 +126,7 @@ function Toamuangoai(props) {
             ),
         },
         {
-            label: <div className="form-input-label khambenh-form-input-label">Thoát</div>,
+            label: <div className="form-input-label ">Thoát</div>,
             key: "6",
             icon: (
                 <div>
@@ -141,8 +140,24 @@ function Toamuangoai(props) {
             <Modal
                 title={
                     <>
-                        <div className="fw-bold text-center model-label color-text">
-                            Thông tin chi tiết
+                        <div className="d-flex justify-content-between align-items-center ">
+                            <div>TOA MUA NGOÀI</div>
+                            <div>
+                                <div className="d-flex justify-content-end align-items-center">
+                                    <Form.Item
+                                        className="m-0 p-0"
+                                        label={<div className="form-input-label">Thuốc DV</div>}
+                                    >
+                                        <Checkbox />
+                                    </Form.Item>
+                                    {items1.map((item) => (
+                                        <Button className="form-btn bg mx-1 px-1" key={item.key}>
+                                            {item.icon}
+                                            <div className="mx-1 fw-bold">{item.label}</div>
+                                        </Button>
+                                    ))}
+                                </div>
+                            </div>
                         </div>
                         <hr />
                     </>
@@ -276,31 +291,7 @@ function Toamuangoai(props) {
                                 </div>
                             </div>
                         </div>
-                        <div>
-                            <div className="d-flex mt-2 justify-content-end">
-                                <div className="d-flex align-items-center mx-2">
-                                    <Form.Item
-                                        className="m-0 p-0"
-                                        label={
-                                            <div className="form-input-label khambenh-form-input-label">
-                                                Thuốc DV
-                                            </div>
-                                        }
-                                    >
-                                        <Checkbox />
-                                    </Form.Item>
-                                </div>
-                                {items1.map((item) => (
-                                    <Button
-                                        className="form-btn color-text mx-1 px-1"
-                                        key={item.key}
-                                    >
-                                        {item.icon}
-                                        <div className="mx-1">{item.label}</div>
-                                    </Button>
-                                ))}
-                            </div>
-                        </div>
+                    
                     </Form>
                 </div>
             </Modal>

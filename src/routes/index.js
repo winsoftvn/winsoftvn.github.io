@@ -1,9 +1,11 @@
-import Canlamsan from "../pages/Canlamsan";
+import Canlamsan from "../pages/Canlamsan/Sieuam";
 import Duoc from "../pages/Duoc";
 import Home from "../pages/Home";
 import Khambenh from "../pages/Khambenh";
 import Khamsuckhoe from "../pages/Khamsuckhoe";
 import Phauthuatthuthuat from "../pages/Phauthuatthuthuat";
+import Khaibaouser from "../pages/Taikhoan/Khaibaouser/List";
+import Phanquyen from "../pages/Taikhoan/Phanquyen";
 import Tiepnhan from "../pages/Tiepnhan";
 import VLTL_YHCT from "../pages/VLTL_YHCT";
 import KhaibaoDVKTbatbuoccoketquakhiKQđieutrituvong from "../pages/Vienphi/Danhmuc/KhaibaoDVKTbatbuoccoketquakhiKQđieutrituvong/List";
@@ -149,7 +151,7 @@ const PageWeb = [
 
     //Cận lâm sàn
     {
-        path: "/canlamsan",
+        path: "/canlamsan/sieuam",
         page: Canlamsan,
         isMainLayout: true,
     },
@@ -175,6 +177,17 @@ const PageWeb = [
     {
         path: "/duoc",
         page: Duoc,
+        isMainLayout: true,
+    },
+    //Tài khoản
+    {
+        path: "/taikhoan/khaibaouser",
+        page: Khaibaouser,
+        isMainLayout: true,
+    },
+    {
+        path: "/taikhoan/phanquyen",
+        page: Phanquyen,
         isMainLayout: true,
     },
 ];

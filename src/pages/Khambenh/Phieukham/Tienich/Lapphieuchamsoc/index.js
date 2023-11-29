@@ -38,7 +38,7 @@ function Lapphieuchamsoc(props) {
             label: <div className="form-input-label ">F2 - Mới</div>,
             key: "1",
             icon: (
-                <div className="color-icon-edit blue">
+                <div>
                     <FontAwesomeIcon icon={faPowerOff} />
                 </div>
             ),
@@ -52,7 +52,7 @@ function Lapphieuchamsoc(props) {
             label: <div className="form-input-label ">Sửa</div>,
             key: "3",
             icon: (
-                <div className="color-icon-edit yellow">
+                <div>
                     <FontAwesomeIcon icon={faPenToSquare} />
                 </div>
             ),
@@ -71,7 +71,7 @@ function Lapphieuchamsoc(props) {
             label: <div className="form-input-label ">F6 - In biên bản</div>,
             key: "4",
             icon: (
-                <div className="color-icon-edit green">
+                <div>
                     <FontAwesomeIcon icon={faPrint} />
                 </div>
             ),
@@ -83,16 +83,13 @@ function Lapphieuchamsoc(props) {
                 title={
                     <>
                         <div className="d-flex justify-content-between">
-                            <div>PHIẾU THEO DÕI ĐIỀU TRỊ</div>
+                            <div>PHIẾU CHĂM SÓC</div>
                             <div>
-                                <div className="d-flex  justify-content-end">
+                                <div className="d-flex justify-content-end">
                                     {items1.map((item) => (
-                                        <Button
-                                            className="form-btn color-text mx-1 px-1"
-                                            key={item.key}
-                                        >
+                                        <Button className="form-btn bg mx-1 px-1" key={item.key}>
                                             {item.icon}
-                                            <div className="mx-1">{item.label}</div>
+                                            <div className="mx-1 fw-bold">{item.label}</div>
                                         </Button>
                                     ))}
                                 </div>
@@ -247,9 +244,9 @@ function Lapphieuchamsoc(props) {
                                                 <Input className="form-control" />
                                             </FormItem>
                                         </div>
-                                        <div className="mt-2">
-                                            <div className="px-2 fw-bold">THEO DÕI DIỄN BIẾN</div>
-                                            <div className="row form-row">
+                                        <div className="mt-2 color-border  m-1">
+                                            <div className="px-2 py-1 fw-bold bg-title">THEO DÕI DIỄN BIẾN</div>
+                                            <div className="row form-row px-2">
                                                 <FormItem
                                                     label={
                                                         <div className="form-input-label modal-input-label">
@@ -291,7 +288,7 @@ function Lapphieuchamsoc(props) {
                                                     <Input className="form-control" />
                                                 </FormItem>
                                             </div>
-                                            <div className="row mt-2">
+                                            <div className="row mt-2 p-2">
                                                 <FormItem>
                                                     <TextArea
                                                         autoSize={{
@@ -303,10 +300,10 @@ function Lapphieuchamsoc(props) {
                                                 </FormItem>
                                             </div>
                                             <div className="">
-                                                <div className=" fw-bold">
+                                                <div className=" fw-bold bg-title py-1 px-2">
                                                     THỰC HIỆN Y LỆNH / CHĂM SÓC
                                                 </div>
-                                                <div className="row">
+                                                <div className="row p-2">
                                                     <FormItem>
                                                         <TextArea
                                                             autoSize={{

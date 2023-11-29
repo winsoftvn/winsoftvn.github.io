@@ -74,52 +74,37 @@ function Tiepnhan() {
         {
             label: <div className="form-input-label ">F3 - Lưu</div>,
             key: "2",
-            icon: (
-                <div className="color-icon-edit blue">
-                    <FontAwesomeIcon icon={faSave} />
-                </div>
-            ),
+            icon: <FontAwesomeIcon icon={faSave} />,
         },
 
         {
             label: <div className="form-input-label ">Bỏ qua</div>,
             key: "3",
-            icon: (
-                <div className="color-icon-edit red">
-                    {" "}
-                    <FontAwesomeIcon icon={faXmarkCircle} />
-                </div>
-            ),
+            icon: <FontAwesomeIcon icon={faXmarkCircle} />,
         },
         {
             label: <div className="form-input-label ">Sửa</div>,
             key: "4",
-            icon: (
-                <div className="color-icon-edit yellow">
-                    <FontAwesomeIcon icon={faPenToSquare} />
-                </div>
-            ),
+            icon: <FontAwesomeIcon icon={faPenToSquare} />,
         },
         {
             label: <div className="form-input-label ">F6 - In KQ</div>,
             key: "5",
-            icon: (
-                <div className="color-icon-edit green">
-                    <FontAwesomeIcon icon={faPrint} />
-                </div>
-            ),
+            icon: <FontAwesomeIcon icon={faPrint} />,
         },
     ];
     return (
         <>
             <div className="div-shadow v3">
                 <div className="d-flex justify-content-end p-1">
-                    {items1.map((item) => (
-                        <Button className="form-btn color-text mx-1" key={item.key}>
-                            {item.icon}
-                            <span>{item.label}</span>
-                        </Button>
-                    ))}
+                    <div className="d-flex">
+                        {items1.map((item) => (
+                            <Button className="form-btn bg mx-1" key={item.key}>
+                                {item.icon}
+                                <div className="mx-1 fw-bold ">{item.label}</div>
+                            </Button>
+                        ))}
+                    </div>
                 </div>
             </div>
             <div className="d-flex">
@@ -151,7 +136,7 @@ function Tiepnhan() {
                 </div>
             </div>
             <div className="my-3">
-                <div className="tiepnhan-title">THÔNG TIN PHÒNG KHÁM</div>
+                <div className="tiepnhan-title mx-2">THÔNG TIN PHÒNG KHÁM</div>
                 <div className="d-flex flex-wrap justify-content-between">
                     <div className="tiepnhan-phongkham-box">
                         <div className="tiepnhan-phongkham-box-title">

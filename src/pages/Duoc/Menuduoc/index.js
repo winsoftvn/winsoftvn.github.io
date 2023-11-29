@@ -1,11 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-    faArrowDown,
-    faCircleArrowRight,
-    faDollarSign,
-    faListUl,
-    faMoneyCheckDollar,
-} from "@fortawesome/free-solid-svg-icons";
+import { faAngleDown, faListUl } from "@fortawesome/free-solid-svg-icons";
 import { Menu } from "antd";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
@@ -23,7 +17,7 @@ function Menuduoc() {
         {
             label: (
                 <div className="fw-bold d-flex align-items-center">
-                    <FontAwesomeIcon icon={faArrowDown} /> <div className="mx-2"> Nhà thuốc</div>
+                    <FontAwesomeIcon icon={faAngleDown} /> <div className="mx-2"> Nhà thuốc</div>
                 </div>
             ),
             key: "1",
@@ -60,7 +54,7 @@ function Menuduoc() {
         {
             label: (
                 <div className="fw-bold d-flex align-items-center">
-                    <FontAwesomeIcon icon={faArrowDown} />{" "}
+                    <FontAwesomeIcon icon={faAngleDown} />{" "}
                     <div className="mx-2">Duyệt - Cấp phát thuốc</div>
                 </div>
             ),
@@ -104,7 +98,7 @@ function Menuduoc() {
         {
             label: (
                 <div className="fw-bold d-flex align-items-center">
-                    <FontAwesomeIcon icon={faArrowDown} /> <div className="mx-2">Quản lý kho</div>
+                    <FontAwesomeIcon icon={faAngleDown} /> <div className="mx-2">Quản lý kho</div>
                 </div>
             ),
             key: "3",
@@ -185,7 +179,7 @@ function Menuduoc() {
         {
             label: (
                 <div className="fw-bold d-flex align-items-center">
-                    <FontAwesomeIcon icon={faArrowDown} />{" "}
+                    <FontAwesomeIcon icon={faAngleDown} />{" "}
                     <div className="mx-2">Cập nhật phiếu nhập</div>
                 </div>
             ),
@@ -212,7 +206,7 @@ function Menuduoc() {
         {
             label: (
                 <div className="fw-bold d-flex align-items-center">
-                    <FontAwesomeIcon icon={faArrowDown} />{" "}
+                    <FontAwesomeIcon icon={faAngleDown} />{" "}
                     <div className="mx-2">Liên thông dữ liệu QG</div>
                 </div>
             ),

@@ -67,7 +67,7 @@ function Nhantrathebhyt() {
             ),
         },
         {
-            title: "Mgười nhận thẻ",
+            title: "Người nhận thẻ",
             dataIndex: "MTDBHYT",
             align: "center",
         },
@@ -112,7 +112,7 @@ function Nhantrathebhyt() {
                 <Menuvienphi />
                 <div className="text-muted">
                     <div className="d-flex align-items-center mt-2 ">
-                        <div className="vienphi-danhmucy-title w-30 mx-2">
+                        <div className="vienphi-danhmucy-title w-30 mx-2 fw-bold">
                             Nhận trả thẻ BHYT
                         </div>
                         <div className="w-70 m-0">
@@ -143,10 +143,10 @@ function Nhantrathebhyt() {
                                     <Form.Item className="col-md-2 m-0 text-center">
                                         <Button
                                             htmlType="submit"
-                                            className="form-input-label form-btn"
+                                            className="form-input-label form-btn bg"
                                         >
                                             <FontAwesomeIcon icon={faMagnifyingGlass} />
-                                            Danh sách
+                                            <div className="mx-1">Danh sách</div>
                                         </Button>
                                     </Form.Item>
                                 </div>
