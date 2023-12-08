@@ -29,9 +29,9 @@ li.ant-menu-overflow-item.ant-menu-item.ant-menu-item-only-child {
 
 //img logo dọc
 .img-logo {
-    width: 50px;
-    height: 50px;
-    text-align: center;
+    width: 30px;
+    height: 30px;
+    // text-align: center;
 }
 
 //icon open-close menu
@@ -44,7 +44,7 @@ li.ant-menu-overflow-item.ant-menu-item.ant-menu-item-only-child {
 .menu-box-icon-click {
     position: absolute;
     left: 187px;
-    top: 2px;
+    top: 7px;
     transition: 0.2s ease-in-out;
 }
 
@@ -93,4 +93,16 @@ li.ant-menu-overflow-item.ant-menu-item.ant-menu-item-only-child {
 .menu-navlink {
     text-decoration: none;
     font-weight: bold;
+}
+
+.scroll-menu {
+    overflow-y: scroll;
+    height: 100vh;
+}
+
+.scroll-menu::-webkit-scrollbar {
+    display: none;
+}
+.scroll-menu {
+    scrollbar-width: none;
 }

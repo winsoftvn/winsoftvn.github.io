@@ -64,7 +64,6 @@ function ThemmoiCongty(props) {
                         <div className="d-flex justify-content-between">
                             <div className="modal-label">THÊM MỚI CÔNG TY</div>
                         </div>
-                        <hr />
                     </>
                 }
                 centered
@@ -156,13 +155,13 @@ function ThemmoiCongty(props) {
                             <div className="col-md-3">
                                 <div className="row">
                                     <Button className="form-btn w-30 m-1">
-                                        <div className="d-flex align-items-center text-center">
+                                        <div className="d-flex align-items-center justify-content-center text-center">
                                             <FontAwesomeIcon icon={faAdd} />
                                             <span className="mx-1 form-input-label">Thêm</span>
                                         </div>
                                     </Button>
                                     <Button className="form-btn w-30 m-1">
-                                        <div className="d-flex align-items-center text-center">
+                                        <div className="d-flex align-items-center justify-content-center text-center">
                                             <FontAwesomeIcon icon={faSave} />
                                             <span className="mx-1 form-input-label">Lưu</span>
                                         </div>
@@ -170,13 +169,13 @@ function ThemmoiCongty(props) {
                                 </div>
                                 <div className="row">
                                     <Button className="form-btn w-30 m-1">
-                                        <div className="d-flex align-items-center text-center">
+                                        <div className="d-flex align-items-center justify-content-center text-center">
                                             <FontAwesomeIcon icon={faEdit} />
                                             <span className="mx-1 form-input-label">Sửa</span>
                                         </div>
                                     </Button>{" "}
                                     <Button className="form-btn w-30 m-1">
-                                        <div className="d-flex align-items-center text-center">
+                                        <div className="d-flex align-items-center justify-content-center text-center">
                                             <FontAwesomeIcon icon={faXmarkCircle} />
                                             <span className="mx-1 form-input-label">Hủy</span>
                                         </div>

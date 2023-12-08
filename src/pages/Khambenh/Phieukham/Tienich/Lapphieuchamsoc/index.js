@@ -6,6 +6,7 @@ import {
     faSave,
     faPenToSquare,
     faTrashCan,
+    faCircleXmark,
 } from "@fortawesome/free-solid-svg-icons";
 import FormItem from "antd/es/form/FormItem";
 import "./lapphieuchamsoc.scss";
@@ -59,15 +60,6 @@ function Lapphieuchamsoc(props) {
         },
 
         {
-            label: <div className="form-input-label ">Hủy</div>,
-            key: "5",
-            icon: (
-                <div className="">
-                    <FontAwesomeIcon icon={faTrashCan} />
-                </div>
-            ),
-        },
-        {
             label: <div className="form-input-label ">F6 - In biên bản</div>,
             key: "4",
             icon: (
@@ -76,7 +68,22 @@ function Lapphieuchamsoc(props) {
                 </div>
             ),
         },
+        {
+            label: <div className="form-input-label ">Thpát</div>,
+            key: "5",
+            icon: (
+                <div className="">
+                    <FontAwesomeIcon icon={faCircleXmark} />
+                </div>
+            ),
+        },
     ];
+    const handCloseModal = (a) => {
+        if (a === "5") {
+            setOpen(false);
+        }
+    };
+
     return (
         <>
             <Modal
@@ -87,7 +94,11 @@ function Lapphieuchamsoc(props) {
                             <div>
                                 <div className="d-flex justify-content-end">
                                     {items1.map((item) => (
-                                        <Button className="form-btn bg mx-1 px-1" key={item.key}>
+                                        <Button
+                                            className="form-btn bg mx-1 px-1"
+                                            key={item.key}
+                                            onClick={() => handCloseModal(item.key)}
+                                        >
                                             {item.icon}
                                             <div className="mx-1 fw-bold">{item.label}</div>
                                         </Button>
@@ -95,10 +106,10 @@ function Lapphieuchamsoc(props) {
                                 </div>
                             </div>
                         </div>
-                        <hr />
                     </>
                 }
                 centered
+                closable={false}
                 open={open}
                 okButtonProps={{
                     style: {
@@ -245,7 +256,9 @@ function Lapphieuchamsoc(props) {
                                             </FormItem>
                                         </div>
                                         <div className="mt-2 color-border  m-1">
-                                            <div className="px-2 py-1 fw-bold bg-title">THEO DÕI DIỄN BIẾN</div>
+                                            <div className="px-2 py-1 fw-bold bg-title">
+                                                THEO DÕI DIỄN BIẾN
+                                            </div>
                                             <div className="row form-row px-2">
                                                 <FormItem
                                                     label={

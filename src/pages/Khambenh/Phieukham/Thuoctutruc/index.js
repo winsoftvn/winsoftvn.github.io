@@ -135,6 +135,11 @@ function Thuoctutruc(props) {
             ),
         },
     ];
+    const handCloseModal = (a) => {
+        if (a === "6") {
+            setOpen(false);
+        }
+    };
     return (
         <>
             <Modal
@@ -151,7 +156,11 @@ function Thuoctutruc(props) {
                                         <Checkbox />
                                     </Form.Item>
                                     {items1.map((item) => (
-                                        <Button className="form-btn bg mx-1 px-1" key={item.key}>
+                                        <Button
+                                            className="form-btn bg mx-1 px-1"
+                                            key={item.key}
+                                            onClick={() => handCloseModal(item.key)}
+                                        >
                                             {item.icon}
                                             <div className="mx-1 fw-bold">{item.label}</div>
                                         </Button>
@@ -159,7 +168,6 @@ function Thuoctutruc(props) {
                                 </div>
                             </div>
                         </div>
-                        <hr />
                     </>
                 }
                 centered
@@ -176,6 +184,7 @@ function Thuoctutruc(props) {
                 }}
                 onCancel={() => setOpen(false)}
                 width={1000}
+                closable={false}
             >
                 <div className="text-center">
                     <Form onFinish={""}>

@@ -81,13 +81,11 @@ function Phieukham() {
         onafterprint: () => alert("Print Success"),
     });
     const handleSetOpen = (a) => {
-        if (a === "1") {
-            setModelChidinh(true);
-        } else if (a === "2") {
+       if (a === "1") {
             setModelToathuoctainha(true);
-        } else if (a === "3") {
+        } else if (a === "2") {
             setModelToamuangoai(true);
-        } else if (a === "4") {
+        } else if (a === "3") {
             setModelThuoctutruc(true);
         }
     };
@@ -107,24 +105,20 @@ function Phieukham() {
         }
     };
     const items1 = [
-        {
-            label: <div className="form-input-label">Chỉ định</div>,
-            key: "1",
-            icon: <FontAwesomeIcon icon={faHandPointRight} />,
-        },
+       
         {
             label: <div className="form-input-label">Toa thuốc tại chổ</div>,
-            key: "2",
+            key: "1",
             icon: <FontAwesomeIcon icon={faCapsules} />,
         },
         {
             label: <div className="form-input-label">Toa mua ngoài</div>,
-            key: "3",
+            key: "2",
             icon: <FontAwesomeIcon icon={faPills} />,
         },
         {
             label: <div className="form-input-label">Thuốc tủ trực</div>,
-            key: "4",
+            key: "3",
             icon: <FontAwesomeIcon icon={faHouseChimneyMedical} />,
         },
     ];
@@ -328,104 +322,7 @@ function Phieukham() {
             ),
         },
     ];
-    const column0 = [
-        {
-            title: "Tên Thuốc",
-            dataIndex: "TDV",
-            fixed: "left",
-            render: (TDV) => <div style={{ width: "200px" }}> {TDV} </div>,
-        },
-        {
-            title: "ĐVT",
-            dataIndex: "TDVVT",
-            render: (TDVVT) => <div style={{ width: "100px" }}> {TDVVT} </div>,
-        },
-        {
-            title: "Đ.vị dùng",
-            dataIndex: "MADVKT",
-            render: (TDVVT) => <div style={{ width: "100px" }}> {TDVVT} </div>,
-        },
-        {
-            title: "Ng.cấp",
-            dataIndex: "TDVVT",
-            render: (TDVVT) => <div style={{ width: "100px" }}> {TDVVT} </div>,
-        },
-        {
-            title: "Sáng",
-            dataIndex: "MADVKT",
-            align: "center",
-            render: (TDVVT) => (
-                <div style={{ width: "50px" }}>
-                    <InputNumber className="border-input w-100 form-control" min={0} />
-                </div>
-            ),
-        },
-
-        {
-            title: "Trưa",
-            dataIndex: "TDVVT",
-            render: (TDVVT) => (
-                <div style={{ width: "50px" }}>
-                    {" "}
-                    <InputNumber className="border-input w-100 form-control" min={0} />
-                </div>
-            ),
-        },
-        {
-            title: "Chiều",
-            dataIndex: "MADVKT",
-            render: (TDVVT) => (
-                <div style={{ width: "50px" }}>
-                    {" "}
-                    <InputNumber className="border-input w-100 form-control" min={0} />
-                </div>
-            ),
-        },
-        {
-            title: "Tối ",
-            dataIndex: "TDVVT",
-            render: (TDVVT) => (
-                <div style={{ width: "50px" }}>
-                    {" "}
-                    <InputNumber className="border-input w-100 form-control" min={0} />
-                </div>
-            ),
-        },
-
-        {
-            title: "Tổng",
-            dataIndex: "TDVVT",
-            render: (TDVVT) => (
-                <div style={{ width: "100px" }}>
-                    {" "}
-                    <InputNumber className="border-input w-100 form-control" />
-                </div>
-            ),
-        },
-        {
-            title: "Cách dùng",
-            dataIndex: "MADVKT",
-            render: (TDVVT) => <div style={{ width: "200px" }}> {TDVVT} </div>,
-        },
-        {
-            title: "T.Tiền",
-            dataIndex: "TDVVT",
-            render: (TDVVT) => <div style={{ width: "200px" }}> {TDVVT} </div>,
-        },
-        {
-            title: "Thao tác",
-            dataIndex: "",
-            align: "center",
-            fixed: "right",
-            render: (record) => (
-                <div>
-                    <Button className="khambenh-btn-icon color-icon-edit red">
-                        <FontAwesomeIcon icon={faCircleXmark} />
-                    </Button>
-                </div>
-            ),
-        },
-    ];
+    
 
     const column1 = [
         {

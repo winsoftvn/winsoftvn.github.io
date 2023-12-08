@@ -13,6 +13,7 @@ import {
     faDroplet,
     faSpinner,
     faBars,
+    faPrint,
 } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 
@@ -61,7 +62,7 @@ function Phauthuatthuthuat() {
             label: <div className="form-input-label ">F3 - Lưu</div>,
             key: "1",
             icon: (
-                <div >
+                <div>
                     <FontAwesomeIcon icon={faSave} />
                 </div>
             ),
@@ -75,7 +76,7 @@ function Phauthuatthuthuat() {
             label: <div className="form-input-label ">F4 - Sửa</div>,
             key: "3",
             icon: (
-                <div >
+                <div>
                     {" "}
                     <FontAwesomeIcon icon={faPenToSquare} />
                 </div>
@@ -85,7 +86,7 @@ function Phauthuatthuthuat() {
             label: <div className="form-input-label ">Hủy</div>,
             key: "4",
             icon: (
-                <div >
+                <div>
                     <FontAwesomeIcon icon={faFileExcel} />
                 </div>
             ),
@@ -95,7 +96,7 @@ function Phauthuatthuthuat() {
             key: "5",
             icon: (
                 <div className="">
-                    <FontAwesomeIcon icon={faFileExcel} />
+                    <FontAwesomeIcon icon={faPrint} />
                 </div>
             ),
         },
@@ -112,7 +113,7 @@ function Phauthuatthuthuat() {
             label: <div className="form-input-label ">PỨ Thuốc</div>,
             key: "7",
             icon: (
-                <div >
+                <div>
                     <FontAwesomeIcon icon={faSpinner} type="regular" />
                 </div>
             ),
@@ -121,7 +122,7 @@ function Phauthuatthuthuat() {
             label: <div className="form-input-label ">Tr.Dịch</div>,
             key: "8",
             icon: (
-                <div >
+                <div>
                     <FontAwesomeIcon icon={faDroplet} />
                 </div>
             ),
@@ -187,7 +188,7 @@ function Phauthuatthuthuat() {
                                 <div className="fw-bold bg-title p-1 text-center">
                                     LỊCH SỬ THỰC HIỆN
                                 </div>
-                                <div className="row w-100">
+                                <div className="row">
                                     <div className="row form-row">
                                         <Form.Item
                                             label={
@@ -297,7 +298,7 @@ function Phauthuatthuthuat() {
                                             <TextArea className="form-control" />
                                         </Form.Item>
                                     </div>
-                                    <div className="row form-row">
+                                    <div className="row form-row mt-1">
                                         <Form.Item
                                             label={
                                                 <div className="form-input-label pttt-form-input-label">
@@ -312,71 +313,73 @@ function Phauthuatthuthuat() {
                             </div>
                             <div className="w-30">
                                 <div className="fw-bold bg-title p-1 text-center">SINH HIỆU</div>
-                                <div className="row form-row">
-                                    <Form.Item
-                                        label={
-                                            <div className="form-input-label pttt-form-input-label-right  ">
-                                                Chỉ số BMI
-                                            </div>
-                                        }
-                                    >
-                                        <Input className="form-control" />
-                                    </Form.Item>
-                                </div>
-                                <div className="row form-row">
-                                    <Form.Item
-                                        label={
-                                            <div className="form-input-label pttt-form-input-label-right ">
-                                                Huyết áp (mm/Hg)
-                                            </div>
-                                        }
-                                    >
-                                        <Input className="form-control" />
-                                    </Form.Item>
-                                </div>
-                                <div className="row form-row">
-                                    <Form.Item
-                                        label={
-                                            <div className="form-input-label pttt-form-input-label-right ">
-                                                Nhịp tim (lần/phút)
-                                            </div>
-                                        }
-                                    >
-                                        <Input className="form-control" />
-                                    </Form.Item>
-                                </div>
-                                <div className="row form-row">
-                                    <Form.Item
-                                        label={
-                                            <div className="form-input-label pttt-form-input-label-right ">
-                                                Nhiệt độ (<sup>o</sup>C)
-                                            </div>
-                                        }
-                                    >
-                                        <Input className="form-control" />
-                                    </Form.Item>
-                                </div>
-                                <div className="row form-row">
-                                    <Form.Item
-                                        label={
-                                            <div className="form-input-label pttt-form-input-label-right ">
-                                                Chiều cao:
-                                            </div>
-                                        }
-                                    >
-                                        <Input className="form-control" />
-                                    </Form.Item>
-                                </div>
-                                <div className="row form-row">
-                                    <Form.Item
-                                        label={
-                                            <div className="form-input-label pttt-form-input-label-right ">
-                                                Cân nặng:
-                                            </div>
-                                        }
-                                    >
-                                        <Input className="form-control" />
-                                    </Form.Item>
+                                <div className="px-2 border-line-left">
+                                    <div className="row form-row">
+                                        <Form.Item
+                                            label={
+                                                <div className="form-input-label pttt-form-input-label-right  ">
+                                                    Chỉ số BMI
+                                                </div>
+                                            }
+                                        >
+                                            <Input className="form-control" />
+                                        </Form.Item>
+                                    </div>
+                                    <div className="row form-row">
+                                        <Form.Item
+                                            label={
+                                                <div className="form-input-label pttt-form-input-label-right ">
+                                                    Huyết áp (mm/Hg)
+                                                </div>
+                                            }
+                                        >
+                                            <Input className="form-control" />
+                                        </Form.Item>
+                                    </div>
+                                    <div className="row form-row">
+                                        <Form.Item
+                                            label={
+                                                <div className="form-input-label pttt-form-input-label-right ">
+                                                    Nhịp tim (lần/phút)
+                                                </div>
+                                            }
+                                        >
+                                            <Input className="form-control" />
+                                        </Form.Item>
+                                    </div>
+                                    <div className="row form-row">
+                                        <Form.Item
+                                            label={
+                                                <div className="form-input-label pttt-form-input-label-right ">
+                                                    Nhiệt độ (<sup>o</sup>C)
+                                                </div>
+                                            }
+                                        >
+                                            <Input className="form-control" />
+                                        </Form.Item>
+                                    </div>
+                                    <div className="row form-row">
+                                        <Form.Item
+                                            label={
+                                                <div className="form-input-label pttt-form-input-label-right ">
+                                                    Chiều cao:
+                                                </div>
+                                            }
+                                        >
+                                            <Input className="form-control" />
+                                        </Form.Item>
+                                    </div>
+                                    <div className="row form-row">
+                                        <Form.Item
+                                            label={
+                                                <div className="form-input-label pttt-form-input-label-right ">
+                                                    Cân nặng:
+                                                </div>
+                                            }
+                                        >
+                                            <Input className="form-control" />
+                                        </Form.Item>
+                                    </div>
                                 </div>
                             </div>
                         </div>

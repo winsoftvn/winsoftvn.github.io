@@ -9,6 +9,10 @@ function Phanquyen() {
     const [showLine, setShowLine] = useState(true);
     const [showIcon, setShowIcon] = useState(false);
     const [showLeafIcon, setShowLeafIcon] = useState(false);
+    const [selectedKeys, setSelectedKeys] = useState([]);
+    const [autoExpandParent, setAutoExpandParent] = useState(true);
+    const [expandedKeys, setExpandedKeys] = useState(["6", "7"]);
+
     const onSelect = (selectedKeys, info) => {
         console.log("selected", selectedKeys, info);
     };
@@ -19,6 +23,11 @@ function Phanquyen() {
 
     const onChange = (checkedValues) => {
         console.log("checked = ", checkedValues);
+    };
+    const onExpand = (expandedKeysValue) => {
+        console.log("onExpand", expandedKeysValue);
+        setExpandedKeys(expandedKeysValue);
+        setAutoExpandParent(false);
     };
     const treeData = [
         {
@@ -468,8 +477,50 @@ function Phanquyen() {
             value: "13",
         },
     ];
+    const treeData2 = [
+        {
+            title: "parent 1",
+            key: "0-0",
+            children: [
+                {
+                    title: "parent 1-0",
+                    key: "0-0-0",
+                    disabled: true,
+                    children: [
+                        {
+                            title: "leaf",
+                            key: "0-0-0-0",
+                            disableCheckbox: true,
+                        },
+                        {
+                            title: "leaf",
+                            key: "0-0-0-1",
+                        },
+                    ],
+                },
+                {
+                    title: "parent 1-1",
+                    key: "0-0-1",
+                    children: [
+                        {
+                            title: (
+                                <span
+                                    style={{
+                                        color: "#1677ff",
+                                    }}
+                                >
+                                    sss
+                                </span>
+                            ),
+                            key: "0-0-1-0",
+                        },
+                    ],
+                },
+            ],
+        },
+    ];
     return (
-        <div >
+        <div>
             <div className="d-flex vh-100">
                 <div className="w-20">
                     <div className="scroll">
@@ -499,21 +550,35 @@ function Phanquyen() {
                             <div className="bg-label fw-bold p-1 form-input-label">
                                 Chức năng sử dụng
                             </div>
-                            <Tree
-                                showLine={
-                                    showLine
-                                        ? {
-                                              showLeafIcon,
-                                          }
-                                        : false
-                                }
-                                showIcon={showIcon}
-                                defaultExpandedKeys={["0-0-0"]}
-                                onSelect={onSelect}
-                                onCheck={onCheck}
-                                treeData={treeData1}
-                                checkable
-                            />
+                            <div className="treenode">
+                                <Tree
+                                    showLine={
+                                        showLine
+                                            ? {
+                                                  showLeafIcon,
+                                              }
+                                            : false
+                                    }
+                                    showIcon={showIcon}
+                                    defaultExpandedKeys={[
+                                        "1",
+                                        "1.1",
+                                        "1.1.1",
+                                        "2",
+                                        "2.1",
+                                        "2.2",
+                                        "2.2.1",
+                                        "3",
+                                    ]}
+                                    defaultSelectedKeys={["6.1", "7.1"]}
+                                    onSelect={onSelect}
+                                    onCheck={onCheck}
+                                    treeData={treeData1}
+                                    checkable
+                                    onExpand={onExpand}
+                                    expandAction={true}
+                                />
+                            </div>
                         </div>
                     </div>
                 </div>

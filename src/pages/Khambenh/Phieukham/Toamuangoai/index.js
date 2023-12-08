@@ -7,6 +7,7 @@ import {
     faPrint,
     faSave,
     faTrashCan,
+    faTruckMedical,
 } from "@fortawesome/free-solid-svg-icons";
 import ds from "../../../../util/data";
 // import Swal from "sweetalert2";
@@ -135,6 +136,11 @@ function Toamuangoai(props) {
             ),
         },
     ];
+    const handCloseModal = (a) => {
+        if (a === "6") {
+            setOpen(false);
+        }
+    };
     return (
         <>
             <Modal
@@ -151,7 +157,11 @@ function Toamuangoai(props) {
                                         <Checkbox />
                                     </Form.Item>
                                     {items1.map((item) => (
-                                        <Button className="form-btn bg mx-1 px-1" key={item.key}>
+                                        <Button
+                                            className="form-btn bg mx-1 px-1"
+                                            key={item.key}
+                                            onClick={() => handCloseModal(item.key)}
+                                        >
                                             {item.icon}
                                             <div className="mx-1 fw-bold">{item.label}</div>
                                         </Button>
@@ -159,7 +169,6 @@ function Toamuangoai(props) {
                                 </div>
                             </div>
                         </div>
-                        <hr />
                     </>
                 }
                 centered
@@ -177,6 +186,7 @@ function Toamuangoai(props) {
                 onCancel={() => setOpen(false)}
                 width={"100vw"}
                 className="khambenh"
+                closable={false}
             >
                 <div className="text-center">
                     <Form onFinish={""}>
@@ -291,7 +301,6 @@ function Toamuangoai(props) {
                                 </div>
                             </div>
                         </div>
-                    
                     </Form>
                 </div>
             </Modal>

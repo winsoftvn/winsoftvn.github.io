@@ -1,5 +1,6 @@
 import { Modal, Form, Input, Table, Button } from "antd";
 import SunEditor from "suneditor-react";
+import "suneditor/dist/css/suneditor.min.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
     faCircleXmark,
@@ -13,7 +14,7 @@ import FormItem from "antd/es/form/FormItem";
 import "./lapphieutheodoidieutri.scss";
 import data2 from "../../../../../util/data3";
 // import Swal from "sweetalert2";
-import "suneditor/dist/css/suneditor.min.css";
+
 import {
     align,
     font,
@@ -56,7 +57,7 @@ function Lapphieutheodoidieutri(props) {
             label: <div className="form-input-label ">F2 - Mới</div>,
             key: "1",
             icon: (
-                <div >
+                <div>
                     <FontAwesomeIcon icon={faPowerOff} />
                 </div>
             ),
@@ -70,42 +71,52 @@ function Lapphieutheodoidieutri(props) {
             label: <div className="form-input-label ">Sửa</div>,
             key: "3",
             icon: (
-                <div >
+                <div>
                     <FontAwesomeIcon icon={faPenToSquare} />
                 </div>
             ),
         },
 
         {
-            label: <div className="form-input-label ">Hủy</div>,
-            key: "5",
-            icon: (
-                <div className="">
-                    <FontAwesomeIcon icon={faTrashCan} />
-                </div>
-            ),
-        },
-        {
             label: <div className="form-input-label ">F6 - In biên bản</div>,
             key: "4",
             icon: (
-                <div >
+                <div>
                     <FontAwesomeIcon icon={faPrint} />
                 </div>
             ),
         },
+        {
+            label: <div className="form-input-label ">Thoát</div>,
+            key: "5",
+            icon: (
+                <div className="">
+                    <FontAwesomeIcon icon={faCircleXmark} />
+                </div>
+            ),
+        },
     ];
+    const handCloseModal = (a) => {
+        if (a === "5") {
+            setOpen(false);
+        }
+    };
+
     return (
         <>
             <Modal
                 title={
                     <>
-                          <div className="d-flex justify-content-between">
+                        <div className="d-flex justify-content-between">
                             <div>PHIẾU THEO DÕI ĐIỀU TRỊ</div>
                             <div>
                                 <div className="d-flex justify-content-end">
                                     {items1.map((item) => (
-                                        <Button className="form-btn bg mx-1 px-1" key={item.key}>
+                                        <Button
+                                            className="form-btn bg mx-1 px-1"
+                                            key={item.key}
+                                            onClick={() => handCloseModal(item.key)}
+                                        >
                                             {item.icon}
                                             <div className="mx-1 fw-bold">{item.label}</div>
                                         </Button>
@@ -113,9 +124,9 @@ function Lapphieutheodoidieutri(props) {
                                 </div>
                             </div>
                         </div>
-                        <hr />
                     </>
                 }
+                closable={false}
                 centered
                 open={open}
                 okButtonProps={{

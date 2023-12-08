@@ -86,7 +86,6 @@ function Ghinhantheodosinhhieu(props) {
                 title={
                     <>
                         <div>THEO DÕI DẤU HIỆU SINH TỒN</div>
-                        <hr />
                     </>
                 }
                 centered

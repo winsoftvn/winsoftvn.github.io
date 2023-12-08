@@ -14,6 +14,7 @@ import {
     faPoll,
     faPollH,
     faStepForward,
+    faPrint,
 } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import Danhsachleft from "./Danhsachleft";
@@ -72,7 +73,7 @@ function Xetnghiem() {
             key: "5",
             icon: (
                 <div>
-                    <FontAwesomeIcon icon={faFileExcel} />
+                    <FontAwesomeIcon icon={faPrint} />
                 </div>
             ),
         },
@@ -199,6 +200,9 @@ function Xetnghiem() {
                     </div>
                 </div>
                 <div className={click ? "w-100 vh-100" : "w-75"}>
+                    <div className="fw-bold bg-title p-1 mt-1 text-center">
+                        TRẢ KẾT QUẢ VLTL - YHCT
+                    </div>{" "}
                     <div className="px-2">
                         <Form>
                             <div className="row form-row">

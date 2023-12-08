@@ -99,7 +99,7 @@ function LayoutPageMain({ children }) {
                     <FontAwesomeIcon icon={faRestroom} />
                 ),
                 getItem(
-                    <NavLink className="menu-navlink" to="/canlamsan/scanner">
+                    <NavLink className="menu-navlink" to="/canlamsan/ctscanner">
                         CT Scanner
                     </NavLink>,
                     "5.4",
@@ -120,7 +120,7 @@ function LayoutPageMain({ children }) {
                     <FontAwesomeIcon icon={faRestroom} />
                 ),
                 getItem(
-                    <NavLink className="menu-navlink" to="/canlamsan/domatdxuong">
+                    <NavLink className="menu-navlink" to="/canlamsan/domatdoxuong">
                         Đo mật độ xương
                     </NavLink>,
                     "5.7",
@@ -232,14 +232,14 @@ function LayoutPageMain({ children }) {
                 {collapsed ? (
                     ""
                 ) : (
-                    <div>
-                        <div className="d-block text-center mx-auto my-3">
-                            <div className="d-flex align-items-center justify-content-center">
+                    <div className="scroll-menu">
+                        <div className="d-block text-center mx-auto my-2">
+                            <div className="d-flex align-items-center justify-content-start mx-3">
                                 <img src={logo} className="img-logo" />
-                                <div className="fs-4 fw-bold mx-2 ">e-Medlink</div>
+                                <div className="fs-6 fw-bold mx-2 ">e-Medlink</div>
                             </div>
                         </div>
-                        <hr />
+                        <hr className="m-0" />
                         <Menu theme="light" mode="inline" items={items}></Menu>
                     </div>
                 )}

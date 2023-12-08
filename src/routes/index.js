@@ -1,4 +1,10 @@
+import CTScanner from "../pages/Canlamsan/CTScanner";
+import Dientim from "../pages/Canlamsan/Dientim";
+import Domatdoxuong from "../pages/Canlamsan/Domatdoxuong";
+import MRI from "../pages/Canlamsan/MRI";
+import Noisoi from "../pages/Canlamsan/Noisoi";
 import Canlamsan from "../pages/Canlamsan/Sieuam";
+import Xquang from "../pages/Canlamsan/XQuang";
 import Duoc from "../pages/Duoc";
 import Home from "../pages/Home";
 import Khambenh from "../pages/Khambenh";
@@ -153,6 +159,36 @@ const PageWeb = [
     {
         path: "/canlamsan/sieuam",
         page: Canlamsan,
+        isMainLayout: true,
+    },
+    {
+        path: "/canlamsan/noisoi",
+        page: Noisoi,
+        isMainLayout: true,
+    },
+    {
+        path: "/canlamsan/xquang",
+        page: Xquang,
+        isMainLayout: true,
+    },
+    {
+        path: "/canlamsan/mri",
+        page: MRI,
+        isMainLayout: true,
+    },
+    {
+        path: "/canlamsan/dientimhohapky",
+        page: Dientim,
+        isMainLayout: true,
+    },
+    {
+        path: "/canlamsan/ctscanner",
+        page: CTScanner,
+        isMainLayout: true,
+    },
+    {
+        path: "/canlamsan/domatdoxuong",
+        page: Domatdoxuong,
         isMainLayout: true,
     },
     //Xét nghiệm

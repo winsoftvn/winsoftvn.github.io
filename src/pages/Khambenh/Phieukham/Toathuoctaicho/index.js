@@ -115,6 +115,11 @@ function Toathuoctaicho(props) {
             icon: <FontAwesomeIcon icon={faCircleXmark} />,
         },
     ];
+    const handCloseModal = (a) => {
+        if (a === "6") {
+            setOpen(false);
+        }
+    };
     return (
         <>
             <Modal
@@ -131,7 +136,11 @@ function Toathuoctaicho(props) {
                                         <Checkbox />
                                     </Form.Item>
                                     {items1.map((item) => (
-                                        <Button className="form-btn bg mx-1 px-1" key={item.key}>
+                                        <Button
+                                            className="form-btn bg mx-1 px-1"
+                                            key={item.key}
+                                            onClick={() => handCloseModal(item.key)}
+                                        >
                                             {item.icon}
                                             <div className="mx-1 fw-bold">{item.label}</div>
                                         </Button>
@@ -139,7 +148,6 @@ function Toathuoctaicho(props) {
                                 </div>
                             </div>
                         </div>
-                        <hr />
                     </>
                 }
                 centered
@@ -156,6 +164,7 @@ function Toathuoctaicho(props) {
                 }}
                 onCancel={() => setOpen(false)}
                 width={"100vw"}
+                closable={false}
             >
                 <div className="text-center">
                     <Form onFinish={""}>

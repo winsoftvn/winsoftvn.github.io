@@ -1,22 +1,79 @@
-import { CKEditor } from "@ckeditor/ckeditor5-react";
-import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import SunEditor from "suneditor-react";
+import "suneditor/dist/css/suneditor.min.css";
+import {
+    align,
+    font,
+    fontColor,
+    fontSize,
+    formatBlock,
+    hiliteColor,
+    horizontalRule,
+    lineHeight,
+    list,
+    paragraphStyle,
+    table,
+    template,
+    textStyle,
+    image,
+    link,
+} from "suneditor/src/plugins";
 function TuongtrinhPPT() {
     return (
         <>
-        <div >
-            <CKEditor
-                editor={ClassicEditor}
-                // data={desVocabulary || ""}
-                onReady={(editor) => {
-                    editor.editing.view.change((writer) => {
-                        writer.setStyle("height", "100vh", editor.editing.view.document.getRoot());
-                    });
-                }}
-                onChange={(event, editor) => {
-                    const data = editor.getData();
-                    // setValueDesVocabulary(data);
-                }}
-            /></div>
+            <div>
+                <SunEditor
+                    autoFocus={true}
+                    lang="en"
+                    setDefaultStyle="height:500px"
+                    setOptions={{
+                        showPathLabel: false,
+
+                        placeholder: "Enter your text here!!!",
+                        plugins: [
+                            align,
+                            font,
+                            fontColor,
+                            fontSize,
+                            formatBlock,
+                            hiliteColor,
+                            horizontalRule,
+                            lineHeight,
+                            list,
+                            paragraphStyle,
+                            table,
+                            template,
+                            textStyle,
+                            image,
+                            link,
+                        ],
+                        buttonList: [
+                            ["font", "fontSize", "formatBlock"],
+                            ["bold", "underline", "italic"],
+                            ["fontColor", "hiliteColor"],
+                            ["removeFormat"],
+
+                            ["outdent", "indent"],
+                            ["align", "horizontalRule", "list", "lineHeight"],
+                        ],
+                        formats: ["p", "div", "h1", "h2", "h3", "h4", "h5", "h6"],
+                        font: [
+                            "Arial",
+                            "Calibri",
+                            "Comic Sans",
+                            "Courier",
+                            "Garamond",
+                            "Georgia",
+                            "Impact",
+                            "Lucida Console",
+                            "Palatino Linotype",
+                            "Segoe UI",
+                            "Tahoma",
+                            "Times New Roman",
+                            "Trebuchet MS",
+                        ],
+                    }}
+                />
+            </div>
         </>
     );
 }
