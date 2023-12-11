@@ -268,7 +268,7 @@ function Danhsachleft() {
                             />
                             <div className="fw-bold mx-1">Tổng:1000</div>
                         </div>
-                        <div>
+                        <div className="py-2">
                             <div className="fw-bold bg-title p-1">THÔNG TIN BỆNH NHÂN</div>
                             <div className="m-1">
                                 <Form>

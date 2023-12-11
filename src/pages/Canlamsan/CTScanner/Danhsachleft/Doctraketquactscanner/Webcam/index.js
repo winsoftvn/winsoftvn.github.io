@@ -10,11 +10,6 @@ const WebcamCapture = () => {
     const [dsanh, setDSAnh] = useState([]);
     const [value, setValue] = useState(true);
     const [open, setOpen] = useState(false);
-
-    const [clickBtn, setClickBtn] = useState(false);
-    const handlePush = () => {
-        dsanh.push(anh);
-    };
     const handlePushImageUpload = (a) => {
         dsanh.push(a);
     };
@@ -36,7 +31,6 @@ const WebcamCapture = () => {
     };
     return (
         <>
-          
             <div>
                 <div className="bg-title fw-bold p-1 title-fixed d-flex justify-content-between">
                     <div>Hình ảnh</div>{" "}
@@ -86,7 +80,9 @@ const WebcamCapture = () => {
                                           <div>
                                               <Form className="m-0 p-0">
                                                   <Form.Item className="m-0 p-0">
-                                                      <Checkbox />
+                                                      <Checkbox
+                                                          defaultChecked
+                                                      />
                                                   </Form.Item>
                                               </Form>
                                           </div>

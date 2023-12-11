@@ -219,16 +219,28 @@ input[type="search"] {
 }
 
 //collapse
-.ant-collapse > .ant-collapse-item > .ant-collapse-header {
-    padding: 2px;
-    border-radius: 0px;
-    background-color: #bcbcbc;
+.ant-collapse-header {
+    border-radius: 0px !important;
+    padding: 0px !important;
+    margin: 0px !important;
+    display: flex !important;
+    align-items: center !important;
+    background-color: #d0d0d0 !important;
 }
 .ant-collapse .ant-collapse-content > .ant-collapse-content-box {
     border-radius: 0px;
-    padding: 2px;
 }
-
+.ant-collapse-item {
+    border-radius: 0px !important;
+    border:1px solid #ebebeb !important;
+    padding: 0px !important;
+}
+.ant-collapse.ant-collapse-icon-position-start.ant-collapse-small {
+    border-radius: 0px !important;
+}
+.ant-collapse-content-box {
+    padding: 0px !important;
+}
 //selet
 .ant-select-dropdown .ant-select-item {
     position: relative;

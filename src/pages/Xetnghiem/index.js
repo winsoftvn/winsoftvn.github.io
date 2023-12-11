@@ -22,6 +22,7 @@ import FormItem from "antd/es/form/FormItem";
 import Maumota from "./Maumota";
 import "./xetnghiem.scss";
 import ds from "../../util/data";
+import Boketquaxetnghiem from "./Boketquaxetnghiem";
 function Xetnghiem() {
     //khaibao
     const [click, setClick] = useState(false);
@@ -87,7 +88,11 @@ function Xetnghiem() {
                     <span className="mx-1">Bộ kết quả xét nghiệm</span>
                 </div>
             ),
-            children: <div className=""></div>,
+            children: (
+                <div className="color-border p-1">
+                    <Boketquaxetnghiem />
+                </div>
+            ),
         },
         {
             key: "2",

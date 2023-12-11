@@ -3,14 +3,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import ds1 from "../../../../util/data1";
 import { useEffect, useState } from "react";
-// import { DataGrid, GridColumn } from "rc-easyui";
-// import st from "../../../../util/test";
 import ModelDonthuoc from "./modeldonthuoc";
 
 function Donthuoc() {
     const [data, setData] = useState(ds1);
     const [openDonThuoc, setOpenDonthuoc] = useState(false);
     const [thuocdcchon, setValueThuocChon] = useState("");
+    const [value, setValue] = useState(false);
     const [form] = Form.useForm();
     useEffect(() => {
         form.setFieldsValue({
@@ -35,6 +34,7 @@ function Donthuoc() {
         //         thtien: "",
         //     },
         // ];
+
         data.push({
             tenthuoc: a.tenthuoc,
             dvt: a.dvt,
@@ -48,7 +48,8 @@ function Donthuoc() {
             cachdung: a.cachdung,
             thtien: a.thtien,
         });
-        console.log(data);
+        // console.log(data);
+        setValue(true);
     };
 
     const handleSetOpen = () => {
@@ -57,9 +58,9 @@ function Donthuoc() {
     const column0 = [
         {
             title: "Tên Thuốc",
-            dataIndex: "TDV",
+            dataIndex: "tenthuoc",
             fixed: "left",
-            render: (TDV) => (
+            render: (tenthuoc) => (
                 <div style={{ width: "200px" }} className="p-0 m-0">
                     <Form.Item className="p-0 m-0" name="tenthuoc">
                         <Input
@@ -115,8 +116,8 @@ function Donthuoc() {
 
         {
             title: "ĐVT",
-            dataIndex: "TDVVT",
-            render: (TDVVT) => (
+            dataIndex: "dvt",
+            render: (dvt) => (
                 <div style={{ width: "100px" }} className="p-0 m-0">
                     <Form.Item className="p-0 m-0" name="dvt">
                         <Select
@@ -154,8 +155,8 @@ function Donthuoc() {
         },
         {
             title: "Đ.vị dùng",
-            dataIndex: "MADVKT",
-            render: (TDVVT) => (
+            dataIndex: "dvdung",
+            render: (dvdung) => (
                 <div style={{ width: "100px" }} className="p-0 m-0">
                     <Form.Item className="p-0 m-0" name="dvdung">
                         <Input className="border-input w-100 form-control" />
@@ -268,6 +269,9 @@ function Donthuoc() {
             ),
         },
     ];
+    useEffect(() => {
+        setValue(false);
+    }, [value]);
     return (
         <>
             <div>
@@ -328,7 +332,7 @@ function Donthuoc() {
                     <Form onFinish={handleAddDataList} form={form}>
                         <Table
                             columns={column0}
-                            dataSource={data ? ds1 : data}
+                            dataSource={data}
                             // loading={loading}
                             scroll={{ x: true, y: 270 }}
                             size="small"
@@ -337,17 +341,6 @@ function Donthuoc() {
                         />
                     </Form>
                 </div>
-
-                {/* <div>
-                    <DataGrid data={st} style={{ height: 250 }}>
-                        <GridColumn field="itemid" title="Item ID"></GridColumn>
-                        <GridColumn field="name" title="Name"></GridColumn>
-                        <GridColumn field="listprice" title="List Price" align="right"></GridColumn>
-                        <GridColumn field="unitcost" title="Unit Cost" align="right"></GridColumn>
-                        <GridColumn field="attr" title="Attribute" width="30%"></GridColumn>
-                        <GridColumn field="status" title="Status" align="center"></GridColumn>
-                    </DataGrid>
-                </div> */}
             </div>
         </>
     );

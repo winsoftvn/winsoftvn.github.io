@@ -113,6 +113,7 @@ function ModelDonthuoc(props) {
 
     const handleChonThuoc = (a) => {
         setValueThuoc(a);
+        console.log(a);
         setOpen(false);
     };
     return (

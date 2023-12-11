@@ -103,7 +103,7 @@ const WebcamCapture = () => {
                                           <div>
                                               <Form className="m-0 p-0">
                                                   <Form.Item className="m-0 p-0">
-                                                      <Checkbox />
+                                                      <Checkbox defaultChecked/>
                                                   </Form.Item>
                                               </Form>
                                           </div>
