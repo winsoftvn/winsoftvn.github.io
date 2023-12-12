@@ -75,26 +75,7 @@ function Chidinh(props) {
             ),
         },
     ];
-    // const tabchidinh = [
-    //     {
-    //         key: "1",
-    //         label: "Phiếu khám",
-    //         children: (
-    //             <div className="tiepnhan-tab">
-    //                 <Phieukham />
-    //             </div>
-    //         ),
-    //     },
-    //     {
-    //         key: "2",
-    //         label: "Lịch sử CLS & Thuốc",
-    //         children: (
-    //             <div className="tiepnhan-tab">
-    //                 <LichsuCLSThuoc />
-    //             </div>
-    //         ),
-    //     },
-    // ];
+   
     return (
         <>
             <Modal

@@ -64,7 +64,7 @@ function TableData() {
                     dataSource={ds}
                     // loading={loading}
                     size="small"
-                    scroll={{ y:100 }}
+                    scroll={{ y:250 }}
                     pagination={false}
                     bordered={true}
                     showHeader={false}

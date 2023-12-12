@@ -17,11 +17,11 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 import imguser from "../../../../../assets/image/user.png";
-import Thongtinlamsan from "./Thongtinmri";
 import Lichsuthuchien from "./Lichsuthuchien";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import WebcamCapture from "./Webcam";
+import ThongtinMRI from "./Thongtinmri";
 function Doctraketquamri(props) {
     const { sieuam } = useSelector((state) => state.dataAdd);
     const { open, setOpen, chitiet } = props;
@@ -100,7 +100,7 @@ function Doctraketquamri(props) {
             ),
             children: (
                 <div className="color-border p-1">
-                    <Thongtinlamsan />
+                    <ThongtinMRI />
                 </div>
             ),
         },

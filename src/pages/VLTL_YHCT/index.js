@@ -31,7 +31,7 @@ function VLTL_YHCT() {
             key: "1",
             label: "Thông số kỹ thuật",
             children: (
-                <div className="tiepnhan-tab color-border">
+                <div className="tab color-border">
                     <Thongtinkythuat />
                 </div>
             ),
@@ -39,12 +39,12 @@ function VLTL_YHCT() {
         {
             key: "2",
             label: "Thông số kỹ thuật kéo cột sống",
-            children: <div className="tiepnhan-tab">{/* <LichsuCLSThuoc /> */}</div>,
+            children: <div className="tab">{/* <LichsuCLSThuoc /> */}</div>,
         },
         {
             key: "3",
             label: "Mô tả",
-            children: <div className="tiepnhan-tab">{/* <LichsuCLSThuoc /> */}</div>,
+            children: <div className="tab">{/* <LichsuCLSThuoc /> */}</div>,
         },
     ];
     const items1 = [
@@ -52,7 +52,7 @@ function VLTL_YHCT() {
             label: <div className="form-input-label ">F3 - Lưu</div>,
             key: "1",
             icon: (
-                <div >
+                <div>
                     <FontAwesomeIcon icon={faSave} />
                 </div>
             ),
@@ -103,7 +103,7 @@ function VLTL_YHCT() {
             label: <div className="form-input-label ">PỨ Thuốc</div>,
             key: "7",
             icon: (
-                <div >
+                <div>
                     <FontAwesomeIcon icon={faSpinner} type="regular" />
                 </div>
             ),
@@ -112,7 +112,7 @@ function VLTL_YHCT() {
             label: <div className="form-input-label ">Tr.Dịch</div>,
             key: "8",
             icon: (
-                <div >
+                <div>
                     <FontAwesomeIcon icon={faDroplet} />
                 </div>
             ),
@@ -207,7 +207,7 @@ function VLTL_YHCT() {
                         </div>
                     </div>
                 </div>
-                <div className={click ? "w-100 vh-100" : "w-75"}>
+                <div className={click ? "w-100" : "w-75"}>
                     <div className="fw-bold bg-title p-1 mt-1 text-center">
                         CHI TIẾT DỊCH VỤ KỸ THUẬT
                     </div>{" "}
@@ -221,10 +221,10 @@ function VLTL_YHCT() {
                             pagination={false}
                         />
                     </div>
-                    <div className="">
-                        <Form>
-                            <div className="color-border m-1 pb-3 px-2">
-                                <div className="row form-row">
+                    <div>
+                        <div className="color-border py-2 m-1">
+                            <Form>
+                                <div className="row form-row p-0 m-0">
                                     <Form.Item
                                         label={
                                             <div className="form-input-label vltlyhct-form-input-label ">
@@ -246,7 +246,7 @@ function VLTL_YHCT() {
                                         <Input className="form-control" />
                                     </Form.Item>
                                 </div>
-                                <div className="row form-row">
+                                <div className="row form-row p-0 m-0">
                                     <Form.Item
                                         label={
                                             <div className="form-input-label vltlyhct-form-input-label ">
@@ -258,7 +258,7 @@ function VLTL_YHCT() {
                                         <Input className="form-control" />
                                     </Form.Item>
                                 </div>
-                                <div className="row form-row">
+                                <div className="row form-row p-0 m-0">
                                     <Form.Item
                                         label={
                                             <div className="form-input-label vltlyhct-form-input-label ">
@@ -280,7 +280,7 @@ function VLTL_YHCT() {
                                         <Input className="form-control" />
                                     </Form.Item>
                                 </div>
-                                <div className="row form-row">
+                                <div className="row form-row p-0 m-0">
                                     <Form.Item
                                         label={
                                             <div className="form-input-label vltlyhct-form-input-label">
@@ -291,7 +291,7 @@ function VLTL_YHCT() {
                                         <Input className="form-control" />
                                     </Form.Item>
                                 </div>
-                                <div className="row form-row">
+                                <div className="row form-row p-0 m-0">
                                     <div className="col-md-6">
                                         <Form.Item
                                             label={
@@ -314,16 +314,16 @@ function VLTL_YHCT() {
                                             <Input className="form-control" />
                                         </Form.Item>
                                     </div>
-                                </div>{" "}
-                            </div>
-                        </Form>
+                                </div>
+                            </Form>{" "}
+                        </div>
                     </div>
                     <div className="color-border">
                         <div className="fw-bold text-center p-1">Nội dung kết quả</div>
                         <div className="tab-vltl-yhct px-1">
-                            <Tabs defaultActiveKey="1" type="card" size="small" items={tabvltl} />
-                        </div>
-                        <div className="row mt-2 px-2">
+                            <Tabs defaultActiveKey="1" type="card" size="small" items={tabvltl} />{" "}
+                        </div>{" "}
+                        <div className="row m-0 p-0">
                             <div className="col-md-6">
                                 <div className="form-input-label">
                                     Nội dung diễn biến - Kết Luận:

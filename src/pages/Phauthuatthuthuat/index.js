@@ -171,7 +171,7 @@ function Phauthuatthuthuat() {
                         )}
                     </div>
                     <div>
-                        <div className="mt-1 shadow ">
+                        <div className="shadow ">
                             <div className="v6">
                                 <div className={click ? "d-none" : "w-100"}>
                                     <Danhsachleft />
@@ -183,7 +183,7 @@ function Phauthuatthuthuat() {
                 <div className={click ? "w-100 vh-100" : "w-75"}>
                     <Form>
                         {" "}
-                        <div className="d-flex mx-1 color-border py-2">
+                        <div className="d-flex color-border">
                             <div className="w-70">
                                 <div className="fw-bold bg-title p-1 text-center">
                                     LỊCH SỬ THỰC HIỆN

@@ -262,7 +262,7 @@ function Danhsachleft() {
                                 columns={column0}
                                 dataSource={ds}
                                 // loading={loading}
-                                scroll={{ x: true, y: 300 }}
+                                scroll={{ x: true, y: 200 }}
                                 size="small"
                                 pagination={false}
                             />

@@ -87,7 +87,7 @@ function ChidinhKB() {
                         <div className="row">
                             <div className="col-md-12">
                                 <div className="m-1">
-                                    <Form.Item label={<div className="form-input-title">Công khám</div>} className="m-0 mt-1">
+                                    <Form.Item label={<div className="form-input-label">Công khám</div>} className="m-0 mt-1">
                                         <div className="input-select">
                                             <Select />
                                         </div>

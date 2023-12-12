@@ -206,11 +206,11 @@ function Xetnghiem() {
                 </div>
                 <div className={click ? "w-100 vh-100" : "w-75"}>
                     <div className="fw-bold bg-title p-1 mt-1 text-center">
-                        TRẢ KẾT QUẢ VLTL - YHCT
-                    </div>{" "}
-                    <div className="px-2">
+                        TRẢ KẾT QUẢ XÉT NGHIỆM
+                    </div>
+                    <div >
                         <Form>
-                            <div className="row form-row">
+                            <div className="row form-row m-0 p-0">
                                 <FormItem
                                     label={<div className="form-input-label">ID Mẫu</div>}
                                     className="col-md-3"
@@ -222,13 +222,13 @@ function Xetnghiem() {
                                     className="col-md-3"
                                 >
                                     <Input className="form-control" />
-                                </FormItem>{" "}
+                                </FormItem>
                                 <FormItem
                                     label={<div className="form-input-label">BS CĐ</div>}
                                     className="col-md-3"
                                 >
                                     <Input className="form-control" />
-                                </FormItem>{" "}
+                                </FormItem>
                                 <FormItem
                                     label={<div className="form-input-label">BS trả KQ</div>}
                                     className="col-md-3"
@@ -236,7 +236,7 @@ function Xetnghiem() {
                                     <Input className="form-control" />
                                 </FormItem>
                             </div>
-                            <div className="row form-row">
+                            <div className="row form-row m-0">
                                 <FormItem
                                     label={<div className="form-input-label">CĐ sơ bộ</div>}
                                     className="col-md-12"
@@ -251,14 +251,14 @@ function Xetnghiem() {
                             columns={column0}
                             dataSource={ds}
                             // loading={loading}
-                            scroll={{ x: true, y: 300 }}
+                            scroll={{ x: true, y: 170 }}
                             size="small"
                             pagination={false}
                             rowSelection={rowSelection}
                         />
                     </div>
                     <div className="mt-2">
-                        <div className="px-1 tab-xetnghiem">
+                        <div className="px-1 tab-xetnghiem ">
                             <Tabs
                                 defaultActiveKey="1"
                                 type="card"

@@ -137,7 +137,7 @@ function Phanquyen() {
             icon: <CarryOutOutlined />,
             children: [
                 {
-                    title: <div className="form-input-label">Pahn Trọng Hiếu</div>,
+                    title: <div className="form-input-label">Phan Trọng Hiếu</div>,
                     key: "14.1",
                 },
             ],
@@ -160,7 +160,7 @@ function Phanquyen() {
                                 {
                                     title: (
                                         <div className="form-input-label">
-                                            "Tiếp nhận - Nhận bệnh
+                                            Tiếp nhận - Nhận bệnh
                                         </div>
                                     ),
                                     key: "1.1.1",
@@ -172,7 +172,7 @@ function Phanquyen() {
                                         {
                                             title: (
                                                 <div className="form-input-label">
-                                                    "Quản lý lịch hẹn
+                                                    Quản lý lịch hẹn
                                                 </div>
                                             ),
                                             key: "1.1.2.1",
@@ -523,11 +523,13 @@ function Phanquyen() {
         <div>
             <div className="d-flex vh-100">
                 <div className="w-20">
-                    <div className="scroll">
+                    {" "}
+                    <div className="scroll-phanquyen-1">
                         <div className="color-border vh-100">
                             <div className="bg-label fw-bold p-1 form-input-label">
                                 Người dùng WINOSFT_VIETNAM
                             </div>
+
                             <Tree
                                 showLine={
                                     showLine
@@ -537,19 +539,36 @@ function Phanquyen() {
                                         : false
                                 }
                                 showIcon={showIcon}
-                                defaultExpandedKeys={["0-0-0"]}
+                                defaultExpandedKeys={[
+                                    "1",
+                                    "2",
+                                    "3",
+                                    "4",
+                                    "5",
+                                    "6",
+                                    "7",
+                                    "8",
+                                    "9",
+                                    "10",
+                                    "11",
+                                    "12",
+                                    "13",
+                                    "14",
+                                ]}
                                 onSelect={onSelect}
                                 treeData={treeData}
                             />
                         </div>
                     </div>
                 </div>
-                <div className="w-35">
-                    <div className="scroll1 ">
-                        <div className="color-border vh-100">
+                <div className="w-40">
+                    {" "}
+                    <div className="scroll-phanquyen-1">
+                        <div className="color-border">
                             <div className="bg-label fw-bold p-1 form-input-label">
                                 Chức năng sử dụng
                             </div>
+
                             <div className="treenode">
                                 <Tree
                                     showLine={
@@ -564,11 +583,15 @@ function Phanquyen() {
                                         "1",
                                         "1.1",
                                         "1.1.1",
+                                        "1.1.2",
                                         "2",
                                         "2.1",
                                         "2.2",
                                         "2.2.1",
                                         "3",
+                                        "3.1",
+                                        "3.2",
+                                        "3.2.1",
                                     ]}
                                     defaultSelectedKeys={["6.1", "7.1"]}
                                     onSelect={onSelect}
@@ -582,34 +605,39 @@ function Phanquyen() {
                         </div>
                     </div>
                 </div>
-                <div className="w-55">
-                    <div className="color-border">
-                        <div className=" d-flex bg-label">
-                            <div className=" fw-bold p-1 form-input-label">
-                                Phân quyền khoa phòng
+                <div className="w-50">
+                   
+                        <div className="color-border"> <div className="scroll-phanquyen-2">
+                            <div className=" d-flex bg-label">
+                                <div className=" fw-bold p-1 form-input-label">
+                                    Phân quyền khoa phòng
+                                </div>
+                                <div>
+                                    <Button className="form-btn ">
+                                        <FontAwesomeIcon icon={faSave} />
+                                    </Button>
+                                </div>
                             </div>
-                            <div>
-                                <Button className="form-btn ">
-                                    <FontAwesomeIcon icon={faSave} />
-                                </Button>
-                            </div>
-                        </div>
 
-                        <div className="phanquyenkhoaphong px-2 py-1">
-                            <Checkbox.Group options={options} onChange={onChange} />
-                        </div>
-                    </div>
-                    <div className="color-border">
-                        <div className=" d-flex bg-label">
-                            <div className=" fw-bold p-1 form-input-label">Kho xuất bán</div>
-                            <div>
-                                <Button className="form-btn ">
-                                    <FontAwesomeIcon icon={faSave} />
-                                </Button>
+                            <div className="phanquyenkhoaphong px-2 py-1">
+                                <Checkbox.Group options={options} onChange={onChange} />
                             </div>
                         </div>
-                        <div className="px-2 py-1">
-                            <Checkbox.Group options={options} onChange={onChange} />
+                    </div>{" "}
+                    
+                        <div className="color-border"><div className="scroll-phanquyen-2">
+                            <div className=" d-flex bg-label">
+                                <div className=" fw-bold p-1 form-input-label">Kho xuất bán</div>
+                                <div>
+                                    <Button className="form-btn ">
+                                        <FontAwesomeIcon icon={faSave} />
+                                    </Button>
+                                </div>
+                            </div>
+
+                            <div className="px-2 py-1">
+                                <Checkbox.Group options={options} onChange={onChange} />
+                            </div>
                         </div>
                     </div>
                 </div>

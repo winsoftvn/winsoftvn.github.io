@@ -1,7 +1,10 @@
 import { Table } from "antd";
 import ds from "../../../util/data";
+import Doctraketquaxetnghiem from "./Doctraketquaxetnghiem";
+import { useState } from "react";
 
 function Maumota() {
+    const [open, setOpen] = useState(false);
     const column0 = [
         {
             title: "Loại xét nghiệm",
@@ -20,6 +23,9 @@ function Maumota() {
             render: (TDVVT) => <div style={{ width: "200px" }}> {TDVVT} </div>,
         },
     ];
+    const handleOpenModel = (a) => {
+        setOpen(true);
+    };
     return (
         <>
             <div>
@@ -30,7 +36,13 @@ function Maumota() {
                     scroll={{ x: true, y: 300 }}
                     size="small"
                     pagination={false}
+                    onRow={(record) => ({
+                        onDoubleClick: () => {
+                            handleOpenModel(record);
+                        },
+                    })}
                 />
+                <Doctraketquaxetnghiem open={open} setOpen={setOpen} />
             </div>
         </>
     );

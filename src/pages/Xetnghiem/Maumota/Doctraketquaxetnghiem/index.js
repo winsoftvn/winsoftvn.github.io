@@ -16,13 +16,13 @@ import {
     faCircleXmark,
 } from "@fortawesome/free-solid-svg-icons";
 
-import imguser from "../../../../../assets/image/user.png";
+import imguser from "../../../../assets/image/user.png";
 import Lichsuthuchien from "./Lichsuthuchien";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import WebcamCapture from "./Webcam";
-import Thongtindomatdoxuong from "./Thongtindomatdoxuong";
-function Doctraketquadomatdoxuong(props) {
+import Thongtinxetnghiem from "./Thongtinxetnghiem";
+function Doctraketquaxetnghiem(props) {
     const { sieuam } = useSelector((state) => state.dataAdd);
     const { open, setOpen, chitiet } = props;
     const [form] = Form.useForm();
@@ -95,12 +95,12 @@ function Doctraketquadomatdoxuong(props) {
             label: (
                 <div className="d-flex align-items-center">
                     <FontAwesomeIcon icon={faProjectDiagram} />
-                    <span className="mx-1">Thông tin đo mật độ xương</span>
+                    <span className="mx-1">Thông tin xét nghiệm</span>
                 </div>
             ),
             children: (
                 <div className="color-border p-1">
-                    <Thongtindomatdoxuong />
+                    <Thongtinxetnghiem />
                 </div>
             ),
         },
@@ -131,7 +131,7 @@ function Doctraketquadomatdoxuong(props) {
                 title={
                     <>
                         <div className="d-flex justify-content-between">
-                            <div>TRẢ KẾT QUẢ ĐO MẬT ĐỘ XƯƠNG</div>
+                            <div>TRẢ KẾT QUẢ XÉT NGHIỆM</div>
                             <div>
                                 <div className="d-flex justify-content-end">
                                     {items1.map((item, index) => (
@@ -271,4 +271,4 @@ function Doctraketquadomatdoxuong(props) {
     );
 }
 
-export default Doctraketquadomatdoxuong;
+export default Doctraketquaxetnghiem;
