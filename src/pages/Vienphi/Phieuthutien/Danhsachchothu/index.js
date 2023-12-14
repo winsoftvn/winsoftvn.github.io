@@ -83,7 +83,7 @@ function Danhsachchothu() {
                 </div>
             ),
             children: (
-                <div className="tiepnhan-tab">
+                <div className="color-border">
                     <Dichvu />
                 </div>
             ),
@@ -96,7 +96,7 @@ function Danhsachchothu() {
                 </div>
             ),
             children: (
-                <div className="tiepnhan-tab">
+                <div className="color-border">
                     <ThuocVTYT />
                 </div>
             ),
@@ -109,7 +109,7 @@ function Danhsachchothu() {
                 </div>
             ),
             children: (
-                <div className="tiepnhan-tab">
+                <div className="color-border">
                     <Tamung />
                 </div>
             ),
@@ -117,7 +117,7 @@ function Danhsachchothu() {
     ];
     return (
         <>
-            <div className="d-flex">
+            <div className="d-flex h-max">
                 <div className={click ? "vienphi-danhsach-left w-0" : "vienphi-danhsach-left w-20"}>
                     <div
                         className={
@@ -586,7 +586,7 @@ function Danhsachchothu() {
                             </div>
                         </div>
                     </div>
-                    <div className=" m-2 shadow v6">
+                    <div className=" m-1 shadow v6 tab-vienphi">
                         <Tabs
                             defaultActiveKey="1"
                             type="card"

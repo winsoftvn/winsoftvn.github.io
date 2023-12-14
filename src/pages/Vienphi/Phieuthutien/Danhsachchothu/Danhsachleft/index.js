@@ -19,9 +19,6 @@ function Danhsachleft() {
     const [click, setClick] = useState(false);
     const [activeModify, setActiveModify] = useState(false);
 
-    const handleClick = () => {
-        setClick(!click);
-    };
     const items = [
         {
             key: "1",

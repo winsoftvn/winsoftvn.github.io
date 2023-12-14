@@ -197,7 +197,7 @@ function Danhsachleft() {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0, transition: { duration: 0.8 } }}
             >
-                <div className="div-shadow v5">
+                <div className="fixed">
                     <div className="text-muted">
                         <Form className="mx-1">
                             <div className="row form-row">
@@ -249,7 +249,7 @@ function Danhsachleft() {
                                 columns={column0}
                                 dataSource={ds}
                                 // loading={loading}
-                                scroll={{ x: true, y: 400 }}
+                                scroll={{ x: true, y: 300 }}
                                 size="small"
                                 pagination={false}
                             />
@@ -261,7 +261,7 @@ function Danhsachleft() {
                                 columns={column1}
                                 dataSource={ds}
                                 // loading={loading}
-                                scroll={{ x: true, y: 155 }}
+                                scroll={{ x: true, y: 190 }}
                                 size="small"
                                 bordered={true}
                                 pagination={false}

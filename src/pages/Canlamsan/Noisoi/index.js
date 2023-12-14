@@ -135,9 +135,9 @@ function Noisoi() {
                 </div>
                 <div className={click ? "w-100 vh-100" : "w-75"}>
                     <div className="fw-bold bg-title p-1 mt-1 text-center">TRẢ KẾT QUẢ NỘI SOI</div>{" "}
-                    <div className="px-2">
+                    <div className="">
                         <Form>
-                        <div className="color-border m-1 pb-3 px-2">
+                            <div className="color-border m-1 pb-3 px-2">
                                 <div>
                                     <div className="row form-row">
                                         <Form.Item
@@ -199,11 +199,7 @@ function Noisoi() {
                                             <Input className="form-control" />
                                         </Form.Item>
                                         <Form.Item
-                                            label={
-                                                <div className="form-input-label">
-                                                    KTV phụ
-                                                </div>
-                                            }
+                                            label={<div className="form-input-label">KTV phụ</div>}
                                             className="col-md-3"
                                         >
                                             <div className="input-select">
@@ -244,9 +240,7 @@ function Noisoi() {
                                         </Form.Item>
                                         <Form.Item
                                             label={
-                                                <div className="form-input-label ">
-                                                    Mẫu mô tả
-                                                </div>
+                                                <div className="form-input-label ">Mẫu mô tả</div>
                                             }
                                             className="col-md-4"
                                         >
@@ -262,17 +256,17 @@ function Noisoi() {
                                     </div>
                                 </div>
                             </div>
-                            <div className="color-border m-1 p-2 mt-1 z-0">
-                                <div className="row ">
+                            <div className="color-border m-1 p-2 mt-1 ">
+                                <div className="row z-0">
                                     <div className="form-input-label">Nội dung:</div>
                                     <Form.Item>
                                         <SunEditor
+                                            className="z-0"
                                             autoFocus={true}
                                             lang="en"
                                             setDefaultStyle="height:255px"
                                             setOptions={{
                                                 showPathLabel: false,
-
                                                 placeholder: "Enter your text here!!!",
                                                 plugins: [
                                                     align,

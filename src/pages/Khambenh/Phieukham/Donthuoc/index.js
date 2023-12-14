@@ -1,285 +1,124 @@
-import { Form, Input, Table, Button, InputNumber, Checkbox, Select } from "antd";
+import { Form, Input, Table, Button, InputNumber, Checkbox } from "antd";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck } from "@fortawesome/free-solid-svg-icons";
-import ds1 from "../../../../util/data1";
-import { useEffect, useState } from "react";
-import ModelDonthuoc from "./modeldonthuoc";
-
+import { faCheck, faXmarkCircle } from "@fortawesome/free-solid-svg-icons";
+import { v4 as uuidv4 } from "uuid";
+import { useEffect, useRef, useState } from "react";
+import SearchFilter from "./search";
+import "./donthuoc.scss";
 function Donthuoc() {
-    const [data, setData] = useState(ds1);
-    const [openDonThuoc, setOpenDonthuoc] = useState(false);
-    const [thuocdcchon, setValueThuocChon] = useState("");
+    const [dsthuoc, setDSThuoc] = useState([]);
+    const [thuocdcchon, setValueThuocChon] = useState({});
     const [value, setValue] = useState(false);
     const [form] = Form.useForm();
+
+    const handleDeleteThuoc = (a) => {
+        let ds = dsthuoc.filter((item) => item.Ma != a.Ma);
+        setDSThuoc(ds);
+    };
     useEffect(() => {
         form.setFieldsValue({
-            tenthuoc: thuocdcchon.TDVVT,
-            dvt: thuocdcchon.DVT,
-            dvdung: thuocdcchon.TDVVT,
+            Tenthuoc: thuocdcchon.name,
+            // DVT: thuocdcchon.email,
+            // Hluong: thuocdcchon.phone,
         });
     }, [thuocdcchon]);
-    const handleAddDataList = (a) => {
-        // let ds = [
-        //     {
-        //         tenthuoc: "",
-        //         dvt: "",
-        //         dvdung: "",
-        //         ngcap: "",
-        //         sang: "",
-        //         trua: "",
-        //         chieu: "",
-        //         toi: "",
-        //         tong: "",
-        //         cachdung: "",
-        //         thtien: "",
-        //     },
-        // ];
 
-        data.push({
-            tenthuoc: a.tenthuoc,
-            dvt: a.dvt,
-            dvdung: a.dvdung,
-            ngcap: a.ngcap,
-            sang: a.sang,
-            trua: a.trua,
-            chieu: a.chieu,
-            toi: a.toi,
-            tong: a.tong,
-            cachdung: a.cachdung,
-            thtien: a.thtien,
-        });
-        // console.log(data);
-        setValue(true);
-    };
-
-    const handleSetOpen = () => {
-        setOpenDonthuoc(true);
-    };
     const column0 = [
         {
             title: "Tên Thuốc",
-            dataIndex: "tenthuoc",
-            fixed: "left",
-            render: (tenthuoc) => (
-                <div style={{ width: "200px" }} className="p-0 m-0">
-                    <Form.Item className="p-0 m-0" name="tenthuoc">
-                        <Input
-                            onClick={handleSetOpen}
-                            className="form-control"
-                            value={thuocdcchon}
-                        />
-                        {/* <Select
-                            className="w-100"
-                            showSearch
-                            style={{
-                                width: 200,
-                            }}
-                            placeholder="Chọn thuốc"
-                            optionFilterProp="children"
-                            filterOption={(input, option) => (option?.label ?? "").includes(input)}
-                            filterSort={(optionA, optionB) =>
-                                (optionA?.label ?? "")
-                                    .toLowerCase()
-                                    .localeCompare((optionB?.label ?? "").toLowerCase())
-                            }
-                            options={[
-                                {
-                                    value: "1",
-                                    label: "Not Identified",
-                                },
-                                {
-                                    value: "2",
-                                    label: "Closed",
-                                },
-                                {
-                                    value: "3",
-                                    label: "Communicated",
-                                },
-                                {
-                                    value: "4",
-                                    label: "Identified",
-                                },
-                                {
-                                    value: "5",
-                                    label: "Resolved",
-                                },
-                                {
-                                    value: "6",
-                                    label: "Cancelled",
-                                },
-                            ]}
-                        /> */}
-                    </Form.Item>
-                </div>
-            ),
+            dataIndex: "Tenthuoc",
+            width: "20%",
+        },
+        {
+            title: "Hàm lượng",
+            dataIndex: "Hluong",
+            width: "5%",
+        },
+        {
+            title: "ĐVT",
+            dataIndex: "DVT",
+            width: "5%",
         },
 
         {
-            title: "ĐVT",
-            dataIndex: "dvt",
-            render: (dvt) => (
-                <div style={{ width: "100px" }} className="p-0 m-0">
-                    <Form.Item className="p-0 m-0" name="dvt">
-                        <Select
-                            className="w-100"
-                            showSearch
-                            optionFilterProp="children"
-                            filterOption={(input, option) => (option?.label ?? "").includes(input)}
-                            filterSort={(optionA, optionB) =>
-                                (optionA?.label ?? "")
-                                    .toLowerCase()
-                                    .localeCompare((optionB?.label ?? "").toLowerCase())
-                            }
-                            options={[
-                                {
-                                    value: "1",
-                                    label: "Cuộn",
-                                },
-                                {
-                                    value: "2",
-                                    label: "Vĩ",
-                                },
-                                {
-                                    value: "3",
-                                    label: "Hộp",
-                                },
-                                {
-                                    value: "4",
-                                    label: "Sợi",
-                                },
-                            ]}
-                        />
-                    </Form.Item>
-                </div>
-            ),
-        },
-        {
-            title: "Đ.vị dùng",
-            dataIndex: "dvdung",
-            render: (dvdung) => (
-                <div style={{ width: "100px" }} className="p-0 m-0">
-                    <Form.Item className="p-0 m-0" name="dvdung">
-                        <Input className="border-input w-100 form-control" />
-                    </Form.Item>{" "}
-                </div>
-            ),
-        },
-        {
             title: "Ng.cấp",
-            dataIndex: "TDVVT",
-            render: (TDVVT) => (
-                <div style={{ width: "100px" }} className="p-0 m-0">
-                    <Form.Item className="p-0 m-0" name="ngcap">
-                        <Input className="border-input w-100 form-control" />
-                    </Form.Item>{" "}
-                </div>
-            ),
+            dataIndex: "Ncap",
+            width: "5%",
         },
         {
             title: "Sáng",
-            dataIndex: "MADVKT",
+            dataIndex: "Sang",
+            width: "5%",
             align: "center",
-            render: (TDVVT) => (
-                <div style={{ width: "50px" }}>
-                    <Form.Item className="p-0 m-0" name="sang">
-                        <InputNumber className="border-input w-100 form-control" min={0} />
-                    </Form.Item>{" "}
-                </div>
-            ),
         },
 
         {
             title: "Trưa",
-            dataIndex: "TDVVT",
-            render: (TDVVT) => (
-                <div style={{ width: "50px" }}>
-                    <Form.Item className="p-0 m-0" name="trua">
-                        <InputNumber className="border-input w-100 form-control" min={0} />
-                    </Form.Item>{" "}
-                </div>
-            ),
+            dataIndex: "Trua",
+            width: "5%",
+            align: "center",
         },
         {
             title: "Chiều",
-            dataIndex: "MADVKT",
-            render: (TDVVT) => (
-                <div style={{ width: "50px" }}>
-                    <Form.Item className="p-0 m-0" name="chieu">
-                        <InputNumber className="border-input w-100 form-control" min={0} />
-                    </Form.Item>{" "}
-                </div>
-            ),
+            dataIndex: "Chieu",
+            width: "5%",
+            align: "center",
         },
         {
             title: "Tối ",
-            dataIndex: "TDVVT",
-            render: (TDVVT) => (
-                <div style={{ width: "50px" }}>
-                    <Form.Item className="p-0 m-0" name="toi">
-                        <InputNumber className="border-input w-100 form-control" min={0} />
-                    </Form.Item>{" "}
-                </div>
-            ),
+            dataIndex: "Toi",
+            width: "5%",
+            align: "center",
         },
 
         {
             title: "Tổng",
-            dataIndex: "TDVVT",
-            render: (TDVVT) => (
-                <div style={{ width: "100px" }} className="p-0 m-0">
-                    <Form.Item className="p-0 m-0" name="tong">
-                        <InputNumber className="border-input w-100 form-control" />
-                    </Form.Item>{" "}
-                </div>
-            ),
+            dataIndex: "Tong",
+            width: "10%",
         },
         {
             title: "Cách dùng",
-            dataIndex: "MADVKT",
-            render: (TDVVT) => (
-                <div style={{ width: "200px" }} className="p-0 m-0">
-                    <Form.Item className="p-0 m-0" name="cachdung">
-                        <Input className="border-input w-100 form-control" />
-                    </Form.Item>
-                </div>
-            ),
+            dataIndex: "Cachdung",
+            width: "20%",
         },
         {
-            title: "T.Tiền",
-            dataIndex: "TDVVT",
-            render: (TDVVT) => (
-                <div style={{ width: "200px" }} className="p-0 m-0">
-                    <Form.Item className="p-0 m-0" name="thtien">
-                        <Input className="border-input w-100 form-control" />
-                    </Form.Item>
-                </div>
-            ),
+            title: "Đơn giá",
+            dataIndex: "Dongia",
+            width: "10%",
         },
         {
-            title: "Thao tác",
+            title: "Xóa",
             dataIndex: "",
             align: "center",
-            fixed: "right",
+            width: "5%",
             render: (_, record) => (
-                <div>
-                    <Button className="khambenh-btn-icon color-icon-edit green" htmlType="submit">
-                        <FontAwesomeIcon icon={faCheck} />
+                <div className="d-flex justify-content-center">
+                    <Button
+                        className="khambenh-btn-icon color-icon-edit red"
+                        onClick={() => handleDeleteThuoc(record)}
+                    >
+                        <FontAwesomeIcon icon={faXmarkCircle} />
                     </Button>
                 </div>
             ),
         },
     ];
-    useEffect(() => {
-        setValue(false);
-    }, [value]);
+    const inputRef = useRef(null);
+    const handlePushThuoc = (e) => {
+        let a = {
+            Ma: uuidv4(),
+            Tenthuoc: thuocdcchon.name,
+            ...e,
+        };
+        setDSThuoc((oldArray) => [...oldArray, a]);
+        form.setFieldsValue({
+            Tenthuoc: "",
+        });
+        setValue(!value);
+    };
     return (
         <>
             <div>
-                <ModelDonthuoc
-                    open={openDonThuoc}
-                    setOpen={setOpenDonthuoc}
-                    setValueThuoc={setValueThuocChon}
-                />
                 <div className="my-1 px-1 bg-box bg-xam color-border-xam">
                     <div>
                         <Form>
@@ -329,17 +168,105 @@ function Donthuoc() {
                     </div>
                 </div>
                 <div className="div-shadow v5 my-1">
-                    <Form onFinish={handleAddDataList} form={form}>
-                        <Table
-                            columns={column0}
-                            dataSource={data}
-                            // loading={loading}
-                            scroll={{ x: true, y: 270 }}
-                            size="small"
-                            bordered
-                            pagination={false}
-                        />
-                    </Form>
+                    <div>
+                        <div className="label-table">
+                            <div className=" w-20">Tên thuốc</div>
+                            <div className=" w-5 text-center">H.lượng</div>
+                            <div className=" w-5 text-center">ĐVT</div>
+                            <div className=" w-5 text-center">N.cấp</div>
+                            <div className=" w-5 text-center">Sáng</div>
+                            <div className=" w-5 text-center">Trưa</div>
+                            <div className=" w-5 text-center">Chiều</div>
+                            <div className=" w-5 text-center">Tối</div>
+                            <div className=" w-10 text-center">Tổng</div>
+                            <div className=" w-20">Cách dùng</div>
+                            <div className=" w-10 text-center">Đơn giá</div>
+                            <div className=" w-5 text-center">Lưu</div>
+                        </div>
+                        <Form form={form} onFinish={handlePushThuoc}>
+                            <div className="d-flex">
+                                <Form.Item className="p-0 m-0 w-20">
+                                    <SearchFilter
+                                        setValueThuocChon={setValueThuocChon}
+                                        thuocdcchon={thuocdcchon}
+                                        form={form}
+                                        onFinish={handlePushThuoc}
+                                    />
+                                </Form.Item>
+                                <Form.Item className="p-0 m-0 w-5" name="Hluong">
+                                    <Input className="form-control" />
+                                </Form.Item>{" "}
+                                <Form.Item className="p-0 m-0 w-5" name="DVT">
+                                    <Input className="form-control" />
+                                </Form.Item>
+                                <Form.Item className="p-0 m-0 w-5" name="Ncap">
+                                    <Input className="form-control" />
+                                </Form.Item>
+                                <Form.Item className="p-0 m-0 w-5" name="Sang">
+                                    <Input
+                                        className="form-control"
+                                        type="number"
+                                        min={0}
+                                        classNames="text-center"
+                                    />
+                                </Form.Item>
+                                <Form.Item className="p-0 m-0 w-5" name="Trua">
+                                    <Input
+                                        className="form-control"
+                                        classNames="text-center"
+                                        type="number"
+                                        min={0}
+                                    />
+                                </Form.Item>
+                                <Form.Item className="p-0 m-0 w-5" name="Chieu">
+                                    <Input
+                                        className="form-control"
+                                        type="number"
+                                        min={0}
+                                        classNames="text-center"
+                                    />
+                                </Form.Item>
+                                <Form.Item className="p-0 m-0 w-5" name="Toi">
+                                    <Input
+                                        className="form-control"
+                                        type="number"
+                                        min={0}
+                                        classNames="text-center"
+                                    />
+                                </Form.Item>
+                                <Form.Item className="p-0 m-0 w-10" name="Tong">
+                                    <Input className="form-control" />
+                                </Form.Item>
+                                <Form.Item className="p-0 m-0 w-20" name="Cachdung">
+                                    <Input className="form-control" />
+                                </Form.Item>
+                                <Form.Item className="p-0 m-0 w-10" name="Dongia">
+                                    <Input className="form-control" readOnly />
+                                </Form.Item>
+                                <Form.Item className="p-0 m-0 w-5 d-flex justify-content-center">
+                                    <Button
+                                        className="khambenh-btn-icon color-icon-edit green"
+                                        htmlType="submit"
+                                    >
+                                        <FontAwesomeIcon icon={faCheck} />
+                                    </Button>
+                                </Form.Item>
+                            </div>
+                        </Form>
+                        <div className="table-donthuoc">
+                            <Table
+                                columns={column0}
+                                dataSource={dsthuoc}
+                                // loading={loading}
+                                scroll={{ x: true, y: 190 }}
+                                size="small"
+                                bordered={true}
+                                pagination={false}
+                                showHeader={false}
+                                locale={{ emptyText: "Chưa có dữ liệu" }}
+                            />
+                        </div>
+                    </div>
                 </div>
             </div>
         </>

@@ -17,7 +17,6 @@ import { motion } from "framer-motion";
 import Menuvienphi from "../../../Menuvienphi";
 import ds from "../../../../../util/data";
 import "../../danhmuc.scss";
-import "./khaibaogiadichvukythuat.scss";
 import Search from "antd/es/input/Search";
 function Khaibaogiadichvukythuat() {
     const [open, setOpen] = useState(false);

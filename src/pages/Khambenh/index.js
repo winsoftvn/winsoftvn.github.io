@@ -128,7 +128,6 @@ function Khambenh() {
                                 <Checkbox />
                             </Form.Item>
                         </div>
-                        
                     </Form>
 
                     {items1.map((item) => (
@@ -139,147 +138,156 @@ function Khambenh() {
                     ))}
                 </div>
             </div>
-            <div className="mx-2">
-                <Form>
-                    <div className="row form-row">
-                        <Form.Item
-                            className="m-0 w-30"
-                            label={
-                                <div className="form-input-label khambenh-form-input-label">
-                                    Họ và tên
-                                </div>
-                            }
-                        >
-                            <Input className="form-control m-0" />
-                        </Form.Item>
-                        <Form.Item
-                            className="m-0 w-15"
-                            label={
-                                <div className="form-input-label khambenh-form-input-label">
-                                    Ng.sinh
-                                </div>
-                            }
-                        >
-                            <Input className="form-control m-0" />
-                        </Form.Item>
-                        <Form.Item
-                            className="m-0 w-10"
-                            label={
-                                <div className="form-input-label khambenh-form-input-label">
-                                    Giới tính
-                                </div>
-                            }
-                        >
-                            <Input className="form-control m-0" />
-                        </Form.Item>
-                        <Form.Item
-                            className="m-0 w-15"
-                            label={
-                                <div className="form-input-label khambenh-form-input-label">
-                                    N.Nghiệp
-                                </div>
-                            }
-                        >
-                            <Input className="form-control m-0" />
-                        </Form.Item>
-                        <Form.Item
-                            className="m-0 w-15"
-                            label={
-                                <div className="form-input-label khambenh-form-input-label">
-                                    Ngày vv
-                                </div>
-                            }
-                        >
-                            <Input className="form-control m-0" />
-                        </Form.Item>
-                        <Form.Item
-                            className="m-0 w-15"
-                            label={
-                                <div className="form-input-label khambenh-form-input-label">
-                                    Ngày KB
-                                </div>
-                            }
-                        >
-                            <Input className="form-control m-0" />
-                        </Form.Item>
-                    </div>
-                    <div className="row form-row">
-                        <Form.Item
-                            className="m-0 w-15"
-                            label={
-                                <div className="form-input-label khambenh-form-input-label">
-                                    Dân tộc
-                                </div>
-                            }
-                        >
-                            <Input className="form-control m-0" />
-                        </Form.Item>
-                        <Form.Item
-                            className="m-0 w-15"
-                            label={
-                                <div className="form-input-label khambenh-form-input-label">
-                                    Q.tịch
-                                </div>
-                            }
-                        >
-                            <Input className="form-control m-0" />
-                        </Form.Item>
-                        <Form.Item
-                            className="m-0 w-40"
-                            label={
-                                <div className="form-input-label khambenh-form-input-label">
-                                    Địa chỉ
-                                </div>
-                            }
-                        >
-                            <Input className="form-control m-0" />
-                        </Form.Item>
-                        <Form.Item
-                            className="m-0 w-30"
-                            label={
-                                <div className="form-input-label khambenh-form-input-label">
-                                    Đối tượng
-                                </div>
-                            }
-                        >
-                            <Input className="form-control m-0" />
-                        </Form.Item>
-                    </div>
-                </Form>
-            </div>
-            <div className="d-flex">
-                <div
-                    className={
-                        click
-                            ? "khambenh-danhsach-left w-0 div-shadow v5 my-2"
-                            : "khambenh-danhsach-left w-25 div-shadow v5 my-2"
-                    }
-                >
+            <div>
+                <div className="mx-2">
+                    <Form>
+                        <div className="row form-row">
+                            <Form.Item
+                                className="m-0 w-30"
+                                label={
+                                    <div className="form-input-label khambenh-form-input-label">
+                                        Họ và tên
+                                    </div>
+                                }
+                            >
+                                <Input className="form-control m-0" />
+                            </Form.Item>
+                            <Form.Item
+                                className="m-0 w-15"
+                                label={
+                                    <div className="form-input-label khambenh-form-input-label">
+                                        Ng.sinh
+                                    </div>
+                                }
+                            >
+                                <Input className="form-control m-0" />
+                            </Form.Item>
+                            <Form.Item
+                                className="m-0 w-10"
+                                label={
+                                    <div className="form-input-label khambenh-form-input-label">
+                                        Giới tính
+                                    </div>
+                                }
+                            >
+                                <Input className="form-control m-0" />
+                            </Form.Item>
+                            <Form.Item
+                                className="m-0 w-15"
+                                label={
+                                    <div className="form-input-label khambenh-form-input-label">
+                                        N.Nghiệp
+                                    </div>
+                                }
+                            >
+                                <Input className="form-control m-0" />
+                            </Form.Item>
+                            <Form.Item
+                                className="m-0 w-15"
+                                label={
+                                    <div className="form-input-label khambenh-form-input-label">
+                                        Ngày vv
+                                    </div>
+                                }
+                            >
+                                <Input className="form-control m-0" />
+                            </Form.Item>
+                            <Form.Item
+                                className="m-0 w-15"
+                                label={
+                                    <div className="form-input-label khambenh-form-input-label">
+                                        Ngày KB
+                                    </div>
+                                }
+                            >
+                                <Input className="form-control m-0" />
+                            </Form.Item>
+                        </div>
+                        <div className="row form-row">
+                            <Form.Item
+                                className="m-0 w-15"
+                                label={
+                                    <div className="form-input-label khambenh-form-input-label">
+                                        Dân tộc
+                                    </div>
+                                }
+                            >
+                                <Input className="form-control m-0" />
+                            </Form.Item>
+                            <Form.Item
+                                className="m-0 w-15"
+                                label={
+                                    <div className="form-input-label khambenh-form-input-label">
+                                        Q.tịch
+                                    </div>
+                                }
+                            >
+                                <Input className="form-control m-0" />
+                            </Form.Item>
+                            <Form.Item
+                                className="m-0 w-40"
+                                label={
+                                    <div className="form-input-label khambenh-form-input-label">
+                                        Địa chỉ
+                                    </div>
+                                }
+                            >
+                                <Input className="form-control m-0" />
+                            </Form.Item>
+                            <Form.Item
+                                className="m-0 w-30"
+                                label={
+                                    <div className="form-input-label khambenh-form-input-label">
+                                        Đối tượng
+                                    </div>
+                                }
+                            >
+                                <Input className="form-control m-0" />
+                            </Form.Item>
+                        </div>
+                    </Form>
+                </div>
+                <div className="d-flex h-max pt-2">
                     <div
                         className={
-                            click ? "khambenh-danhsach-close-left" : "khambenh-danhsach-open-left"
+                            click
+                                ? "khambenh-danhsach-left w-0 div-shadow v5"
+                                : "khambenh-danhsach-left w-25 div-shadow color-border v5"
                         }
-                        onClick={() => setClick(!click)}
                     >
-                        {click ? (
-                            <FontAwesomeIcon icon={faAngleRight} />
-                        ) : (
-                            <FontAwesomeIcon icon={faAngleLeft} />
-                        )}
-                    </div>
-                    <div>
-                        <div className="mt-1 shadow ">
-                            <div className="v6">
-                                <div className={click ? "d-none" : "w-100"}>
-                                    <Danhsachleft />
+                        <div
+                            className={
+                                click
+                                    ? "khambenh-danhsach-close-left"
+                                    : "khambenh-danhsach-open-left"
+                            }
+                            onClick={() => setClick(!click)}
+                        >
+                            {click ? (
+                                <FontAwesomeIcon icon={faAngleRight} />
+                            ) : (
+                                <FontAwesomeIcon icon={faAngleLeft} />
+                            )}
+                        </div>
+                        <div>
+                            <div className="mt-1 shadow ">
+                                <div className="v6">
+                                    <div className={click ? "d-none" : "w-100 scroll-dsleft"}>
+                                        <Danhsachleft />
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div className={click ? "w-100 vh-100" : "w-75"}>
-                    <div className="mx-1 my-2 tab-khambenh">
-                        <Tabs defaultActiveKey="1" type="card" size="small" items={tabkhambenh} />
+                    <div className={click ? "w-100 vh-100" : "w-75"}>
+                        <div className="mx-1 my-2 tab-khambenh">
+                            <Tabs
+                                defaultActiveKey="1"
+                                type="card"
+                                size="small"
+                                items={tabkhambenh}
+                            />
+                        </div>
                     </div>
                 </div>
             </div>

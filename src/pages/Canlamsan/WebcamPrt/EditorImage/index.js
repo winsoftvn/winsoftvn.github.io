@@ -1,3 +1,4 @@
+import { logDOM, logRoles } from "@testing-library/react";
 import { Modal } from "antd";
 import FilerobotImageEditor, { TABS, TOOLS } from "react-filerobot-image-editor";
 
@@ -69,8 +70,8 @@ function EditorImage(props) {
                         ],
                     }}
                     tabsIds={[TABS.ADJUST, TABS.FINETUNE, TABS.FILTERS, TABS.RESIZE]}
-                    defaultTabId={TABS.ADJUST} // or 'Annotate'
-                   
+                    defaultTabId={TABS.FILTERS}
+                    defaultToolId={TABS.FILTERS}
                 />
             </div>
         </Modal>

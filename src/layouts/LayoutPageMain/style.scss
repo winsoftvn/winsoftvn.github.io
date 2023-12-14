@@ -2,6 +2,7 @@
 .bg-frame {
     background: rgb(0, 103, 172);
     background: linear-gradient(157deg, rgba(0, 103, 172, 1) 22%, rgba(218, 10, 76, 1) 78%);
+    height: fit-content !important;
 }
 .b-content {
     margin: 2px;
@@ -53,6 +54,7 @@ li.ant-menu-overflow-item.ant-menu-item.ant-menu-item-only-child {
     width: 40px;
     height: 30px;
     background-color: #0067ac;
+
     align-items: "center";
     display: "flex";
     justify-content: "center";
@@ -68,6 +70,7 @@ li.ant-menu-overflow-item.ant-menu-item.ant-menu-item-only-child {
     background-color: #ffffff;
     align-items: "center";
     display: "flex";
+    opacity: 0.6;
     justify-content: "center";
     z-index: 1;
     svg {
@@ -75,6 +78,7 @@ li.ant-menu-overflow-item.ant-menu-item.ant-menu-item-only-child {
     }
     &:hover {
         border: rgb(12, 106, 170) solid 1px;
+        opacity: 1;
         background-color: #3897d6 !important;
         svg {
             color: #ffffff !important;
@@ -88,7 +92,9 @@ li.ant-menu-overflow-item.ant-menu-item.ant-menu-item-only-child {
 .ant-menu-vertical > .ant-menu-submenu > .ant-menu-submenu-title {
     height: 30px !important;
 }
-
+.ant-menu-submenu-title {
+    height: 30px !important;
+}
 //navlink
 .menu-navlink {
     text-decoration: none;

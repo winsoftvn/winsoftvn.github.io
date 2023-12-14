@@ -130,7 +130,7 @@ function Dichvu() {
     };
     return (
         <>
-            <div className="my-3 shadow v6">
+            <div className=" shadow v6">
                 <Table
                     className=""
                     columns={columns}
@@ -140,7 +140,7 @@ function Dichvu() {
                     bordered={true}
                     scroll={{ x: true }}
                     size="small"
-                    pagination={{ pageSize: 20 }}
+                    pagination={{ pageSize: 10 }}
                 />
             </div>
         </>

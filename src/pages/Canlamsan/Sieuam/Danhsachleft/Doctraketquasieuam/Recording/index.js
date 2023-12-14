@@ -8,7 +8,7 @@ const Recording = () => {
     const [recordedChunks, setRecordedChunks] = useState([]);
     const videoConstraints = {
         width: 345,
-        height: 500,
+        height: 400,
     };
     const [videoRecord, setVideo] = useState();
     const handleStartCaptureClick = useCallback(() => {

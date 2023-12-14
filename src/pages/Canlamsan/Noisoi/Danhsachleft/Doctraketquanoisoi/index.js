@@ -20,9 +20,10 @@ import imguser from "../../../../../assets/image/user.png";
 import Lichsuthuchien from "./Lichsuthuchien";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
-import WebcamCapture from "./Webcam";
+// import WebcamCapture from "./Webcam";
 import Recording from "./Recording";
 import Thongtinnoisoi from "./Thongtinnoisoi";
+import WebcamCapture from "../../../WebcamPrt";
 function Doctraketquanoisoi(props) {
     const { sieuam } = useSelector((state) => state.dataAdd);
     const { open, setOpen, chitiet } = props;
@@ -131,6 +132,7 @@ function Doctraketquanoisoi(props) {
             ),
             children: (
                 <div className="color-border p-1">
+                    {/* <WebcamCapture /> */}
                     <WebcamCapture />
                 </div>
             ),
@@ -286,7 +288,6 @@ function Doctraketquanoisoi(props) {
                                     />
                                 </div>
 
-                                {/* <WebcamCapture /> */}
                             </div>
                         </div>
                         <div className="w-75">

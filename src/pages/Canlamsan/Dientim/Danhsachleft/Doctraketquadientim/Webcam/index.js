@@ -52,13 +52,13 @@ const WebcamCapture = () => {
                         />
                     </div>
                 </div>
-                <div className="webcam justify-content-center">
+                <div className="webcam">
                     <div className="d-flex flex-wrap ">
                         {" "}
                         {anh === ""
                             ? ""
                             : dsanh.map((item, index) => (
-                                  //   index > 1 ? (
+                                  
                                   <div className="box-image m-1">
                                       <img
                                           src={item}

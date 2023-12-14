@@ -20,8 +20,9 @@ import Thongtinlamsan from "./Thongtinlamsan";
 import Lichsuthuchien from "./Lichsuthuchien";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
-import WebcamCapture from "./Webcam";
+// import WebcamCapture from "./Webcam";
 import Recording from "./Recording";
+import WebcamCapture from "../../../WebcamPrt";
 function Doctraketquasieuam(props) {
     const { sieuam } = useSelector((state) => state.dataAdd);
     const { open, setOpen, chitiet } = props;
@@ -130,6 +131,7 @@ function Doctraketquasieuam(props) {
             ),
             children: (
                 <div className="color-border p-1">
+                    {/* <WebcamCapture /> */}
                     <WebcamCapture />
                 </div>
             ),
@@ -284,7 +286,6 @@ function Doctraketquasieuam(props) {
                                         items={tabwebcam}
                                     />
                                 </div>
-
                             </div>
                         </div>
                         <div className="w-75">

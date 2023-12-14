@@ -55,7 +55,7 @@ const WebcamCapture = () => {
                         />
                     </div>
                 </div>
-                <div className="webcam justify-content-center">
+                <div className="webcam">
                     <div className="d-flex flex-wrap ">
                         {" "}
                         {anh === ""

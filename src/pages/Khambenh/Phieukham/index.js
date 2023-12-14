@@ -583,7 +583,7 @@ function Phieukham() {
                                     </div>
                                     <div className="row form-row">
                                         <Form.Item
-                                            className="  w-55"
+                                            className="w-55"
                                             label={
                                                 <div className="form-input-label khambenh-phieukham-right-input-label">
                                                     Ch.Cao (cm)
@@ -667,7 +667,7 @@ function Phieukham() {
                         </div>
                         <div className="phieukham-input-position d-flex align-items-center mx-1">
                             <Form>
-                                <div className="row">
+                                <div className="row m-0">
                                     <Form.Item
                                         className="col-md-2 m-0"
                                         label={<div className="form-input-label">Thuốc DV</div>}

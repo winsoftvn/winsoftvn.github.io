@@ -52,13 +52,11 @@ const WebcamCapture = () => {
                         />
                     </div>
                 </div>
-                <div className="webcam justify-content-center">
+                <div className="webcam">
                     <div className="d-flex flex-wrap ">
-                        {" "}
                         {anh === ""
                             ? ""
                             : dsanh.map((item, index) => (
-                                  //   index > 1 ? (
                                   <div className="box-image m-1">
                                       <img
                                           src={item}
@@ -82,7 +80,7 @@ const WebcamCapture = () => {
                                           <div>
                                               <Form className="m-0 p-0">
                                                   <Form.Item className="m-0 p-0">
-                                                      <Checkbox defaultChecked/>
+                                                      <Checkbox defaultChecked />
                                                   </Form.Item>
                                               </Form>
                                           </div>

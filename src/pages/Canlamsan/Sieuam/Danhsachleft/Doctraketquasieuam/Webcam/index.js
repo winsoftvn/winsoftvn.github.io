@@ -75,7 +75,7 @@ const WebcamCapture = () => {
                 {" "}
                 <div className="bg-title fw-bold p-1 title-fixed ">Hình ảnh</div>
                 <div className="webcam">
-                    <div className="d-flex flex-wrap justify-content-center">
+                    <div className="d-flex flex-wrap">
                         {" "}
                         {anh === ""
                             ? ""

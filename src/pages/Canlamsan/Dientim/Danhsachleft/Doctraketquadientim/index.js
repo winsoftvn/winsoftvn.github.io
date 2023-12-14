@@ -20,8 +20,9 @@ import imguser from "../../../../../assets/image/user.png";
 import Lichsuthuchien from "./Lichsuthuchien";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
-import WebcamCapture from "./Webcam";
+// import WebcamCapture from "./Webcam";
 import Thongtindientim from "./Thongtindientim";
+import WebcamCapture from "../../../WebcamUpload";
 function Doctraketquadientim(props) {
     const { sieuam } = useSelector((state) => state.dataAdd);
     const { open, setOpen, chitiet } = props;
@@ -248,6 +249,7 @@ function Doctraketquadientim(props) {
                         <div className="w-25">
                             <div className="mt-2">
                                 <div className="p-1 color-border vh-100">
+                                    {/* <WebcamCapture /> */}
                                     <WebcamCapture />
                                 </div>
                             </div>

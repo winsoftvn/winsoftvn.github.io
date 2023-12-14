@@ -18,7 +18,7 @@ function EditorImage(props) {
                     display: "none",
                 },
             }}
-            onCancel={() => setOpen(false)}
+            closable={false}
             width={"100vw"}
         >
             <div>
@@ -26,49 +26,14 @@ function EditorImage(props) {
                     source={imgchoose.linkanh ? imgchoose.linkanh : ""}
                     onSave={(editedImageObject, designState) => {
                         dsanh[imgchoose.vitri] = editedImageObject.imageBase64;
+                        
                         setOpen(false);
                     }}
-                    Rotate={{ angle: 90, componentType: "slider" }}
-                    Crop={{
-                        presetsItems: [
-                            {
-                                titleKey: "classicTv",
-                                descriptionKey: "4:3",
-                                ratio: 4 / 3,
-                            },
-                            {
-                                titleKey: "cinemascope",
-                                descriptionKey: "21:9",
-                                ratio: 21 / 9,
-                            },
-                        ],
-                        presetsFolders: [
-                            {
-                                titleKey: "socialMedia",
-                                groups: [
-                                    {
-                                        titleKey: "facebook",
-                                        items: [
-                                            {
-                                                titleKey: "profile",
-                                                width: 200,
-                                                height: 200,
-                                                descriptionKey: "fbProfileSize",
-                                            },
-                                            {
-                                                titleKey: "coverPhoto",
-                                                width: 820,
-                                                height: 312,
-                                                descriptionKey: "fbCoverPhotoSize",
-                                            },
-                                        ],
-                                    },
-                                ],
-                            },
-                        ],
-                    }}
+                    onClose={() => setOpen(false)}
+                  
                     tabsIds={[TABS.ADJUST, TABS.FINETUNE, TABS.FILTERS, TABS.RESIZE]}
-                    defaultTabId={TABS.ANNOTATE}
+                    defaultTabId={TABS.FILTERS}
+                    defaultToolId={TABS.FILTERS}
                 />
             </div>
         </Modal>

@@ -135,7 +135,7 @@ function Sieuam() {
                 </div>
                 <div className={click ? "w-100 vh-100" : "w-75"}>
                     <div className="fw-bold bg-title p-1 mt-1 text-center">TRẢ KẾT QUẢ SIÊU ÂM</div>{" "}
-                    <div className="px-2">
+                    <div className="px-1">
                         <Form>
                         <div className="color-border m-1 pb-3 px-2">
                                 <div>

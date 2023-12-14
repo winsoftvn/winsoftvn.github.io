@@ -18,7 +18,7 @@ function EditorImage(props) {
                     display: "none",
                 },
             }}
-            onCancel={() => setOpen(false)}
+            closable={false}
             width={"100vw"}
         >
             <div>
@@ -29,6 +29,7 @@ function EditorImage(props) {
                         setOpen(false);
                     }}
                     Rotate={{ angle: 90, componentType: "slider" }}
+                    onClose={() => setOpen(false)}
                     Crop={{
                         presetsItems: [
                             {
@@ -68,8 +69,8 @@ function EditorImage(props) {
                         ],
                     }}
                     tabsIds={[TABS.ADJUST, TABS.FINETUNE, TABS.FILTERS, TABS.RESIZE]}
-                    defaultTabId={TABS.ANNOTATE} // or 'Annotate'
-                    defaultToolId={TOOLS.TEXT} // or 'Text'
+                    defaultTabId={TABS.ADJUST} // or 'Annotate'
+                
                 />
             </div>
         </Modal>

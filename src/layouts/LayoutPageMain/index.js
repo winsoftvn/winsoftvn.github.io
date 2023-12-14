@@ -27,7 +27,7 @@ const { Sider, Content } = Layout;
 
 function LayoutPageMain({ children }) {
     //khai báo
-    const [collapsed, setCollapsed] = useState(false);
+    const [collapsed, setCollapsed] = useState(true);
     // hàm
 
     //truyền props
@@ -43,7 +43,7 @@ function LayoutPageMain({ children }) {
     const items = [
         getItem(<div className="fw-bold">Chức năng</div>, "grp", null, [], "group"),
         getItem(
-            <NavLink className="menu-navlink" to="/tiepnhan">
+            <NavLink className="menu-navlink" onClick={() => setCollapsed(true)} to="/tiepnhan">
                 Tiếp nhận
             </NavLink>,
             "1",
@@ -51,21 +51,25 @@ function LayoutPageMain({ children }) {
         ),
 
         getItem(
-            <NavLink className="menu-navlink" to="/khambenh">
+            <NavLink className="menu-navlink" onClick={() => setCollapsed(true)} to="/khambenh">
                 Khám bệnh
             </NavLink>,
             "2",
             <FontAwesomeIcon icon={faStethoscope} />
         ),
         getItem(
-            <NavLink className="menu-navlink" to="/vienphi/phieuthutien">
+            <NavLink
+                className="menu-navlink"
+                onClick={() => setCollapsed(true)}
+                to="/vienphi/phieuthutien"
+            >
                 Viện phí
             </NavLink>,
             "3",
             <FontAwesomeIcon icon={faCircleDollarToSlot} />
         ),
         getItem(
-            <NavLink className="menu-navlink" to="/pttt">
+            <NavLink className="menu-navlink" onClick={() => setCollapsed(true)} to="/pttt">
                 Phẩu thuật thủ thuật
             </NavLink>,
             "4",
@@ -78,49 +82,77 @@ function LayoutPageMain({ children }) {
             <FontAwesomeIcon icon={faRestroom} />,
             [
                 getItem(
-                    <NavLink className="menu-navlink" to="/canlamsan/sieuam">
+                    <NavLink
+                        className="menu-navlink"
+                        onClick={() => setCollapsed(true)}
+                        to="/canlamsan/sieuam"
+                    >
                         Siêu âm
                     </NavLink>,
                     "5.1",
                     <FontAwesomeIcon icon={faRestroom} />
                 ),
                 getItem(
-                    <NavLink className="menu-navlink" to="/canlamsan/noisoi">
+                    <NavLink
+                        className="menu-navlink"
+                        onClick={() => setCollapsed(true)}
+                        to="/canlamsan/noisoi"
+                    >
                         Nội soi
                     </NavLink>,
                     "5.2",
                     <FontAwesomeIcon icon={faRestroom} />
                 ),
                 getItem(
-                    <NavLink className="menu-navlink" to="/canlamsan/xquang">
+                    <NavLink
+                        className="menu-navlink"
+                        onClick={() => setCollapsed(true)}
+                        to="/canlamsan/xquang"
+                    >
                         X-Quang
                     </NavLink>,
                     "5.3",
                     <FontAwesomeIcon icon={faRestroom} />
                 ),
                 getItem(
-                    <NavLink className="menu-navlink" to="/canlamsan/ctscanner">
+                    <NavLink
+                        className="menu-navlink"
+                        onClick={() => setCollapsed(true)}
+                        to="/canlamsan/ctscanner"
+                    >
                         CT Scanner
                     </NavLink>,
                     "5.4",
                     <FontAwesomeIcon icon={faRestroom} />
                 ),
                 getItem(
-                    <NavLink className="menu-navlink" to="/canlamsan/mri">
+                    <NavLink
+                        className="menu-navlink"
+                        onClick={() => setCollapsed(true)}
+                        to="/canlamsan/mri"
+                    >
                         MRI
                     </NavLink>,
                     "5.5",
                     <FontAwesomeIcon icon={faRestroom} />
                 ),
                 getItem(
-                    <NavLink className="menu-navlink" to="/canlamsan/dientimhohapky">
+                    <NavLink
+                        className="menu-navlink"
+                        onClick={() => setCollapsed(true)}
+                        to="/canlamsan/dientimhohapky"
+                    >
                         Điện tim - Hô hấp ký
                     </NavLink>,
                     "5.6",
                     <FontAwesomeIcon icon={faRestroom} />
                 ),
                 getItem(
-                    <NavLink className="menu-navlink" to="/canlamsan/domatdoxuong">
+                    <NavLink
+                        className="menu-navlink"
+                        onClick={() => setCollapsed(true)}
+                        to="/canlamsan/domatdoxuong"
+                    >
                         Đo mật độ xương
                     </NavLink>,
                     "5.7",
@@ -130,7 +162,7 @@ function LayoutPageMain({ children }) {
         ),
 
         getItem(
-            <NavLink className="menu-navlink" to="/xetnghiem">
+            <NavLink className="menu-navlink" onClick={() => setCollapsed(true)} to="/xetnghiem">
                 Xét nghiệm
             </NavLink>,
             "6",
@@ -138,7 +170,7 @@ function LayoutPageMain({ children }) {
         ),
 
         getItem(
-            <NavLink className="menu-navlink" to="/vltl-yhct">
+            <NavLink className="menu-navlink" onClick={() => setCollapsed(true)} to="/vltl-yhct">
                 VLTL-YHCT
             </NavLink>,
             "7",
@@ -146,7 +178,7 @@ function LayoutPageMain({ children }) {
         ),
 
         getItem(
-            <NavLink className="menu-navlink" to="/khamsuckhoe">
+            <NavLink className="menu-navlink" onClick={() => setCollapsed(true)} to="/khamsuckhoe">
                 Khám sức khỏe
             </NavLink>,
             "8",
@@ -154,14 +186,14 @@ function LayoutPageMain({ children }) {
         ),
 
         getItem(
-            <NavLink className="menu-navlink" to="/duoc">
+            <NavLink className="menu-navlink" onClick={() => setCollapsed(true)} to="/duoc">
                 Dược
             </NavLink>,
             "9",
             <FontAwesomeIcon icon={faCapsules} />
         ),
         getItem(
-            <NavLink className="menu-navlink" to="/baocao">
+            <NavLink className="menu-navlink" onClick={() => setCollapsed(true)} to="/baocao">
                 Báo cáo
             </NavLink>,
             "10",
@@ -169,7 +201,7 @@ function LayoutPageMain({ children }) {
         ),
 
         getItem(
-            <NavLink className="menu-navlink" to="/tienich">
+            <NavLink className="menu-navlink" onClick={() => setCollapsed(true)} to="/tienich">
                 Tiện ích
             </NavLink>,
             "11",
@@ -177,7 +209,11 @@ function LayoutPageMain({ children }) {
         ),
 
         getItem(
-            <NavLink className="menu-navlink" to="/cauhinhdanhmuc">
+            <NavLink
+                className="menu-navlink"
+                onClick={() => setCollapsed(true)}
+                to="/cauhinhdanhmuc"
+            >
                 Cấu hình danh mục
             </NavLink>,
             "12",
@@ -187,14 +223,22 @@ function LayoutPageMain({ children }) {
 
         getItem(<div className="fw-bold">Tài khoản</div>, "13", <FontAwesomeIcon icon={faUser} />, [
             getItem(
-                <NavLink className="menu-navlink" to="/taikhoan/khaibaouser">
+                <NavLink
+                    className="menu-navlink"
+                    onClick={() => setCollapsed(true)}
+                    to="/taikhoan/khaibaouser"
+                >
                     Khai báo user
                 </NavLink>,
                 "13.1",
                 <FontAwesomeIcon icon={faUserPlus} />
             ),
             getItem(
-                <NavLink className="menu-navlink" to="/taikhoan/phanquyen">
+                <NavLink
+                    className="menu-navlink"
+                    onClick={() => setCollapsed(true)}
+                    to="/taikhoan/phanquyen"
+                >
                     Phân quyền
                 </NavLink>,
                 "13.2",
@@ -202,7 +246,7 @@ function LayoutPageMain({ children }) {
             ),
         ]),
         getItem(
-            <NavLink className="menu-navlink" to="/caidat">
+            <NavLink className="menu-navlink" onClick={() => setCollapsed(true)} to="/caidat">
                 Cài đặt
             </NavLink>,
             "14",

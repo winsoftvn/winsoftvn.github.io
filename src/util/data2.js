@@ -1,8 +1,5 @@
 const ds2 = [
     {
-        TDV: "Thêm thuốc",
-    },
-    {
         ID: "2",
         TDV: "123",
         TDVVT: "Siêu âm tuyến giáp",

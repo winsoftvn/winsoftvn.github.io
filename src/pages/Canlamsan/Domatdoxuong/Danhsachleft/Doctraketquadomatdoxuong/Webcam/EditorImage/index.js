@@ -18,7 +18,7 @@ function EditorImage(props) {
                     display: "none",
                 },
             }}
-            onCancel={() => setOpen(false)}
+            closable={false}
             width={"100vw"}
         >
             <div>
@@ -28,6 +28,7 @@ function EditorImage(props) {
                         dsanh[imgchoose.vitri] = editedImageObject.imageBase64;
                         setOpen(false);
                     }}
+                    onClose={() => setOpen(false)}
                     Rotate={{ angle: 90, componentType: "slider" }}
                     Crop={{
                         presetsItems: [
@@ -68,8 +69,8 @@ function EditorImage(props) {
                         ],
                     }}
                     tabsIds={[TABS.ADJUST, TABS.FINETUNE, TABS.FILTERS, TABS.RESIZE]}
-                    defaultTabId={TABS.ANNOTATE} // or 'Annotate'
-                    defaultToolId={TOOLS.TEXT} // or 'Text'
+                    defaultTabId={TABS.ADJUST} // or 'Annotate'
+   
                 />
             </div>
         </Modal>

@@ -17,11 +17,12 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 import imguser from "../../../../../assets/image/user.png";
-import Thongtinlamsan from "./Thongtinctscanner";
 import Lichsuthuchien from "./Lichsuthuchien";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
-import WebcamCapture from "./Webcam";
+// import WebcamCapture from "./Webcam";
+import Thongtinctscanner from "./Thongtinctscanner";
+import WebcamCapture from "../../../WebcamUpload";
 function Doctraketquactscanner(props) {
     const { sieuam } = useSelector((state) => state.dataAdd);
     const { open, setOpen, chitiet } = props;
@@ -100,7 +101,7 @@ function Doctraketquactscanner(props) {
             ),
             children: (
                 <div className="color-border p-1">
-                    <Thongtinlamsan />
+                    <Thongtinctscanner />
                 </div>
             ),
         },
@@ -248,6 +249,7 @@ function Doctraketquactscanner(props) {
                         <div className="w-25">
                             <div className="mt-2">
                                 <div className="p-1 color-border vh-100">
+                                    {/* <WebcamCapture /> */}
                                     <WebcamCapture />
                                 </div>
                             </div>

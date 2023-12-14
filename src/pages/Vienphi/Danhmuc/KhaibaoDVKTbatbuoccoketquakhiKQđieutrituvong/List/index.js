@@ -14,7 +14,6 @@ import Menuvienphi from "../../../Menuvienphi";
 import ds from "../../../../../util/data";
 function KhaibaoDVKTbatbuoccoketquakhiKQđieutrituvong() {
     const [open, setOpen] = useState(false);
-    const [click, setClick] = useState(false);
     const [activeModify, setActiveModify] = useState(false);
 
     const handleDataCreate = () => {
