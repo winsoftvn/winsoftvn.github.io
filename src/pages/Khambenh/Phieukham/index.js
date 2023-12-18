@@ -4,7 +4,6 @@ import {
     Input,
     Table,
     Button,
-    InputNumber,
     Tabs,
     Space,
     Checkbox,
@@ -13,7 +12,6 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
     faPrint,
-    faHandPointRight,
     faCapsules,
     faPills,
     faHouseChimneyMedical,
@@ -21,7 +19,6 @@ import {
     faPen,
     faPenToSquare,
     faSearchDollar,
-    faCircleXmark,
 } from "@fortawesome/free-solid-svg-icons";
 import TextArea from "antd/es/input/TextArea";
 import "./phieukham.scss";
@@ -31,7 +28,6 @@ import Toathuoctaicho from "./Toathuoctaicho";
 import { useRef, useState } from "react";
 import Toamuangoai from "./Toamuangoai";
 import Thuoctutruc from "./Thuoctutruc";
-import Chidinh from "./Chidinh";
 import Donthuoc from "./Donthuoc";
 import ChidinhKB from "./ChidinhKB";
 import Bienbanhoichuan from "./Tienich/Bienbanhoichuan";
@@ -50,7 +46,6 @@ import Inphieukhambenh from "./Tienich/In/Inphieukhambenh";
 import Inhosongoaitru from "./Tienich/In/Inhosongoaitru";
 
 function Phieukham() {
-    const [openModelChidinh, setModelChidinh] = useState(false);
     const [openModelToathuoctainha, setModelToathuoctainha] = useState(false);
     const [openModelToamuangoai, setModelToamuangoai] = useState(false);
     const [openModelThuoctutruc, setModelThuoctutruc] = useState(false);
@@ -365,8 +360,6 @@ function Phieukham() {
                     </div>
 
                     {/* Modal hien thi */}
-
-                    <Chidinh open={openModelChidinh} setOpen={setModelChidinh} />
                     <Toathuoctaicho
                         open={openModelToathuoctainha}
                         setOpen={setModelToathuoctainha}
@@ -509,7 +502,7 @@ function Phieukham() {
                                             </div>
                                         </Form.Item>
                                     </div>
-                                    <div className="row form-row">
+                                    <div className="row form-row mb-1">
                                         <Form.Item
                                             label={
                                                 <div className="form-input-label khambenh-phieukham-left-input-label ">

@@ -26,7 +26,16 @@
         scrollbar-width: none;
     }
 }
-// .tabs {
-//     // width: 100%;
-//     height: 100vh;
-// }
+.h-max-boketquaxetnghiem {
+    height: 320px;
+    .scroll {
+        overflow-y: scroll;
+        height: 315px;
+    }
+    .scroll::-webkit-scrollbar {
+        display: none;
+    }
+    .scroll {
+        scrollbar-width: none;
+    }
+}

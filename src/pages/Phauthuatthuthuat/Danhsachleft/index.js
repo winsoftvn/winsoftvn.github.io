@@ -285,7 +285,7 @@ function Danhsachleft() {
                                 columns={column0}
                                 dataSource={ds}
                                 // loading={loading}
-                                scroll={{ x: true, y: 400 }}
+                                scroll={{ x: true, y: 225 }}
                                 size="small"
                                 pagination={false}
                             />
@@ -367,7 +367,7 @@ function Danhsachleft() {
                                     </div>
                                 </Form>
                             </div>
-                            <div>
+                            <div className="py-1">
                                 <div className="fw-bold mt-3 bg-label color-text p-1 text-center">
                                     Các xét nghiệm đã thực hiện
                                 </div>

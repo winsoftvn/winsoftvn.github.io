@@ -248,11 +248,11 @@ function Danhsachleft() {
                                 columns={column0}
                                 dataSource={ds}
                                 // loading={loading}
-                                scroll={{ x: true, y: "100vh" }}
+                                scroll={{ x: true, y: 420 }}
                                 size="small"
                                 pagination={false}
                             />
-                            <div className="fw-bold mx-1">Tổng:1000</div>
+                            <div className="fw-bold mx-1 py-2">Tổng:1000</div>
                         </div>
                     </div>
                 </div>

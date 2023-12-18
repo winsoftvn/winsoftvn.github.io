@@ -36,3 +36,16 @@
         scrollbar-width: none;
     }
 }
+.h-max-donthuoc {
+    height: 294px;
+    .scroll {
+        overflow-y: scroll;
+        height: 290px;
+    }
+    .scroll::-webkit-scrollbar {
+        display: none;
+    }
+    .scroll {
+        scrollbar-width: none;
+    }
+}

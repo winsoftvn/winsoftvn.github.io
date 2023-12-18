@@ -15,6 +15,7 @@ import { motion } from "framer-motion";
 import imguser from "../../../../assets/image/user.png";
 import "./danhsachleft.scss";
 import ds from "../../../../util/data";
+import TextArea from "antd/es/input/TextArea";
 function Danhsachleft() {
     const [open, setOpen] = useState(false);
     const [click, setClick] = useState(false);
@@ -267,7 +268,7 @@ function Danhsachleft() {
                             />
                             <div className="fw-bold mx-1">Tổng:1000</div>
                         </div>
-                        <div>
+                        <div className="py-2">
                             <div className="fw-bold bg-title p-1">THÔNG TIN BỆNH NHÂN</div>
                             <div className="m-1">
                                 <Form>
@@ -280,7 +281,7 @@ function Danhsachleft() {
                                             <div className="row form-row">
                                                 <Form.Item
                                                     label={
-                                                        <div className="fw-bold form-input-label">
+                                                        <div className="fw-bold form-input-label danhsachleft-input-label">
                                                             Mã số
                                                         </div>
                                                     }
@@ -289,7 +290,7 @@ function Danhsachleft() {
                                                         <div className="w-60">
                                                             <Input className="form-control" />
                                                         </div>
-                                                        <div className="w-40 text-danger">
+                                                        <div className="form-input-label w-40 px-2 fw-bold text-danger">
                                                             THU PHÍ
                                                         </div>
                                                     </div>
@@ -298,7 +299,7 @@ function Danhsachleft() {
                                             <div className="row form-row">
                                                 <Form.Item
                                                     label={
-                                                        <div className="fw-bold form-input-label">
+                                                        <div className="fw-bold form-input-label danhsachleft-input-label">
                                                             Họ tên
                                                         </div>
                                                     }
@@ -309,7 +310,7 @@ function Danhsachleft() {
                                             <div className="row form-row">
                                                 <Form.Item
                                                     label={
-                                                        <div className="fw-bold form-input-label">
+                                                        <div className="fw-bold form-input-label danhsachleft-input-label">
                                                             G.tính
                                                         </div>
                                                     }
@@ -320,7 +321,7 @@ function Danhsachleft() {
                                             <div className="row form-row">
                                                 <Form.Item
                                                     label={
-                                                        <div className="fw-bold form-input-label">
+                                                        <div className="fw-bold form-input-label danhsachleft-input-label">
                                                             N.sinh
                                                         </div>
                                                     }
@@ -330,7 +331,7 @@ function Danhsachleft() {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="row form-row">
+                                    <div className="row form-row-textarea my-1">
                                         <Form.Item
                                             label={
                                                 <div className="fw-bold form-input-label">
@@ -338,13 +339,13 @@ function Danhsachleft() {
                                                 </div>
                                             }
                                         >
-                                            <Input className="form-control" />
+                                            <TextArea className="form-control" />
                                         </Form.Item>
                                     </div>
                                 </Form>
                             </div>
                             <div>
-                                <div className="fw-bold color-text p-1 text-center">
+                                <div className="fw-bold mt-3 bg-label color-text p-1 text-center">
                                     Các xét nghiệm đã thực hiện
                                 </div>
                                 <div className="fw-bold mx-2">Kỹ thuật</div>

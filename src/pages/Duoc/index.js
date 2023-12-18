@@ -1,8 +1,6 @@
-import { Modal, Tabs, Button, Form, Input, Checkbox, Table, InputNumber, Select } from "antd";
+import { Button, Form, Input, Checkbox, Table } from "antd";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-    faBook,
-    faCalendarCheck,
     faFileExcel,
     faPenToSquare,
     faReply,
@@ -12,20 +10,130 @@ import {
     faAngleLeft,
     faDroplet,
     faSpinner,
-    faBars,
+    faXmarkCircle,
+    faCheck,
 } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
-
+import { useState, useEffect } from "react";
 import Danhsachleft from "./Danhsachleft";
 import Menuduoc from "./Menuduoc";
+import { v4 as uuidv4 } from "uuid";
+import SearchFilter from "./search";
 import FormItem from "antd/es/form/FormItem";
 import "./duoc.scss";
-import ds from "../../util/data";
 function Duoc() {
     //khaibao
     const [click, setClick] = useState(false);
+    const [dsthuoc, setDSThuoc] = useState([]);
+    const [thuocdcchon, setValueThuocChon] = useState({});
+    const [value, setValue] = useState(false);
+    const [form] = Form.useForm();
+
     //truyền props
 
+    const handleDeleteThuoc = (a) => {
+        let ds = dsthuoc.filter((item) => item.Ma != a.Ma);
+        setDSThuoc(ds);
+    };
+    useEffect(() => {
+        form.setFieldsValue({
+            Tenthuoc: thuocdcchon.name,
+            // DVT: thuocdcchon.email,
+            // Hluong: thuocdcchon.phone,
+        });
+    }, [thuocdcchon]);
+
+    const column0 = [
+        {
+            title: "Tên Thuốc",
+            dataIndex: "Tenthuoc",
+            width: "20%",
+        },
+        {
+            title: "Hàm lượng",
+            dataIndex: "Hluong",
+            width: "5%",
+        },
+        {
+            title: "ĐVT",
+            dataIndex: "DVT",
+            width: "5%",
+        },
+
+        {
+            title: "Ng.cấp",
+            dataIndex: "Ncap",
+            width: "5%",
+        },
+        {
+            title: "Sáng",
+            dataIndex: "Sang",
+            width: "5%",
+            align: "center",
+        },
+
+        {
+            title: "Trưa",
+            dataIndex: "Trua",
+            width: "5%",
+            align: "center",
+        },
+        {
+            title: "Chiều",
+            dataIndex: "Chieu",
+            width: "5%",
+            align: "center",
+        },
+        {
+            title: "Tối ",
+            dataIndex: "Toi",
+            width: "5%",
+            align: "center",
+        },
+
+        {
+            title: "Tổng",
+            dataIndex: "Tong",
+            width: "10%",
+        },
+        {
+            title: "Cách dùng",
+            dataIndex: "Cachdung",
+            width: "20%",
+        },
+        {
+            title: "Đơn giá",
+            dataIndex: "Dongia",
+            width: "10%",
+        },
+        {
+            title: "Xóa",
+            dataIndex: "",
+            align: "center",
+            width: "5%",
+            render: (_, record) => (
+                <div className="d-flex justify-content-center">
+                    <Button
+                        className="khambenh-btn-icon color-icon-edit red"
+                        onClick={() => handleDeleteThuoc(record)}
+                    >
+                        <FontAwesomeIcon icon={faXmarkCircle} />
+                    </Button>
+                </div>
+            ),
+        },
+    ];
+    const handlePushThuoc = (e) => {
+        let a = {
+            Ma: uuidv4(),
+            Tenthuoc: thuocdcchon.name,
+            ...e,
+        };
+        setDSThuoc((oldArray) => [...oldArray, a]);
+        form.setFieldsValue({
+            Tenthuoc: "",
+        });
+        setValue(!value);
+    };
     const items1 = [
         {
             label: <div className="form-input-label ">F3 - Lưu</div>,
@@ -97,207 +205,7 @@ function Duoc() {
             ),
         },
     ];
-    const column0 = [
-        {
-            title: "Tên Thuốc",
-            dataIndex: "TDV",
-            fixed: "left",
-            render: (TDV) => (
-                <div style={{ width: "200px" }} className="p-0 m-0">
-                    <Form.Item className="p-0 m-0" name="tenthuoc">
-                        <Input
-                            // onClick={handleSetOpen}
-                            className="form-control"
-                            // value={thuocdcchon}
-                        />
-                        {/* <Select
-                            className="w-100"
-                            showSearch
-                            style={{
-                                width: 200,
-                            }}
-                            placeholder="Chọn thuốc"
-                            optionFilterProp="children"
-                            filterOption={(input, option) => (option?.label ?? "").includes(input)}
-                            filterSort={(optionA, optionB) =>
-                                (optionA?.label ?? "")
-                                    .toLowerCase()
-                                    .localeCompare((optionB?.label ?? "").toLowerCase())
-                            }
-                            options={[
-                                {
-                                    value: "1",
-                                    label: "Not Identified",
-                                },
-                                {
-                                    value: "2",
-                                    label: "Closed",
-                                },
-                                {
-                                    value: "3",
-                                    label: "Communicated",
-                                },
-                                {
-                                    value: "4",
-                                    label: "Identified",
-                                },
-                                {
-                                    value: "5",
-                                    label: "Resolved",
-                                },
-                                {
-                                    value: "6",
-                                    label: "Cancelled",
-                                },
-                            ]}
-                        /> */}
-                    </Form.Item>
-                </div>
-            ),
-        },
 
-        {
-            title: "ĐVT",
-            dataIndex: "TDVVT",
-            render: (TDVVT) => (
-                <div style={{ width: "100px" }} className="p-0 m-0">
-                    <Form.Item className="p-0 m-0" name="dvt">
-                        <Select
-                            className="w-100"
-                            showSearch
-                            optionFilterProp="children"
-                            filterOption={(input, option) => (option?.label ?? "").includes(input)}
-                            filterSort={(optionA, optionB) =>
-                                (optionA?.label ?? "")
-                                    .toLowerCase()
-                                    .localeCompare((optionB?.label ?? "").toLowerCase())
-                            }
-                            options={[
-                                {
-                                    value: "1",
-                                    label: "Cuộn",
-                                },
-                                {
-                                    value: "2",
-                                    label: "Vĩ",
-                                },
-                                {
-                                    value: "3",
-                                    label: "Hộp",
-                                },
-                                {
-                                    value: "4",
-                                    label: "Sợi",
-                                },
-                            ]}
-                        />
-                    </Form.Item>
-                </div>
-            ),
-        },
-        {
-            title: "Đ.vị dùng",
-            dataIndex: "MADVKT",
-            render: (TDVVT) => (
-                <div style={{ width: "100px" }} className="p-0 m-0">
-                    <Form.Item className="p-0 m-0" name="dvdung">
-                        <Input className="border-input w-100 form-control" />
-                    </Form.Item>{" "}
-                </div>
-            ),
-        },
-        {
-            title: "Ng.cấp",
-            dataIndex: "TDVVT",
-            render: (TDVVT) => (
-                <div style={{ width: "100px" }} className="p-0 m-0">
-                    <Form.Item className="p-0 m-0" name="ngcap">
-                        <Input className="border-input w-100 form-control" />
-                    </Form.Item>{" "}
-                </div>
-            ),
-        },
-        {
-            title: "Sáng",
-            dataIndex: "MADVKT",
-            align: "center",
-            render: (TDVVT) => (
-                <div style={{ width: "50px" }}>
-                    <Form.Item className="p-0 m-0" name="sang">
-                        <InputNumber className="border-input w-100 form-control" min={0} />
-                    </Form.Item>{" "}
-                </div>
-            ),
-        },
-
-        {
-            title: "Trưa",
-            dataIndex: "TDVVT",
-            render: (TDVVT) => (
-                <div style={{ width: "50px" }}>
-                    <Form.Item className="p-0 m-0" name="trua">
-                        <InputNumber className="border-input w-100 form-control" min={0} />
-                    </Form.Item>{" "}
-                </div>
-            ),
-        },
-        {
-            title: "Chiều",
-            dataIndex: "MADVKT",
-            render: (TDVVT) => (
-                <div style={{ width: "50px" }}>
-                    <Form.Item className="p-0 m-0" name="chieu">
-                        <InputNumber className="border-input w-100 form-control" min={0} />
-                    </Form.Item>{" "}
-                </div>
-            ),
-        },
-        {
-            title: "Tối ",
-            dataIndex: "TDVVT",
-            render: (TDVVT) => (
-                <div style={{ width: "50px" }}>
-                    <Form.Item className="p-0 m-0" name="toi">
-                        <InputNumber className="border-input w-100 form-control" min={0} />
-                    </Form.Item>{" "}
-                </div>
-            ),
-        },
-
-        {
-            title: "Tổng",
-            dataIndex: "TDVVT",
-            render: (TDVVT) => (
-                <div style={{ width: "100px" }} className="p-0 m-0">
-                    <Form.Item className="p-0 m-0" name="tong">
-                        <InputNumber className="border-input w-100 form-control" />
-                    </Form.Item>{" "}
-                </div>
-            ),
-        },
-        {
-            title: "Cách dùng",
-            dataIndex: "MADVKT",
-            render: (TDVVT) => (
-                <div style={{ width: "200px" }} className="p-0 m-0">
-                    <Form.Item className="p-0 m-0" name="cachdung">
-                        <Input className="border-input w-100 form-control" />
-                    </Form.Item>
-                </div>
-            ),
-        },
-        {
-            title: "T.Tiền",
-            dataIndex: "TDVVT",
-            render: (TDVVT) => (
-                <div style={{ width: "200px" }} className="p-0 m-0">
-                    <Form.Item className="p-0 m-0" name="thtien">
-                        <Input className="border-input w-100 form-control" />
-                    </Form.Item>
-                </div>
-            ),
-        },
-    ];
     return (
         <>
             <Menuduoc />
@@ -356,7 +264,7 @@ function Duoc() {
                         <Form>
                             <div className="d-flex ">
                                 <div className="w-80">
-                                    <div className="row form-row">
+                                    <div className="row form-row ">
                                         <FormItem
                                             label={
                                                 <div className="form-input-label duoc-form-input-label">
@@ -392,7 +300,7 @@ function Duoc() {
                                             <Input className="form-control" />
                                         </FormItem>
                                     </div>
-                                    <div className="row form-row">
+                                    <div className="row form-row ">
                                         <FormItem
                                             label={
                                                 <div className="form-input-label duoc-form-input-label">
@@ -404,7 +312,7 @@ function Duoc() {
                                             <Input className="form-control" />
                                         </FormItem>
                                     </div>
-                                    <div className="row form-row">
+                                    <div className="row form-row ">
                                         <FormItem
                                             label={
                                                 <div className="form-input-label duoc-form-input-label">
@@ -416,7 +324,7 @@ function Duoc() {
                                             <Input className="form-control" />
                                         </FormItem>
                                     </div>{" "}
-                                    <div className="row form-row">
+                                    <div className="row form-row ">
                                         <FormItem
                                             label={
                                                 <div className="form-input-label duoc-form-input-label">
@@ -430,7 +338,7 @@ function Duoc() {
                                     </div>
                                 </div>
                                 <div className="w-20">
-                                    <div className="row form-row">
+                                    <div className="row form-row m-0 p-0">
                                         <FormItem
                                             label={
                                                 <div className="form-input-label duoc-form-input-label">
@@ -442,7 +350,7 @@ function Duoc() {
                                             <Input className="form-control" />
                                         </FormItem>
                                     </div>{" "}
-                                    <div className="row form-row">
+                                    <div className="row form-row m-0 p-0">
                                         <FormItem
                                             label={
                                                 <div className="form-input-label duoc-form-input-label">
@@ -454,7 +362,7 @@ function Duoc() {
                                             <Input className="form-control" />
                                         </FormItem>
                                     </div>{" "}
-                                    <div className="row form-row">
+                                    <div className="row form-row m-0 p-0">
                                         <FormItem
                                             label={
                                                 <div className="form-input-label duoc-form-input-label">
@@ -470,76 +378,166 @@ function Duoc() {
                             </div>
                         </Form>
                     </div>
-                    <div className="color-border p-2 mt-3 m-1">
-                        <Form>
-                            <div className="row form-row">
-                                <FormItem
-                                    label={
-                                        <div className="form-input-label duoc-form-input-label">
-                                            Ngày cấp
+                    <div className="color-border m-1 mt-2 p-1">
+                        <div className="h-max-duoc">
+                            <Form>
+                                <div className="row form-row m-0 p-0">
+                                    <FormItem
+                                        label={
+                                            <div className="form-input-label duoc-form-input-label">
+                                                Ngày cấp
+                                            </div>
+                                        }
+                                        className="col-md-3"
+                                    >
+                                        <Input type="date" className="form-control" />
+                                    </FormItem>
+                                    <FormItem
+                                        label={
+                                            <div className="form-input-label duoc-form-input-label">
+                                                Ghi chú
+                                            </div>
+                                        }
+                                        className="col-md-9"
+                                    >
+                                        <Input className="form-control" />
+                                    </FormItem>
+                                </div>{" "}
+                                <div className="div-shadow v5 my-2">
+                                    <div>
+                                        <div className="label-table">
+                                            <div className=" w-20">Tên thuốc</div>
+                                            <div className=" w-5 text-center">H.lượng</div>
+                                            <div className=" w-5 text-center">ĐVT</div>
+                                            <div className=" w-5 text-center">N.cấp</div>
+                                            <div className=" w-5 text-center">Sáng</div>
+                                            <div className=" w-5 text-center">Trưa</div>
+                                            <div className=" w-5 text-center">Chiều</div>
+                                            <div className=" w-5 text-center">Tối</div>
+                                            <div className=" w-10 text-center">Tổng</div>
+                                            <div className=" w-20">Cách dùng</div>
+                                            <div className=" w-10 text-center">Đơn giá</div>
+                                            <div className=" w-5 text-center">Lưu</div>
                                         </div>
-                                    }
-                                    className="col-md-3"
-                                >
-                                    <Input type="date" className="form-control" />
-                                </FormItem>
-                                <FormItem
-                                    label={
-                                        <div className="form-input-label duoc-form-input-label">
-                                            Ghi chú
+                                        <Form form={form} onFinish={handlePushThuoc}>
+                                            <div className="d-flex">
+                                                <Form.Item className="p-0 m-0 w-20">
+                                                    <SearchFilter
+                                                        setValueThuocChon={setValueThuocChon}
+                                                        thuocdcchon={thuocdcchon}
+                                                        form={form}
+                                                        onFinish={handlePushThuoc}
+                                                    />
+                                                </Form.Item>
+                                                <Form.Item className="p-0 m-0 w-5" name="Hluong">
+                                                    <Input className="form-control" />
+                                                </Form.Item>{" "}
+                                                <Form.Item className="p-0 m-0 w-5" name="DVT">
+                                                    <Input className="form-control" />
+                                                </Form.Item>
+                                                <Form.Item className="p-0 m-0 w-5" name="Ncap">
+                                                    <Input className="form-control" />
+                                                </Form.Item>
+                                                <Form.Item className="p-0 m-0 w-5" name="Sang">
+                                                    <Input
+                                                        className="form-control"
+                                                        type="number"
+                                                        min={0}
+                                                        classNames="text-center"
+                                                    />
+                                                </Form.Item>
+                                                <Form.Item className="p-0 m-0 w-5" name="Trua">
+                                                    <Input
+                                                        className="form-control"
+                                                        classNames="text-center"
+                                                        type="number"
+                                                        min={0}
+                                                    />
+                                                </Form.Item>
+                                                <Form.Item className="p-0 m-0 w-5" name="Chieu">
+                                                    <Input
+                                                        className="form-control"
+                                                        type="number"
+                                                        min={0}
+                                                        classNames="text-center"
+                                                    />
+                                                </Form.Item>
+                                                <Form.Item className="p-0 m-0 w-5" name="Toi">
+                                                    <Input
+                                                        className="form-control"
+                                                        type="number"
+                                                        min={0}
+                                                        classNames="text-center"
+                                                    />
+                                                </Form.Item>
+                                                <Form.Item className="p-0 m-0 w-10" name="Tong">
+                                                    <Input className="form-control" />
+                                                </Form.Item>
+                                                <Form.Item className="p-0 m-0 w-20" name="Cachdung">
+                                                    <Input className="form-control" />
+                                                </Form.Item>
+                                                <Form.Item className="p-0 m-0 w-10" name="Dongia">
+                                                    <Input className="form-control" readOnly />
+                                                </Form.Item>
+                                                <Form.Item className="p-0 m-0 w-5 d-flex justify-content-center">
+                                                    <Button
+                                                        className="khambenh-btn-icon color-icon-edit green"
+                                                        htmlType="submit"
+                                                    >
+                                                        <FontAwesomeIcon icon={faCheck} />
+                                                    </Button>
+                                                </Form.Item>
+                                            </div>
+                                        </Form>
+                                        <div className="table-donthuoc">
+                                            <Table
+                                                columns={column0}
+                                                dataSource={dsthuoc}
+                                                // loading={loading}
+                                                scroll={{ x: true, y: 190 }}
+                                                size="small"
+                                                bordered={true}
+                                                pagination={false}
+                                                showHeader={false}
+                                                locale={{ emptyText: "Chưa có dữ liệu" }}
+                                            />
                                         </div>
-                                    }
-                                    className="col-md-9"
-                                >
-                                    <Input className="form-control" />
-                                </FormItem>
-                            </div>{" "}
-                            <div>
-                                <div className="mt-2">
-                                    <Table
-                                        columns={column0}
-                                        dataSource={ds}
-                                        // loading={loading
-                                        scroll={{ x: true, y: 600 }}
-                                        size="small"
-                                        pagination={false}
-                                    />
-                                    <div className="fw-bold mx-1">Tổng:1000</div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div className="row form-row ">
-                                <FormItem
-                                    label={
-                                        <div className="form-input-label fw-bold color-text ">
-                                            Tổng tiền
-                                        </div>
-                                    }
-                                    className="col-md-3"
-                                >
-                                    <Input className="form-control" />
-                                </FormItem>
-                                <FormItem
-                                    label={
-                                        <div className="form-input-label fw-bold color-text">
-                                            Tỉ lệ miễn nhiễm
-                                        </div>
-                                    }
-                                    className="col-md-5"
-                                >
-                                    <Input className="form-control" />
-                                </FormItem>
-                                <FormItem
-                                    label={
-                                        <div className="form-input-label fw-bold color-text ">
-                                            Thực thu
-                                        </div>
-                                    }
-                                    className="col-md-4"
-                                >
-                                    <Input className="form-control" />
-                                </FormItem>
-                            </div>{" "}
-                        </Form>
+                                <div className="row form-row m-0 p-0">
+                                    <FormItem
+                                        label={
+                                            <div className="form-input-label fw-bold color-text ">
+                                                Tổng tiền
+                                            </div>
+                                        }
+                                        className="col-md-3"
+                                    >
+                                        <Input className="form-control" />
+                                    </FormItem>
+                                    <FormItem
+                                        label={
+                                            <div className="form-input-label fw-bold color-text">
+                                                Tỉ lệ miễn nhiễm
+                                            </div>
+                                        }
+                                        className="col-md-5"
+                                    >
+                                        <Input className="form-control" />
+                                    </FormItem>
+                                    <FormItem
+                                        label={
+                                            <div className="form-input-label fw-bold color-text ">
+                                                Thực thu
+                                            </div>
+                                        }
+                                        className="col-md-4"
+                                    >
+                                        <Input className="form-control" />
+                                    </FormItem>
+                                </div>{" "}
+                            </Form>
+                        </div>
                     </div>
                 </div>
             </div>

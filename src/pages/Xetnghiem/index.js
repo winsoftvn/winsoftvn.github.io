@@ -208,7 +208,7 @@ function Xetnghiem() {
                     <div className="fw-bold bg-title p-1 mt-1 text-center">
                         TRẢ KẾT QUẢ XÉT NGHIỆM
                     </div>
-                    <div >
+                    <div>
                         <Form>
                             <div className="row form-row m-0 p-0">
                                 <FormItem

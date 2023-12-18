@@ -135,12 +135,10 @@ function Dichvu() {
                     className=""
                     columns={columns}
                     dataSource={ds}
-                    // loading={loading}\
-                    // rowSelection={rowSelection}
                     bordered={true}
                     scroll={{ x: true }}
                     size="small"
-                    pagination={{ pageSize: 10 }}
+                    pagination={{ pageSize: 9 }}
                 />
             </div>
         </>

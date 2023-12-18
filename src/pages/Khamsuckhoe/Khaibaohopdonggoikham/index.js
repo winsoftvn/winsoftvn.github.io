@@ -74,7 +74,7 @@ function Khaibaohophong() {
     ];
     return (
         <>
-            <div className="w-100">
+            <div className="w-100 vh-100">
                 <TimHD open={openModalTimHD} setOpen={setModalTimHD} />
                 <ThemmoiCongty open={openModalThemmoiCty} setOpen={setModalThemmoiCty} />
 
@@ -233,7 +233,7 @@ function Khaibaohophong() {
                             columns={column0}
                             dataSource={ds2}
                             // loading={loading}
-                            scroll={{ x: true, y: 300 }}
+                            scroll={{ x: true, y: "100vh" }}
                             size="small"
                             // rowKey={(record) => record.ID}
                             // expandable={{

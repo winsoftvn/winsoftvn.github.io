@@ -139,9 +139,9 @@ function Khambenh() {
                 </div>
             </div>
             <div>
-                <div className="mx-2">
+                <div className="px-1">
                     <Form>
-                        <div className="row form-row">
+                        <div className="row form-row m-0 p-0">
                             <Form.Item
                                 className="m-0 w-30"
                                 label={
@@ -203,7 +203,7 @@ function Khambenh() {
                                 <Input className="form-control m-0" />
                             </Form.Item>
                         </div>
-                        <div className="row form-row">
+                        <div className="row form-row m-0 p-0">
                             <Form.Item
                                 className="m-0 w-15"
                                 label={

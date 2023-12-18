@@ -415,7 +415,7 @@ function Danhsachchothu() {
                             </Form>
                         </div>
                     </div>
-                    <div className="my-3 shadow v6">
+                    <div className="mt-3 shadow v6">
                         <Table
                             className=""
                             columns={columns}
@@ -423,7 +423,7 @@ function Danhsachchothu() {
                             // loading={loading}
                             scroll={{ x: true }}
                             size="small"
-                            pagination={{ pageSize: 20 }}
+                            pagination={{ pageSize: 8 }}
                         />
                     </div>
                 </div>

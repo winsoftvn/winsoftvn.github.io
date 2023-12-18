@@ -522,10 +522,10 @@ function Phanquyen() {
     return (
         <div>
             <div className="d-flex vh-100">
-                <div className="w-20">
+                <div className="w-20 h-100">
                     {" "}
                     <div className="scroll-phanquyen-1">
-                        <div className="color-border vh-100">
+                        <div className="color-border h-100">
                             <div className="bg-label fw-bold p-1 form-input-label">
                                 Người dùng WINOSFT_VIETNAM
                             </div>
@@ -561,15 +561,15 @@ function Phanquyen() {
                         </div>
                     </div>
                 </div>
-                <div className="w-40">
+                <div className="w-40 h-100">
                     {" "}
                     <div className="scroll-phanquyen-1">
-                        <div className="color-border">
+                        <div className="color-border ">
                             <div className="bg-label fw-bold p-1 form-input-label">
                                 Chức năng sử dụng
                             </div>
 
-                            <div className="treenode">
+                            <div className="treenode py-1">
                                 <Tree
                                     showLine={
                                         showLine
@@ -605,38 +605,45 @@ function Phanquyen() {
                         </div>
                     </div>
                 </div>
-                <div className="w-50">
-                   
-                        <div className="color-border"> <div className="scroll-phanquyen-2">
-                            <div className=" d-flex bg-label">
-                                <div className=" fw-bold p-1 form-input-label">
-                                    Phân quyền khoa phòng
+                <div className="w-50 h-100">
+                    <div className="color-border">
+                        <div className="h-50">
+                            <div className="scroll-phanquyen-2">
+                                <div className=" d-flex bg-label">
+                                    <div className=" fw-bold p-1 form-input-label">
+                                        Phân quyền khoa phòng
+                                    </div>
+                                    <div>
+                                        <Button className="form-btn ">
+                                            <FontAwesomeIcon icon={faSave} />
+                                        </Button>
+                                    </div>
                                 </div>
-                                <div>
-                                    <Button className="form-btn ">
-                                        <FontAwesomeIcon icon={faSave} />
-                                    </Button>
-                                </div>
-                            </div>
 
-                            <div className="phanquyenkhoaphong px-2 py-1">
-                                <Checkbox.Group options={options} onChange={onChange} />
+                                <div className="phanquyenkhoaphong px-2 py-1">
+                                    <Checkbox.Group options={options} onChange={onChange} />
+                                </div>
                             </div>
                         </div>
-                    </div>{" "}
-                    
-                        <div className="color-border"><div className="scroll-phanquyen-2">
-                            <div className=" d-flex bg-label">
-                                <div className=" fw-bold p-1 form-input-label">Kho xuất bán</div>
-                                <div>
-                                    <Button className="form-btn ">
-                                        <FontAwesomeIcon icon={faSave} />
-                                    </Button>
-                                </div>
-                            </div>
+                    </div>
 
-                            <div className="px-2 py-1">
-                                <Checkbox.Group options={options} onChange={onChange} />
+                    <div className="color-border">
+                        <div className="h-50">
+                            <div className="scroll-phanquyen-2">
+                                <div className=" d-flex bg-label">
+                                    <div className=" fw-bold p-1 form-input-label">
+                                        Kho xuất bán
+                                    </div>
+                                    <div>
+                                        <Button className="form-btn ">
+                                            <FontAwesomeIcon icon={faSave} />
+                                        </Button>
+                                    </div>
+                                </div>
+
+                                <div className="px-2 py-1">
+                                    <Checkbox.Group options={options} onChange={onChange} />
+                                </div>
                             </div>
                         </div>
                     </div>

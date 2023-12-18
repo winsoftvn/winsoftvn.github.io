@@ -45,6 +45,46 @@ function ChidinhKB() {
             name: "John",
             age: 42,
         },
+        {
+            key: "1",
+            name: "Mike",
+            age: 32,
+        },
+        {
+            key: "2",
+            name: "John",
+            age: 42,
+        },
+        {
+            key: "1",
+            name: "Mike",
+            age: 32,
+        },
+        {
+            key: "2",
+            name: "John",
+            age: 42,
+        },
+        {
+            key: "1",
+            name: "Mike",
+            age: 32,
+        },
+        {
+            key: "2",
+            name: "John",
+            age: 42,
+        },
+        {
+            key: "1",
+            name: "Mike",
+            age: 32,
+        },
+        {
+            key: "2",
+            name: "John",
+            age: 42,
+        },
     ];
 
     const columns = [
@@ -81,13 +121,15 @@ function ChidinhKB() {
     ];
     return (
         <>
-            <div>
+            <div className="h-max-chidinh">
                 <Form>
-                    <div className="m-1">
+                    <div className=" mx-1">
                         <div className="row">
                             <div className="col-md-12">
-                                <div className="m-1">
-                                    <Form.Item label={<div className="form-input-label">Công khám</div>} className="m-0 mt-1">
+                                    <Form.Item
+                                        label={<div className="form-input-label">Công khám</div>}
+                                        className="m-0 mt-1"
+                                    >
                                         <div className="input-select">
                                             <Select />
                                         </div>
@@ -96,11 +138,10 @@ function ChidinhKB() {
                                         dataSource={dataSource}
                                         columns={columns}
                                         pagination={false}
-                                        scroll={{ x: true, y: "100vh" }}
-                                      
+                                        scroll={{ x: true, y: 220 }}
                                         bordered={true}
                                     />
-                                </div>
+                             
                             </div>
                         </div>
                     </div>

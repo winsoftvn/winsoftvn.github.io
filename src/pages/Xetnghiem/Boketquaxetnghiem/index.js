@@ -30,17 +30,19 @@ function Boketquaxetnghiem() {
     ];
     return (
         <>
-            <div>
-                <div className="label-table-collapse">
-                    <div className=" w-5 text-center p-0">Duyệt</div>
-                    <div className=" w-25">Chỉ số xét nghiệm</div>
-                    <div className=" w-20">Kết quả</div>
-                    <div className=" w-15">Bất thường</div>
-                    <div className=" w-15">Đơn vị</div>
-                    <div className=" w-10">BT Nữ</div>
-                    <div className=" w-10">BT Nam</div>
+            <div className="h-max-boketquaxetnghiem">
+                <div className="scroll">
+                    <div className="label-table-collapse">
+                        <div className=" w-5 text-center p-0">Duyệt</div>
+                        <div className=" w-25">Chỉ số xét nghiệm</div>
+                        <div className=" w-20">Kết quả</div>
+                        <div className=" w-15">Bất thường</div>
+                        <div className=" w-15">Đơn vị</div>
+                        <div className=" w-10">BT Nữ</div>
+                        <div className=" w-10">BT Nam</div>
+                    </div>
+                    <Collapse size="small" items={item} />
                 </div>
-                <Collapse size="small" items={item} />
             </div>
         </>
     );
