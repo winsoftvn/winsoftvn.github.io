@@ -1,12 +1,6 @@
-import { Table, Button, Dropdown, Form, Input, Radio } from "antd";
+import { Table, Button, Form, Input, Radio } from "antd";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-    faTrashCan,
-    faEye,
-    faPenToSquare,
-    faArrowsRotate,
-    faBroom,
-} from "@fortawesome/free-solid-svg-icons";
+import { faArrowsRotate, faBroom } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { motion } from "framer-motion";
@@ -16,72 +10,68 @@ import { setDataSieuAm } from "../../../../slices/dataAdd";
 import ds from "../../../../util/data";
 function Danhsachleft() {
     const [open, setOpen] = useState(false);
-    const [click, setClick] = useState(false);
     const [chitiet, setChiTiet] = useState("");
-    const [activeModify, setActiveModify] = useState(false);
     //store
     const dispatch = useDispatch();
-    const handleClick = () => {
-        setClick(!click);
-    };
+
     const handleOpenModel = (a) => {
         dispatch(setDataSieuAm(a));
         setChiTiet(a);
         setOpen(true);
     };
-    const treeData = [
-        {
-            title: <div className="color-text fw-bold">18/05/2021</div>,
-            key: "0-0",
-            children: [
-                {
-                    title: "Loại xét nghiệp: Xét nghiệp huyết học",
-                    key: "0-0-0",
-                    children: [
-                        {
-                            title: "Tổng quan tinh tế bào máu ngoại vi",
-                            key: "0-0-0-0",
-                        },
-                        {
-                            title: "Tổng quan tinh tế bào máu ngoại vi",
-                            key: "0-0-0-1",
-                        },
-                    ],
-                },
-                {
-                    title: "Loại xét nghiệp: Xét nghiệp huyết học",
-                    key: "0-0-1",
-                    children: [
-                        {
-                            title: "Tổng quan tinh tế bào máu ngoại vi",
-                            key: "0-0-1-0",
-                        },
-                        {
-                            title: "Tổng quan tinh tế bào máu ngoại vi",
-                            key: "0-0-1-1",
-                        },
-                    ],
-                },
-            ],
-        },
-    ];
-    const items = [
-        {
-            key: "1",
-            label: "Xem",
-            icon: <FontAwesomeIcon icon={faEye} />,
-        },
-        {
-            key: "2",
-            label: "Xóa",
-            icon: <FontAwesomeIcon icon={faTrashCan} />,
-        },
-        {
-            key: "3",
-            label: "Sửa",
-            icon: <FontAwesomeIcon icon={faPenToSquare} />,
-        },
-    ];
+    // const treeData = [
+    //     {
+    //         title: <div className="color-text fw-bold">18/05/2021</div>,
+    //         key: "0-0",
+    //         children: [
+    //             {
+    //                 title: "Loại xét nghiệp: Xét nghiệp huyết học",
+    //                 key: "0-0-0",
+    //                 children: [
+    //                     {
+    //                         title: "Tổng quan tinh tế bào máu ngoại vi",
+    //                         key: "0-0-0-0",
+    //                     },
+    //                     {
+    //                         title: "Tổng quan tinh tế bào máu ngoại vi",
+    //                         key: "0-0-0-1",
+    //                     },
+    //                 ],
+    //             },
+    //             {
+    //                 title: "Loại xét nghiệp: Xét nghiệp huyết học",
+    //                 key: "0-0-1",
+    //                 children: [
+    //                     {
+    //                         title: "Tổng quan tinh tế bào máu ngoại vi",
+    //                         key: "0-0-1-0",
+    //                     },
+    //                     {
+    //                         title: "Tổng quan tinh tế bào máu ngoại vi",
+    //                         key: "0-0-1-1",
+    //                     },
+    //                 ],
+    //             },
+    //         ],
+    //     },
+    // ];
+    // const items = [
+    //     {
+    //         key: "1",
+    //         label: "Xem",
+    //         icon: <FontAwesomeIcon icon={faEye} />,
+    //     },
+    //     {
+    //         key: "2",
+    //         label: "Xóa",
+    //         icon: <FontAwesomeIcon icon={faTrashCan} />,
+    //     },
+    //     {
+    //         key: "3",
+    //         label: "Sửa",
+    //         icon: <FontAwesomeIcon icon={faPenToSquare} />,
+    //     },
+    // ];
     const column0 = [
         {
             title: "STT",
@@ -173,7 +163,7 @@ function Danhsachleft() {
                                 columns={column0}
                                 dataSource={ds}
                                 // loading={loading}
-                                scroll={{ x: true, y: "100vh" }}
+                                scroll={{ x: true, y: 532 }}
                                 size="small"
                                 pagination={false}
                                 onRow={(record) => ({

@@ -20,6 +20,7 @@ import Thongtinlamsan from "./Thongtinlamsan";
 import Lichsuthuchien from "./Lichsuthuchien";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
+
 // import WebcamCapture from "./Webcam";
 import Recording from "./Recording";
 import WebcamCapture from "../../../WebcamPrt";

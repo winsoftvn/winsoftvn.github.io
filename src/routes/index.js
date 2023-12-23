@@ -9,6 +9,7 @@ import Duoc from "../pages/Duoc";
 import Home from "../pages/Home";
 import Khambenh from "../pages/Khambenh";
 import Khamsuckhoe from "../pages/Khamsuckhoe";
+import LoginPage from "../pages/Login";
 import Phauthuatthuthuat from "../pages/Phauthuatthuthuat";
 import Khaibaouser from "../pages/Taikhoan/Khaibaouser/List";
 import Phanquyen from "../pages/Taikhoan/Phanquyen";
@@ -35,8 +36,16 @@ import Phieuthutamung from "../pages/Vienphi/Phieuthutamung";
 import Phieuthutien from "../pages/Vienphi/Phieuthutien";
 import Xetnghiem from "../pages/Xetnghiem";
 const PageWeb = [
+    //Login
     {
         path: "/",
+        page: LoginPage,
+        isMainLayout: false,
+    },
+
+    //Home
+    {
+        path: "/home",
         page: Home,
         isMainLayout: true,
     },

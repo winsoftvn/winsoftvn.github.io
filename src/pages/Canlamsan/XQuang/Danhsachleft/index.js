@@ -1,9 +1,7 @@
-import { Table, Button, Dropdown, Form, Input, Radio } from "antd";
+import { Table, Button,  Form, Input, Radio } from "antd";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-    faTrashCan,
-    faEye,
-    faPenToSquare,
+
     faArrowsRotate,
     faBroom,
 } from "@fortawesome/free-solid-svg-icons";
@@ -16,14 +14,10 @@ import ds from "../../../../util/data";
 import Doctraketquaxquang from "./Doctraketquaxquang";
 function Danhsachleft() {
     const [open, setOpen] = useState(false);
-    const [click, setClick] = useState(false);
     const [chitiet, setChiTiet] = useState("");
-    const [activeModify, setActiveModify] = useState(false);
     //store
     const dispatch = useDispatch();
-    const handleClick = () => {
-        setClick(!click);
-    };
+
     const handleOpenModel = (a) => {
         dispatch(setDataSieuAm(a));
         setChiTiet(a);
@@ -120,7 +114,7 @@ function Danhsachleft() {
                                 columns={column0}
                                 dataSource={ds}
                                 // loading={loading}
-                                scroll={{ x: true, y: "100vh" }}
+                                scroll={{ x: true, y: 532 }}
                                 size="small"
                                 pagination={false}
                                 onRow={(record) => ({

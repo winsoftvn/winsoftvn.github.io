@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { PlusOutlined } from "@ant-design/icons";
 import { Button, Modal, Upload } from "antd";
 
@@ -77,6 +77,7 @@ function Load(prop) {
                     title={
                         <>
                             <div className="d-flex justify-content-between">
+                               
                                 <div>Tải ảnh lên</div>
                                 <Button
                                     onClick={handleLoadImage}

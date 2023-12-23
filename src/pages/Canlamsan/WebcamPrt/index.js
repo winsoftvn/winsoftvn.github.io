@@ -6,6 +6,8 @@ import Load from "./UploadImage";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClose } from "@fortawesome/free-solid-svg-icons";
 import EditorImage from "./EditorImage";
+import { RiImageAddLine } from "react-icons/ri";
+import { FiCamera } from "react-icons/fi";
 
 const videoConstraints = {
     width: 345,
@@ -58,11 +60,21 @@ const WebcamCapture = () => {
                 videoConstraints={videoConstraints}
             />
             <div className="d-flex justify-content-between form-row">
-                <Button className="form-btn form-input-label " onClick={capture}>
-                    Chụp ảnh
+                <Button
+                    className="form-btn form-input-label d-flex align-items-center"
+                    onClick={capture}
+                >
+                    <FiCamera />
+
+                    <div className="mx-1">Chụp ảnh</div>
                 </Button>
-                <Button className="form-btn form-input-label " onClick={() => setOpen(true)}>
-                    Tải ảnh lên
+                <Button
+                    className="form-btn form-input-label d-flex align-items-center"
+                    onClick={() => setOpen(true)}
+                >
+                    <RiImageAddLine />
+
+                    <div className="mx-1">Tải ảnh lên</div>
                 </Button>
                 <Load
                     open={open}

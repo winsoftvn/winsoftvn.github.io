@@ -3,17 +3,44 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faXmarkCircle } from "@fortawesome/free-solid-svg-icons";
 import { v4 as uuidv4 } from "uuid";
 import { useEffect, useRef, useState } from "react";
-import SearchFilter from "./search";
+import axios from "axios";
+
+import SearchFilter from "./Timkiem";
 import "./donthuoc.scss";
 function Donthuoc() {
+    //Usestate
     const [dsthuoc, setDSThuoc] = useState([]);
     const [thuocdcchon, setValueThuocChon] = useState({});
     const [value, setValue] = useState(false);
+    const [data, setData] = useState([]);
+    const [red, setReds] = useState([]);
     const [form] = Form.useForm();
-
+    const [valueInputThuoc, setValueInputThuoc] = useState();
+    //UseRef
+    const refNcap = useRef(null);
     const handleDeleteThuoc = (a) => {
         let ds = dsthuoc.filter((item) => item.Ma != a.Ma);
         setDSThuoc(ds);
+    };
+
+    const handlePushThuoc = (e) => {
+        data.map((item) => {
+            if (item.name === e.Tenthuoc) {
+                let a = {
+                    Ma: uuidv4(),
+                    Tenthuoc: thuocdcchon.name,
+                    ...e,
+                };
+                setDSThuoc((oldArray) => [...oldArray, a]);
+                form.setFieldsValue({
+                    Tenthuoc: "",
+                    Hamluong: "",
+                    DVT: "",
+                });
+                setValue(!value);
+            }
+        });
+        setValueInputThuoc();
     };
     useEffect(() => {
         form.setFieldsValue({
@@ -22,6 +49,15 @@ function Donthuoc() {
             // Hluong: thuocdcchon.phone,
         });
     }, [thuocdcchon]);
+    useEffect(() => {
+        axios
+            .get("https://jsonplaceholder.typicode.com/users")
+            .then((res) => {
+                setData(res.data);
+                setReds(res.data);
+            })
+            .catch((err) => console.log(err));
+    }, []);
 
     const column0 = [
         {
@@ -103,86 +139,74 @@ function Donthuoc() {
             ),
         },
     ];
-    const handlePushThuoc = (e) => {
-        let a = {
-            Ma: uuidv4(),
-            Tenthuoc: thuocdcchon.name,
-            ...e,
-        };
-        setDSThuoc((oldArray) => [...oldArray, a]);
-        form.setFieldsValue({
-            Tenthuoc: "",
-        });
-        setValue(!value);
-    };
     return (
         <>
             <div className="h-max-donthuoc">
-                <div className="scroll">
-                    <div className="my-1 px-1 bg-box bg-xam color-border-xam">
-                        <div>
-                            <Form>
-                                <div className="row ">
-                                    <Form.Item
-                                        className="col-md-2 m-0"
-                                        label={<div className="form-input-label">Ngày cấp</div>}
-                                    >
-                                        <Input className="form-control" />
-                                    </Form.Item>
-                                    <Form.Item
-                                        className="col-md-1 m-0"
-                                        label={<div className="form-input-label">Hẹn TK</div>}
-                                    >
-                                        <Checkbox />
-                                    </Form.Item>
-                                    <Form.Item
-                                        className="col-md-2 m-0"
-                                        label={<div className="form-input-label">Ngày TK</div>}
-                                    >
-                                        <Input className="form-control" type="date" />
-                                    </Form.Item>
-                                    <Form.Item
-                                        className="col-md-3 m-0"
-                                        label={<div className="form-input-label">Ng.Nghĩ</div>}
-                                    >
-                                        <div className="d-flex">
-                                            <Input className="form-control w-20" />
-                                            <Input className="form-control w-40" />
-                                            - <Input className="form-control w-40" />
-                                        </div>
-                                    </Form.Item>
-                                    <Form.Item
-                                        className="col-md-2 m-0"
-                                        label={<div className="form-input-label">Tao củ</div>}
-                                    >
-                                        <Input className="form-control" />
-                                    </Form.Item>
-                                    <Form.Item
-                                        className="col-md-2 m-0"
-                                        label={<div className="form-input-label">Toa mẫu</div>}
-                                    >
-                                        <Input className="form-control" />
-                                    </Form.Item>
-                                </div>
-                            </Form>
-                        </div>
-                    </div>
-                    <div className="div-shadow v5 my-1">
-                        <div>
-                            <div className="label-table">
-                                <div className=" w-20">Tên thuốc</div>
-                                <div className=" w-5 text-center">H.lượng</div>
-                                <div className=" w-5 text-center">ĐVT</div>
-                                <div className=" w-5 text-center">N.cấp</div>
-                                <div className=" w-5 text-center">Sáng</div>
-                                <div className=" w-5 text-center">Trưa</div>
-                                <div className=" w-5 text-center">Chiều</div>
-                                <div className=" w-5 text-center">Tối</div>
-                                <div className=" w-10 text-center">Tổng</div>
-                                <div className=" w-20">Cách dùng</div>
-                                <div className=" w-10 text-center">Đơn giá</div>
-                                <div className=" w-5 text-center">Lưu</div>
+                <div className="mt-1 px-1 bg-box bg-xam color-border-xam">
+                    <div>
+                        <Form>
+                            <div className="row ">
+                                <Form.Item
+                                    className="col-md-2 m-0"
+                                    label={<div className="form-input-label">Ngày cấp</div>}
+                                >
+                                    <Input className="form-control" />
+                                </Form.Item>
+                                <Form.Item
+                                    className="col-md-1 m-0"
+                                    label={<div className="form-input-label">Hẹn TK</div>}
+                                >
+                                    <Checkbox />
+                                </Form.Item>
+                                <Form.Item
+                                    className="col-md-2 m-0"
+                                    label={<div className="form-input-label">Ngày TK</div>}
+                                >
+                                    <Input className="form-control" type="date" />
+                                </Form.Item>
+                                <Form.Item
+                                    className="col-md-3 m-0"
+                                    label={<div className="form-input-label">Ng.Nghĩ</div>}
+                                >
+                                    <div className="d-flex">
+                                        <Input className="form-control w-20" />
+                                        <Input className="form-control w-40" />
+                                        - <Input className="form-control w-40" />
+                                    </div>
+                                </Form.Item>
+                                <Form.Item
+                                    className="col-md-2 m-0"
+                                    label={<div className="form-input-label">Tao củ</div>}
+                                >
+                                    <Input className="form-control" />
+                                </Form.Item>
+                                <Form.Item
+                                    className="col-md-2 m-0"
+                                    label={<div className="form-input-label">Toa mẫu</div>}
+                                >
+                                    <Input className="form-control" />
+                                </Form.Item>
                             </div>
+                        </Form>
+                    </div>
+                </div>
+                <div className="div-shadow v5 my-1">
+                    <div>
+                        <div className="label-table">
+                            <div className=" w-20">Tên thuốc</div>
+                            <div className=" w-5 text-center">H.lượng</div>
+                            <div className=" w-5 text-center">ĐVT</div>
+                            <div className=" w-5 text-center">N.cấp</div>
+                            <div className=" w-5 text-center">Sáng</div>
+                            <div className=" w-5 text-center">Trưa</div>
+                            <div className=" w-5 text-center">Chiều</div>
+                            <div className=" w-5 text-center">Tối</div>
+                            <div className=" w-10 text-center">Tổng</div>
+                            <div className=" w-20">Cách dùng</div>
+                            <div className=" w-10 text-center">Đơn giá</div>
+                            <div className=" w-5 text-center">Lưu</div>
+                        </div>{" "}
+                        <div className="scroll">
                             <Form form={form} onFinish={handlePushThuoc}>
                                 <div className="d-flex">
                                     <Form.Item className="p-0 m-0 w-20">
@@ -191,6 +215,12 @@ function Donthuoc() {
                                             thuocdcchon={thuocdcchon}
                                             form={form}
                                             onFinish={handlePushThuoc}
+                                            data={data}
+                                            red={red}
+                                            setReds={setReds}
+                                            valueInputThuoc={valueInputThuoc}
+                                            setValueInputThuoc={setValueInputThuoc}
+                                            refNcap={refNcap}
                                         />
                                     </Form.Item>
                                     <Form.Item className="p-0 m-0 w-5" name="Hluong">
@@ -200,7 +230,7 @@ function Donthuoc() {
                                         <Input className="form-control" />
                                     </Form.Item>
                                     <Form.Item className="p-0 m-0 w-5" name="Ncap">
-                                        <Input className="form-control" />
+                                        <Input className="form-control" ref={refNcap} />
                                     </Form.Item>
                                     <Form.Item className="p-0 m-0 w-5" name="Sang">
                                         <Input

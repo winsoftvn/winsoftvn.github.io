@@ -279,7 +279,7 @@ function LayoutPageMain({ children }) {
                     <div className="scroll-menu">
                         <div className="d-block text-center mx-auto my-2">
                             <div className="d-flex align-items-center justify-content-start mx-3">
-                                <img src={logo} className="img-logo" />
+                                <img src={logo} className="img-logo" alt="logowweb" />
                                 <div className="fs-6 fw-bold mx-2 ">e-Medlink</div>
                             </div>
                         </div>

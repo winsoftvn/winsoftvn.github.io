@@ -1,6 +1,9 @@
 import { Button } from "antd";
 import { useCallback, useEffect, useRef, useState } from "react";
 import Webcam from "react-webcam";
+
+import { HiOutlineVideoCamera } from "react-icons/hi";
+
 const Recording = () => {
     const webcamRef = useRef(null);
     const mediaRecorderRef = useRef(null);
@@ -71,8 +74,12 @@ const Recording = () => {
                         Dừng
                     </Button>
                 ) : (
-                    <Button className="form-btn" onClick={handleStartCaptureClick}>
-                        Bắt đầu quay
+                    <Button
+                        className="form-btn d-flex align-items-center "
+                        onClick={handleStartCaptureClick}
+                    >
+                        <HiOutlineVideoCamera />
+                        <div className="mx-2">Bắt đầu quay</div>
                     </Button>
                 )}
                 {recordedChunks.length > 0 && (

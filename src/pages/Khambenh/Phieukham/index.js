@@ -648,7 +648,7 @@ function Phieukham() {
                         </Form>
                     </div>
                 </div>
-                <div className="color-border mt-2">
+                <div className="color-border mt-1">
                     <div className="tabphieukham-position">
                         <div className="mx-1 my-2 tab-khambenh">
                             <Tabs

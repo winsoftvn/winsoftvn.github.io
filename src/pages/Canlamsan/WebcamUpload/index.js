@@ -3,7 +3,9 @@ import { useEffect, useState } from "react";
 import "./webcam.scss";
 import Load from "./UploadImage";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faClose, faArrowUpFromBracket } from "@fortawesome/free-solid-svg-icons";
+import { faClose} from "@fortawesome/free-solid-svg-icons";
+import { RiImageAddLine } from "react-icons/ri";
+
 import EditorImage from "./EditorImage";
 const WebcamCapture = () => {
     const [anh, setAnh] = useState();
@@ -41,7 +43,7 @@ const WebcamCapture = () => {
                             className="form-btn form-input-label d-flex "
                             onClick={() => setOpen(true)}
                         >
-                            <FontAwesomeIcon icon={faArrowUpFromBracket} className="mx-2" />
+                             <RiImageAddLine className="mx-2" />
                             Tải ảnh lên
                         </Button>
                         <Load

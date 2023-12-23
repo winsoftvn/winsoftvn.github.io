@@ -127,6 +127,11 @@ button:hover {
     padding: 1px 4px !important;
     border-radius: 0px !important;
 }
+.form-control-login {
+    border-radius: 0px !important;
+    font-size: 12px !important;
+    background-color: rgba(255, 255, 255, 0.8);
+}
 .form-control-select {
     font-size: 12px !important;
     padding: 0 !important;
@@ -139,6 +144,9 @@ button:hover {
 //row
 .form-row {
     height: 22px !important;
+}
+.form-row-login {
+    height: 14px !important;
 }
 .form-row-textarea {
     height: 30px !important;
