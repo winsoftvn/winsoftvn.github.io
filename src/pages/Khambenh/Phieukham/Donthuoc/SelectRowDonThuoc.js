@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 
 function SelectRowDonThuoc(props) {
     const { red, setValueThuocChon, setValueInputThuoc, valueInputThuoc, refNcap } = props;
-    console.log("refNcap: ", refNcap.current);
     const [selectedRowIndex, setSelectedRowIndex] = useState(0);
 
     const handleKeyDown = (e) => {
@@ -23,6 +22,9 @@ function SelectRowDonThuoc(props) {
     const clickChooseThuoc = (e) => {
         setValueThuocChon(e);
         setValueInputThuoc(false);
+        if (refNcap.current) {
+            refNcap.current.focus();
+        }
     };
     useEffect(() => {
         document.addEventListener("keydown", handleKeyDown);
