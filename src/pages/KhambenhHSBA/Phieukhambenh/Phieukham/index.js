@@ -22,7 +22,6 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import TextArea from "antd/es/input/TextArea";
 import "./phieukham.scss";
-import ds from "../../../util/data";
 import ReactToPrint, { useReactToPrint } from "react-to-print";
 import Toathuoctaicho from "./Toathuoctaicho";
 import { useRef, useState } from "react";
@@ -44,6 +43,7 @@ import Intheodoichucnangsong from "./Tienich/In/Intheodoichucnangsong";
 import Intheodoitruyendich from "./Tienich/In/Intheodoitruyendich";
 import Inphieukhambenh from "./Tienich/In/Inphieukhambenh";
 import Inhosongoaitru from "./Tienich/In/Inhosongoaitru";
+import ds from "../../../../util/data";
 
 function Phieukham() {
     const [openModelToathuoctainha, setModelToathuoctainha] = useState(false);
@@ -609,7 +609,7 @@ function Phieukham() {
                                             className="form-control"
                                             autoSize={{
                                                 minRows: 3,
-                                                maxRows: 5,
+                                                maxRows: 3,
                                             }}
                                         />
                                     </Form.Item>

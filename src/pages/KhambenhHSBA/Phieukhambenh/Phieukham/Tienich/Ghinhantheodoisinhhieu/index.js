@@ -1,7 +1,7 @@
 import { Modal, Button, Table } from "antd";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPrint } from "@fortawesome/free-solid-svg-icons";
-import data2 from "../../../../../util/data3";
+import data2 from "../../../../../../util/data3";
 // import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import Chart from "chart.js/auto";
 import { CategoryScale } from "chart.js";

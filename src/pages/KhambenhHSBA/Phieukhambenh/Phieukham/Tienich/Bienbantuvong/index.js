@@ -9,7 +9,7 @@ import {
     faTrashCan,
 } from "@fortawesome/free-solid-svg-icons";
 import TextArea from "antd/es/input/TextArea";
-import "../../../../../styles/style.scss";
+import "../../../../../../styles/style.scss";
 // import Swal from "sweetalert2";
 function Bienbantuvong(props) {
     const { open, setOpen } = props;

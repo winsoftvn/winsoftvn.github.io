@@ -9,6 +9,7 @@ import {
     faCircleDollarToSlot,
     faBedPulse,
     faRestroom,
+    faHospitalUser,
     faVial,
     faPersonDotsFromLine,
     faBriefcaseMedical,
@@ -51,11 +52,77 @@ function LayoutPageMain({ children }) {
         ),
 
         getItem(
-            <NavLink className="menu-navlink" onClick={() => setCollapsed(true)} to="/khambenh">
-                Khám bệnh
-            </NavLink>,
+            <div className="fw-bold">Khám Bệnh - HSBA</div>,
             "2",
-            <FontAwesomeIcon icon={faStethoscope} />
+            <FontAwesomeIcon icon={faStethoscope} />,
+            [
+                getItem(
+                    <NavLink
+                        className="menu-navlink"
+                        onClick={() => setCollapsed(true)}
+                        to="/khambenh/phieukhambenh"
+                    >
+                        Phiếu khám bệnh
+                    </NavLink>,
+                    "2.1",
+                    <FontAwesomeIcon icon={faHospitalUser} />
+                ),
+                getItem(
+                    <NavLink
+                        className="menu-navlink"
+                        onClick={() => setCollapsed(true)}
+                        to="/khambenh/HSBANgoaitruKB"
+                    >
+                        HSBA - Ngoại Trú KB
+                    </NavLink>,
+                    "2.2",
+                    <FontAwesomeIcon icon={faHospitalUser} />
+                ),
+                getItem(
+                    <NavLink
+                        className="menu-navlink"
+                        onClick={() => setCollapsed(true)}
+                        to="/khambenh/ngoaitruRHM"
+                    >
+                        HSBA - Ngoại Trú RHM
+                    </NavLink>,
+                    "2.3",
+                    <FontAwesomeIcon icon={faHospitalUser} />
+                ),
+                getItem(
+                    <NavLink
+                        className="menu-navlink"
+                        onClick={() => setCollapsed(true)}
+                        to="/khambenh/ngoaitrummat"
+                    >
+                        HSBA - Ngoại Trú Mắt
+                    </NavLink>,
+                    "2.4",
+                    <FontAwesomeIcon icon={faHospitalUser} />
+                ),
+                getItem(
+                    <NavLink
+                        className="menu-navlink"
+                        onClick={() => setCollapsed(true)}
+                        to="/khambenh/ngoaitruTMH"
+                    >
+                        HSBA - Ngoại Trú TMH
+                    </NavLink>,
+                    "2.5",
+                    <FontAwesomeIcon icon={faHospitalUser} />
+                ),
+                getItem(
+                    <NavLink
+                        className="menu-navlink"
+                        onClick={() => setCollapsed(true)}
+                        to="/khambenh/ngoaitruYHCT"
+                    >
+                        HSBA - Ngoại Trú YHCT
+                    </NavLink>,
+                    "2.6",
+                    <FontAwesomeIcon icon={faHospitalUser} />
+                ),
+            ]
         ),
         getItem(
             <NavLink
@@ -85,7 +152,7 @@ function LayoutPageMain({ children }) {
                     <NavLink
                         className="menu-navlink"
                         onClick={() => setCollapsed(true)}
-                        to="/canlamsan/sieuam"
+                        to="/canlansan/sieuam"
                     >
                         Siêu âm
                     </NavLink>,

@@ -8,9 +8,9 @@ import {
     faSave,
     faTrashCan,
 } from "@fortawesome/free-solid-svg-icons";
-import ds from "../../../../util/data";
+import ds from "../../../../../util/data";
 // import Swal from "sweetalert2";
-function Toathuoctaicho(props) {
+function Thuoctutruc(props) {
     const { open, setOpen } = props;
     const columns = [
         {
@@ -87,7 +87,11 @@ function Toathuoctaicho(props) {
         {
             label: <div className="form-input-label ">F2 - Mới</div>,
             key: "1",
-            icon: <FontAwesomeIcon icon={faPowerOff} />,
+            icon: (
+                <div>
+                    <FontAwesomeIcon icon={faPowerOff} />
+                </div>
+            ),
         },
         {
             label: <div className="form-input-label ">F3 - Lưu</div>,
@@ -97,22 +101,38 @@ function Toathuoctaicho(props) {
         {
             label: <div className="form-input-label ">Bỏ qua</div>,
             key: "3",
-            icon: <FontAwesomeIcon icon={faFastForward} />,
+            icon: (
+                <div>
+                    <FontAwesomeIcon icon={faFastForward} />
+                </div>
+            ),
         },
         {
             label: <div className="form-input-label ">In CD</div>,
             key: "4",
-            icon: <FontAwesomeIcon icon={faPrint} />,
+            icon: (
+                <div>
+                    <FontAwesomeIcon icon={faPrint} />
+                </div>
+            ),
         },
         {
             label: <div className="form-input-label ">Hủy</div>,
             key: "5",
-            icon: <FontAwesomeIcon icon={faTrashCan} />,
+            icon: (
+                <div className="">
+                    <FontAwesomeIcon icon={faTrashCan} />
+                </div>
+            ),
         },
         {
             label: <div className="form-input-label ">Thoát</div>,
             key: "6",
-            icon: <FontAwesomeIcon icon={faCircleXmark} />,
+            icon: (
+                <div>
+                    <FontAwesomeIcon icon={faCircleXmark} />
+                </div>
+            ),
         },
     ];
     const handCloseModal = (a) => {
@@ -126,7 +146,7 @@ function Toathuoctaicho(props) {
                 title={
                     <>
                         <div className="d-flex justify-content-between align-items-center">
-                            <div>TOA THUỐC TẠI CHỔ</div>
+                            <div className="">THUỐC TỦ TRỰC</div>
                             <div>
                                 <div className="d-flex justify-content-end align-items-center">
                                     <Form.Item
@@ -163,7 +183,7 @@ function Toathuoctaicho(props) {
                     },
                 }}
                 onCancel={() => setOpen(false)}
-                width={"100vw"}
+                width={1000}
                 closable={false}
             >
                 <div className="text-center">
@@ -279,6 +299,31 @@ function Toathuoctaicho(props) {
                                 </div>
                             </div>
                         </div>
+                        <div>
+                            <div className="d-flex mt-2 justify-content-end">
+                                <div className="d-flex align-items-center mx-2">
+                                    <Form.Item
+                                        className="m-0 p-0"
+                                        label={
+                                            <div className="form-input-label khambenh-form-input-label">
+                                                Thuốc DV
+                                            </div>
+                                        }
+                                    >
+                                        <Checkbox />
+                                    </Form.Item>
+                                </div>
+                                {items1.map((item) => (
+                                    <Button
+                                        className="form-btn color-text mx-1 px-1"
+                                        key={item.key}
+                                    >
+                                        {item.icon}
+                                        <div className="mx-1">{item.label}</div>
+                                    </Button>
+                                ))}
+                            </div>
+                        </div>
                     </Form>
                 </div>
             </Modal>
@@ -286,4 +331,4 @@ function Toathuoctaicho(props) {
     );
 }
 
-export default Toathuoctaicho;
+export default Thuoctutruc;

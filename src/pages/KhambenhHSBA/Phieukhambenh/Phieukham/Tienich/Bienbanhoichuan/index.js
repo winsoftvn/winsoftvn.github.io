@@ -9,9 +9,9 @@ import {
     faSave,
     faTrashCan,
 } from "@fortawesome/free-solid-svg-icons";
-import ds from "../../../../../util/data";
+import ds from "../../../../../../util/data";
 import TextArea from "antd/es/input/TextArea";
-import "../../../../../styles/style.scss";
+import "../../../../../../styles/style.scss";
 import "./bienbanhoichung.scss";
 // import Swal from "sweetalert2";
 function Bienbanhoichuan(props) {

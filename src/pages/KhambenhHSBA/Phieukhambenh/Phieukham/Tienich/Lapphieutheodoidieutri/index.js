@@ -12,7 +12,6 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import FormItem from "antd/es/form/FormItem";
 import "./lapphieutheodoidieutri.scss";
-import data2 from "../../../../../util/data3";
 // import Swal from "sweetalert2";
 
 import {
@@ -32,6 +31,7 @@ import {
     image,
     link,
 } from "suneditor/src/plugins";
+import data2 from "../../../../../../util/data3";
 function Lapphieutheodoidieutri(props) {
     const { open, setOpen } = props;
     const columns = [

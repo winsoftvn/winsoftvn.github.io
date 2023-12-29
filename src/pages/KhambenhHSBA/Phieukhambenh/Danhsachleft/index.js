@@ -13,7 +13,7 @@ import {
 import { useState } from "react";
 import { motion } from "framer-motion";
 import "./danhsachleft.scss";
-import ds from "../../../util/data";
+import ds from "../../../../util/data";
 function Danhsachleft() {
     const [open, setOpen] = useState(false);
     const [click, setClick] = useState(false);

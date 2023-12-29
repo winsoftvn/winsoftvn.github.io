@@ -10,7 +10,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import FormItem from "antd/es/form/FormItem";
 import "./lapphieuchamsoc.scss";
-import data2 from "../../../../../util/data3";
+import data2 from "../../../../../../util/data3";
 import TextArea from "antd/es/input/TextArea";
 // import Swal from "sweetalert2";
 

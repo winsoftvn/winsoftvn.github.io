@@ -7,11 +7,10 @@ import {
     faPrint,
     faSave,
     faTrashCan,
-    faTruckMedical,
 } from "@fortawesome/free-solid-svg-icons";
-import ds from "../../../../util/data";
+import ds from "../../../../../util/data";
 // import Swal from "sweetalert2";
-function Toamuangoai(props) {
+function Toathuoctaicho(props) {
     const { open, setOpen } = props;
     const columns = [
         {
@@ -88,11 +87,7 @@ function Toamuangoai(props) {
         {
             label: <div className="form-input-label ">F2 - Mới</div>,
             key: "1",
-            icon: (
-                <div>
-                    <FontAwesomeIcon icon={faPowerOff} />
-                </div>
-            ),
+            icon: <FontAwesomeIcon icon={faPowerOff} />,
         },
         {
             label: <div className="form-input-label ">F3 - Lưu</div>,
@@ -102,38 +97,22 @@ function Toamuangoai(props) {
         {
             label: <div className="form-input-label ">Bỏ qua</div>,
             key: "3",
-            icon: (
-                <div>
-                    <FontAwesomeIcon icon={faFastForward} />
-                </div>
-            ),
+            icon: <FontAwesomeIcon icon={faFastForward} />,
         },
         {
             label: <div className="form-input-label ">In CD</div>,
             key: "4",
-            icon: (
-                <div>
-                    <FontAwesomeIcon icon={faPrint} />
-                </div>
-            ),
+            icon: <FontAwesomeIcon icon={faPrint} />,
         },
         {
             label: <div className="form-input-label ">Hủy</div>,
             key: "5",
-            icon: (
-                <div className="">
-                    <FontAwesomeIcon icon={faTrashCan} />
-                </div>
-            ),
+            icon: <FontAwesomeIcon icon={faTrashCan} />,
         },
         {
             label: <div className="form-input-label ">Thoát</div>,
             key: "6",
-            icon: (
-                <div>
-                    <FontAwesomeIcon icon={faCircleXmark} />
-                </div>
-            ),
+            icon: <FontAwesomeIcon icon={faCircleXmark} />,
         },
     ];
     const handCloseModal = (a) => {
@@ -146,8 +125,8 @@ function Toamuangoai(props) {
             <Modal
                 title={
                     <>
-                        <div className="d-flex justify-content-between align-items-center ">
-                            <div>TOA MUA NGOÀI</div>
+                        <div className="d-flex justify-content-between align-items-center">
+                            <div>TOA THUỐC TẠI CHỔ</div>
                             <div>
                                 <div className="d-flex justify-content-end align-items-center">
                                     <Form.Item
@@ -185,7 +164,6 @@ function Toamuangoai(props) {
                 }}
                 onCancel={() => setOpen(false)}
                 width={"100vw"}
-                className="khambenh"
                 closable={false}
             >
                 <div className="text-center">
@@ -308,4 +286,4 @@ function Toamuangoai(props) {
     );
 }
 
-export default Toamuangoai;
+export default Toathuoctaicho;

@@ -11,9 +11,9 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import FormItem from "antd/es/form/FormItem";
 import "./lapphieutheodoitruyendich.scss";
-import data2 from "../../../../../util/data3";
-import ds from "../../../../../util/data";
+import data2 from "../../../../../../util/data3";
 import { useRef } from "react";
+import ds from "../../../../../../util/data";
 // import Swal from "sweetalert2";
 
 function Lapphieutheodoitruyendich(props) {

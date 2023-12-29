@@ -16,7 +16,7 @@ import "./khambenh.scss";
 import Danhsachleft from "./Danhsachleft";
 import Phieukham from "./Phieukham";
 import LichsuCLSThuoc from "./LichsuCLS&Thuoc";
-function Khambenh() {
+function Phieukhambenh() {
     //khaibao
     const [click, setClick] = useState(false);
     //truyền props
@@ -295,4 +295,4 @@ function Khambenh() {
     );
 }
 
-export default Khambenh;
+export default Phieukhambenh;

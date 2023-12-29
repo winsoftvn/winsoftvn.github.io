@@ -7,7 +7,8 @@ import Canlamsan from "../pages/Canlamsan/Sieuam";
 import Xquang from "../pages/Canlamsan/XQuang";
 import Duoc from "../pages/Duoc";
 import Home from "../pages/Home";
-import Khambenh from "../pages/Khambenh";
+import HSBANgoaitruKB from "../pages/KhambenhHSBA/HSBANgoaitruKB";
+import Phieukhambenh from "../pages/KhambenhHSBA/Phieukhambenh";
 import Khamsuckhoe from "../pages/Khamsuckhoe";
 import LoginPage from "../pages/Login";
 import Phauthuatthuthuat from "../pages/Phauthuatthuthuat";
@@ -56,9 +57,15 @@ const PageWeb = [
         isMainLayout: true,
     },
     //Khám bệnh
+    
     {
-        path: "/khambenh",
-        page: Khambenh,
+        path: "/khambenh/phieukhambenh",
+        page: Phieukhambenh,
+        isMainLayout: true,
+    },
+    {
+        path: "/khambenh/HSBANgoaitruKB",
+        page: HSBANgoaitruKB,
         isMainLayout: true,
     },
     //Viện phí

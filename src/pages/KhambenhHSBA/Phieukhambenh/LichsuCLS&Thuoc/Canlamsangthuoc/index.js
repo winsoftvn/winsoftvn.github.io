@@ -2,7 +2,7 @@ import { Button, Form, Input, Table } from "antd";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPrint } from "@fortawesome/free-solid-svg-icons";
 import "./camlamsangthuoc.scss";
-import ds from "../../../../util/data";
+import ds from "../../../../../util/data";
 function Canlamsanthuoc() {
     const column0 = [
         {
