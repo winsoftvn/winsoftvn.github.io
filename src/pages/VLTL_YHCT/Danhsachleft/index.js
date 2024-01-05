@@ -5,10 +5,8 @@ import {
     faTrashCan,
     faEye,
     faPenToSquare,
-    faAngleRight,
     faArrowsRotate,
     faBroom,
-    faAngleLeft,
 } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import { motion } from "framer-motion";
@@ -107,7 +105,7 @@ function Danhsachleft() {
             dataIndex: "MADVKT",
             align: "center",
         },
-        ,
+        
         {
             title: "Thao tác",
             dataIndex: "",

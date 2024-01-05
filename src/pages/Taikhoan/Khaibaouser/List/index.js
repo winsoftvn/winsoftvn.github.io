@@ -1,27 +1,44 @@
-import { Button, Table, Checkbox, Input, Space } from "antd";
-import ds from "../../../../util/data";
+import { Button, Table, Checkbox, Input, Space, Dropdown, Modal } from "antd";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus, faSearch } from "@fortawesome/free-solid-svg-icons";
-import { useRef, useState } from "react";
+import {
+    faPlus,
+    faSearch,
+    faEdit,
+    faTrashCan,
+    faPenToSquare,
+} from "@fortawesome/free-solid-svg-icons";
+import { useRef, useState, useEffect } from "react";
 import Highlighter from "react-highlight-words";
 import CtKhaibaouser from "../Detail";
-
+import employeeAPI from "../../../../services/employeeAPI";
+import { errorInfo, successInfo } from "../../../../components/Dialog/Dialog";
+import { useDispatch } from "react-redux";
+import { setDataEmployee } from "../../../../slices/dataAdd";
+import uploadsPhongKham from "../../../../services/uploadsPhongKham";
+import "./listemployee.scss";
 function Khaibaouser() {
+    //khai báo
     const [open, setOpen] = useState(false);
+    const [openImage, setOpenImage] = useState(false);
 
-    const handleDataCreate = () => {
-        setOpen(true);
-    };
+    const [loading, setLoading] = useState(false);
+    const [listEmployee, setListEmployee] = useState([]);
+    console.log("listEmployee: ", listEmployee);
+
+    const [listGroup, setListGroup] = useState([]);
+    const [listPosition, setListPosition] = useState([]);
 
     const [searchText, setSearchText] = useState("");
     const [searchedColumn, setSearchedColumn] = useState("");
+    //redux
+    const dispatch = useDispatch();
+    //Search
     const searchInput = useRef(null);
     const handleSearch = (selectedKeys, confirm, dataIndex) => {
         confirm();
         setSearchText(selectedKeys[0]);
         setSearchedColumn(dataIndex);
     };
-
     const getColumnSearchProps = (dataIndex) => ({
         filterDropdown: ({ setSelectedKeys, selectedKeys, confirm }) => (
             <div
@@ -33,7 +50,7 @@ function Khaibaouser() {
             >
                 <Input
                     ref={searchInput}
-                    placeholder={`Search ${dataIndex}`}
+                    placeholder={"Nhập tên"}
                     value={selectedKeys[0]}
                     onChange={(e) => setSelectedKeys(e.target.value ? [e.target.value] : [])}
                     onPressEnter={() => handleSearch(selectedKeys, confirm, dataIndex)}
@@ -45,7 +62,7 @@ function Khaibaouser() {
                 />
                 <Space>
                     <Button
-                        type="primary"
+                        className="form-btn"
                         onClick={() => handleSearch(selectedKeys, confirm, dataIndex)}
                         icon={<FontAwesomeIcon icon={faSearch} />}
                         size="small"
@@ -82,100 +99,275 @@ function Khaibaouser() {
             ),
     });
 
-    const column0 = [
+    //
+
+    //Thao tac chon phan tu
+    const handleThaoTac = (e, record) => {
+        if (e.key === "update") {
+            dispatch(setDataEmployee(record));
+            setOpen(true);
+        } else if (e.key === "delete") {
+            handleDelete(record.RowID);
+        }
+    };
+    //Hàm load dữ liệu
+    const getAllEmployee = async () => {
+        try {
+            setLoading(true);
+            const data = await employeeAPI.getAll();
+            setListEmployee(data.data.recordset);
+            setLoading(false);
+        } catch (err) {
+            throw new Error(err);
+        }
+    };
+    const getAllGroup = async () => {
+        try {
+            const data = await employeeAPI.getAllGroup(0);
+            setListGroup(data.data);
+        } catch (err) {
+            throw new Error(err);
+        }
+    };
+    const getAllPosition = async () => {
+        try {
+            const data = await employeeAPI.getAllPosition(0);
+            setListPosition(data.data);
+        } catch (err) {
+            throw new Error(err);
+        }
+    };
+
+    //Hàm thêm
+    const handleCreate = async (obj) => {
+        const data = await employeeAPI.create(obj);
+        if (data.data.message !== "OK") {
+            errorInfo("Thêm mới thất bại");
+        } else if (data.data.message === "OK") {
+            successInfo("Thêm mới thành công !");
+            getAllEmployee();
+        }
+    };
+    //Hàm xóa
+    const handleDelete = async (id) => {
+        const data = await employeeAPI.delete(id);
+        console.log("data: ", data);
+
+        if (data.data[0].ResultMsg !== "ok^Xóa thành công.") {
+            errorInfo("Xóa thất bại");
+        } else if (data.data[0].ResultMsg === "ok^Xóa thành công.") {
+            successInfo("Xóa thành công !");
+            getAllEmployee();
+        }
+    };
+    //Hàm cập nhật
+    const handleUpdate = async (obj) => {
+        console.log("obj: ", obj);
+        const data = await employeeAPI.update(obj);
+        console.log("data: ", data);
+        if (data.data.result.ResultMsg !== "ok^Cập nhật thành công") {
+            errorInfo("Cập nhật thất bại");
+        } else if (data.data.result.ResultMsg === "ok^Cập nhật thành công") {
+            successInfo("Cập nhật thành công !");
+            getAllEmployee();
+        }
+    };
+
+    useEffect(() => {
+        getAllEmployee();
+        getAllGroup();
+        getAllPosition();
+    }, []);
+
+    const handleDataCreate = () => {
+        setOpen(true);
+    };
+    const items = [
         {
-            title: "Họ tên",
-            dataIndex: "TDV",
+            key: "delete",
+            label: "Xóa",
+            icon: <FontAwesomeIcon icon={faTrashCan} />,
+        },
+        {
+            key: "update",
+            label: "Sửa",
+            icon: <FontAwesomeIcon icon={faPenToSquare} />,
+        },
+    ];
+    const column = [
+        {
+            title: "RowID",
+            dataIndex: "RowID",
             fixed: "left",
-            ...getColumnSearchProps("TDV"),
-            render: (TDV) => <div style={{ width: "200px" }}> {TDV} </div>,
+            render: (RowID) => <div style={{ width: "120px" }}> {RowID} </div>,
+        },
+        {
+            title: "Họ và tên",
+            dataIndex: "EmployeeName",
+            fixed: "left",
+            ...getColumnSearchProps("EmployeeName"),
+            render: (EmployeeName) => <div style={{ width: "200px" }}> {EmployeeName} </div>,
         },
         {
             title: "Giới tính",
-            dataIndex: "TDVVT",
-            render: (TDVVT) => <div style={{ width: "130px" }}> {TDVVT} </div>,
+            dataIndex: "Sex",
+            align: "center",
+            render: (Sex) => <div style={{ width: "100px" }}> {Sex === 0 ? "Nam" : "Nữ"} </div>,
         },
         {
             title: "Điện thoại",
-            dataIndex: "MADVKT",
-            render: (TDVVT) => <div style={{ width: "200px" }}> {TDVVT} </div>,
+            dataIndex: "Mobile",
+            render: (Mobile) => <div style={{ width: "150px" }}> {Mobile} </div>,
         },
         {
-            title: "TAX/CMND",
-            dataIndex: "TDVVT",
-            render: (TDVVT) => <div style={{ width: "200px" }}> {TDVVT} </div>,
-        },
-        {
-            title: "Địa chỉ",
-            dataIndex: "MADVKT",
-            render: (TDVVT) => <div style={{ width: "200px" }}> {TDVVT} </div>,
+            title: "CCCD",
+            dataIndex: "CCCD",
+            render: (CCCD) => <div style={{ width: "150px" }}> {CCCD} </div>,
         },
         {
             title: "Ngày sinh",
-            dataIndex: "MADVKT",
-            render: (TDVVT) => <div style={{ width: "200px" }}> {TDVVT} </div>,
+            dataIndex: "Birthday",
+            render: (Birthday) => <div style={{ width: "200px" }}> {Birthday} </div>,
         },
+        {
+            title: "Địa chỉ",
+            dataIndex: "Address",
+            render: (Address) => <div style={{ width: "200px" }}> {Address} </div>,
+        },
+
         {
             title: "Chức danh",
-            dataIndex: "MADVKT",
+            dataIndex: "PositionID",
             align: "center",
-            render: (TDVVT) => <div style={{ width: "200px" }}> {TDVVT} </div>,
+            render: (PositionID) => <div style={{ width: "200px" }}> {PositionID}</div>,
         },
+
         {
             title: "Tên đăng nhập",
-            dataIndex: "MADVKT",
+            dataIndex: "UserName",
             align: "center",
-            render: (TDVVT) => <div style={{ width: "200px" }}> {TDVVT} </div>,
+            render: (UserName) => <div style={{ width: "200px" }}> {UserName} </div>,
         },
         {
             title: "Mật khẩu",
-            dataIndex: "MADVKT",
-            render: (TDVVT) => <div style={{ width: "200px" }}> {TDVVT} </div>,
+            dataIndex: "UserPass",
+            render: (UserPass) => <div style={{ width: "200px" }}> {UserPass} </div>,
         },
         {
             title: "Nghỉ việc",
-            dataIndex: "MADVKT",
+            dataIndex: "OffWork",
             align: "center",
-            render: (TDVVT) => (
-                <div style={{ width: "200px" }}>
-                    {" "}
-                    <Checkbox />{" "}
+            render: (OffWork) => (
+                <div style={{ width: "50px" }}>
+                    <Checkbox checked={OffWork} />
                 </div>
             ),
         },
         {
-            title: "Phòng",
-            dataIndex: "MADVKT",
-            render: (TDVVT) => <div style={{ width: "200px" }}> {TDVVT} </div>,
-        },
-        {
             title: "Nhóm",
-            dataIndex: "MADVKT",
-            render: (TDVVT) => <div style={{ width: "200px" }}> {TDVVT} </div>,
+            dataIndex: "GroupID",
+            render: (GroupID) => <div style={{ width: "200px" }}> {GroupID} </div>,
         },
         {
             title: "Mã BS/CCHN",
-            dataIndex: "MADVKT",
-            render: (TDVVT) => <div style={{ width: "200px" }}> {TDVVT} </div>,
+            dataIndex: "MaCCHN",
+            render: (MaCCHN) => <div style={{ width: "200px" }}> {MaCCHN} </div>,
+        },
+        {
+            title: "ĐTQG-Mã BS",
+            dataIndex: "DTQG_Ma_BS",
+            render: (DTQG_Ma_BS) => <div style={{ width: "200px" }}> {DTQG_Ma_BS} </div>,
+        },
+        {
+            title: "ĐTQG-Mã liên kết BS",
+            dataIndex: "DTQG_MK_BS",
+            render: (DTQG_MK_BS) => <div style={{ width: "200px" }}> {DTQG_MK_BS} </div>,
         },
         {
             title: "Chữ ký",
-            dataIndex: "MADVKT",
+            dataIndex: "ImageFile",
             align: "center",
-            render: (TDVVT) => <div style={{ width: "200px" }}> {TDVVT} </div>,
+            render: (ImageFile) => (
+                <div style={{ width: "200px" }}>
+                    <div
+                        className="focus-link-image"
+                        onClick={() => setOpenImage({ open: true, link: ImageFile })}
+                    >
+                        {ImageFile}
+                    </div>
+                    <Modal
+                        centered
+                        open={openImage.open}
+                        okButtonProps={{
+                            style: {
+                                display: "none",
+                            },
+                        }}
+                        cancelButtonProps={{
+                            style: {
+                                display: "none",
+                            },
+                        }}
+                        onCancel={() => setOpenImage(false)}
+                        width={500}
+                        className="text-center"
+                    >
+                        <img
+                            src={uploadsPhongKham.uploadsImageEmployee(openImage.link)}
+                            width={400}
+                            height={550}
+                        />
+                    </Modal>
+                </div>
+            ),
+        },
+        {
+            title: "Mã NV",
+            dataIndex: "EmployeeCode",
+            align: "center",
+            render: (EmployeeCode) => <div style={{ width: "200px" }}> {EmployeeCode} </div>,
         },
         {
             title: "STT",
-            dataIndex: "MADVKT",
-            render: (TDVVT) => <div style={{ width: "200px" }}> {TDVVT} </div>,
+            dataIndex: "STT",
+            render: (STT) => <div style={{ width: "50px" }}> {STT} </div>,
+        },
+        {
+            title: "Thao tác",
+            dataIndex: "",
+            align: "center",
+            fixed: "right",
+            render: (record) => (
+                <div className="d-flex justify-content-center">
+                    <Dropdown
+                        menu={{
+                            items,
+                            onClick: (e) => handleThaoTac(e, record),
+                        }}
+                        placement="left"
+                        arrow={{
+                            pointAtCenter: true,
+                        }}
+                    >
+                        <Button className="bg-light vienphi-danhmuc-icon-modify">
+                            <FontAwesomeIcon
+                                icon={faEdit}
+                                style={{ fontSize: "10px" }}
+                                className="text-dark"
+                            />
+                        </Button>
+                    </Dropdown>
+                </div>
+            ),
         },
     ];
+
     return (
         <>
             <div>
                 <div className="d-flex justify-content-between align-items-center mt-2 mx-2">
                     <div className="d-flex align-items-center ">
-                        <div className="vienphi-danhmuc-title mx-2">Khai báo user</div>
+                        <div className="vienphi-danhmuc-title mx-2">Danh sách nhân viên</div>
                     </div>
                     <div className="text-end">
                         <Button className="form-btn bg" onClick={handleDataCreate}>
@@ -184,11 +376,18 @@ function Khaibaouser() {
                         </Button>
                     </div>
                 </div>
-                <CtKhaibaouser open={open} setOpen={setOpen} />
+                <CtKhaibaouser
+                    open={open}
+                    setOpen={setOpen}
+                    handleCreate={handleCreate}
+                    handleUpdate={handleUpdate}
+                    listPosition={listPosition}
+                    listGroup={listGroup}
+                />
                 <div className="mt-2 p-1" style={{ height: "100vh" }}>
                     <Table
-                        dataSource={ds}
-                        columns={column0}
+                        dataSource={listEmployee}
+                        columns={column}
                         scroll={{ x: true, y: "100vh" }}
                         size="small"
                         pagination={false}

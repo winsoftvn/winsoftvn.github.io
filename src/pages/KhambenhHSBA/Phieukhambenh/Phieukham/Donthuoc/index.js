@@ -1,10 +1,9 @@
-import { Form, Input, Table, Button, InputNumber, Checkbox } from "antd";
+import { Form, Input, Table, Button, Checkbox } from "antd";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faXmarkCircle } from "@fortawesome/free-solid-svg-icons";
 import { v4 as uuidv4 } from "uuid";
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
-
 import SearchFilter from "./Timkiem";
 import "./donthuoc.scss";
 function Donthuoc() {
@@ -16,10 +15,19 @@ function Donthuoc() {
     const [red, setReds] = useState([]);
     const [form] = Form.useForm();
     const [valueInputThuoc, setValueInputThuoc] = useState();
+    // const [suaThongTin, setSuaThongTin] = useState(false);
     //UseRef
+    const refTenthuoc = useRef(null);
     const refNcap = useRef(null);
+    const refSang = useRef(null);
+    const refTrua = useRef(null);
+    const refChieu = useRef(null);
+    const refToi = useRef(null);
+    const refCachdung = useRef(null);
+    const refLuu = useRef(null);
+
     const handleDeleteThuoc = (a) => {
-        let ds = dsthuoc.filter((item) => item.Ma != a.Ma);
+        let ds = dsthuoc.filter((item) => item.Ma !== a.Ma);
         setDSThuoc(ds);
     };
 
@@ -36,11 +44,45 @@ function Donthuoc() {
                     Tenthuoc: "",
                     Hamluong: "",
                     DVT: "",
+                    Ncap: "",
+                    Sang: "",
+                    Trua: "",
+                    Chieu: "",
+                    Toi: "",
+                    Tong: "",
+                    Cachdung: "",
                 });
                 setValue(!value);
             }
         });
         setValueInputThuoc();
+        refTenthuoc.current.focus();
+    };
+    const handleSuaThongTin = (a, b) => {
+        console.log(a, b);
+    };
+    const handleFocusEnter = (a, b) => {
+        if (a.key === "Enter") {
+            if (b === 1) {
+                refSang.current.focus();
+                a.preventDefault();
+            } else if (b === 2) {
+                refTrua.current.focus();
+                a.preventDefault();
+            } else if (b === 3) {
+                refChieu.current.focus();
+                a.preventDefault();
+            } else if (b === 4) {
+                refToi.current.focus();
+                a.preventDefault();
+            } else if (b === 5) {
+                refCachdung.current.focus();
+                a.preventDefault();
+            } else if (b === 6) {
+                refLuu.current.focus();
+                a.preventDefault();
+            }
+        }
     };
     useEffect(() => {
         form.setFieldsValue({
@@ -207,7 +249,11 @@ function Donthuoc() {
                             <div className=" w-5 text-center">Lưu</div>
                         </div>{" "}
                         <div className="scroll">
-                            <Form form={form} onFinish={handlePushThuoc}>
+                            <Form
+                                form={form}
+                                onFinish={handlePushThuoc}
+                                onKeyDown={(e) => handleFocusEnter(e, 8)}
+                            >
                                 <div className="d-flex">
                                     <Form.Item className="p-0 m-0 w-20">
                                         <SearchFilter
@@ -221,6 +267,7 @@ function Donthuoc() {
                                             valueInputThuoc={valueInputThuoc}
                                             setValueInputThuoc={setValueInputThuoc}
                                             refNcap={refNcap}
+                                            refTenthuoc={refTenthuoc}
                                         />
                                     </Form.Item>
                                     <Form.Item className="p-0 m-0 w-5" name="Hluong">
@@ -230,7 +277,11 @@ function Donthuoc() {
                                         <Input className="form-control" />
                                     </Form.Item>
                                     <Form.Item className="p-0 m-0 w-5" name="Ncap">
-                                        <Input className="form-control" ref={refNcap} />
+                                        <Input
+                                            className="form-control"
+                                            ref={refNcap}
+                                            onKeyDown={(e) => handleFocusEnter(e, 1)}
+                                        />
                                     </Form.Item>
                                     <Form.Item className="p-0 m-0 w-5" name="Sang">
                                         <Input
@@ -238,6 +289,8 @@ function Donthuoc() {
                                             type="number"
                                             min={0}
                                             classNames="text-center"
+                                            ref={refSang}
+                                            onKeyDown={(e) => handleFocusEnter(e, 2)}
                                         />
                                     </Form.Item>
                                     <Form.Item className="p-0 m-0 w-5" name="Trua">
@@ -246,6 +299,8 @@ function Donthuoc() {
                                             classNames="text-center"
                                             type="number"
                                             min={0}
+                                            ref={refTrua}
+                                            onKeyDown={(e) => handleFocusEnter(e, 3)}
                                         />
                                     </Form.Item>
                                     <Form.Item className="p-0 m-0 w-5" name="Chieu">
@@ -254,6 +309,8 @@ function Donthuoc() {
                                             type="number"
                                             min={0}
                                             classNames="text-center"
+                                            ref={refChieu}
+                                            onKeyDown={(e) => handleFocusEnter(e, 4)}
                                         />
                                     </Form.Item>
                                     <Form.Item className="p-0 m-0 w-5" name="Toi">
@@ -262,13 +319,19 @@ function Donthuoc() {
                                             type="number"
                                             min={0}
                                             classNames="text-center"
+                                            ref={refToi}
+                                            onKeyDown={(e) => handleFocusEnter(e, 5)}
                                         />
                                     </Form.Item>
                                     <Form.Item className="p-0 m-0 w-10" name="Tong">
                                         <Input className="form-control" />
                                     </Form.Item>
                                     <Form.Item className="p-0 m-0 w-20" name="Cachdung">
-                                        <Input className="form-control" />
+                                        <Input
+                                            className="form-control"
+                                            ref={refCachdung}
+                                            onKeyDown={(e) => handleFocusEnter(e, 6)}
+                                        />
                                     </Form.Item>
                                     <Form.Item className="p-0 m-0 w-10" name="Dongia">
                                         <Input className="form-control" readOnly />
@@ -277,6 +340,7 @@ function Donthuoc() {
                                         <Button
                                             className="khambenh-btn-icon color-icon-edit green"
                                             htmlType="submit"
+                                            ref={refLuu}
                                         >
                                             <FontAwesomeIcon icon={faCheck} />
                                         </Button>
@@ -294,6 +358,12 @@ function Donthuoc() {
                                     pagination={false}
                                     showHeader={false}
                                     locale={{ emptyText: "Chưa có dữ liệu" }}
+                                    onRow={(record, rowIndex) => ({
+                                        onClick: () => {
+                                            // setSuaThongTin(true);
+                                            handleSuaThongTin(record, rowIndex);
+                                        },
+                                    })}
                                 />
                             </div>
                         </div>

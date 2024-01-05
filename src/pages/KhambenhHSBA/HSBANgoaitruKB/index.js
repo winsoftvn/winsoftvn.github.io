@@ -3,12 +3,10 @@ import "./HSBANgoaitruKB.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
     faBook,
-    faCalendarCheck,
     faFileExcel,
     faPenToSquare,
     faReply,
     faSave,
-    faFile,
     faPrint,
 } from "@fortawesome/free-solid-svg-icons";
 import TextArea from "antd/es/input/TextArea";
@@ -403,20 +401,21 @@ function HSBANgoaitruKB() {
                                             }}
                                         />
                                     </Form.Item>
-                                    <div className="row form-row">
+                                    <div className="row form-row m-0">
                                         <Form.Item
                                             label={
                                                 <div className="form-input-label">
                                                     Chỉ định ban đầu
                                                 </div>
                                             }
+                                            className="m-0"
                                         >
                                             <Input className="form-control" />
                                         </Form.Item>
                                     </div>
-                                    <div className="row form-row">
+                                    <div className="row form-row m-0">
                                         <Form.Item
-                                            className="col-md-6"
+                                            className="col-md-6 p-0"
                                             label={<div className="form-input-label">ICD10</div>}
                                         >
                                             <div className="input-select">
@@ -424,7 +423,7 @@ function HSBANgoaitruKB() {
                                             </div>
                                         </Form.Item>
                                         <Form.Item
-                                            className="col-md-6"
+                                            className="col-md-6 p-0"
                                             label={<div className="form-input-label">Xử trí</div>}
                                         >
                                             <div className="input-select">
@@ -519,42 +518,7 @@ function HSBANgoaitruKB() {
                                         <Input className="form-control text-center" />
                                     </Form.Item>
                                 </div>
-                                <div className="row form-row">
-                                    <Form.Item
-                                        className="m-0"
-                                        label={
-                                            <div className="khambenh-ngoaitrukb-form-input-label-left ">
-                                                KQ điều trị
-                                            </div>
-                                        }
-                                    >
-                                        <Input className="form-control text-center" />
-                                    </Form.Item>
-                                </div>
-                                <div className="row form-row ">
-                                    <Form.Item
-                                        className="m-0"
-                                        label={
-                                            <div className="khambenh-ngoaitrukb-form-input-label-left ">
-                                                TT ra viện
-                                            </div>
-                                        }
-                                    >
-                                        <Input className="form-control text-center" />
-                                    </Form.Item>
-                                </div>{" "}
-                                <div className="row form-row">
-                                    <Form.Item
-                                        className="m-0"
-                                        label={
-                                            <div className="khambenh-ngoaitrukb-form-input-label-left ">
-                                                Ngày ra
-                                            </div>
-                                        }
-                                    >
-                                        <Input className="form-control text-center" />
-                                    </Form.Item>
-                                </div>
+                               
                                 <div className="row form-row">
                                     <Form.Item
                                         className="m-0"
@@ -597,8 +561,8 @@ function HSBANgoaitruKB() {
                                 <TextArea
                                     className="form-control "
                                     autoSize={{
-                                        minRows: 15,
-                                        maxRows: 15,
+                                        minRows: 8,
+                                        maxRows: 8,
                                     }}
                                 />
                             </Form.Item>
@@ -616,8 +580,8 @@ function HSBANgoaitruKB() {
                                     }
                                 >
                                     <div className="d-flex">
-                                        <Input className="form-control w-10"></Input>
-                                        <Input className="form-control w-20"></Input>
+                                        <Input className="form-control w-30"></Input>
+                                        <Input className="form-control w-70"></Input>
                                     </div>
                                 </Form.Item>
                             </div>
@@ -641,6 +605,7 @@ function HSBANgoaitruKB() {
 
                             <div className="row form-row mt-4">
                                 <Form.Item
+                                  className="col-md-4"
                                     label={
                                         <div className="khambenh-ngoaitrukb-form-input-label-left">
                                             P.P điều trị
@@ -649,11 +614,9 @@ function HSBANgoaitruKB() {
                                 >
                                     <Input className="form-control"></Input>
                                 </Form.Item>
-                            </div>
-
-                            <div className="row form-row">
+                          
                                 <Form.Item
-                                    className="col-md-6"
+                                    className="col-md-4"
                                     label={
                                         <div className="khambenh-ngoaitrukb-form-input-label-left">
                                             TT ra viện
@@ -665,7 +628,7 @@ function HSBANgoaitruKB() {
                                     </div>
                                 </Form.Item>
                                 <Form.Item
-                                    className="col-md-6"
+                                    className="col-md-4"
                                     label={
                                         <div className="khambenh-ngoaitrukb-form-input-label-left">
                                             Kết quả điều trị
@@ -697,18 +660,9 @@ function HSBANgoaitruKB() {
                                         </div>
                                     }
                                 >
-                                    <Input className="form-control " type="date"></Input>
+                                    <Input className="form-control " type="datetime-local"></Input>
                                 </Form.Item>
-                                <Form.Item
-                                    className="col-md-1"
-                                    label={
-                                        <div className="khambenh-ngoaitrukb-form-input-label">
-                                            Giờ ra
-                                        </div>
-                                    }
-                                >
-                                    <Input className="form-control "></Input>
-                                </Form.Item>
+                               
                             </div>
                         </div>
                     </div>

@@ -14,6 +14,7 @@ function SearchFilter(props) {
         setValueInputThuoc,
         valueInputThuoc,
         refNcap,
+        refTenthuoc,
     } = props;
 
     const column1 = [
@@ -64,6 +65,7 @@ function SearchFilter(props) {
                                 name="tenthuoc"
                                 className="form-control"
                                 onChange={Filter}
+                                ref={refTenthuoc}
                             />
                         </Form.Item>
                     </Form>

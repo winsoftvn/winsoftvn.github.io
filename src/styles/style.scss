@@ -74,9 +74,9 @@ a {
 }
 
 //select
-.ant-select-selector {
-    height: 20px !important;
-}
+// .ant-select-selector {
+//     height: 20px !important;
+// }
 input[type="search"] {
     height: 25px !important;
     border-radius: 0px !important;
@@ -127,6 +127,13 @@ button:hover {
     font-size: 11px !important;
     padding: 1px 4px !important;
     border-radius: 0px !important;
+    &:focus {
+        color: #212529;
+        background-color: #fff;
+        border-color: #86b7fe;
+        outline: 0;
+        box-shadow: 0 0 0 0.25rem rgba(255, 255, 255, 0.25) !important;
+    }
 }
 .form-control-login {
     border-radius: 0px !important;
@@ -138,13 +145,14 @@ button:hover {
     padding: 0 !important;
     border-radius: none !important;
 }
+
 //label
 .form-input-label {
     font-size: 12px;
 }
 //row
 .form-row {
-    height: 22px !important;
+    height: 23px !important;
 }
 .form-row-login {
     height: 14px !important;
@@ -254,7 +262,7 @@ button:hover {
 //selet
 .ant-select-dropdown .ant-select-item {
     position: relative;
-    display: block;
+    display: flex;
     min-height: 20px;
     padding: 2px 12px;
     font-size: 12px;

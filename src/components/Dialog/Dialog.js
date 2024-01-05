@@ -45,17 +45,6 @@ export const errorInfo = (title, content) => {
     });
 };
 
-export const error = (title) => {
-    Swal.fire({
-        icon: "error",
-        title: title,
-        showConfirmButton: false,
-        timer: 3000,
-        customClass: {
-            title: "fs-5 text-muted",
-        },
-    });
-};
 export const info = (title, content) => {
     Swal.fire({
         icon: "warning",
@@ -85,7 +74,7 @@ export const successInfo = (title) => {
         icon: "success",
         title: title,
         showConfirmButton: false,
-        timer: 1500,
+        timer: 1000,
         customClass: {
             title: "fs-5 text-success",
         },

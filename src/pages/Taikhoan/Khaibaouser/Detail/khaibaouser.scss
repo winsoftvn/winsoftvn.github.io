@@ -1,3 +1,42 @@
 .input-label-khaibaouser {
     width: 80px !important;
 }
+.select-khaibao-user {
+    .ant-select-selector {
+        height: fit-content !important;
+    }
+}
+.ant-form-item.select-khaibao-user.css-dev-only-do-not-override-pr0fja {
+    margin: 0px !important;
+}
+.imgupload {
+    input[type="file"] {
+        outline: none;
+        position: absolute;
+        left: 0%;
+        top: 0%;
+        opacity: 1;
+        border: none;
+        height: 100%;
+        opacity: 0;
+    }
+    .box-imageupload {
+        border: 1px solid rgb(203, 203, 203);
+        position: relative;
+        width: 80%;
+        height: 200px;
+        z-index: 0;
+        &:hover {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+    }
+    .img-preview {
+        position: "absolute";
+        top: 0%;
+        left: 0%;
+        max-width: 200px;
+        width: 190px;
+        height: 100%;
+        padding: 10px;
+    }
+}

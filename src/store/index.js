@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import userSlice from "../slices/userSlice";
+// import userSlice from "../slices/userSlice";
 import dataAdd from "../slices/dataAdd";
 
 const rootReducer = {
