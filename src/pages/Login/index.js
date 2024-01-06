@@ -4,12 +4,15 @@ import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
 import "./loginpage.scss";
 import { useEffect, useState } from "react";
 import handleDatetime from "../../util/dateTime";
+import { useNavigate } from "react-router-dom";
 function LoginPage() {
     const [form] = Form.useForm();
+    const navigate = useNavigate();
     const [thoigian, setThoigian] = useState(new Date());
 
     const handleLogin = (e) => {
         console.log(e);
+        navigate("/home");// chuyển linh dô pageadmin
     };
 
     const coso = [
