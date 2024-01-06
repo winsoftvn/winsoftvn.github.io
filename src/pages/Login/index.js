@@ -8,11 +8,27 @@ function LoginPage() {
     const [form] = Form.useForm();
     const [thoigian, setThoigian] = useState(new Date());
 
+    const handleLogin = (e) => {
+        console.log(e);
+    };
+
+    const coso = [
+        {
+            value: "1",
+            label: "Cơ sở 1",
+        },
+        {
+            value: "2",
+            label: "Cơ sở 2",
+        },
+        {
+            value: "3",
+            label: "Cơ sở 3",
+        },
+    ];
     useEffect(() => {
         form.setFieldsValue({
             Thoigian: handleDatetime(thoigian),
-            // DVT: thuocdcchon.email,
-            // Hluong: thuocdcchon.phone,
         });
     }, [thoigian]);
     return (
@@ -25,8 +41,7 @@ function LoginPage() {
                             <div>e-MedLink Y Tế Điện Tử</div>
                         </div>
                         <div className="content rounded-bottom">
-                            <Form layout="horizontal" form={form}>
-                                {" "}
+                            <Form layout="horizontal" form={form} onFinish={handleLogin}>
                                 <div className="box-input">
                                     <Form.Item
                                         name="Tendangnhap"
@@ -70,34 +85,22 @@ function LoginPage() {
                                                     Cơ sở
                                                 </div>
                                             }
-                                            className="form-row-login"
+                                            className="form-row-login select-login"
                                         >
-                                            <div className="select-login">
-                                                <Select
-                                                    showSearch
-                                                    placeholder="Chọn cơ sở"
-                                                    optionFilterProp="children"
-                                                    filterOption={(input, option) =>
-                                                        (option?.label ?? "")
-                                                            .toLowerCase()
-                                                            .includes(input.toLowerCase())
-                                                    }
-                                                    options={[
-                                                        {
-                                                            value: "jack",
-                                                            label: "Cơ sở 1",
-                                                        },
-                                                        {
-                                                            value: "lucy",
-                                                            label: "Cơ sở 2",
-                                                        },
-                                                        {
-                                                            value: "tom",
-                                                            label: "Cơ sở 3",
-                                                        },
-                                                    ]}
-                                                />
-                                            </div>
+                                            <Select
+                                                showSearch
+                                                placeholder="Chọn cơ sở"
+                                                optionFilterProp="children"
+                                                filterOption={(input, option) =>
+                                                    (option?.label ?? "")
+                                                        .toLowerCase()
+                                                        .includes(input.toLowerCase())
+                                                }
+                                                options={coso.map((item) => ({
+                                                    value: item.value,
+                                                    label: item.label,
+                                                }))}
+                                            />
                                         </Form.Item>
                                     </div>
                                     <div>
@@ -115,11 +118,13 @@ function LoginPage() {
                                     </div>
                                 </div>
                                 <br />
-                                <div className="d-flex justify-content-center">
-                                    <Button htmlType="submit" className="btn-login">
-                                        Đăng nhập
-                                    </Button>
-                                </div>
+                                <Form.Item>
+                                    <div className="d-flex justify-content-center">
+                                        <Button htmlType="submit" className="btn-login">
+                                            Đăng nhập
+                                        </Button>
+                                    </div>
+                                </Form.Item>
                             </Form>
 
                             <hr className="w-80 mx-auto" />
