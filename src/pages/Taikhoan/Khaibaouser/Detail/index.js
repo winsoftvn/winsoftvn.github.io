@@ -19,7 +19,6 @@ function CtKhaibaouser(props) {
     //redux
     const dispatch = useDispatch();
     const { employee } = useSelector((state) => state.dataAdd);
-    console.log("employee: ", employee);
     //custum data
     let groupid = employee?.GroupID?.split(",");
     let positionid = employee?.PositionID?.split(",");
@@ -48,9 +47,7 @@ function CtKhaibaouser(props) {
 
     const handleSubmit = async (e) => {
         const data = new FormData();
-        console.log("employee != undefined: ", employee != undefined);
-        if (employee != undefined) {
-            console.log(11111);
+        if (employee !== undefined) {
             data.append("RowID", e?.RowID);
         }
         data.append("EmployeeName", e?.EmployeeName);
@@ -88,6 +85,7 @@ function CtKhaibaouser(props) {
                 if (employee?.RowID) {
                     handleUpdate(data);
                     dispatch(setDataEmployee());
+                    setImageUpload();
                     form.resetFields();
                     setOpen(false);
                 }
@@ -95,7 +93,7 @@ function CtKhaibaouser(props) {
                 else {
                     handleCreate(data);
                     setImageUpload();
-                    form.resetFields();
+                    // form.resetFields();
                 }
             }
         });
@@ -149,6 +147,7 @@ function CtKhaibaouser(props) {
                 onCancel={() => setOpen(false)}
                 closable={false}
                 width={1200}
+                forceRender
             >
                 <div className="text-center">
                     <Form onFinish={handleSubmit} form={form}>

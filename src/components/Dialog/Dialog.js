@@ -63,9 +63,9 @@ export const infoRes = (title, content) => {
         title: title,
         text: content,
         showConfirmButton: false,
-        timer: 5000,
+        timer: 3000,
         customClass: {
-            title: "fs-5 text-success",
+            title: "fs-5 text-muted",
         },
     });
 };

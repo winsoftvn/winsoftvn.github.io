@@ -11,11 +11,12 @@ import { useRef, useState, useEffect } from "react";
 import Highlighter from "react-highlight-words";
 import CtKhaibaouser from "../Detail";
 import employeeAPI from "../../../../services/employeeAPI";
-import { errorInfo, successInfo } from "../../../../components/Dialog/Dialog";
+import { errorInfo, infoRes, successInfo } from "../../../../components/Dialog/Dialog";
 import { useDispatch } from "react-redux";
 import { setDataEmployee } from "../../../../slices/dataAdd";
 import uploadsPhongKham from "../../../../services/uploadsPhongKham";
 import "./listemployee.scss";
+import Item from "antd/es/list/Item";
 function Khaibaouser() {
     //khai báo
     const [open, setOpen] = useState(false);
@@ -23,13 +24,15 @@ function Khaibaouser() {
 
     const [loading, setLoading] = useState(false);
     const [listEmployee, setListEmployee] = useState([]);
-    console.log("listEmployee: ", listEmployee);
 
     const [listGroup, setListGroup] = useState([]);
     const [listPosition, setListPosition] = useState([]);
 
     const [searchText, setSearchText] = useState("");
     const [searchedColumn, setSearchedColumn] = useState("");
+
+    const [xuliMang, setXuLyMang] = useState();
+
     //redux
     const dispatch = useDispatch();
     //Search
@@ -141,7 +144,10 @@ function Khaibaouser() {
     //Hàm thêm
     const handleCreate = async (obj) => {
         const data = await employeeAPI.create(obj);
-        if (data.data.message !== "OK") {
+        const res = data.data.result.ResultMsg.split(",");
+        if (res[0] === "err^Trùng username" && data.data.message === "OK") {
+            infoRes("Username đã tồn tại !");
+        } else if (data.data.message !== "OK") {
             errorInfo("Thêm mới thất bại");
         } else if (data.data.message === "OK") {
             successInfo("Thêm mới thành công !");
@@ -199,12 +205,14 @@ function Khaibaouser() {
             title: "RowID",
             dataIndex: "RowID",
             fixed: "left",
+            key: "1",
             render: (RowID) => <div style={{ width: "120px" }}> {RowID} </div>,
         },
         {
             title: "Họ và tên",
             dataIndex: "EmployeeName",
             fixed: "left",
+            key: "2",
             ...getColumnSearchProps("EmployeeName"),
             render: (EmployeeName) => <div style={{ width: "200px" }}> {EmployeeName} </div>,
         },
@@ -212,50 +220,72 @@ function Khaibaouser() {
             title: "Giới tính",
             dataIndex: "Sex",
             align: "center",
+            key: "3",
             render: (Sex) => <div style={{ width: "100px" }}> {Sex === 0 ? "Nam" : "Nữ"} </div>,
         },
         {
             title: "Điện thoại",
             dataIndex: "Mobile",
+            key: "4",
             render: (Mobile) => <div style={{ width: "150px" }}> {Mobile} </div>,
         },
         {
             title: "CCCD",
             dataIndex: "CCCD",
+            key: "5",
             render: (CCCD) => <div style={{ width: "150px" }}> {CCCD} </div>,
         },
         {
             title: "Ngày sinh",
             dataIndex: "Birthday",
+            key: "6",
             render: (Birthday) => <div style={{ width: "200px" }}> {Birthday} </div>,
         },
         {
             title: "Địa chỉ",
             dataIndex: "Address",
+            key: "7",
             render: (Address) => <div style={{ width: "200px" }}> {Address} </div>,
         },
 
         {
             title: "Chức danh",
             dataIndex: "PositionID",
+            key: "8",
             align: "center",
-            render: (PositionID) => <div style={{ width: "200px" }}> {PositionID}</div>,
+            render: (PositionID) => (
+                <div style={{ width: "200px" }}>
+                    {listPosition.map((item) => {
+                        let b = PositionID.split(",");
+                        let a = [];
+                        b.map((item1) => {
+                            if (item.PositionID === parseInt(item1)) {
+                                a.push(item.PositionName + " ,");
+                            }
+                        });
+                        return a;
+                    })}
+                </div>
+            ),
         },
 
         {
             title: "Tên đăng nhập",
             dataIndex: "UserName",
+            key: "9",
             align: "center",
             render: (UserName) => <div style={{ width: "200px" }}> {UserName} </div>,
         },
         {
             title: "Mật khẩu",
             dataIndex: "UserPass",
+            key: "10",
             render: (UserPass) => <div style={{ width: "200px" }}> {UserPass} </div>,
         },
         {
             title: "Nghỉ việc",
             dataIndex: "OffWork",
+            key: "11",
             align: "center",
             render: (OffWork) => (
                 <div style={{ width: "50px" }}>
@@ -266,27 +296,42 @@ function Khaibaouser() {
         {
             title: "Nhóm",
             dataIndex: "GroupID",
-            render: (GroupID) => <div style={{ width: "200px" }}> {GroupID} </div>,
+            key: "12",
+            render: (GroupID) => (
+                <div style={{ width: "200px" }}>
+                    {listGroup.map((item) => {
+                        let a = [];
+                        if (item.GroupID === parseInt(GroupID)) {
+                            a.push(item.GroupName);
+                        }
+                        return a;
+                    })}
+                </div>
+            ),
         },
         {
             title: "Mã BS/CCHN",
             dataIndex: "MaCCHN",
+            key: "13",
             render: (MaCCHN) => <div style={{ width: "200px" }}> {MaCCHN} </div>,
         },
         {
             title: "ĐTQG-Mã BS",
             dataIndex: "DTQG_Ma_BS",
+            key: "14",
             render: (DTQG_Ma_BS) => <div style={{ width: "200px" }}> {DTQG_Ma_BS} </div>,
         },
         {
             title: "ĐTQG-Mã liên kết BS",
             dataIndex: "DTQG_MK_BS",
+            key: "15",
             render: (DTQG_MK_BS) => <div style={{ width: "200px" }}> {DTQG_MK_BS} </div>,
         },
         {
             title: "Chữ ký",
             dataIndex: "ImageFile",
             align: "center",
+            key: "16",
             render: (ImageFile) => (
                 <div style={{ width: "200px" }}>
                     <div
@@ -295,6 +340,7 @@ function Khaibaouser() {
                     >
                         {ImageFile}
                     </div>
+
                     <Modal
                         centered
                         open={openImage.open}
@@ -316,6 +362,7 @@ function Khaibaouser() {
                             src={uploadsPhongKham.uploadsImageEmployee(openImage.link)}
                             width={400}
                             height={550}
+                            alt="anh"
                         />
                     </Modal>
                 </div>
@@ -324,18 +371,21 @@ function Khaibaouser() {
         {
             title: "Mã NV",
             dataIndex: "EmployeeCode",
+            key: "17",
             align: "center",
             render: (EmployeeCode) => <div style={{ width: "200px" }}> {EmployeeCode} </div>,
         },
         {
             title: "STT",
             dataIndex: "STT",
+            key: "18",
             render: (STT) => <div style={{ width: "50px" }}> {STT} </div>,
         },
         {
             title: "Thao tác",
             dataIndex: "",
             align: "center",
+            key: "19",
             fixed: "right",
             render: (record) => (
                 <div className="d-flex justify-content-center">
@@ -383,16 +433,18 @@ function Khaibaouser() {
                     handleUpdate={handleUpdate}
                     listPosition={listPosition}
                     listGroup={listGroup}
+                    key="ctKhaibaouser"
                 />
-                <div className="mt-2 p-1" style={{ height: "100vh" }}>
+                <div className="mt-2 p-1">
                     <Table
                         dataSource={listEmployee}
                         columns={column}
                         scroll={{ x: true, y: "100vh" }}
                         size="small"
                         pagination={false}
-                        // pagination={{ pageSize: "50" }}
+                        loading={loading}
                         bordered={true}
+                        rowKey={(record) => record?.RowID}
                     />
                 </div>
             </div>
