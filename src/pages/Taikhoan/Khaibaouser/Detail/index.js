@@ -93,7 +93,7 @@ function CtKhaibaouser(props) {
                 else {
                     handleCreate(data);
                     setImageUpload();
-                    // form.resetFields();
+                    form.resetFields();
                 }
             }
         });
