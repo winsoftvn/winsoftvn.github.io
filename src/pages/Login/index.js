@@ -5,6 +5,7 @@ import "./loginpage.scss";
 import { useEffect, useState } from "react";
 import handleDatetime from "../../util/dateTime";
 import { useNavigate } from "react-router-dom";
+import { errorInfo, successInfo } from "../../components/Dialog/Dialog";
 function LoginPage() {
     const [form] = Form.useForm();
     const navigate = useNavigate();
@@ -12,7 +13,9 @@ function LoginPage() {
 
     const handleLogin = (e) => {
         console.log(e);
-        navigate("/home");// chuyển linh dô pageadmin
+        successInfo("Đăng nhập thành công");
+        errorInfo("Đăng nhập thất bại");
+        navigate("/home"); // chuyển link dô pageadmin
     };
 
     const coso = [
