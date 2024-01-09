@@ -16,7 +16,6 @@ import { useDispatch } from "react-redux";
 import { setDataEmployee } from "../../../../slices/dataAdd";
 import uploadsPhongKham from "../../../../services/uploadsPhongKham";
 import "./listemployee.scss";
-import Item from "antd/es/list/Item";
 function Khaibaouser() {
     //khai báo
     const [open, setOpen] = useState(false);
@@ -30,8 +29,6 @@ function Khaibaouser() {
 
     const [searchText, setSearchText] = useState("");
     const [searchedColumn, setSearchedColumn] = useState("");
-
-    const [xuliMang, setXuLyMang] = useState();
 
     //redux
     const dispatch = useDispatch();
@@ -144,13 +141,11 @@ function Khaibaouser() {
     //Hàm thêm
     const handleCreate = async (obj) => {
         const data = await employeeAPI.create(obj);
-        const res = data.data.result.ResultMsg.split(",");
-        if (res[0] === "err^Trùng username" && data.data.message === "OK") {
-            infoRes("Username đã tồn tại !");
-        } else if (data.data.message !== "OK") {
-            errorInfo("Thêm mới thất bại");
-        } else if (data.data.message === "OK") {
-            successInfo("Thêm mới thành công !");
+        console.log("data: ", data);
+        if (data.data.Code === "err") {
+            infoRes(data.data.Content);
+        } else if (data.data.Code === "ok") {
+            successInfo(data.data.Content);
             getAllEmployee();
         }
     };
@@ -158,24 +153,22 @@ function Khaibaouser() {
     const handleDelete = async (id) => {
         const data = await employeeAPI.delete(id);
         console.log("data: ", data);
-
-        if (data.data[0].ResultMsg !== "ok^Xóa thành công.") {
-            errorInfo("Xóa thất bại");
-        } else if (data.data[0].ResultMsg === "ok^Xóa thành công.") {
-            successInfo("Xóa thành công !");
+        if (data.data.Code === "ok") {
+            successInfo(data.data.Content);
             getAllEmployee();
+        } else {
+            errorInfo(data.data.Content);
         }
     };
     //Hàm cập nhật
     const handleUpdate = async (obj) => {
-        console.log("obj: ", obj);
         const data = await employeeAPI.update(obj);
         console.log("data: ", data);
-        if (data.data.result.ResultMsg !== "ok^Cập nhật thành công") {
-            errorInfo("Cập nhật thất bại");
-        } else if (data.data.result.ResultMsg === "ok^Cập nhật thành công") {
-            successInfo("Cập nhật thành công !");
+        if (data.data.Code === "ok") {
+            successInfo(data.data.Content);
             getAllEmployee();
+        } else {
+            errorInfo(data.data.Content);
         }
     };
 
@@ -252,7 +245,7 @@ function Khaibaouser() {
             title: "Chức danh",
             dataIndex: "PositionID",
             key: "8",
-            align: "center",
+
             render: (PositionID) => (
                 <div style={{ width: "200px" }}>
                     {listPosition.map((item) => {
@@ -273,7 +266,6 @@ function Khaibaouser() {
             title: "Tên đăng nhập",
             dataIndex: "UserName",
             key: "9",
-            align: "center",
             render: (UserName) => <div style={{ width: "200px" }}> {UserName} </div>,
         },
         {
