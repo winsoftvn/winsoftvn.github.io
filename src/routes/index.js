@@ -10,7 +10,6 @@ import Home from "../pages/Home";
 import HSBANgoaitruKB from "../pages/KhambenhHSBA/HSBANgoaitruKB";
 import Phieukhambenh from "../pages/KhambenhHSBA/Phieukhambenh";
 import Khamsuckhoe from "../pages/Khamsuckhoe";
-import LoginPage from "../pages/Login";
 import Phauthuatthuthuat from "../pages/Phauthuatthuthuat";
 import Khaibaouser from "../pages/Taikhoan/Khaibaouser/List";
 import Phanquyen from "../pages/Taikhoan/Phanquyen";
@@ -36,17 +35,12 @@ import Nhantrathebhyt from "../pages/Vienphi/NhantratheBHYT";
 import Phieuthutamung from "../pages/Vienphi/Phieuthutamung";
 import Phieuthutien from "../pages/Vienphi/Phieuthutien";
 import Xetnghiem from "../pages/Xetnghiem";
+import NotFound from "../pages/NotFound";
 const PageWeb = [
-    //Login
-    {
-        path: "/",
-        page: LoginPage,
-        isMainLayout: false,
-    },
 
     //Home
     {
-        path: "/home",
+        path: "/",
         page: Home,
         isMainLayout: true,
     },
@@ -242,5 +236,10 @@ const PageWeb = [
         page: Phanquyen,
         isMainLayout: true,
     },
+    {
+        path: "*",
+        page: NotFound,
+        isMainLayout: true,
+    }
 ];
 export default PageWeb;
