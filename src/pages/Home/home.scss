@@ -1,0 +1,36 @@
+.homemain {
+    background: url("../../assets/image/bglogin.png") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 99.5vh;
+}
+.emed-clinic{
+    font-size: 45px;
+    position: relative;
+    height:90vh ;
+    
+}
+.emde-m{
+    position:absolute;
+    top:40%;
+    left:25%
+}
+.emde-m div{
+    color:#0067ac;
+}
+.headermain{
+    background: #fff;
+    position: relative;
+}
+.name-user{
+    padding:5px ;
+    margin-left: 30px;
+}
+.name-exit{
+    position: absolute;
+    right:10px;
+    top:4px;
+    cursor: pointer;
+}
