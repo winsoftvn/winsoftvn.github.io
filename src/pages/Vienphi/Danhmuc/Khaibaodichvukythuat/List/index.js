@@ -1,17 +1,6 @@
-import {
-    Table,
-    Button,
-    TreeSelect,
-    Popconfirm,
-    Dropdown,
-    Space,
-    Select,
-    Tooltip,
-    Checkbox,
-} from "antd";
+import { Table, Button, Dropdown, Checkbox } from "antd";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-    faTrashAlt,
     faEdit,
     faPlus,
     faPrint,
@@ -20,166 +9,23 @@ import {
     faArrowRotateLeft,
     faEye,
     faGear,
-    faPenSquare,
     faPenToSquare,
 } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import ds from "../../../../../util/data";
 import "../../danhmuc.scss";
-import { NotificationOutlined } from "@ant-design/icons";
 import Search from "antd/es/input/Search";
 import Menuvienphi from "../../../Menuvienphi";
 import Ctkhaibaodichvukythuat from "../Detail";
 function Khaibaodichvukythuat() {
     const [open, setOpen] = useState(false);
-    const [click, setClick] = useState(false);
     const [activeModify, setActiveModify] = useState(false);
 
     const handleDataCreate = () => {
         setOpen(true);
     };
-    const handleChange = (value) => {
-        console.log(`selected ${value}`);
-    };
 
-    const x = [
-        {
-            label: "PHÒNG KHÁM NHI 1",
-            value: "1",
-        },
-        {
-            label: "PHÒNG VẮC XIN",
-            value: "2",
-        },
-        {
-            label: "PHÒNG CHĂM SÓC BÉ",
-            value: "3",
-        },
-        {
-            label: "PHÒNG KHÁM NỘI 2",
-            value: "4",
-        },
-        {
-            label: "PHÒNG SOI CỔ TỬ CUNG",
-            value: "5",
-        },
-        {
-            label: "PHÒNG HHK + TEST HP",
-            value: "6",
-        },
-        {
-            label: "PHÒNG NỘI SOI TIÊU HÓA",
-            value: "7",
-        },
-        {
-            label: "PHÒNG KHÁM MẮT",
-            value: "8",
-        },
-        {
-            label: "PHÒNG KHÁM TMH",
-            value: "9",
-        },
-        {
-            label: "PHÒNG KHÁM SẢN",
-            value: "10",
-        },
-        {
-            label: "PHÒNG KHÁM DA LIỆU",
-            value: "11",
-        },
-        {
-            label: "PHÒNG KHÁM NỘI",
-            value: "12",
-        },
-        {
-            label: "PHÒNG KHÁM NGOẠI",
-            value: "13",
-        },
-    ];
-
-    const [valuePTH, setValuePTH] = useState([]);
-
-    const item = [
-        {
-            label: "Lần",
-            value: "1",
-        },
-        {
-            label: "Mũi",
-            value: "2",
-        },
-        {
-            label: "Ống",
-            value: "3",
-        },
-        {
-            label: "Cái",
-            value: "4",
-        },
-        {
-            label: "Trọn",
-            value: "5",
-        },
-        {
-            label: "Que",
-            value: "6",
-        },
-        {
-            label: "Bộ",
-            value: "7",
-        },
-        {
-            label: "Khác",
-            value: "8",
-        },
-        {
-            label: "Hàm",
-            value: "9",
-        },
-        {
-            label: "Giờ",
-            value: "10",
-        },
-    ];
-    const itemNI = [
-        {
-            label: "Chuẩn đoán hình ảnh",
-            value: "1",
-        },
-        {
-            label: "Khám bệnh",
-            value: "2",
-        },
-        {
-            label: "Xét nghiệm",
-            value: "3",
-        },
-        {
-            label: "Phẩu Thuật - Thủ Thuật",
-            value: "4",
-        },
-        {
-            label: "Khác",
-            value: "5",
-        },
-        {
-            label: "Thăm dò chức năng",
-            value: "6",
-        },
-        {
-            label: "Xquang",
-            value: "7",
-        },
-        {
-            label: "Siêu âm",
-            value: "8",
-        },
-        {
-            label: "Nội soi",
-            value: "9",
-        },
-    ];
     const items = [
         {
             key: "1",
@@ -197,60 +43,7 @@ function Khaibaodichvukythuat() {
             icon: <FontAwesomeIcon icon={faPenToSquare} />,
         },
     ];
-    const itemBHYT9324_AX = [
-        {
-            label: "XÉT NGHIỆM",
-            value: "1",
-        },
-        {
-            label: "CHUẨN ĐOÁN HÌNH ẢNH",
-            value: "2",
-        },
-        {
-            label: "THĂM DÒ CHỨC NĂNG",
-            value: "3",
-        },
-        {
-            label: "THUỐC TRONG DANH MỤC BHYT",
-            value: "4",
-        },
-        {
-            label: "THUỐC ĐIỀU TRỊ UNG THƯ, CHỐNG THẢI GHÉP NGOÀI DANH MỤC",
-            value: "5",
-        },
-        {
-            label: "THUỐC THANH TOÁN THEO TỈ LỆ",
-            value: "6",
-        },
-        {
-            label: "MÁU",
-            value: "7",
-        },
-        {
-            label: "PHẨU THUẬT",
-            value: "8",
-        },
-        {
-            label: "DVKT CAO CHI PHÍ LỚN",
-            value: "9",
-        },
-        {
-            label: "VẬT TƯ Y TẾ TRNG DANH MỤC BHYT",
-            value: "10",
-        },
-        {
-            label: "VẬT TƯ Y TẾ THANH TOÁN THEO TỶ LỆ ",
-            value: "11",
-        },
-        {
-            label: "VẬN CHUYỂN",
-            value: "12",
-        },
-        {
-            label: "KHÁM BỆNH",
-            value: "13",
-        },
-    ];
+
     const columns = [
         {
             title: "Tên dịch vụ",
@@ -277,27 +70,7 @@ function Khaibaodichvukythuat() {
             title: "DVT",
             dataIndex: "DVT",
             align: "center",
-            render: (DVT) => (
-                <div>
-                    {/* <Select
-                        defaultValue={DVT}
-                        style={{
-                            width: 100,
-                        }}
-                        onChange={handleChange}
-                        options={[
-                            {
-                                label: "Đơn vị tính",
-                                options: item.map((item1) => ({
-                                    label: item1.label,
-                                    value: item1.value,
-                                })),
-                            },
-                        ]}
-                    /> */}
-                    {DVT}
-                </div>
-            ),
+            render: (DVT) => <div>{DVT}</div>,
         },
         {
             title: "P. Th hiện",
@@ -308,30 +81,6 @@ function Khaibaodichvukythuat() {
                         width: "270px",
                     }}
                 >
-                    {/* <Space
-                        direction="vertical"
-                        style={{
-                            width: "100%",
-                        }}
-                    >
-                        <Select
-                            mode="tags"
-                            style={{
-                                width: "100%",
-                            }}
-                            defaultValue={PTH}
-                            defaultOpe={PTH}
-                            value={valuePTH}
-                            onChange={(newValue) => {
-                                setValuePTH(newValue);
-                            }}
-                            // maxTagCount="responsive"
-                            options={x.map((item) => ({
-                                label: item.label,
-                                value: item.value,
-                            }))}
-                        />
-                    </Space> */}
                     {PTH}
                 </div>
             ),
@@ -351,28 +100,6 @@ function Khaibaodichvukythuat() {
                     }}
                 >
                     {LBN}
-                    {/* {activeModify ? ( */}
-                    {/* <Select
-                        mode="tags"
-                        defaultValue={LBN}
-                        placeholder={LBN}
-                        style={{
-                            width: "100%",
-                        }}
-                        options={[
-                            {
-                                label: "Khám bệnh",
-                                value: "1",
-                            },
-                            {
-                                label: "Cấp cứu",
-                                value: "2",
-                            },
-                        ]}
-                    /> */}
-                    {/* // ) : (
-                    //     <div> {LBN} </div>
-                    // )} */}
                 </div>
             ),
         },
@@ -506,27 +233,7 @@ function Khaibaodichvukythuat() {
         {
             title: "Nhóm in",
             dataIndex: "NI",
-            render: (NI) => (
-                <div style={{ width: "200px" }}>
-                    {/* <Select
-                        showSearch
-                        className="w-100"
-                        defaultValue={NI}
-                        optionFilterProp="children"
-                        filterOption={(input, option) => (option?.label ?? "").includes(input)}
-                        filterSort={(optionA, optionB) =>
-                            (optionA?.label ?? "")
-                                .toLowerCase()
-                                .localeCompare((optionB?.label ?? "").toLowerCase())
-                        }
-                        options={itemNI.map((item) => ({
-                            label: item.label,
-                            value: item.value,
-                        }))}
-                    /> */}
-                    {NI}
-                </div>
-            ),
+            render: (NI) => <div style={{ width: "200px" }}>{NI}</div>,
         },
         {
             title: "VAT Xuất HĐ",
@@ -541,18 +248,7 @@ function Khaibaodichvukythuat() {
             align: "center",
             render: (MVP) => <div style={{ width: "100px" }}>{MVP}</div>,
         },
-        // {
-        //     title: "Xóa",
-        //     dataIndex: "",
-        //     align: "center",
-        //     render: (_, record) => (
-        //         <Popconfirm title="Bạn có muốn xóa?" onConfirm={() => {}}>
-        //             <Button className="bg-light vienphi-danhmuc-khaibaodichvukythuat-icon-modify">
-        //                 <FontAwesomeIcon icon={faTrashAlt} className="text-dark" />
-        //             </Button>
-        //         </Popconfirm>
-        //     ),
-        // },
+
         {
             title: "Thao tác",
             dataIndex: "",
@@ -622,48 +318,6 @@ function Khaibaodichvukythuat() {
             >
                 <Menuvienphi />
                 <div className="text-muted">
-                    {/* <div className="d-flex align-items-center ">
-                        <div className="vienphi-danhmuc-title w-20 mx-2">
-                            Khai báo dịch vụ kỹ thuật
-                        </div>
-                        <div className="w-50">
-                            <Search
-                                placeholder="Tìm kiếm..."
-                                allowClear
-                                // onSearch={onSearch}
-                                className="w-100 my-1"
-                            />
-                        </div>
-                        <div className="w-40 text-end">
-                            <Tooltip title="Thêm mới" key="blue" placement="top">
-                                <Button
-                                    className="bg-light mx-2"
-                                    size="small"
-                                    onClick={handleDataCreate}
-                                >
-                                    <FontAwesomeIcon icon={faPlus} className="text-dark" />
-                                </Button>
-                            </Tooltip>
-                            <Tooltip title="In" key="blue" placement="top">
-                                <Button
-                                    className="bg-light mx-2"
-                                    size="small"
-                                    onClick={handleDataCreate}
-                                >
-                                    <FontAwesomeIcon icon={faPrint} className="text-dark" />
-                                </Button>
-                            </Tooltip>
-                            <Tooltip title="Xuất dữ liệu Excel" key="blue" placement="top">
-                                <Button
-                                    className="bg-light mx-2"
-                                    size="small"
-                                    onClick={handleDataCreate}
-                                >
-                                    <FontAwesomeIcon icon={faFileExport} className="text-dark" />
-                                </Button>
-                            </Tooltip>
-                        </div>
-                    </div> */}
                     <div className="d-flex justify-content-between align-items-center mt-2 mx-2">
                         <div className="d-flex align-items-center w-100">
                             <div className="vienphi-danhmuc-title mx-2 w-20">
@@ -673,7 +327,6 @@ function Khaibaodichvukythuat() {
                                 <Search
                                     placeholder="Tìm kiếm..."
                                     allowClear
-                                    // onSearch={onSearch}
                                     className="w-100 my-1"
                                 />
                             </div>

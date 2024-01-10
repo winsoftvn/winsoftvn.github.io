@@ -6,29 +6,31 @@ import "./phanquyen.scss";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import menuAPI from "../../../services/menu";
+import employeeAPI from "../../../services/employeeAPI";
 function Phanquyen() {
     const [showLine, setShowLine] = useState(true);
     const [showIcon, setShowIcon] = useState(false);
     const [showLeafIcon, setShowLeafIcon] = useState(false);
-    const [autoExpandParent, setAutoExpandParent] = useState(true);
-    const [expandedKeys, setExpandedKeys] = useState();
+   
 
     const onSelect = (selectedKeys, info) => {
         console.log("selected", selectedKeys, info);
     };
 
-    const onCheck = (checkedKeys, info) => {
-        console.log("onCheck", checkedKeys, info);
+    
+    const onCheck = async (checkedKeys) => {
+        console.log('checkedKeys: ', checkedKeys);
+        let a=[
+            
+        ]
+        await employeeAPI.update(checkedKeys)
+        
     };
 
     const onChange = (checkedValues) => {
         console.log("checked = ", checkedValues);
     };
-    const onExpand = (expandedKeysValue) => {
-        console.log(expandedKeysValue);
-        setExpandedKeys(expandedKeysValue);
-        setAutoExpandParent(true);
-    };
+   
     const [listMenu, setListMenu] = useState([]);
     // hàm
     const getAllMenu = async () => {
@@ -62,7 +64,7 @@ function Phanquyen() {
     let arr = a.filter((item) => item.Parent_MenuID === 0);
 
     //truyền props
-    const treeData11 = [
+    const treeData1 = [
         {
             title: <div className="form-input-label">Tất cả</div>,
             key: "0",
@@ -192,7 +194,7 @@ function Phanquyen() {
             ],
         },
     ];
-    const treeData1 = [
+    const treeData11 = [
         {
             title: <div className="form-input-label">Tất cả</div>,
             key: "0",
@@ -526,12 +528,12 @@ function Phanquyen() {
             value: "13",
         },
     ];
-    
+
     let expand = ["0"];
     arr.map((item) => {
         expand.push(item.MenuID);
     });
-    console.log("expand: ", expand);
+  
     useEffect(() => {
         getAllMenu();
     }, []);
@@ -578,13 +580,18 @@ function Phanquyen() {
                     </div>
                 </div>
                 <div className="w-40 h-100">
-                    {" "}
                     <div className="scroll-phanquyen-1">
                         <div className="color-border vh-100">
-                            <div className="bg-label fw-bold p-1 form-input-label">
-                                Chức năng sử dụng
+                            <div className=" d-flex bg-label">
+                                <div className=" fw-bold p-1 form-input-label">
+                                    Chức năng sử dụng
+                                </div>
+                                <div>
+                                    <Button className="form-btn ">
+                                        <FontAwesomeIcon icon={faSave} />
+                                    </Button>
+                                </div>
                             </div>
-
                             <div className="treenode py-1">
                                 <Tree
                                     showLine={
@@ -595,12 +602,11 @@ function Phanquyen() {
                                             : false
                                     }
                                     showIcon={showIcon}
-                                   
                                     onSelect={onSelect}
                                     onCheck={onCheck}
-                                    treeData={treeData11}
+                                    treeData={treeData1}
                                     checkable
-                                    onExpand={onExpand}
+                                    
                                     expandAction={true}
                                     expandedKeys={expand}
                                 />

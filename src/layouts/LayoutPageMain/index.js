@@ -1,9 +1,9 @@
 import { MenuUnfoldOutlined, MenuFoldOutlined } from "@ant-design/icons";
-import { Button, Layout, Menu } from "antd";
-import { NavLink } from "react-router-dom";
+import { Button, Layout, Menu, Dropdown } from "antd";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { fas } from "@fortawesome/free-solid-svg-icons";
-import { library } from "@fortawesome/fontawesome-svg-core";
+import { icon, library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
     faUserPlus,
@@ -23,10 +23,12 @@ import {
     faCogs,
     faUserAltSlash,
     faHorse,
+    faRightFromBracket,
 } from "@fortawesome/free-solid-svg-icons";
 import "./style.scss";
 import logo from "../../assets/image/logo.png";
 import menuAPI from "../../services/menu";
+import loginAPI from "../../services/loginApi";
 
 library.add(
     fas,
@@ -51,8 +53,11 @@ library.add(
 const { Sider, Content } = Layout;
 function LayoutPageMain({ children }) {
     //khai báo
+    const navigate = useNavigate();
+
     const [collapsed, setCollapsed] = useState(true);
     const [listMenu, setListMenu] = useState([]);
+    const test = [1, 2, 3, 4, 7, 8];
     // hàm
     const getAllMenu = async () => {
         try {
@@ -62,16 +67,20 @@ function LayoutPageMain({ children }) {
             throw new Error(err);
         }
     };
-
-    useEffect(() => {
-        getAllMenu();
-    }, []);
-    //xử lý dữ liệu
-
-    let a = [];
-    listMenu.map((item) => {
-        let c = [];
+    let arrconert = [];
+    test.map((item) => {
+        let c = {};
         listMenu.map((item1) => {
+            if (item === item1.MenuID) {
+                c = item1;
+            }
+        });
+        arrconert.push(c);
+    });
+    let a = [];
+    arrconert.map((item) => {
+        let c = [];
+        arrconert.map((item1) => {
             if (item.MenuID === item1.Parent_MenuID) {
                 c.push(item1);
             }
@@ -82,8 +91,49 @@ function LayoutPageMain({ children }) {
         };
         a.push(b);
     });
-    let arr = a.filter((item) => item.Parent_MenuID === 0);
 
+    let arr = a.filter((item) => item.Parent_MenuID === 0);
+    useEffect(() => {
+        getAllMenu();
+    }, []);
+    //xử lý dữ liệu
+
+    // let a = [];
+    // listMenu.map((item) => {
+    //     let c = [];
+    //     listMenu.map((item1) => {
+    //         if (item.MenuID === item1.Parent_MenuID) {
+    //             c.push(item1);
+    //         }
+    //     });
+    //     let b = {
+    //         ...item,
+    //         child: c,
+    //     };
+    //     a.push(b);
+    // });
+    // let arr = a.filter((item) => item.Parent_MenuID === 0);
+
+    //xử lý user
+    const [listUser, setlistUser] = useState([]);
+    console.log("listUser: ", listUser);
+    const getAllUser = async () => {
+        try {
+            const data = await loginAPI.profileFetch();
+            setlistUser(data.data);
+        } catch (err) {
+            localStorage.removeItem("token");
+            throw new Error(err);
+        }
+    };
+    const logout = (event) => {
+        event.preventDefault();
+        localStorage.removeItem("token");
+        window.location.href = "/";
+    };
+    useEffect(() => {
+        getAllUser();
+    }, []);
     //truyền props
     function getItem(label, key, icon, children, type) {
         return {
@@ -413,6 +463,17 @@ function LayoutPageMain({ children }) {
     //         <FontAwesomeIcon icon={faCogs} />
     //     ),
     // ];
+    const dropuser = [
+        {
+            key: "1",
+            label: (
+                <div onClick={logout} className="login-user">
+                    {" "}
+                    <FontAwesomeIcon icon={faRightFromBracket} className="mx-2" /> Đăng xuất
+                </div>
+            ),
+        },
+    ];
 
     return (
         <Layout className="min-vh-100">
@@ -438,9 +499,25 @@ function LayoutPageMain({ children }) {
                 ) : (
                     <div className="scroll-menu">
                         <div className="d-block text-center mx-auto my-2">
-                            <div className="d-flex align-items-center justify-content-start mx-3">
+                            <div
+                                className="d-flex align-items-center justify-content-start mx-2"
+                                onClick={() => navigate("/")}
+                            >
                                 <img src={logo} className="img-logo" alt="logowweb" />
-                                <div className="fs-6 fw-bold mx-2 ">e-Medlink</div>
+                                <div className="text-start mx-2">
+                                    <div className="fs-6 fw-bold ">e-Medlink</div>
+                                    <div>
+                                        <Dropdown
+                                            menu={{
+                                                items: dropuser,
+                                            }}
+                                        >
+                                            <div className="login-user">
+                                                {listUser.EmployeeName}
+                                            </div>
+                                        </Dropdown>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <hr className="m-0" />

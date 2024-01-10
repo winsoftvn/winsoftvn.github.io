@@ -35,7 +35,7 @@ import Nhantrathebhyt from "../pages/Vienphi/NhantratheBHYT";
 import Phieuthutamung from "../pages/Vienphi/Phieuthutamung";
 import Phieuthutien from "../pages/Vienphi/Phieuthutien";
 import Xetnghiem from "../pages/Xetnghiem";
-import NotFound from "../pages/NotFound";
+// import NotFound from "../pages/NotFound";
 const PageWeb = [
 
     //Home
@@ -236,10 +236,10 @@ const PageWeb = [
         page: Phanquyen,
         isMainLayout: true,
     },
-    {
-        path: "*",
-        page: NotFound,
-        isMainLayout: true,
-    }
+    // {
+    //     path: "*",
+    //     page: NotFound,
+    //     isMainLayout: true,
+    // }
 ];
 export default PageWeb;

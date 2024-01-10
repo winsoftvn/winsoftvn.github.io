@@ -7,26 +7,26 @@ import { useNavigate } from "react-router-dom";
 //import handleDatetime from "../../util/dateTime";
 import { errorInfo } from "../../components/Dialog/Dialog";
 import loginAPI from "../../services/loginApi";
+import handleDatetime from "../../util/dateTime";
 function LoginPage() {
     const [form] = Form.useForm();
-   // const [thoigian, setThoigian] = useState(new Date());
+    const thoigian = new Date();
     const navigate = useNavigate();
-     const submitLogin = async (user) => {
-       if(user.UserName === undefined || user.UserPass === undefined){
-         errorInfo("Vui lòng nhập đầy đủ thông tin!");
-       }else{
+    const submitLogin = async (user) => {
+        if (user.UserName === undefined || user.UserPass === undefined) {
+            errorInfo("Vui lòng nhập đầy đủ thông tin!");
+        } else {
             const data = await loginAPI.login(user);
-            if(data.data.Code ==='err'){
+            if (data.data.Code === "err") {
                 errorInfo(data.data.Content);
-            }else{
+            } else {
                 localStorage.setItem("token", JSON.stringify(data.data.accessToken));
                 navigate("/");
             }
-       
         }
     };
 
-   /* useEffect(() => {
+    /* useEffect(() => {
         form.setFieldsValue({
             Thoigian: handleDatetime(thoigian),
             // DVT: thuocdcchon.email,
@@ -68,7 +68,8 @@ function LoginPage() {
                                             }
                                             className="form-row-login"
                                         >
-                                            <Input.Password name="UserPass"
+                                            <Input.Password
+                                                name="UserPass"
                                                 iconRender={(visible) =>
                                                     visible ? (
                                                         <EyeTwoTone />
@@ -127,6 +128,7 @@ function LoginPage() {
                                                 </div>
                                             }
                                             className="form-row-login"
+                                            initialValue={handleDatetime(thoigian)}
                                         >
                                             <Input className="form-control-login" readOnly />
                                         </Form.Item>

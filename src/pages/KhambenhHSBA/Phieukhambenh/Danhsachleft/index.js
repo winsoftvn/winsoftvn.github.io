@@ -5,23 +5,18 @@ import {
     faTrashCan,
     faEye,
     faPenToSquare,
-    faAngleRight,
+
     faArrowsRotate,
     faBroom,
-    faAngleLeft,
 } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import "./danhsachleft.scss";
 import ds from "../../../../util/data";
 function Danhsachleft() {
-    const [open, setOpen] = useState(false);
-    const [click, setClick] = useState(false);
     const [activeModify, setActiveModify] = useState(false);
 
-    const handleClick = () => {
-        setClick(!click);
-    };
+    
     const items = [
         {
             key: "1",
