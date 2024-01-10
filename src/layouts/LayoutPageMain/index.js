@@ -107,7 +107,7 @@ function LayoutPageMain({ children }) {
                         {item.MenuName_Full}
                     </NavLink>,
                     item.MenuID,
-                    <FontAwesomeIcon icon={faUserPlus} />
+                    <FontAwesomeIcon icon={`solid + ${item.MenuIcon}`} />
                 )
             );
         } else {
@@ -115,7 +115,7 @@ function LayoutPageMain({ children }) {
                 getItem(
                     <div className="fw-bold">{item.MenuName_Full}</div>,
                     item.MenuName_Full,
-                    <FontAwesomeIcon icon={`${item?.MenuIcon}`} />,
+                    <FontAwesomeIcon icon={`solid + ${item.MenuIcon}`} />,
                     item.child.map((item1) =>
                         getItem(
                             <NavLink
@@ -126,7 +126,7 @@ function LayoutPageMain({ children }) {
                                 {item1.MenuName_Full}
                             </NavLink>,
                             item1.MenuID,
-                            <FontAwesomeIcon icon={`${item?.MenuIcon}`} />
+                            <FontAwesomeIcon icon={`solid + ${item.MenuIcon}`} />
                         )
                     )
                 )

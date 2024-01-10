@@ -1,17 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { CarryOutOutlined, CheckOutlined, FormOutlined } from "@ant-design/icons";
 import { Button, Checkbox, Tree } from "antd";
-import "./phanquyen.scss";
 import { faSave } from "@fortawesome/free-solid-svg-icons";
+import "./phanquyen.scss";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import menuAPI from "../../../services/menu";
 function Phanquyen() {
     const [showLine, setShowLine] = useState(true);
     const [showIcon, setShowIcon] = useState(false);
     const [showLeafIcon, setShowLeafIcon] = useState(false);
-    const [selectedKeys, setSelectedKeys] = useState([]);
     const [autoExpandParent, setAutoExpandParent] = useState(true);
-    const [expandedKeys, setExpandedKeys] = useState(["6", "7"]);
+    const [expandedKeys, setExpandedKeys] = useState();
 
     const onSelect = (selectedKeys, info) => {
         console.log("selected", selectedKeys, info);
@@ -25,10 +25,59 @@ function Phanquyen() {
         console.log("checked = ", checkedValues);
     };
     const onExpand = (expandedKeysValue) => {
-        console.log("onExpand", expandedKeysValue);
+        console.log(expandedKeysValue);
         setExpandedKeys(expandedKeysValue);
-        setAutoExpandParent(false);
+        setAutoExpandParent(true);
     };
+    const [listMenu, setListMenu] = useState([]);
+    // hàm
+    const getAllMenu = async () => {
+        try {
+            const data = await menuAPI.getAll();
+            setListMenu(data.data);
+        } catch (err) {
+            throw new Error(err);
+        }
+    };
+
+    useEffect(() => {
+        getAllMenu();
+    }, []);
+    //xử lý dữ liệu
+
+    let a = [];
+    listMenu.map((item) => {
+        let c = [];
+        listMenu.map((item1) => {
+            if (item.MenuID === item1.Parent_MenuID) {
+                c.push(item1);
+            }
+        });
+        let b = {
+            ...item,
+            child: c,
+        };
+        a.push(b);
+    });
+    let arr = a.filter((item) => item.Parent_MenuID === 0);
+
+    //truyền props
+    const treeData11 = [
+        {
+            title: <div className="form-input-label">Tất cả</div>,
+            key: "0",
+            icon: <CarryOutOutlined />,
+            children: arr.map((item) => ({
+                title: <div className="form-input-label">{item.MenuName_Full}</div>,
+                key: item.MenuID,
+                children: item.child.map((item1) => ({
+                    title: <div className="form-input-label">{item1.MenuName_Full}</div>,
+                    key: item1.MenuID,
+                })),
+            })),
+        },
+    ];
+
     const treeData = [
         {
             title: <div className="form-input-label">Medic</div>,
@@ -477,48 +526,15 @@ function Phanquyen() {
             value: "13",
         },
     ];
-    const treeData2 = [
-        {
-            title: "parent 1",
-            key: "0-0",
-            children: [
-                {
-                    title: "parent 1-0",
-                    key: "0-0-0",
-                    disabled: true,
-                    children: [
-                        {
-                            title: "leaf",
-                            key: "0-0-0-0",
-                            disableCheckbox: true,
-                        },
-                        {
-                            title: "leaf",
-                            key: "0-0-0-1",
-                        },
-                    ],
-                },
-                {
-                    title: "parent 1-1",
-                    key: "0-0-1",
-                    children: [
-                        {
-                            title: (
-                                <span
-                                    style={{
-                                        color: "#1677ff",
-                                    }}
-                                >
-                                    sss
-                                </span>
-                            ),
-                            key: "0-0-1-0",
-                        },
-                    ],
-                },
-            ],
-        },
-    ];
+    
+    let expand = ["0"];
+    arr.map((item) => {
+        expand.push(item.MenuID);
+    });
+    console.log("expand: ", expand);
+    useEffect(() => {
+        getAllMenu();
+    }, []);
     return (
         <div>
             <div className="d-flex vh-100">
@@ -564,7 +580,7 @@ function Phanquyen() {
                 <div className="w-40 h-100">
                     {" "}
                     <div className="scroll-phanquyen-1">
-                        <div className="color-border ">
+                        <div className="color-border vh-100">
                             <div className="bg-label fw-bold p-1 form-input-label">
                                 Chức năng sử dụng
                             </div>
@@ -579,27 +595,14 @@ function Phanquyen() {
                                             : false
                                     }
                                     showIcon={showIcon}
-                                    defaultExpandedKeys={[
-                                        "1",
-                                        "1.1",
-                                        "1.1.1",
-                                        "1.1.2",
-                                        "2",
-                                        "2.1",
-                                        "2.2",
-                                        "2.2.1",
-                                        "3",
-                                        "3.1",
-                                        "3.2",
-                                        "3.2.1",
-                                    ]}
-                                    defaultSelectedKeys={["6.1", "7.1"]}
+                                   
                                     onSelect={onSelect}
                                     onCheck={onCheck}
-                                    treeData={treeData1}
+                                    treeData={treeData11}
                                     checkable
                                     onExpand={onExpand}
                                     expandAction={true}
+                                    expandedKeys={expand}
                                 />
                             </div>
                         </div>
