@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { CarryOutOutlined } from "@ant-design/icons";
-import { Button, Checkbox, Tree } from "antd";
-import { faSave } from "@fortawesome/free-solid-svg-icons";
+import { Button, Checkbox, Tooltip, Tree } from "antd";
+import { faCopy, faSave, faPaste } from "@fortawesome/free-solid-svg-icons";
 import "./phanquyen.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import menuAPI from "../../../services/menu";
@@ -9,6 +9,7 @@ import employeeAPI from "../../../services/employeeAPI";
 import loginAPI from "../../../services/loginApi";
 import phanquyenAPI from "../../../services/phanquyenAPI";
 import { successInfo } from "../../../components/Dialog/Dialog";
+import Swal from "sweetalert2";
 function Phanquyen() {
     const [showLine, setShowLine] = useState(true);
     const [showLeafIcon, setShowLeafIcon] = useState(false);
@@ -16,9 +17,13 @@ function Phanquyen() {
     const [listMenu, setListMenu] = useState([]);
     const [listEmployee, setListEmployee] = useState([]);
 
-    const [userPhanQuyen, setUserPhanQuyen] = useState();
+    const [userPhanQuyen, setUserPhanQuyen] = useState([]);
     const [phanquyenMenu, setphanquyenMenu] = useState();
     const [userlogin, setUserLogin] = useState();
+
+    const [copyphanquyen, setCopyPhanQuyen] = useState();
+    console.log("copyphanquyen: ", copyphanquyen);
+    const [pastephanquyen, setPastePhanQuyen] = useState();
 
     const [expandedKeys, setExpandedKeys] = useState([]);
     const [selectedKeys, setSelectedKeys] = useState([]);
@@ -26,6 +31,7 @@ function Phanquyen() {
 
     //xử lý thao tác tree
     const onSelectUser = (selectedKeys) => {
+        console.log("selectedKeys: ", selectedKeys);
         setUserPhanQuyen(selectedKeys);
         getPhanQuyenMenu(selectedKeys);
     };
@@ -84,7 +90,7 @@ function Phanquyen() {
         });
         setphanquyenMenu(b);
     };
-
+    // xử lý lưu phân quyền
     const handlePhanQuyen = async () => {
         let a = {
             RowID_Employee: userPhanQuyen[0],
@@ -128,6 +134,28 @@ function Phanquyen() {
     });
     let arr = a.filter((item) => item.Parent_MenuID === 0);
 
+    //xử lý copy phân quyền
+
+    const handleCopyPhanQuyen = () => {
+        setCopyPhanQuyen(phanquyenMenu);
+        successInfo("Đã copy phân quyền");
+    };
+    const handlePastePhanQuyen = () => {
+        Swal.fire({
+            text: "Nếu bạn đồng ý thì phân quyền cũ sẽ được thay thế !",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#0067ac",
+            cancelButtonColor: "#d33",
+            cancelButtonText: "Hủy",
+            confirmButtonText: "Đồng ý",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                setphanquyenMenu(copyphanquyen);
+                successInfo("Đã dán thành công !");
+            }
+        });
+    };
     //truyền props
     const treeData1 = [
         {
@@ -212,13 +240,33 @@ function Phanquyen() {
         <div>
             <div className="d-flex vh-100">
                 <div className="w-20 h-100">
-                    {" "}
                     <div className="scroll-phanquyen-1">
                         <div className="color-border h-100">
-                            <div className="bg-label fw-bold p-1 form-input-label">
-                                Người dùng WINOSFT_VIETNAM
+                            <div className=" d-flex bg-label align-items-center">
+                                <div className=" fw-bold p-1 form-input-label">
+                                    Người dùng WINOSFT_VIETNAM
+                                </div>
+                                {userPhanQuyen[0] && (
+                                    <div>
+                                        <Tooltip
+                                            placement="bottom"
+                                            title={
+                                                <div className="form-input-label">
+                                                    Sao chép phân quyền
+                                                </div>
+                                            }
+                                            color="#0067ac"
+                                        >
+                                            <Button
+                                                className="btn-icon"
+                                                onClick={handleCopyPhanQuyen}
+                                            >
+                                                <FontAwesomeIcon icon={faCopy} />
+                                            </Button>
+                                        </Tooltip>
+                                    </div>
+                                )}
                             </div>
-
                             <Tree
                                 showLine={
                                     showLine
@@ -237,15 +285,43 @@ function Phanquyen() {
                 <div className="w-40 h-100">
                     <div className="scroll-phanquyen-1">
                         <div className="color-border vh-100">
-                            <div className=" d-flex bg-label">
+                            <div className=" d-flex bg-label align-items-center">
                                 <div className=" fw-bold p-1 form-input-label">
                                     Chức năng sử dụng
                                 </div>
                                 <div>
-                                    <Button className="form-btn" onClick={handlePhanQuyen}>
-                                        <FontAwesomeIcon icon={faSave} />
-                                    </Button>
+                                    <Tooltip
+                                        placement="bottom"
+                                        title={
+                                            <div className="form-input-label">Lưu phân quyền</div>
+                                        }
+                                        color="#0067ac"
+                                    >
+                                        <Button className="btn-icon" onClick={handlePhanQuyen}>
+                                            <FontAwesomeIcon icon={faSave} />
+                                        </Button>
+                                    </Tooltip>
                                 </div>
+                                {copyphanquyen && (
+                                    <div>
+                                        <Tooltip
+                                            placement="bottom"
+                                            title={
+                                                <div className="form-input-label">
+                                                    Dán phân quyền
+                                                </div>
+                                            }
+                                            color="#0067ac"
+                                        >
+                                            <Button
+                                                className="btn-icon"
+                                                onClick={handlePastePhanQuyen}
+                                            >
+                                                <FontAwesomeIcon icon={faPaste} />
+                                            </Button>
+                                        </Tooltip>
+                                    </div>
+                                )}
                             </div>
                             <div className="treenode py-1">
                                 <Tree
@@ -274,12 +350,12 @@ function Phanquyen() {
                     <div className="color-border">
                         <div className="h-50">
                             <div className="scroll-phanquyen-2">
-                                <div className=" d-flex bg-label">
+                                <div className=" d-flex bg-label align-items-center">
                                     <div className=" fw-bold p-1 form-input-label">
                                         Phân quyền khoa phòng
                                     </div>
                                     <div>
-                                        <Button className="form-btn ">
+                                        <Button className="btn-icon ">
                                             <FontAwesomeIcon icon={faSave} />
                                         </Button>
                                     </div>
@@ -295,12 +371,12 @@ function Phanquyen() {
                     <div className="color-border">
                         <div className="h-50">
                             <div className="scroll-phanquyen-2">
-                                <div className=" d-flex bg-label">
+                                <div className=" d-flex bg-label align-items-center">
                                     <div className=" fw-bold p-1 form-input-label">
                                         Kho xuất bán
                                     </div>
                                     <div>
-                                        <Button className="form-btn ">
+                                        <Button className="btn-icon ">
                                             <FontAwesomeIcon icon={faSave} />
                                         </Button>
                                     </div>
