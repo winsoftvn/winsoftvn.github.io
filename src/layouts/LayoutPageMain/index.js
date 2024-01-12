@@ -63,13 +63,9 @@ function LayoutPageMain({ children }) {
     const [collapsed, setCollapsed] = useState(true);
     const [listMenu, setListMenu] = useState([]);
     const [listUser, setlistUser] = useState([]);
-    //console.log("listUser: ", listUser.RowID);
     const [open, setOpen] = useState(false);
     const [phanquyenUser, setPhanQuyenUser] = useState([]);
-    console.log("phanquyenUser: ", phanquyenUser);
-    // console.log("phanquyenUser: ", phanquyenUser);
-    let aa = [1, 3, 4, 5];
-
+ 
     // hàm
 
     //xử lý user
@@ -164,7 +160,7 @@ function LayoutPageMain({ children }) {
     useEffect(() => {
         getPhanQuyenMenu();
     }, [listUser.RowID]);
-    
+
     //xử lý user
     const logout = (event) => {
         event.preventDefault();

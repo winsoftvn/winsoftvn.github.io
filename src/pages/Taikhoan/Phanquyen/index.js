@@ -8,6 +8,7 @@ import menuAPI from "../../../services/menu";
 import employeeAPI from "../../../services/employeeAPI";
 import loginAPI from "../../../services/loginApi";
 import phanquyenAPI from "../../../services/phanquyenAPI";
+import { successInfo } from "../../../components/Dialog/Dialog";
 function Phanquyen() {
     const [showLine, setShowLine] = useState(true);
     const [showLeafIcon, setShowLeafIcon] = useState(false);
@@ -19,8 +20,14 @@ function Phanquyen() {
     const [phanquyenMenu, setphanquyenMenu] = useState();
     const [userlogin, setUserLogin] = useState();
 
+    const [expandedKeys, setExpandedKeys] = useState([]);
+    const [selectedKeys, setSelectedKeys] = useState([]);
+    const [autoExpandParent, setAutoExpandParent] = useState(true);
+
+    //xử lý thao tác tree
     const onSelectUser = (selectedKeys) => {
         setUserPhanQuyen(selectedKeys);
+        getPhanQuyenMenu(selectedKeys);
     };
 
     const onCheckMenu = async (checkedKeys) => {
@@ -30,11 +37,24 @@ function Phanquyen() {
         console.log("checked = ", checkedValues);
     };
 
+    const onSelect = (selectedKeysValue, info) => {
+        setSelectedKeys(selectedKeysValue);
+    };
+    const onExpand = (expandedKeysValue) => {
+        setExpandedKeys(expandedKeysValue);
+        setAutoExpandParent(false);
+    };
+    ///////
+
     // hàm
     const getAllMenu = async () => {
         try {
             const data = await menuAPI.getAll();
             setListMenu(data.data);
+            let a = data.data.map((item) => {
+                return item.MenuID;
+            });
+            setExpandedKeys(a);
         } catch (err) {
             throw new Error(err);
         }
@@ -57,10 +77,18 @@ function Phanquyen() {
         }
     };
 
+    const getPhanQuyenMenu = async (a) => {
+        const data = await phanquyenAPI.getPhanQuyen(Number(a));
+        let b = data.data.map((item) => {
+            return item.MenuID;
+        });
+        setphanquyenMenu(b);
+    };
+
     const handlePhanQuyen = async () => {
         let a = {
             RowID_Employee: userPhanQuyen[0],
-            RowID_Employee_IU: Number(userlogin.RowID),
+            RowID_Employee_IU: Number(userlogin?.RowID),
         };
         let data = await phanquyenAPI.delete(a);
         console.log("data: ", data);
@@ -73,7 +101,9 @@ function Phanquyen() {
             return b;
         });
         let data1 = await phanquyenAPI.create(arr);
-        console.log("data1: ", data1);
+        if (data1.data.Code === "ok") {
+            successInfo(data1.data.Content);
+        }
     };
     useEffect(() => {
         getAllMenu();
@@ -97,13 +127,12 @@ function Phanquyen() {
         return b;
     });
     let arr = a.filter((item) => item.Parent_MenuID === 0);
-    console.log("arr: ", arr);
 
     //truyền props
     const treeData1 = [
         {
             title: <div className="form-input-label">Tất cả</div>,
-            key: "0",
+            key: 0,
             icon: <CarryOutOutlined />,
             children: arr.map((item) => ({
                 title: <div className="form-input-label">{item.MenuName_Full}</div>,
@@ -120,399 +149,6 @@ function Phanquyen() {
         title: item.EmployeeName,
         key: item.RowID,
     }));
-    // [
-    //     {
-    //         title: <div className="form-input-label">Medic</div>,
-    //         key: "1",
-    //     },
-    //     {
-    //         title: <div className="form-input-label">X-Quang</div>,
-    //         key: "2",
-    //     },
-    //     {
-    //         title: <div className="form-input-label">ABC</div>,
-    //         key: "3",
-    //     },
-    //     {
-    //         title: <div className="form-input-label">VPCN</div>,
-    //         key: "4",
-    //     },
-    //     {
-    //         title: <div className="form-input-label">PHCN</div>,
-    //         key: "5",
-    //     },
-    //     {
-    //         title: <div className="form-input-label">Điều dưỡng </div>,
-    //         key: "6",
-    //         icon: <CarryOutOutlined />,
-    //         children: [
-    //             {
-    //                 title: <div className="form-input-label">Bùi Thị Bé </div>,
-    //                 key: "6.1",
-    //             },
-    //         ],
-    //     },
-    //     {
-    //         title: <div className="form-input-label">BGĐ </div>,
-    //         key: "7",
-    //         icon: <CarryOutOutlined />,
-    //         children: [
-    //             {
-    //                 title: <div className="form-input-label">Thiều Khắc Thành</div>,
-    //                 key: "7.1",
-    //             },
-    //         ],
-    //     },
-    //     {
-    //         title: <div className="form-input-label">Hành chánh</div>,
-    //         key: "8",
-    //         icon: <CarryOutOutlined />,
-    //         children: [
-    //             {
-    //                 title: <div className="form-input-label">Hoàng Thi Bích </div>,
-    //                 key: "8.1",
-    //             },
-    //         ],
-    //     },
-    //     {
-    //         title: <div className="form-input-label">KTV CĐHA</div>,
-    //         key: "9",
-    //         icon: <CarryOutOutlined />,
-    //         children: [
-    //             {
-    //                 title: <div className="form-input-label">Phạm Minh Hoàng </div>,
-    //                 key: "9.1",
-    //             },
-    //         ],
-    //     },
-    //     {
-    //         title: <div className="form-input-label">KTV Xét nghiệm</div>,
-    //         key: "10",
-    //         icon: <CarryOutOutlined />,
-    //         children: [
-    //             {
-    //                 title: <div className="form-input-label">CN.Hoàng Xuân </div>,
-    //                 key: "10.1",
-    //             },
-    //         ],
-    //     },
-    //     {
-    //         title: <div className="form-input-label">Tiếp nhận</div>,
-    //         key: "11",
-    //     },
-    //     {
-    //         title: <div className="form-input-label">Dược sĩ</div>,
-    //         key: "12",
-    //         icon: <CarryOutOutlined />,
-    //         children: [
-    //             {
-    //                 title: <div className="form-input-label">Phạm Hoàng Nguyên</div>,
-    //                 key: "12.1",
-    //             },
-    //         ],
-    //     },
-    //     {
-    //         title: <div className="form-input-label">Thu ngân</div>,
-    //         key: "13",
-    //         icon: <CarryOutOutlined />,
-    //         children: [
-    //             {
-    //                 title: <div className="form-input-label">Nguyễn Tú vi</div>,
-    //                 key: "13.1",
-    //             },
-    //         ],
-    //     },
-    //     {
-    //         title: <div className="form-input-label">Bác sĩ</div>,
-    //         key: "14",
-    //         icon: <CarryOutOutlined />,
-    //         children: [
-    //             {
-    //                 title: <div className="form-input-label">Phan Trọng Hiếu</div>,
-    //                 key: "14.1",
-    //             },
-    //         ],
-    //     },
-    // ];
-    // const treeData11 = [
-    //     {
-    //         title: <div className="form-input-label">Tất cả</div>,
-    //         key: "0",
-    //         icon: <CarryOutOutlined />,
-    //         children: [
-    //             {
-    //                 title: <div className="form-input-label">Tiếp nhận</div>,
-    //                 key: "1",
-    //                 children: [
-    //                     {
-    //                         title: <div className="form-input-label">Tiếp nhận - Nhận bệnh</div>,
-    //                         key: "1.1",
-    //                         children: [
-    //                             {
-    //                                 title: (
-    //                                     <div className="form-input-label">
-    //                                         Tiếp nhận - Nhận bệnh
-    //                                     </div>
-    //                                 ),
-    //                                 key: "1.1.1",
-    //                             },
-    //                             {
-    //                                 title: <div className="form-input-label">Hẹn khám bệnh</div>,
-    //                                 key: "1.1.2",
-    //                                 children: [
-    //                                     {
-    //                                         title: (
-    //                                             <div className="form-input-label">
-    //                                                 Quản lý lịch hẹn
-    //                                             </div>
-    //                                         ),
-    //                                         key: "1.1.2.1",
-    //                                     },
-    //                                 ],
-    //                             },
-    //                         ],
-    //                     },
-    //                 ],
-    //             },
-    //             {
-    //                 title: <div className="form-input-label">Khám bệnh</div>,
-    //                 key: "2",
-    //                 children: [
-    //                     {
-    //                         title: <div className="form-input-label">Khám bệnh - Nghiệp vụ</div>,
-    //                         key: "2.1",
-    //                         children: [
-    //                             {
-    //                                 title: <div className="form-input-label">Kh.Bệnh - P.Khám</div>,
-    //                                 key: "2.1.1",
-    //                             },
-    //                             {
-    //                                 title: <div className="form-input-label">Truyền dịch</div>,
-    //                                 key: "2.1.2",
-    //                             },
-    //                             {
-    //                                 title: (
-    //                                     <div className="form-input-label">
-    //                                         Hồ sơ bệnh án nghoại trú
-    //                                     </div>
-    //                                 ),
-    //                                 key: "2.1.3",
-    //                             },
-    //                             {
-    //                                 title: (
-    //                                     <div className="form-input-label">
-    //                                         Xuất thuốc tủ trực && vật tư
-    //                                     </div>
-    //                                 ),
-    //                                 key: "2.1.4",
-    //                             },
-    //                         ],
-    //                     },
-    //                     {
-    //                         title: <div className="form-input-label">Khám bệnh - Danh mục</div>,
-    //                         key: "2.2",
-    //                         children: [
-    //                             {
-    //                                 title: <div className="form-input-label">Danh mục</div>,
-    //                                 key: "2.2.1",
-    //                                 children: [
-    //                                     {
-    //                                         title: (
-    //                                             <div className="form-input-label">
-    //                                                 Chuẩn đoán bệnh chính ICD-10
-    //                                             </div>
-    //                                         ),
-    //                                         key: "2.2.1.1",
-    //                                     },
-    //                                     {
-    //                                         title: (
-    //                                             <div className="form-input-label">
-    //                                                 Triệu chúng bệnh
-    //                                             </div>
-    //                                         ),
-    //                                         key: "2.2.1.2",
-    //                                     },
-    //                                     {
-    //                                         title: <div className="form-input-label">Lời dặn</div>,
-    //                                         key: "2.2.1.3",
-    //                                     },
-    //                                 ],
-    //                             },
-    //                         ],
-    //                     },
-    //                 ],
-    //             },
-    //             {
-    //                 title: <div className="form-input-label">Viện phí</div>,
-    //                 key: "3",
-    //                 children: [
-    //                     {
-    //                         title: <div className="form-input-label">VP - Phiếu thu</div>,
-    //                         key: "3.1",
-    //                         children: [
-    //                             {
-    //                                 title: <div className="form-input-label">Phiếu thu tiền</div>,
-    //                                 key: "3.1.1",
-    //                             },
-    //                             {
-    //                                 title: (
-    //                                     <div className="form-input-label">Phiếu thu tạm ứng</div>
-    //                                 ),
-    //                                 key: "3.1.2",
-    //                             },
-    //                             {
-    //                                 title: (
-    //                                     <div className="form-input-label">Nhận trả thẻ BHYT</div>
-    //                                 ),
-    //                                 key: "3.1.3",
-    //                             },
-    //                         ],
-    //                     },
-    //                     {
-    //                         title: <div className="form-input-label">VP - Danh mục</div>,
-    //                         key: "3.2",
-    //                         children: [
-    //                             {
-    //                                 title: <div className="form-input-label">Danh mục</div>,
-    //                                 key: "3.2.1",
-    //                                 children: [
-    //                                     {
-    //                                         title: (
-    //                                             <div className="form-input-label">
-    //                                                 Nhóm viện phí hệ thống
-    //                                             </div>
-    //                                         ),
-    //                                         key: "3.2.1.1",
-    //                                     },
-    //                                     {
-    //                                         title: (
-    //                                             <div className="form-input-label">
-    //                                                 Khai báo nhóm chuyển khoa BYT
-    //                                             </div>
-    //                                         ),
-    //                                         key: "3.2.1.2",
-    //                                     },
-    //                                     {
-    //                                         title: (
-    //                                             <div className="form-input-label">
-    //                                                 Khai báo nhóm viện phí (PK)
-    //                                             </div>
-    //                                         ),
-    //                                         key: "3.2.1.3",
-    //                                     },
-    //                                     {
-    //                                         title: (
-    //                                             <div className="form-input-label">
-    //                                                 Khai báo nhóm in
-    //                                             </div>
-    //                                         ),
-    //                                         key: "3.2.1.4",
-    //                                     },
-    //                                     {
-    //                                         title: (
-    //                                             <div className="form-input-label">
-    //                                                 Khai báo loại viện phí
-    //                                             </div>
-    //                                         ),
-    //                                         key: "3.2.1.5",
-    //                                     },
-    //                                     {
-    //                                         title: (
-    //                                             <div className="form-input-label">
-    //                                                 Khai báo dịch vụ kỹ thuật
-    //                                             </div>
-    //                                         ),
-    //                                         key: "3.2.1.6",
-    //                                     },
-    //                                     {
-    //                                         title: (
-    //                                             <div className="form-input-label">
-    //                                                 Khai báo giá dịch vụ kỹ thuật
-    //                                             </div>
-    //                                         ),
-    //                                         key: "3.2.1.7",
-    //                                     },
-    //                                     {
-    //                                         title: (
-    //                                             <div className="form-input-label">
-    //                                                 Khai báo gói dịch vụ kỹ thuật
-    //                                             </div>
-    //                                         ),
-    //                                         key: "3.2.1.8",
-    //                                     },
-    //                                     {
-    //                                         title: (
-    //                                             <div className="form-input-label">Đơn vị tính</div>
-    //                                         ),
-    //                                         key: "3.2.1.9",
-    //                                     },
-    //                                     {
-    //                                         title: (
-    //                                             <div className="form-input-label">
-    //                                                 Khai báo quyển sổ
-    //                                             </div>
-    //                                         ),
-    //                                         key: "3.2.1.10",
-    //                                     },
-    //                                     {
-    //                                         title: (
-    //                                             <div className="form-input-label">
-    //                                                 Khai báo giới hạn thời gian chỉ định DVKT
-    //                                             </div>
-    //                                         ),
-    //                                         key: "3.2.1.11",
-    //                                     },
-    //                                     {
-    //                                         title: (
-    //                                             <div className="form-input-label">
-    //                                                 Khai báo DVKT không cho phép chỉ định đông thời
-    //                                             </div>
-    //                                         ),
-    //                                         key: "3.2.1.12",
-    //                                     },
-    //                                     {
-    //                                         title: (
-    //                                             <div className="form-input-label">
-    //                                                 Khai báo dịch vụ cảnh báo viết ghi chú trong chỉ
-    //                                                 định"
-    //                                             </div>
-    //                                         ),
-    //                                         key: "3.2.1.13",
-    //                                     },
-    //                                     {
-    //                                         title: (
-    //                                             <div className="form-input-label">
-    //                                                 Khai báo DVKT bắt buộc có kết quả khi KQ điều
-    //                                                 trị
-    //                                             </div>
-    //                                         ),
-    //                                         key: "3.2.1.14",
-    //                                     },
-    //                                     {
-    //                                         title: (
-    //                                             <div className="form-input-label">
-    //                                                 Map dịch vụ DVKT với máy thực hiện cận lâm sàn
-    //                                             </div>
-    //                                         ),
-    //                                         key: "3.2.1.15",
-    //                                     },
-    //                                     {
-    //                                         title: (
-    //                                             <div className="form-input-label">
-    //                                                 Khai báo DVKT thuật hiện phẩu thuật xuất XML5
-    //                                             </div>
-    //                                         ),
-    //                                         key: "3.2.1.16",
-    //                                     },
-    //                                 ],
-    //                             },
-    //                         ],
-    //                     },
-    //                 ],
-    //             },
-    //         ],
-    //     },
-    // ];
 
     const options = [
         {
@@ -569,11 +205,6 @@ function Phanquyen() {
         },
     ];
 
-    let expand = ["0"];
-    arr.map((item) => {
-        expand.push(item.MenuID);
-    });
-
     useEffect(() => {
         getAllMenu();
     }, []);
@@ -625,12 +256,15 @@ function Phanquyen() {
                                               }
                                             : false
                                     }
-                                    treeData={treeData1}
-                                    onCheck={onCheckMenu}
                                     checkable
-                                    expandedKeys={expand}
-                                    expandAction={true}
-                                    className="form-input-label"
+                                    onExpand={onExpand}
+                                    expandedKeys={expandedKeys}
+                                    autoExpandParent={autoExpandParent}
+                                    onCheck={onCheckMenu}
+                                    checkedKeys={phanquyenMenu}
+                                    onSelect={onSelect}
+                                    selectedKeys={selectedKeys}
+                                    treeData={treeData1}
                                 />
                             </div>
                         </div>
