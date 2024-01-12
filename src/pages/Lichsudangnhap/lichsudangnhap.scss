@@ -1,0 +1,11 @@
+.scroll-lichsu {
+    overflow-y: scroll;
+    height: 90vh;
+}
+
+.scroll-lichsu::-webkit-scrollbar {
+    display: none;
+}
+.scroll-lichsu {
+    scrollbar-width: none;
+}

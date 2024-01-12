@@ -3,7 +3,7 @@ import { Button, Layout, Menu, Dropdown } from "antd";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { fas } from "@fortawesome/free-solid-svg-icons";
-import { icon, library } from "@fortawesome/fontawesome-svg-core";
+import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
     faUserPlus,
@@ -24,11 +24,16 @@ import {
     faUserAltSlash,
     faHorse,
     faRightFromBracket,
+    faClockRotateLeft,
+    faKey,
+    faAngleUp,
 } from "@fortawesome/free-solid-svg-icons";
 import "./style.scss";
 import logo from "../../assets/image/logo.png";
 import menuAPI from "../../services/menu";
 import loginAPI from "../../services/loginApi";
+import Lichsudangnhap from "../../pages/Lichsudangnhap";
+import phanquyenAPI from "../../services/phanquyenAPI";
 
 library.add(
     fas,
@@ -57,66 +62,18 @@ function LayoutPageMain({ children }) {
 
     const [collapsed, setCollapsed] = useState(true);
     const [listMenu, setListMenu] = useState([]);
-    const test = [1, 2, 3, 4, 7, 8];
+    const [listUser, setlistUser] = useState([]);
+    //console.log("listUser: ", listUser.RowID);
+    const [open, setOpen] = useState(false);
+    const [phanquyenUser, setPhanQuyenUser] = useState([]);
+    console.log("phanquyenUser: ", phanquyenUser);
+    // console.log("phanquyenUser: ", phanquyenUser);
+    let aa = [1, 3, 4, 5];
+
     // hàm
-    const getAllMenu = async () => {
-        try {
-            const data = await menuAPI.getAll();
-            setListMenu(data.data);
-        } catch (err) {
-            throw new Error(err);
-        }
-    };
-    let arrconert = [];
-    test.map((item) => {
-        let c = {};
-        listMenu.map((item1) => {
-            if (item === item1.MenuID) {
-                c = item1;
-            }
-        });
-        arrconert.push(c);
-    });
-    let a = [];
-    arrconert.map((item) => {
-        let c = [];
-        arrconert.map((item1) => {
-            if (item.MenuID === item1.Parent_MenuID) {
-                c.push(item1);
-            }
-        });
-        let b = {
-            ...item,
-            child: c,
-        };
-        a.push(b);
-    });
-
-    let arr = a.filter((item) => item.Parent_MenuID === 0);
-    useEffect(() => {
-        getAllMenu();
-    }, []);
-    //xử lý dữ liệu
-
-    // let a = [];
-    // listMenu.map((item) => {
-    //     let c = [];
-    //     listMenu.map((item1) => {
-    //         if (item.MenuID === item1.Parent_MenuID) {
-    //             c.push(item1);
-    //         }
-    //     });
-    //     let b = {
-    //         ...item,
-    //         child: c,
-    //     };
-    //     a.push(b);
-    // });
-    // let arr = a.filter((item) => item.Parent_MenuID === 0);
 
     //xử lý user
-    const [listUser, setlistUser] = useState([]);
-    console.log("listUser: ", listUser);
+
     const getAllUser = async () => {
         try {
             const data = await loginAPI.profileFetch();
@@ -126,15 +83,101 @@ function LayoutPageMain({ children }) {
             throw new Error(err);
         }
     };
+
+    const getAllMenu = async () => {
+        try {
+            const data = await menuAPI.getAll();
+            setListMenu(data.data);
+        } catch (err) {
+            throw new Error(err);
+        }
+    };
+
+    const getPhanQuyenMenu = async () => {
+        if (listUser.RowID) {
+            const data = await phanquyenAPI.getPhanQuyen(Number(listUser?.RowID));
+            console.log("data: ", data);
+            setPhanQuyenUser(data.data);
+        }
+    };
+
+    //xử ly menu khi phân quyên user
+
+    let temp = phanquyenUser.map((item) => {
+        return item.MenuID;
+    });
+
+    //lấy giá trị của danh mục
+    let arrlaygiatri = temp.map((item) => {
+        let c = {};
+        listMenu.map((item1) => {
+            if (item === item1.MenuID) {
+                c = item1;
+            }
+        });
+        return c;
+    });
+    //lấy obj của menuID
+    arrlaygiatri.map((item) => {
+        let a = "";
+        if (item.Parent_MenuID !== 0) {
+            a = item.Parent_MenuID;
+
+            temp.push(a);
+        }
+    });
+    const uniqueSet = new Set(temp);
+    const loctrung = [...uniqueSet];
+    const arrconvert = loctrung.sort((a, b) => a - b);
+    //lấy thông tin lại của các khóa
+    let arrtongket = arrconvert.map((item) => {
+        let c = {};
+        listMenu.map((item1) => {
+            if (item === item1.MenuID) {
+                c = item1;
+            }
+        });
+        return c;
+    });
+
+    //lấy dữu liệu thông tin đầy đủ
+    let a = arrtongket.map((item) => {
+        let c = [];
+        arrtongket.map((item1) => {
+            if (item.MenuID === item1.Parent_MenuID) {
+                c.push(item1);
+            }
+        });
+        let b = {
+            ...item,
+            child: c,
+        };
+        return b;
+    });
+    let arr = a.filter((item) => item.Parent_MenuID === 0);
+    ////////////////////////////////////
+
+    useEffect(() => {
+        getAllUser();
+        getAllMenu();
+    }, []);
+    useEffect(() => {
+        getPhanQuyenMenu();
+    }, [listUser.RowID]);
+    
+    //xử lý user
     const logout = (event) => {
         event.preventDefault();
         localStorage.removeItem("token");
         window.location.href = "/";
     };
-    useEffect(() => {
-        getAllUser();
-    }, []);
+
+    const openLichsudangnhap = () => {
+        setOpen(true);
+    };
     //truyền props
+
+    //menu load
     function getItem(label, key, icon, children, type) {
         return {
             key,
@@ -463,12 +506,29 @@ function LayoutPageMain({ children }) {
     //         <FontAwesomeIcon icon={faCogs} />
     //     ),
     // ];
+
+    //dropdown username
     const dropuser = [
         {
             key: "1",
             label: (
-                <div onClick={logout} className="login-user">
-                    {" "}
+                <div>
+                    <FontAwesomeIcon icon={faKey} className="mx-2" /> Đổi mật khẩu
+                </div>
+            ),
+        },
+        {
+            key: "2",
+            label: (
+                <div onClick={openLichsudangnhap}>
+                    <FontAwesomeIcon icon={faClockRotateLeft} className="mx-2" /> Lịch sử đăng nhập
+                </div>
+            ),
+        },
+        {
+            key: "3",
+            label: (
+                <div onClick={logout}>
                     <FontAwesomeIcon icon={faRightFromBracket} className="mx-2" /> Đăng xuất
                 </div>
             ),
@@ -503,28 +563,30 @@ function LayoutPageMain({ children }) {
                                 className="d-flex align-items-center justify-content-start mx-2"
                                 onClick={() => navigate("/")}
                             >
-                                <img src={logo} className="img-logo" alt="logowweb" />
-                                <div className="text-start mx-2">
-                                    <div className="fs-6 fw-bold ">e-Medlink</div>
-                                    <div>
-                                        <Dropdown
-                                            menu={{
-                                                items: dropuser,
-                                            }}
-                                        >
-                                            <div className="login-user">
-                                                {listUser.EmployeeName}
-                                            </div>
-                                        </Dropdown>
-                                    </div>
-                                </div>
+                                <img src={logo} className="img-logo" alt="logoweb" />
+                                <div className="fs-6 fw-bold mx-2">e-Medlink</div>
                             </div>
                         </div>
                         <hr className="m-0" />
 
                         <Menu theme="light" mode="inline" items={items}></Menu>
+
+                        <div className="login-user">
+                            <Dropdown
+                                menu={{
+                                    items: dropuser,
+                                }}
+                                placement="top"
+                            >
+                                <div className="user-name">
+                                    {listUser.EmployeeName}{" "}
+                                    <FontAwesomeIcon icon={faAngleUp} className="mx-2" />
+                                </div>
+                            </Dropdown>
+                        </div>
                     </div>
                 )}
+                <Lichsudangnhap open={open} setOpen={setOpen} />
             </Sider>
             <Layout className="bg-frame">
                 <Content className="b-content" style={{ backgroundColor: "#fff" }}>
