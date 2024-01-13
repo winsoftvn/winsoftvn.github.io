@@ -20,18 +20,7 @@ function CtKhaibaouser(props) {
     const dispatch = useDispatch();
     const { employee } = useSelector((state) => state.dataAdd);
     //custum data
-    let groupid = employee?.GroupID?.split(",");
-    let positionid = employee?.PositionID?.split(",");
 
-    //dữ liẹu ảo
-    const options = [];
-
-    for (let i = 10; i < 36; i++) {
-        options.push({
-            label: i.toString(36) + i,
-            value: i.toString(36) + i,
-        });
-    }
     const handleChange = (value) => {
         console.log(`selected ${value}`);
     };
@@ -44,7 +33,6 @@ function CtKhaibaouser(props) {
         file.preview = URL?.createObjectURL(file);
         setImageUpload(e.target.files[0]);
     };
-
     const handleSubmit = async (e) => {
         const data = new FormData();
         if (employee !== undefined) {
@@ -68,7 +56,6 @@ function CtKhaibaouser(props) {
         data.append("DTQG_Ma_BS", e?.DTQG_Ma_BS);
         data.append("DTQG_MK_BS", e?.DTQG_MK_BS);
         data.append("PermissionModule_KSK", e.PermissionModule_KSK);
-        console.log("12", ...data);
         Swal.fire({
             title: "BẠN CÓ MUỐN LƯU THÔNG TIN?",
             confirmButtonText: "Lưu",
@@ -101,6 +88,8 @@ function CtKhaibaouser(props) {
     //hàm xử lý load dữu liệu
 
     useEffect(() => {
+        let groupid = employee?.GroupID?.split(",");
+        let positionid = employee?.PositionID?.split(",");
         form.setFieldsValue({
             RowID: employee?.RowID,
             EmployeeName: employee?.EmployeeName,
@@ -112,9 +101,13 @@ function CtKhaibaouser(props) {
             CCCD: employee?.CCCD,
             Address: employee?.Address,
             Birthday: employee?.Birthday,
-            PositionID: positionid,
+            PositionID: positionid?.map((item) => {
+                return parseInt(item);
+            }),
             OffWork: employee?.OffWork,
-            GroupID: groupid,
+            GroupID: groupid?.map((item) => {
+                return parseInt(item);
+            }),
             STT: employee?.STT,
             MaCCHN: employee?.MaCCHN,
             DTQG_Ma_BS: employee?.DTQG_Ma_BS,
@@ -144,7 +137,9 @@ function CtKhaibaouser(props) {
                         display: "none",
                     },
                 }}
-                onCancel={() => setOpen(false)}
+                onCancel={() => {
+                    setOpen(false);
+                }}
                 closable={false}
                 width={1200}
                 forceRender
@@ -167,22 +162,25 @@ function CtKhaibaouser(props) {
                             <div className="w-20">
                                 <Form.Item name="ImageFile" className="imgupload">
                                     <div className="box-imageupload d-flex justify-content-center align-items-center">
-                                        {(imageUpload || employee?.RowID) && (
-                                            <img
-                                                src={
-                                                    imageUpload?.preview ||
-                                                    (employee !== undefined
-                                                        ? uploadsPhongKham.uploadsImageEmployee(
-                                                              employee?.ImageFile
-                                                          )
-                                                        : "")
-                                                }
-                                                alt=""
-                                                name="image"
-                                                className="img-preview"
-                                            />
-                                        )}
-                                        {imageUpload || employee?.RowID ? (
+                                        {employee?.ImageFile === "null"
+                                            ? ""
+                                            : (imageUpload || employee?.RowID) && (
+                                                  <img
+                                                      src={
+                                                          imageUpload?.preview ||
+                                                          (employee !== undefined
+                                                              ? uploadsPhongKham.uploadsImageEmployee(
+                                                                    employee?.ImageFile
+                                                                )
+                                                              : "")
+                                                      }
+                                                      alt=""
+                                                      name="image"
+                                                      className="img-preview"
+                                                  />
+                                              )}
+                                        {(imageUpload || employee?.RowID) &&
+                                        employee?.ImageFile !== "null" ? (
                                             ""
                                         ) : (
                                             <>

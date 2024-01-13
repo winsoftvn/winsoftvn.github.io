@@ -250,10 +250,9 @@ function Khaibaouser() {
                 <div style={{ width: "200px" }}>
                     {listPosition.map((item) => {
                         let b = PositionID.split(",");
-                        let a = [];
-                        b.map((item1) => {
+                        let a = b.map((item1) => {
                             if (item.PositionID === parseInt(item1)) {
-                                a.push(item.PositionName + " ,");
+                                return item.PositionName + " ,";
                             }
                         });
                         return a;
@@ -326,12 +325,16 @@ function Khaibaouser() {
             key: "16",
             render: (ImageFile) => (
                 <div style={{ width: "200px" }}>
-                    <div
-                        className="focus-link-image"
-                        onClick={() => setOpenImage({ open: true, link: ImageFile })}
-                    >
-                        {ImageFile}
-                    </div>
+                    {ImageFile === "null" ? (
+                        ImageFile
+                    ) : (
+                        <div
+                            className="focus-link-image"
+                            onClick={() => setOpenImage({ open: true, link: ImageFile })}
+                        >
+                            {ImageFile}
+                        </div>
+                    )}
 
                     <Modal
                         centered
@@ -362,10 +365,10 @@ function Khaibaouser() {
         },
         {
             title: "Mã NV",
-            dataIndex: "EmployeeCode",
+            dataIndex: "StaffCode_PK",
             key: "17",
             align: "center",
-            render: (EmployeeCode) => <div style={{ width: "200px" }}> {EmployeeCode} </div>,
+            render: (StaffCode_PK) => <div style={{ width: "100px" }}> {StaffCode_PK} </div>,
         },
         {
             title: "STT",
