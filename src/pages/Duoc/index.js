@@ -13,26 +13,93 @@ import {
     faXmarkCircle,
     faCheck,
 } from "@fortawesome/free-solid-svg-icons";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Danhsachleft from "./Danhsachleft";
 import Menuduoc from "./Menuduoc";
 import { v4 as uuidv4 } from "uuid";
-import SearchFilter from "./search";
 import FormItem from "antd/es/form/FormItem";
 import "./duoc.scss";
+import axios from "axios";
+import SearchFilter from "./Timkiem";
 function Duoc() {
-    //khaibao
-    const [click, setClick] = useState(false);
+    //Usestate
+    const [click, setClick] = useState();
     const [dsthuoc, setDSThuoc] = useState([]);
     const [thuocdcchon, setValueThuocChon] = useState({});
     const [value, setValue] = useState(false);
+    const [data, setData] = useState([]);
+    const [red, setReds] = useState([]);
     const [form] = Form.useForm();
-
-    //truyền props
+    const [valueInputThuoc, setValueInputThuoc] = useState();
+    // const [suaThongTin, setSuaThongTin] = useState(false);
+    //UseRef
+    const refTenthuoc = useRef(null);
+    const refNcap = useRef(null);
+    const refSang = useRef(null);
+    const refTrua = useRef(null);
+    const refChieu = useRef(null);
+    const refToi = useRef(null);
+    const refCachdung = useRef(null);
+    const refLuu = useRef(null);
 
     const handleDeleteThuoc = (a) => {
-        let ds = dsthuoc.filter((item) => item.Ma != a.Ma);
+        let ds = dsthuoc.filter((item) => item.Ma !== a.Ma);
         setDSThuoc(ds);
+    };
+
+    const handlePushThuoc = (e) => {
+        data.map((item) => {
+            if (item.name === e.Tenthuoc) {
+                let a = {
+                    Ma: uuidv4(),
+                    Tenthuoc: thuocdcchon.name,
+                    ...e,
+                };
+                setDSThuoc((oldArray) => [...oldArray, a]);
+                form.setFieldsValue({
+                    Tenthuoc: "",
+                    Hamluong: "",
+                    DVT: "",
+                    Ncap: "",
+                    Sang: "",
+                    Trua: "",
+                    Chieu: "",
+                    Toi: "",
+                    Tong: "",
+                    Cachdung: "",
+                });
+                setValue(!value);
+            }
+        });
+        setValueInputThuoc();
+        refTenthuoc.current.focus();
+    };
+    const handleSuaThongTin = (a, b) => {
+        console.log(a, b);
+    };
+    const handleFocusEnter = (a, b) => {
+        console.log(a, b);
+        if (a.key === "Enter") {
+            if (b === 1) {
+                refSang.current.focus();
+                a.preventDefault();
+            } else if (b === 2) {
+                refTrua.current.focus();
+                a.preventDefault();
+            } else if (b === 3) {
+                refChieu.current.focus();
+                a.preventDefault();
+            } else if (b === 4) {
+                refToi.current.focus();
+                a.preventDefault();
+            } else if (b === 5) {
+                refCachdung.current.focus();
+                a.preventDefault();
+            } else if (b === 6) {
+                refLuu.current.focus();
+                a.preventDefault();
+            }
+        }
     };
     useEffect(() => {
         form.setFieldsValue({
@@ -41,6 +108,15 @@ function Duoc() {
             // Hluong: thuocdcchon.phone,
         });
     }, [thuocdcchon]);
+    useEffect(() => {
+        axios
+            .get("https://jsonplaceholder.typicode.com/users")
+            .then((res) => {
+                setData(res.data);
+                setReds(res.data);
+            })
+            .catch((err) => console.log(err));
+    }, []);
 
     const column0 = [
         {
@@ -122,18 +198,7 @@ function Duoc() {
             ),
         },
     ];
-    const handlePushThuoc = (e) => {
-        let a = {
-            Ma: uuidv4(),
-            Tenthuoc: thuocdcchon.name,
-            ...e,
-        };
-        setDSThuoc((oldArray) => [...oldArray, a]);
-        form.setFieldsValue({
-            Tenthuoc: "",
-        });
-        setValue(!value);
-    };
+
     const items1 = [
         {
             label: <div className="form-input-label ">F3 - Lưu</div>,
@@ -381,14 +446,14 @@ function Duoc() {
                     <div className="color-border m-1 mt-2 p-1">
                         <div className="h-max-duoc">
                             <Form>
-                                <div className="row form-row m-0 p-0">
+                                <div className="row form-row m-0">
                                     <FormItem
                                         label={
                                             <div className="form-input-label duoc-form-input-label">
                                                 Ngày cấp
                                             </div>
                                         }
-                                        className="col-md-3"
+                                        className="col-md-3 m-0"
                                     >
                                         <Input type="date" className="form-control" />
                                     </FormItem>
@@ -398,28 +463,34 @@ function Duoc() {
                                                 Ghi chú
                                             </div>
                                         }
-                                        className="col-md-9"
+                                        className="col-md-9 m-0 p-0"
                                     >
                                         <Input className="form-control" />
                                     </FormItem>
-                                </div>{" "}
-                                <div className="div-shadow v5 my-2">
-                                    <div>
-                                        <div className="label-table">
-                                            <div className=" w-20">Tên thuốc</div>
-                                            <div className=" w-5 text-center">H.lượng</div>
-                                            <div className=" w-5 text-center">ĐVT</div>
-                                            <div className=" w-5 text-center">N.cấp</div>
-                                            <div className=" w-5 text-center">Sáng</div>
-                                            <div className=" w-5 text-center">Trưa</div>
-                                            <div className=" w-5 text-center">Chiều</div>
-                                            <div className=" w-5 text-center">Tối</div>
-                                            <div className=" w-10 text-center">Tổng</div>
-                                            <div className=" w-20">Cách dùng</div>
-                                            <div className=" w-10 text-center">Đơn giá</div>
-                                            <div className=" w-5 text-center">Lưu</div>
-                                        </div>
-                                        <Form form={form} onFinish={handlePushThuoc}>
+                                </div>
+                            </Form>
+                            <div className="div-shadow v5 my-2">
+                                <div>
+                                    <div className="label-table">
+                                        <div className=" w-20">Tên thuốc</div>
+                                        <div className=" w-5 text-center">H.lượng</div>
+                                        <div className=" w-5 text-center">ĐVT</div>
+                                        <div className=" w-5 text-center">N.cấp</div>
+                                        <div className=" w-5 text-center">Sáng</div>
+                                        <div className=" w-5 text-center">Trưa</div>
+                                        <div className=" w-5 text-center">Chiều</div>
+                                        <div className=" w-5 text-center">Tối</div>
+                                        <div className=" w-10 text-center">Tổng</div>
+                                        <div className=" w-20">Cách dùng</div>
+                                        <div className=" w-10 text-center">Đơn giá</div>
+                                        <div className=" w-5 text-center">Lưu</div>
+                                    </div>{" "}
+                                    <div className="scroll">
+                                        <Form
+                                            form={form}
+                                            onFinish={handlePushThuoc}
+                                            onKeyDown={(e) => handleFocusEnter(e, 8)}
+                                        >
                                             <div className="d-flex">
                                                 <Form.Item className="p-0 m-0 w-20">
                                                     <SearchFilter
@@ -427,6 +498,13 @@ function Duoc() {
                                                         thuocdcchon={thuocdcchon}
                                                         form={form}
                                                         onFinish={handlePushThuoc}
+                                                        data={data}
+                                                        red={red}
+                                                        setReds={setReds}
+                                                        valueInputThuoc={valueInputThuoc}
+                                                        setValueInputThuoc={setValueInputThuoc}
+                                                        refNcap={refNcap}
+                                                        refTenthuoc={refTenthuoc}
                                                     />
                                                 </Form.Item>
                                                 <Form.Item className="p-0 m-0 w-5" name="Hluong">
@@ -436,7 +514,11 @@ function Duoc() {
                                                     <Input className="form-control" />
                                                 </Form.Item>
                                                 <Form.Item className="p-0 m-0 w-5" name="Ncap">
-                                                    <Input className="form-control" />
+                                                    <Input
+                                                        className="form-control"
+                                                        ref={refNcap}
+                                                        onKeyDown={(e) => handleFocusEnter(e, 1)}
+                                                    />
                                                 </Form.Item>
                                                 <Form.Item className="p-0 m-0 w-5" name="Sang">
                                                     <Input
@@ -444,6 +526,8 @@ function Duoc() {
                                                         type="number"
                                                         min={0}
                                                         classNames="text-center"
+                                                        ref={refSang}
+                                                        onKeyDown={(e) => handleFocusEnter(e, 2)}
                                                     />
                                                 </Form.Item>
                                                 <Form.Item className="p-0 m-0 w-5" name="Trua">
@@ -452,6 +536,8 @@ function Duoc() {
                                                         classNames="text-center"
                                                         type="number"
                                                         min={0}
+                                                        ref={refTrua}
+                                                        onKeyDown={(e) => handleFocusEnter(e, 3)}
                                                     />
                                                 </Form.Item>
                                                 <Form.Item className="p-0 m-0 w-5" name="Chieu">
@@ -460,6 +546,8 @@ function Duoc() {
                                                         type="number"
                                                         min={0}
                                                         classNames="text-center"
+                                                        ref={refChieu}
+                                                        onKeyDown={(e) => handleFocusEnter(e, 4)}
                                                     />
                                                 </Form.Item>
                                                 <Form.Item className="p-0 m-0 w-5" name="Toi">
@@ -468,13 +556,19 @@ function Duoc() {
                                                         type="number"
                                                         min={0}
                                                         classNames="text-center"
+                                                        ref={refToi}
+                                                        onKeyDown={(e) => handleFocusEnter(e, 5)}
                                                     />
                                                 </Form.Item>
                                                 <Form.Item className="p-0 m-0 w-10" name="Tong">
                                                     <Input className="form-control" />
                                                 </Form.Item>
                                                 <Form.Item className="p-0 m-0 w-20" name="Cachdung">
-                                                    <Input className="form-control" />
+                                                    <Input
+                                                        className="form-control"
+                                                        ref={refCachdung}
+                                                        onKeyDown={(e) => handleFocusEnter(e, 6)}
+                                                    />
                                                 </Form.Item>
                                                 <Form.Item className="p-0 m-0 w-10" name="Dongia">
                                                     <Input className="form-control" readOnly />
@@ -483,13 +577,14 @@ function Duoc() {
                                                     <Button
                                                         className="khambenh-btn-icon color-icon-edit green"
                                                         htmlType="submit"
+                                                        ref={refLuu}
                                                     >
                                                         <FontAwesomeIcon icon={faCheck} />
                                                     </Button>
                                                 </Form.Item>
                                             </div>
                                         </Form>
-                                        <div className="table-donthuoc">
+                                        <div className="table-duoc">
                                             <Table
                                                 columns={column0}
                                                 dataSource={dsthuoc}
@@ -500,10 +595,17 @@ function Duoc() {
                                                 pagination={false}
                                                 showHeader={false}
                                                 locale={{ emptyText: "Chưa có dữ liệu" }}
+                                                onRow={(record, rowIndex) => ({
+                                                    onClick: () => {
+                                                        handleSuaThongTin(record, rowIndex);
+                                                    },
+                                                })}
                                             />
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                            <Form>
                                 <div className="row form-row m-0 p-0">
                                     <FormItem
                                         label={
@@ -535,7 +637,7 @@ function Duoc() {
                                     >
                                         <Input className="form-control" />
                                     </FormItem>
-                                </div>{" "}
+                                </div>
                             </Form>
                         </div>
                     </div>

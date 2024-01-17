@@ -3,16 +3,15 @@ import { faAngleDown, faListUl } from "@fortawesome/free-solid-svg-icons";
 import { Menu } from "antd";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
-import "./duoc.scss";
+import "./menuduoc.scss";
 function Menuduoc() {
     //truyền props
 
-    const onClick = (e) => {
-        console.log("click ", e);
+  
+    const [current, setCurrent] = useState("0");
+  const onClick = (e) => {
         setCurrent(e.key);
     };
-    const [current, setCurrent] = useState("0");
-
     const itemmenu = [
         {
             label: (

@@ -247,7 +247,7 @@ function Donthuoc() {
                             <div className=" w-20">Cách dùng</div>
                             <div className=" w-10 text-center">Đơn giá</div>
                             <div className=" w-5 text-center">Lưu</div>
-                        </div>{" "}
+                        </div>
                         <div className="scroll">
                             <Form
                                 form={form}
