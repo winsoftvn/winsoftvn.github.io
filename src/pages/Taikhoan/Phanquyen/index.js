@@ -16,18 +16,20 @@ function Phanquyen() {
 
     const [listMenu, setListMenu] = useState([]);
     const [listEmployee, setListEmployee] = useState([]);
+    const [listPosition, setListPosition] = useState([]);
 
     const [userPhanQuyen, setUserPhanQuyen] = useState([]);
     const [phanquyenMenu, setphanquyenMenu] = useState();
     const [userlogin, setUserLogin] = useState();
 
     const [copyphanquyen, setCopyPhanQuyen] = useState();
-    console.log("copyphanquyen: ", copyphanquyen);
-    const [pastephanquyen, setPastePhanQuyen] = useState();
 
-    const [expandedKeys, setExpandedKeys] = useState([]);
+    const [expandedKeysUser, setExpandedKeysUser] = useState([]);
+    const [expandedKeysChucnang, setExpandedKeysChucnag] = useState([]);
+
     const [selectedKeys, setSelectedKeys] = useState([]);
-    const [autoExpandParent, setAutoExpandParent] = useState(true);
+    const [autoExpandParentUser, setAutoExpandParentUser] = useState(true);
+    const [autoExpandParentChucnang, setAutoExpandParentChucnang] = useState(true);
 
     //xử lý thao tác tree
     const onSelectUser = (selectedKeys) => {
@@ -46,9 +48,14 @@ function Phanquyen() {
     const onSelect = (selectedKeysValue, info) => {
         setSelectedKeys(selectedKeysValue);
     };
-    const onExpand = (expandedKeysValue) => {
-        setExpandedKeys(expandedKeysValue);
-        setAutoExpandParent(false);
+
+    const onExpandUser = (expandedKeysValue) => {
+        setExpandedKeysUser(expandedKeysValue);
+        setAutoExpandParentUser(false);
+    };
+    const onExpandChucnang = (expandedKeysValue) => {
+        setExpandedKeysChucnag(expandedKeysValue);
+        setAutoExpandParentChucnang(false);
     };
     ///////
 
@@ -60,7 +67,7 @@ function Phanquyen() {
             let a = data.data.map((item) => {
                 return item.MenuID;
             });
-            setExpandedKeys(a);
+            setExpandedKeysChucnag(a);
         } catch (err) {
             throw new Error(err);
         }
@@ -83,6 +90,18 @@ function Phanquyen() {
         }
     };
 
+    const getAllPosition = async () => {
+        try {
+            const data = await employeeAPI.getAllPosition(0);
+            setListPosition(data.data);
+            let a = data.data.map((item) => {
+                return item.PositionID;
+            });
+            setExpandedKeysUser(a);
+        } catch (err) {
+            throw new Error(err);
+        }
+    };
     const getPhanQuyenMenu = async (a) => {
         const data = await phanquyenAPI.getPhanQuyen(Number(a));
         let b = data.data.map((item) => {
@@ -115,11 +134,25 @@ function Phanquyen() {
         getAllMenu();
         getAllEmployee();
         getAllUser();
+        getAllPosition();
     }, []);
 
     //xử lý dữ liệu phân quyền menu
+    let phanquyennhomuser = listPosition.map((item) => {
+        let c = [];
+        listEmployee.map((item1) => {
+            if (item.PositionID === parseInt(parseInt(item1.PositionID))) {
+                c.push(item1);
+            }
+        });
+        let b = {
+            ...item,
+            child: c,
+        };
+        return b;
+    });
 
-    let a = listMenu.map((item) => {
+    let phanquyenchucnang = listMenu.map((item) => {
         let c = [];
         listMenu.map((item1) => {
             if (item.MenuID === item1.Parent_MenuID) {
@@ -132,7 +165,7 @@ function Phanquyen() {
         };
         return b;
     });
-    let arr = a.filter((item) => item.Parent_MenuID === 0);
+    let arr = phanquyenchucnang.filter((item) => item.Parent_MenuID === 0);
 
     //xử lý copy phân quyền
 
@@ -157,6 +190,16 @@ function Phanquyen() {
         });
     };
     //truyền props
+    //user
+    const treeData = phanquyennhomuser?.map((item) => ({
+        title: <div className="form-input-label">{item.PositionName}</div>,
+        key: item.PositionID,
+        children: item?.child?.map((item1) => ({
+            title: <div className="form-input-label">{item1.EmployeeName}</div>,
+            key: item1.RowID,
+        })),
+    }));
+    //chucnang
     const treeData1 = [
         {
             title: <div className="form-input-label">Tất cả</div>,
@@ -172,12 +215,6 @@ function Phanquyen() {
             })),
         },
     ];
-
-    const treeData = listEmployee.map((item) => ({
-        title: item.EmployeeName,
-        key: item.RowID,
-    }));
-
     const options = [
         {
             label: <div className="form-input-label">PK KSK</div>,
@@ -239,14 +276,14 @@ function Phanquyen() {
     return (
         <div>
             <div className="d-flex vh-100">
-                <div className="w-20 h-100">
+                <div className="w-25 h-100">
                     <div className="scroll-phanquyen-1">
                         <div className="color-border h-100">
                             <div className=" d-flex bg-label align-items-center">
                                 <div className=" fw-bold p-1 form-input-label">
                                     Người dùng WINOSFT_VIETNAM
                                 </div>
-                                {userPhanQuyen[0] && (
+                                {userPhanQuyen[0]>20 && (
                                     <div>
                                         <Tooltip
                                             placement="bottom"
@@ -266,6 +303,26 @@ function Phanquyen() {
                                         </Tooltip>
                                     </div>
                                 )}
+                                {copyphanquyen && (
+                                    <div>
+                                        <Tooltip
+                                            placement="bottom"
+                                            title={
+                                                <div className="form-input-label">
+                                                    Dán phân quyền
+                                                </div>
+                                            }
+                                            color="#0067ac"
+                                        >
+                                            <Button
+                                                className="btn-icon"
+                                                onClick={handlePastePhanQuyen}
+                                            >
+                                                <FontAwesomeIcon icon={faPaste} />
+                                            </Button>
+                                        </Tooltip>
+                                    </div>
+                                )}
                             </div>
                             <Tree
                                 showLine={
@@ -277,7 +334,10 @@ function Phanquyen() {
                                 }
                                 onSelect={onSelectUser}
                                 treeData={treeData}
+                                onExpand={onExpandUser}
                                 className="form-input-label"
+                                expandedKeys={expandedKeysUser}
+                                autoExpandParent={autoExpandParentUser}
                             />
                         </div>
                     </div>
@@ -302,26 +362,6 @@ function Phanquyen() {
                                         </Button>
                                     </Tooltip>
                                 </div>
-                                {copyphanquyen && (
-                                    <div>
-                                        <Tooltip
-                                            placement="bottom"
-                                            title={
-                                                <div className="form-input-label">
-                                                    Dán phân quyền
-                                                </div>
-                                            }
-                                            color="#0067ac"
-                                        >
-                                            <Button
-                                                className="btn-icon"
-                                                onClick={handlePastePhanQuyen}
-                                            >
-                                                <FontAwesomeIcon icon={faPaste} />
-                                            </Button>
-                                        </Tooltip>
-                                    </div>
-                                )}
                             </div>
                             <div className="treenode py-1">
                                 <Tree
@@ -333,9 +373,9 @@ function Phanquyen() {
                                             : false
                                     }
                                     checkable
-                                    onExpand={onExpand}
-                                    expandedKeys={expandedKeys}
-                                    autoExpandParent={autoExpandParent}
+                                    onExpand={onExpandChucnang}
+                                    expandedKeys={expandedKeysChucnang}
+                                    autoExpandParent={autoExpandParentChucnang}
                                     onCheck={onCheckMenu}
                                     checkedKeys={phanquyenMenu}
                                     onSelect={onSelect}
@@ -346,7 +386,7 @@ function Phanquyen() {
                         </div>
                     </div>
                 </div>
-                <div className="w-50 h-100">
+                <div className="w-45 h-100">
                     <div className="color-border">
                         <div className="h-50">
                             <div className="scroll-phanquyen-2">

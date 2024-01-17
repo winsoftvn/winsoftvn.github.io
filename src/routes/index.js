@@ -10,6 +10,7 @@ import Home from "../pages/Home";
 import HSBANgoaitruKB from "../pages/KhambenhHSBA/HSBANgoaitruKB";
 import Phieukhambenh from "../pages/KhambenhHSBA/Phieukhambenh";
 import Khamsuckhoe from "../pages/Khamsuckhoe";
+import LoginPage from "../pages/Login";
 import Phauthuatthuthuat from "../pages/Phauthuatthuthuat";
 import Khaibaouser from "../pages/Taikhoan/Khaibaouser/List";
 import Phanquyen from "../pages/Taikhoan/Phanquyen";
@@ -37,12 +38,16 @@ import Phieuthutien from "../pages/Vienphi/Phieuthutien";
 import Xetnghiem from "../pages/Xetnghiem";
 // import NotFound from "../pages/NotFound";
 const PageWeb = [
-
     //Home
     {
-        path: "/",
+        path: "/home",
         page: Home,
         isMainLayout: true,
+    },
+    {
+        path: "/",
+        page: LoginPage,
+        isMainLayout: false,
     },
     //Tiếp nhận
     {
@@ -51,7 +56,7 @@ const PageWeb = [
         isMainLayout: true,
     },
     //Khám bệnh
-    
+
     {
         path: "/khambenh/phieukhambenh",
         page: Phieukhambenh,

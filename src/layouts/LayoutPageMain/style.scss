@@ -119,10 +119,12 @@ li.ant-menu-overflow-item.ant-menu-item.ant-menu-item-only-child {
     position: relative;
     bottom: 0px;
     left: 0px;
+    width: 100%;
     .user-name {
+        width: 13%;
         position: fixed;
         bottom: 5px;
-        left: 5px;
+        left: 10px;
         text-align: center;
         font-size: 13px;
         cursor: pointer;

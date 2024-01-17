@@ -65,7 +65,7 @@ function LayoutPageMain({ children }) {
     const [listUser, setlistUser] = useState([]);
     const [open, setOpen] = useState(false);
     const [phanquyenUser, setPhanQuyenUser] = useState([]);
- 
+
     // hàm
 
     //xử lý user
@@ -542,46 +542,48 @@ function LayoutPageMain({ children }) {
                 collapsed={collapsed}
                 className="bg-light b-menu"
             >
-                <div className={collapsed ? "menu-box-icon" : "menu-box-icon-click"}>
-                    <Button
-                        type="text"
-                        icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-                        onClick={() => setCollapsed(!collapsed)}
-                        className={!collapsed ? "menu-btn-icon " : "menu-btn-icon-avtive "}
-                    />
-                </div>
-                {collapsed ? (
-                    ""
-                ) : (
-                    <div className="scroll-menu">
-                        <div className="d-block text-center mx-auto my-2">
-                            <div
-                                className="d-flex align-items-center justify-content-start mx-2"
-                                onClick={() => navigate("/")}
-                            >
-                                <img src={logo} className="img-logo" alt="logoweb" />
-                                <div className="fs-6 fw-bold mx-2">e-Medlink</div>
+              
+                    <div className={collapsed ? "menu-box-icon" : "menu-box-icon-click"}>
+                        <Button
+                            type="text"
+                            icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+                            onClick={() => setCollapsed(!collapsed)}
+                            className={!collapsed ? "menu-btn-icon " : "menu-btn-icon-avtive "}
+                        />
+                    </div>
+                    {collapsed ? (
+                        ""
+                    ) : (
+                        <div className="scroll-menu">
+                            <div className="d-block text-center mx-auto my-2">
+                                <div
+                                    className="d-flex align-items-center justify-content-start mx-2"
+                                    onClick={() => navigate("/")}
+                                >
+                                    <img src={logo} className="img-logo" alt="logoweb" />
+                                    <div className="fs-6 fw-bold mx-2">e-Medlink</div>
+                                </div>
+                            </div>
+                            <hr className="m-0" />
+
+                            <Menu theme="light" mode="inline" items={items}></Menu>
+
+                            <div className="login-user">
+                                <Dropdown
+                                    menu={{
+                                        items: dropuser,
+                                    }}
+                                    placement="top"
+                                >
+                                    <div className="user-name">
+                                        {listUser.EmployeeName}{" "}
+                                        <FontAwesomeIcon icon={faAngleUp} className="mx-2" />
+                                    </div>
+                                </Dropdown>
                             </div>
                         </div>
-                        <hr className="m-0" />
-
-                        <Menu theme="light" mode="inline" items={items}></Menu>
-
-                        <div className="login-user">
-                            <Dropdown
-                                menu={{
-                                    items: dropuser,
-                                }}
-                                placement="top"
-                            >
-                                <div className="user-name">
-                                    {listUser.EmployeeName}{" "}
-                                    <FontAwesomeIcon icon={faAngleUp} className="mx-2" />
-                                </div>
-                            </Dropdown>
-                        </div>
-                    </div>
-                )}
+                    )}
+            
                 <Lichsudangnhap open={open} setOpen={setOpen} />
             </Sider>
             <Layout className="bg-frame">

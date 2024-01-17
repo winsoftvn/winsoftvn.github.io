@@ -86,7 +86,11 @@ function CtKhaibaouser(props) {
         });
     };
     //hàm xử lý load dữu liệu
-
+    const handleCloseModal = () => {
+        setOpen(false);
+        form.resetFields();
+        setImageUpload();
+    };
     useEffect(() => {
         let groupid = employee?.GroupID?.split(",");
         let positionid = employee?.PositionID?.split(",");
@@ -137,12 +141,10 @@ function CtKhaibaouser(props) {
                         display: "none",
                     },
                 }}
-                onCancel={() => {
-                    setOpen(false);
-                }}
                 closable={false}
                 width={1200}
                 forceRender
+                maskClosable={false}
             >
                 <div className="text-center">
                     <Form onFinish={handleSubmit} form={form}>
@@ -162,7 +164,7 @@ function CtKhaibaouser(props) {
                             <div className="w-20">
                                 <Form.Item name="ImageFile" className="imgupload">
                                     <div className="box-imageupload d-flex justify-content-center align-items-center">
-                                        {employee?.ImageFile === "null"
+                                        {employee?.ImageFile === "null" && !imageUpload
                                             ? ""
                                             : (imageUpload || employee?.RowID) && (
                                                   <img
@@ -179,8 +181,9 @@ function CtKhaibaouser(props) {
                                                       className="img-preview"
                                                   />
                                               )}
-                                        {(imageUpload || employee?.RowID) &&
-                                        employee?.ImageFile !== "null" ? (
+                                        {((imageUpload || employee?.RowID) &&
+                                            employee?.ImageFile !== "null") ||
+                                        imageUpload ? (
                                             ""
                                         ) : (
                                             <>
@@ -412,7 +415,7 @@ function CtKhaibaouser(props) {
                                 <Button htmlType="submit" className="mx-2 vienphi-danhmuc-btn">
                                     <FontAwesomeIcon icon={faFloppyDisk} className="mx-1" /> Lưu
                                 </Button>
-                                <Button danger className="mx-2" onClick={() => setOpen(false)}>
+                                <Button danger className="mx-2" onClick={handleCloseModal}>
                                     Thoát
                                     <FontAwesomeIcon icon={faRightFromBracket} className="mx-1" />
                                 </Button>

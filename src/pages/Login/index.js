@@ -1,13 +1,13 @@
-import { Button, Form, Input, Select } from "antd";
+import { Button, Form, Input, Select, Tree } from "antd";
 import logo from "../../../src/assets/image/logo.png";
 import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
 import "./loginpage.scss";
-//import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-//import handleDatetime from "../../util/dateTime";
 import { errorInfo } from "../../components/Dialog/Dialog";
 import loginAPI from "../../services/loginApi";
 import handleDatetime from "../../util/dateTime";
+
 function LoginPage() {
     const [form] = Form.useForm();
     const thoigian = new Date();
@@ -21,7 +21,7 @@ function LoginPage() {
                 errorInfo(data.data.Content);
             } else {
                 localStorage.setItem("token", JSON.stringify(data.data.accessToken));
-                navigate("/");
+                navigate("/home");
             }
         }
     };
@@ -33,6 +33,7 @@ function LoginPage() {
             // Hluong: thuocdcchon.phone,
         });
     }, [thoigian]);*/
+
     return (
         <>
             <div className="bg-login">
