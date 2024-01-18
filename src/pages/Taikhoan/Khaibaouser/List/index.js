@@ -1,14 +1,7 @@
-import { Button, Table, Checkbox, Input, Space, Dropdown, Modal } from "antd";
+import { Button, Table, Checkbox, Dropdown, Modal, Input } from "antd";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-    faPlus,
-    faSearch,
-    faEdit,
-    faTrashCan,
-    faPenToSquare,
-} from "@fortawesome/free-solid-svg-icons";
-import { useRef, useState, useEffect } from "react";
-import Highlighter from "react-highlight-words";
+import { faPlus, faEdit, faTrashCan, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
+import { useState, useEffect } from "react";
 import CtKhaibaouser from "../Detail";
 import employeeAPI from "../../../../services/employeeAPI";
 import { errorInfo, infoRes, successInfo } from "../../../../components/Dialog/Dialog";
@@ -23,83 +16,15 @@ function Khaibaouser() {
 
     const [loading, setLoading] = useState(false);
     const [listEmployee, setListEmployee] = useState([]);
+    console.log("listEmployee: ", listEmployee);
 
+    const [listEmployeeTimkiem, setListEmployeeTimkiem] = useState(listEmployee);
+    console.log("listEmployeeTimkiem: ", listEmployeeTimkiem);
     const [listGroup, setListGroup] = useState([]);
     const [listPosition, setListPosition] = useState([]);
 
-    const [searchText, setSearchText] = useState("");
-    const [searchedColumn, setSearchedColumn] = useState("");
-
     //redux
     const dispatch = useDispatch();
-    //Search
-    const searchInput = useRef(null);
-    const handleSearch = (selectedKeys, confirm, dataIndex) => {
-        confirm();
-        setSearchText(selectedKeys[0]);
-        setSearchedColumn(dataIndex);
-    };
-    const getColumnSearchProps = (dataIndex) => ({
-        filterDropdown: ({ setSelectedKeys, selectedKeys, confirm }) => (
-            <div
-                style={{
-                    padding: 8,
-                    width: 200,
-                }}
-                onKeyDown={(e) => e.stopPropagation()}
-            >
-                <Input
-                    ref={searchInput}
-                    placeholder={"Nhập tên"}
-                    value={selectedKeys[0]}
-                    onChange={(e) => setSelectedKeys(e.target.value ? [e.target.value] : [])}
-                    onPressEnter={() => handleSearch(selectedKeys, confirm, dataIndex)}
-                    style={{
-                        marginBottom: 8,
-                        display: "block",
-                    }}
-                    className="form-control"
-                />
-                <Space>
-                    <Button
-                        className="form-btn"
-                        onClick={() => handleSearch(selectedKeys, confirm, dataIndex)}
-                        icon={<FontAwesomeIcon icon={faSearch} />}
-                        size="small"
-                        style={{
-                            width: 90,
-                        }}
-                    >
-                        Tìm kiếm
-                    </Button>
-                </Space>
-            </div>
-        ),
-        filterIcon: (filtered) => <FontAwesomeIcon icon={faSearch} />,
-        onFilter: (value, record) =>
-            record[dataIndex].toString().toLowerCase().includes(value.toLowerCase()),
-        onFilterDropdownOpenChange: (visible) => {
-            if (visible) {
-                setTimeout(() => searchInput.current?.select(), 100);
-            }
-        },
-        render: (text) =>
-            searchedColumn === dataIndex ? (
-                <Highlighter
-                    highlightStyle={{
-                        backgroundColor: "#ffc069",
-                        padding: 0,
-                    }}
-                    searchWords={[searchText]}
-                    autoEscape
-                    textToHighlight={text ? text.toString() : ""}
-                />
-            ) : (
-                text
-            ),
-    });
-
-    //
 
     //Thao tac chon phan tu
     const handleThaoTac = (e, record) => {
@@ -116,6 +41,8 @@ function Khaibaouser() {
             setLoading(true);
             const data = await employeeAPI.getAll();
             setListEmployee(data.data.recordset);
+            setListEmployeeTimkiem(data.data.recordset);
+
             setLoading(false);
         } catch (err) {
             throw new Error(err);
@@ -141,7 +68,6 @@ function Khaibaouser() {
     //Hàm thêm
     const handleCreate = async (obj) => {
         const data = await employeeAPI.create(obj);
-        console.log("data: ", data);
         if (data.data.Code === "err") {
             infoRes(data.data.Content);
         } else if (data.data.Code === "ok") {
@@ -152,7 +78,6 @@ function Khaibaouser() {
     //Hàm xóa
     const handleDelete = async (id) => {
         const data = await employeeAPI.delete(id);
-        console.log("data: ", data);
         if (data.data.Code === "ok") {
             successInfo(data.data.Content);
             getAllEmployee();
@@ -163,7 +88,6 @@ function Khaibaouser() {
     //Hàm cập nhật
     const handleUpdate = async (obj) => {
         const data = await employeeAPI.update(obj);
-        console.log("data: ", data);
         if (data.data.Code === "ok") {
             successInfo(data.data.Content);
             getAllEmployee();
@@ -172,6 +96,17 @@ function Khaibaouser() {
         }
     };
 
+    //Hàm tìm kiếm
+    const handleTimkiem = (e) => {
+        let a = listEmployee.filter(
+            (f) =>
+                f.EmployeeName.includes(e.target.value) ||
+                f.EmployeeName.toUpperCase().includes(e.target.value) ||
+                f.EmployeeName.toLowerCase().includes(e.target.value)
+        );
+        console.log("a: ", a);
+        setListEmployeeTimkiem(a);
+    };
     useEffect(() => {
         getAllEmployee();
         getAllGroup();
@@ -206,7 +141,6 @@ function Khaibaouser() {
             dataIndex: "EmployeeName",
             fixed: "left",
             key: "2",
-            ...getColumnSearchProps("EmployeeName"),
             render: (EmployeeName) => <div style={{ width: "200px" }}> {EmployeeName} </div>,
         },
         {
@@ -409,10 +343,18 @@ function Khaibaouser() {
 
     return (
         <>
-            <div>
+            <div className="vh-100">
                 <div className="d-flex justify-content-between align-items-center mt-2 mx-2">
                     <div className="d-flex align-items-center ">
                         <div className="vienphi-danhmuc-title mx-2">Danh sách nhân viên</div>
+                        <Input
+                            className="form-control mx-4"
+                            placeholder="Tìm kiếm"
+                            onChange={handleTimkiem}
+                            style={{
+                                width: 200,
+                            }}
+                        />
                     </div>
                     <div className="text-end">
                         <Button className="form-btn bg" onClick={handleDataCreate}>
@@ -432,7 +374,7 @@ function Khaibaouser() {
                 />
                 <div className="mt-2 p-1">
                     <Table
-                        dataSource={listEmployee}
+                        dataSource={listEmployeeTimkiem}
                         columns={column}
                         scroll={{ x: true, y: "100vh" }}
                         size="small"
