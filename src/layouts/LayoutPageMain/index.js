@@ -558,7 +558,7 @@ function LayoutPageMain({ children }) {
                             <div className="d-block text-center mx-auto my-2">
                                 <div
                                     className="d-flex align-items-center justify-content-start mx-2"
-                                    onClick={() => navigate("/")}
+                                    onClick={() => navigate("/home")}
                                 >
                                     <img src={logo} className="img-logo" alt="logoweb" />
                                     <div className="fs-6 fw-bold mx-2">e-Medlink</div>

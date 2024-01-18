@@ -16,7 +16,7 @@ function Phanquyen() {
 
     const [listMenu, setListMenu] = useState([]);
     const [listEmployee, setListEmployee] = useState([]);
-    const [listPosition, setListPosition] = useState([]);
+    const [listGroup, setListGroup] = useState([]);
 
     const [userPhanQuyen, setUserPhanQuyen] = useState([]);
     const [phanquyenMenu, setphanquyenMenu] = useState();
@@ -90,12 +90,12 @@ function Phanquyen() {
         }
     };
 
-    const getAllPosition = async () => {
+    const getAllGroup = async () => {
         try {
-            const data = await employeeAPI.getAllPosition(0);
-            setListPosition(data.data);
+            const data = await employeeAPI.getAllGroup(0);
+            setListGroup(data.data);
             let a = data.data.map((item) => {
-                return item.PositionID;
+                return item.GroupID;
             });
             setExpandedKeysUser(a);
         } catch (err) {
@@ -134,14 +134,14 @@ function Phanquyen() {
         getAllMenu();
         getAllEmployee();
         getAllUser();
-        getAllPosition();
+        getAllGroup();
     }, []);
 
     //xử lý dữ liệu phân quyền menu
-    let phanquyennhomuser = listPosition.map((item) => {
+    let phanquyennhomuser = listGroup.map((item) => {
         let c = [];
         listEmployee.map((item1) => {
-            if (item.PositionID === parseInt(parseInt(item1.PositionID))) {
+            if (item.GroupID === parseInt(item1.GroupID)) {
                 c.push(item1);
             }
         });
@@ -175,7 +175,7 @@ function Phanquyen() {
     };
     const handlePastePhanQuyen = () => {
         Swal.fire({
-            text: "Nếu bạn đồng ý thì phân quyền cũ sẽ được thay thế !",
+            text: "Bạn có muốn paste phân quyền mới cho user?",
             icon: "warning",
             showCancelButton: true,
             confirmButtonColor: "#0067ac",
@@ -192,8 +192,8 @@ function Phanquyen() {
     //truyền props
     //user
     const treeData = phanquyennhomuser?.map((item) => ({
-        title: <div className="form-input-label">{item.PositionName}</div>,
-        key: item.PositionID,
+        title: <div className="form-input-label">{item.GroupName}</div>,
+        key: item.GroupID,
         children: item?.child?.map((item1) => ({
             title: <div className="form-input-label">{item1.EmployeeName}</div>,
             key: item1.RowID,
@@ -283,7 +283,7 @@ function Phanquyen() {
                                 <div className=" fw-bold p-1 form-input-label">
                                     Người dùng WINOSFT_VIETNAM
                                 </div>
-                                {userPhanQuyen[0]>20 && (
+                                {userPhanQuyen[0] > 20 && (
                                     <div>
                                         <Tooltip
                                             placement="bottom"

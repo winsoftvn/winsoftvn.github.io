@@ -58,7 +58,7 @@ function CtKhaibaouser(props) {
         data.append("PermissionModule_KSK", e.PermissionModule_KSK);
         Swal.fire({
             title: "BẠN CÓ MUỐN LƯU THÔNG TIN?",
-            confirmButtonText: "Lưu",
+            confirmButtonText: "Đồng ý",
             showCancelButton: true,
             cancelButtonText: "Hủy",
             customClass: {
@@ -92,7 +92,6 @@ function CtKhaibaouser(props) {
         setImageUpload();
     };
     useEffect(() => {
-        let groupid = employee?.GroupID?.split(",");
         let positionid = employee?.PositionID?.split(",");
         form.setFieldsValue({
             RowID: employee?.RowID,
@@ -109,9 +108,7 @@ function CtKhaibaouser(props) {
                 return parseInt(item);
             }),
             OffWork: employee?.OffWork,
-            GroupID: groupid?.map((item) => {
-                return parseInt(item);
-            }),
+            GroupID: employee?.GroupID,
             STT: employee?.STT,
             MaCCHN: employee?.MaCCHN,
             DTQG_Ma_BS: employee?.DTQG_Ma_BS,
@@ -388,11 +385,10 @@ function CtKhaibaouser(props) {
                                                 Nhóm
                                             </div>
                                         }
-                                        className="select-khaibao-user m-0 "
+                                        className="m-0 "
                                         name="GroupID"
                                     >
                                         <Select
-                                            mode="multiple"
                                             allowClear
                                             style={{
                                                 width: "100%",

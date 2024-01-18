@@ -26,15 +26,6 @@ function Home() {
     return (
         <>
             <div className="homemain">
-                <div className="div-shadow v3 headermain">
-                    <div className="name-user">
-                        {listUser.UserName}_{listUser.EmployeeName}
-                    </div>
-                    <div className="name-exit" onClick={logout}>
-                        {" "}
-                        <FontAwesomeIcon icon={faRightFromBracket} /> Thoát{" "}
-                    </div>
-                </div>
                 <div className="p-4 text-muted fw-bold text-center emed-clinic">
                     <div className="emde-m">
                         <div className="name-tile">E-MED</div>
