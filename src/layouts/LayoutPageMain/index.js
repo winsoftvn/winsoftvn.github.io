@@ -34,6 +34,7 @@ import menuAPI from "../../services/menu";
 import loginAPI from "../../services/loginApi";
 import Lichsudangnhap from "../../pages/Lichsudangnhap";
 import phanquyenAPI from "../../services/phanquyenAPI";
+import Doimatkhau from "../../pages/Lichsudangnhap/Doimatkhau";
 
 library.add(
     fas,
@@ -63,7 +64,9 @@ function LayoutPageMain({ children }) {
     const [collapsed, setCollapsed] = useState(true);
     const [listMenu, setListMenu] = useState([]);
     const [listUser, setlistUser] = useState([]);
-    const [open, setOpen] = useState(false);
+    const [openlichsu, setOpenLichSu] = useState(false);
+    const [opendoimk, setOpenDoiMK] = useState(false);
+
     const [phanquyenUser, setPhanQuyenUser] = useState([]);
 
     // hàm
@@ -92,7 +95,6 @@ function LayoutPageMain({ children }) {
     const getPhanQuyenMenu = async () => {
         if (listUser.RowID) {
             const data = await phanquyenAPI.getPhanQuyen(Number(listUser?.RowID));
-            console.log("data: ", data);
             setPhanQuyenUser(data.data);
         }
     };
@@ -169,7 +171,10 @@ function LayoutPageMain({ children }) {
     };
 
     const openLichsudangnhap = () => {
-        setOpen(true);
+        setOpenLichSu(true);
+    };
+    const openDoiMK = () => {
+        setOpenDoiMK(true);
     };
     //truyền props
 
@@ -508,7 +513,7 @@ function LayoutPageMain({ children }) {
         {
             key: "1",
             label: (
-                <div>
+                <div onClick={openDoiMK}>
                     <FontAwesomeIcon icon={faKey} className="mx-2" /> Đổi mật khẩu
                 </div>
             ),
@@ -542,49 +547,49 @@ function LayoutPageMain({ children }) {
                 collapsed={collapsed}
                 className="bg-light b-menu"
             >
-              
-                    <div className={collapsed ? "menu-box-icon" : "menu-box-icon-click"}>
-                        <Button
-                            type="text"
-                            icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-                            onClick={() => setCollapsed(!collapsed)}
-                            className={!collapsed ? "menu-btn-icon " : "menu-btn-icon-avtive "}
-                        />
-                    </div>
-                    {collapsed ? (
-                        ""
-                    ) : (
-                        <div className="scroll-menu">
-                            <div className="d-block text-center mx-auto my-2">
-                                <div
-                                    className="d-flex align-items-center justify-content-start mx-2"
-                                    onClick={() => navigate("/home")}
-                                >
-                                    <img src={logo} className="img-logo" alt="logoweb" />
-                                    <div className="fs-6 fw-bold mx-2">e-Medlink</div>
-                                </div>
-                            </div>
-                            <hr className="m-0" />
-
-                            <Menu theme="light" mode="inline" items={items}></Menu>
-
-                            <div className="login-user">
-                                <Dropdown
-                                    menu={{
-                                        items: dropuser,
-                                    }}
-                                    placement="top"
-                                >
-                                    <div className="user-name">
-                                        {listUser.EmployeeName}{" "}
-                                        <FontAwesomeIcon icon={faAngleUp} className="mx-2" />
-                                    </div>
-                                </Dropdown>
+                <div className={collapsed ? "menu-box-icon" : "menu-box-icon-click"}>
+                    <Button
+                        type="text"
+                        icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+                        onClick={() => setCollapsed(!collapsed)}
+                        className={!collapsed ? "menu-btn-icon " : "menu-btn-icon-avtive "}
+                    />
+                </div>
+                {collapsed ? (
+                    ""
+                ) : (
+                    <div className="scroll-menu">
+                        <div className="d-block text-center mx-auto my-2">
+                            <div
+                                className="d-flex align-items-center justify-content-start mx-2"
+                                onClick={() => navigate("/home")}
+                            >
+                                <img src={logo} className="img-logo" alt="logoweb" />
+                                <div className="fs-6 fw-bold mx-2">e-Medlink</div>
                             </div>
                         </div>
-                    )}
-            
-                <Lichsudangnhap open={open} setOpen={setOpen} />
+                        <hr className="m-0" />
+
+                        <Menu theme="light" mode="inline" items={items}></Menu>
+
+                        <div className="login-user">
+                            <Dropdown
+                                menu={{
+                                    items: dropuser,
+                                }}
+                                placement="top"
+                            >
+                                <div className="user-name">
+                                    {listUser.EmployeeName}{" "}
+                                    <FontAwesomeIcon icon={faAngleUp} className="mx-2" />
+                                </div>
+                            </Dropdown>
+                        </div>
+                    </div>
+                )}
+
+                <Lichsudangnhap open={openlichsu} setOpen={setOpenLichSu} employee={listUser} />
+                <Doimatkhau open={opendoimk} setOpen={setOpenDoiMK} />
             </Sider>
             <Layout className="bg-frame">
                 <Content className="b-content" style={{ backgroundColor: "#fff" }}>

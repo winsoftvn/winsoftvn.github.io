@@ -1,4 +1,4 @@
-import { Button, Table, Checkbox, Dropdown, Modal, Input } from "antd";
+import { Button, Table, Checkbox, Dropdown, Modal, Input, Popconfirm } from "antd";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faEdit, faTrashCan, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { useState, useEffect } from "react";
@@ -9,6 +9,7 @@ import { useDispatch } from "react-redux";
 import { setDataEmployee } from "../../../../slices/dataAdd";
 import uploadsPhongKham from "../../../../services/uploadsPhongKham";
 import "./listemployee.scss";
+import Swal from "sweetalert2";
 function Khaibaouser() {
     //khai báo
     const [open, setOpen] = useState(false);
@@ -16,10 +17,8 @@ function Khaibaouser() {
 
     const [loading, setLoading] = useState(false);
     const [listEmployee, setListEmployee] = useState([]);
-    console.log("listEmployee: ", listEmployee);
 
     const [listEmployeeTimkiem, setListEmployeeTimkiem] = useState(listEmployee);
-    console.log("listEmployeeTimkiem: ", listEmployeeTimkiem);
     const [listGroup, setListGroup] = useState([]);
     const [listPosition, setListPosition] = useState([]);
 
@@ -32,7 +31,20 @@ function Khaibaouser() {
             dispatch(setDataEmployee(record));
             setOpen(true);
         } else if (e.key === "delete") {
-            handleDelete(record.RowID);
+            Swal.fire({
+                text: "Bạn có muốn xóa user này ?",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#0067ac",
+                cancelButtonColor: "#d33",
+                cancelButtonText: "Hủy",
+                confirmButtonText: "Đồng ý",
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    handleDelete(record.RowID);
+                    successInfo("Đã xóa thành công !");
+                }
+            });
         }
     };
     //Hàm load dữ liệu
@@ -104,7 +116,6 @@ function Khaibaouser() {
                 f.EmployeeName.toUpperCase().includes(e.target.value) ||
                 f.EmployeeName.toLowerCase().includes(e.target.value)
         );
-        console.log("a: ", a);
         setListEmployeeTimkiem(a);
     };
     useEffect(() => {

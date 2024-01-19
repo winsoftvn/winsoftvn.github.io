@@ -111,7 +111,22 @@ input[type="search"] {
     justify-content: center;
     border: #0067ac 1px solid;
 }
-
+.form-btn-luu {
+    border-radius: 0px;
+    padding: 10px 15px;
+    height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #0067ac !important;
+    color: #fff !important;
+    border: #0067ac 1px solid;
+    &:hover {
+        background-color: #fff !important;
+        color: #0067ac !important;
+        border: #0067ac 1px solid;
+    }
+}
 button.ant-btn.css-dev-only-do-not-override-pr0fja.ant-btn-default.ant-dropdown-trigger {
     color: #0067ac;
     border: 1px solid #0067ac;

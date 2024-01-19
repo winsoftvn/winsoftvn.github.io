@@ -1,9 +1,25 @@
 import { Modal } from "antd";
 import CardLichsu from "./CardLichsu";
 import "./lichsudangnhap.scss";
+import { useEffect, useState } from "react";
+import loginAPI from "../../services/loginApi";
 
 function Lichsudangnhap(props) {
-    const { open, setOpen } = props;
+    const { open, setOpen, employee } = props;
+    const [lichsudangnhap, setLichSuDangNhap] = useState();
+
+    // hàm
+    const getLichSuDangNhap = async () => {
+        if (employee.RowID) {
+            console.log(employee.RowID);
+            let a = await loginAPI.lichsu(employee.RowID);
+            setLichSuDangNhap(a.data);
+        }
+    };
+
+    useEffect(() => {
+        getLichSuDangNhap();
+    }, [employee]);
     return (
         <>
             <Modal
@@ -24,11 +40,9 @@ function Lichsudangnhap(props) {
                 forceRender
             >
                 <div className="scroll-lichsu">
-                    <CardLichsu />
-                    <CardLichsu />
-                    <CardLichsu />
-                    <CardLichsu />
-                    <CardLichsu />
+                    {lichsudangnhap?.map((item, index) => {
+                        return <CardLichsu key={index} data={item} />;
+                    })}
                 </div>
             </Modal>
         </>
