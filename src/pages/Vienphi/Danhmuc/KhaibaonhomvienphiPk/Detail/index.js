@@ -26,8 +26,10 @@ function CtkhaibaonhomvienphiPk(props) {
                         display: "none",
                     },
                 }}
-                onCancel={() => setOpen(false)}
+                closable={false}
                 width={1000}
+                forceRender
+                maskClosable={false}
             >
                 <div className="text-center">
                     <Form onFinish={""}>
@@ -36,13 +38,19 @@ function CtkhaibaonhomvienphiPk(props) {
                                 <div className="row">
                                     <Form.Item
                                         label={<div className="form-input-label">Mã nhóm</div>}
-                                        className="col-md-5 m-0"
+                                        className="col-md-3 m-0"
                                     >
                                         <Input className="form-control" />
                                     </Form.Item>
                                     <Form.Item
                                         label={<div className="form-input-label">Tên nhóm</div>}
-                                        className="col-md-7 m-0"
+                                        className="col-md-6 m-0"
+                                    >
+                                        <Input className="form-control" />
+                                    </Form.Item>{" "}
+                                    <Form.Item
+                                        label={<div className="form-input-label">STT</div>}
+                                        className="col-md-3 m-0"
                                     >
                                         <Input className="form-control" />
                                     </Form.Item>
@@ -50,21 +58,37 @@ function CtkhaibaonhomvienphiPk(props) {
                                 <div className="row">
                                     <Form.Item
                                         label={<div className="form-input-label">Phân hệ</div>}
-                                        className="col-md-4 m-0"
+                                        className="col-md-6 m-0"
                                     >
-                                        <Input className="form-control" />
+                                        <Select
+                                            allowClear
+                                            style={{
+                                                width: "100%",
+                                            }}
+                                            placeholder="Chọn"
+                                            // onChange={handleChange}
+                                            // options={listPosition.map((item) => ({
+                                            //     value: item.PositionID,
+                                            //     label: item.PositionName,
+                                            // }))}
+                                        />
                                     </Form.Item>
                                     <Form.Item
                                         label={<div className="form-input-label">BC BHYT</div>}
-                                        className="col-md-4 m-0"
+                                        className="col-md-6 m-0"
                                     >
-                                        <Input className="form-control" />
-                                    </Form.Item>
-                                    <Form.Item
-                                        label={<div className="form-input-label">STT</div>}
-                                        className="col-md-4 m-0"
-                                    >
-                                        <Input className="form-control" />
+                                        <Select
+                                            allowClear
+                                            style={{
+                                                width: "100%",
+                                            }}
+                                            placeholder="Chọn"
+                                            // onChange={handleChange}
+                                            // options={listPosition.map((item) => ({
+                                            //     value: item.PositionID,
+                                            //     label: item.PositionName,
+                                            // }))}
+                                        />
                                     </Form.Item>
                                 </div>
                             </div>

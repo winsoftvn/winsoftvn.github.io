@@ -76,7 +76,23 @@ export const successInfo = (title) => {
         showConfirmButton: false,
         timer: 1000,
         customClass: {
-            title: "fs-5 text-success",
+            title: "fs-5 text-success ",
         },
     });
 };
+// export const acceptInfo = (text, handle) => {
+//     Swal.fire({
+//         text: text,
+//         icon: "warning",
+//         showCancelButton: true,
+//         confirmButtonColor: "#0067ac",
+//         cancelButtonColor: "#d33",
+//         cancelButtonText: "Hủy",
+//         confirmButtonText: "Đồng ý",
+//     }).then((result) => {
+//         if (result.isConfirmed) {
+//             handle();
+//             successInfo("Đã xóa thành công !");
+//         }
+//     });
+// };

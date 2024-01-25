@@ -13,9 +13,10 @@ import { setDataEmployee } from "../../../../slices/dataAdd";
 function CtKhaibaouser(props) {
     //khai báo
     const { open, setOpen, handleCreate, handleUpdate, listPosition, listGroup } = props;
-
+    
     const [imageUpload, setImageUpload] = useState();
     const [form] = Form.useForm();
+
     //redux
     const dispatch = useDispatch();
     const { employee } = useSelector((state) => state.dataAdd);
@@ -311,48 +312,7 @@ function CtKhaibaouser(props) {
                                         <Input className="form-control" />
                                     </FormItem>
                                 </div>
-                                <div className="row form-row mb-1">
-                                    <FormItem
-                                        label={
-                                            <div className="form-input-label input-label-khaibaouser ">
-                                                Tên đăng nhập
-                                            </div>
-                                        }
-                                        className="col-md-3"
-                                        name="UserName"
-                                    >
-                                        <Input className="form-control" />
-                                    </FormItem>
-                                    <FormItem
-                                        label={<div className="form-input-label">Mât khẩu</div>}
-                                        className="col-md-4"
-                                        name="UserPass"
-                                    >
-                                        <Input className="form-control" type="password" />
-                                    </FormItem>
-                                    <FormItem
-                                        label={<div className="form-input-label ">Mã NV</div>}
-                                        className="col-md-2"
-                                        name="StaffCode_PK"
-                                    >
-                                        <Input className="form-control" />
-                                    </FormItem>
-                                    <FormItem
-                                        label={<div className="form-input-label">STT</div>}
-                                        className="col-md-1"
-                                        name="STT"
-                                    >
-                                        <Input className="form-control" />
-                                    </FormItem>
-                                    <FormItem
-                                        label={<div className="form-input-label">N.việc</div>}
-                                        className="col-md-1"
-                                        name="OffWork"
-                                        valuePropName="checked"
-                                    >
-                                        <Checkbox onChange={(e) => console.log(e)} />
-                                    </FormItem>
-                                </div>
+
                                 <div className="row">
                                     <FormItem
                                         label={
@@ -403,10 +363,104 @@ function CtKhaibaouser(props) {
                                         />
                                     </FormItem>
                                 </div>
+                                <div className="row form-row mb-1">
+                                    <FormItem
+                                        label={
+                                            <div className="form-input-label input-label-khaibaouser ">
+                                                Tên đăng nhập
+                                            </div>
+                                        }
+                                        className="col-md-3"
+                                        name="UserName"
+                                        rules={[
+                                            {
+                                                pattern: new RegExp(/^[a-zA-Z0-9]*$/),
+                                                message: (
+                                                    <div className="form-input-label">
+                                                        Vui lòng không nhập ký tự đặc biệt
+                                                    </div>
+                                                ),
+                                            },
+                                            {
+                                                required: true,
+                                                message: (
+                                                    <div className="form-input-label">
+                                                        Vui lòng nhập thông tin
+                                                    </div>
+                                                ),
+                                            },
+                                            {
+                                                max: 50,
+                                                message: (
+                                                    <div className="form-input-label">
+                                                        Vui lòng không vượt quá 50 ký tự
+                                                    </div>
+                                                ),
+                                            },
+                                        ]}
+                                    >
+                                        <Input className="form-control" />
+                                    </FormItem>
+                                    <FormItem
+                                        label={<div className="form-input-label">Mât khẩu</div>}
+                                        className="col-md-4"
+                                        name="UserPass"
+                                        rules={[
+                                            {
+                                                pattern: new RegExp(/^[a-zA-Z0-9]*$/),
+                                                message: (
+                                                    <div className="form-input-label">
+                                                        Vui lòng không nhập ký tự đặc biệt
+                                                    </div>
+                                                ),
+                                            },
+                                            {
+                                                required: true,
+                                                message: (
+                                                    <div className="form-input-label">
+                                                        Vui lòng nhập thông tin
+                                                    </div>
+                                                ),
+                                            },
+                                            {
+                                                max: 50,
+                                                message: (
+                                                    <div className="form-input-label">
+                                                        Vui lòng không vượt quá 50 ký tự
+                                                    </div>
+                                                ),
+                                            },
+                                        ]}
+                                    >
+                                        <Input className="form-control" type="password" />
+                                    </FormItem>
+                                    <FormItem
+                                        label={<div className="form-input-label ">Mã NV</div>}
+                                        className="col-md-2"
+                                        name="StaffCode_PK"
+                                    >
+                                        <Input className="form-control" />
+                                    </FormItem>
+                                    <FormItem
+                                        label={<div className="form-input-label">STT</div>}
+                                        className="col-md-1"
+                                        name="STT"
+                                    >
+                                        <Input className="form-control" />
+                                    </FormItem>
+                                    <FormItem
+                                        label={<div className="form-input-label">N.việc</div>}
+                                        className="col-md-1"
+                                        name="OffWork"
+                                        valuePropName="checked"
+                                    >
+                                        <Checkbox onChange={(e) => console.log(e)} />
+                                    </FormItem>
+                                </div>
                             </div>
                         </div>
                         <div className="p-0 mt-2">
-                            <Form.Item className="text-center">
+                            <Form.Item className="text-center m-0">
                                 <hr />
                                 <Button htmlType="submit" className="mx-2 vienphi-danhmuc-btn">
                                     <FontAwesomeIcon icon={faFloppyDisk} className="mx-1" /> Lưu

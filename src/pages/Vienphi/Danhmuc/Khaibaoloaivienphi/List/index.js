@@ -1,52 +1,59 @@
-import { Table, Button, Dropdown, Form, Input } from "antd";
+import { Table, Button, Dropdown } from "antd";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-    faEdit,
-    faTrashCan,
-    faEye,
-    faPenToSquare,
-    faPlus,
-} from "@fortawesome/free-solid-svg-icons";
+import { faEdit, faTrashCan, faPenToSquare, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import "../../danhmuc.scss";
 import Menuvienphi from "../../../Menuvienphi";
 import ds from "../../../../../util/data";
 import Ctkhaibaonhomloaivienphi from "../Detail";
+import Swal from "sweetalert2";
 function Khaibaoloaivienphi() {
     const [open, setOpen] = useState(false);
-    const [click, setClick] = useState(false);
     const [activeModify, setActiveModify] = useState(false);
 
     const handleDataCreate = () => {
         setOpen(true);
     };
-    const handleChange = (value) => {
-        console.log(`selected ${value}`);
+
+    const handleThaoTac = (e, record) => {
+        if (e.key === "update") {
+            // dispatch(setDataEmployee(record));
+            setOpen(true);
+        } else if (e.key === "delete") {
+            Swal.fire({
+                text: "Bạn có muốn xóa user này ?",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#0067ac",
+                cancelButtonColor: "#d33",
+                cancelButtonText: "Hủy",
+                confirmButtonText: "Đồng ý",
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // handleDelete(record.RowID);
+                    // successInfo("Đã xóa thành công !");
+                }
+            });
+        }
     };
     const items = [
         {
             key: "1",
-            label: "Xem",
-            icon: <FontAwesomeIcon icon={faEye} />,
-        },
-        {
-            key: "2",
             label: "Xóa",
             icon: <FontAwesomeIcon icon={faTrashCan} />,
         },
         {
-            key: "3",
+            key: "2",
             label: "Sửa",
             icon: <FontAwesomeIcon icon={faPenToSquare} />,
         },
     ];
     const columns = [
         {
-            title: "Mã",
-            dataIndex: "TDV",
-            fixed: "left",
-            render: (TDV) => <div style={{ width: "200px" }}> {TDV} </div>,
+            title: "Nhóm loại viện phí",
+            dataIndex: "TDVVT",
+            render: (TDVVT) => <div style={{ width: "200px" }}> {TDVVT} </div>,
         },
         {
             title: "Tên loại viện phí",
@@ -54,14 +61,14 @@ function Khaibaoloaivienphi() {
             render: (TDVVT) => <div style={{ width: "600px" }}> {TDVVT} </div>,
         },
         {
-            title: "Nhóm loại viện phí",
-            dataIndex: "TDVVT",
-            render: (TDVVT) => <div style={{ width: "200px" }}> {TDVVT} </div>,
-        },
-        {
             title: "STT",
             dataIndex: "MADVKT",
             render: (TDVVT) => <div style={{ width: "200px" }}> {TDVVT} </div>,
+        },
+        {
+            title: "Mã",
+            dataIndex: "TDV",
+            render: (TDV) => <div style={{ width: "200px" }}> {TDV} </div>,
         },
         {
             title: "Thao tác",
@@ -73,6 +80,7 @@ function Khaibaoloaivienphi() {
                     <Dropdown
                         menu={{
                             items,
+                            onClick: (e) => handleThaoTac(e, record),
                         }}
                         placement="left"
                         arrow={{

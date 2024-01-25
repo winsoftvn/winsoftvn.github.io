@@ -1,4 +1,4 @@
-import { Button, Table, Checkbox, Dropdown, Modal, Input, Popconfirm } from "antd";
+import { Button, Table, Checkbox, Dropdown, Modal, Input } from "antd";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faEdit, faTrashCan, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { useState, useEffect } from "react";
@@ -114,7 +114,9 @@ function Khaibaouser() {
             (f) =>
                 f.EmployeeName.includes(e.target.value) ||
                 f.EmployeeName.toUpperCase().includes(e.target.value) ||
-                f.EmployeeName.toLowerCase().includes(e.target.value)
+                f.EmployeeName.toLowerCase().includes(e.target.value) ||
+                f.CCCD.includes(e.target.value) ||
+                f.Mobile.includes(e.target.value)
         );
         setListEmployeeTimkiem(a);
     };
@@ -190,7 +192,6 @@ function Khaibaouser() {
             title: "Chức danh",
             dataIndex: "PositionID",
             key: "8",
-
             render: (PositionID) => (
                 <div style={{ width: "200px" }}>
                     {listPosition.map((item) => {

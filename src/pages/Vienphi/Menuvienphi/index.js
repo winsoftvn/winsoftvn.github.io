@@ -11,7 +11,7 @@ function Menuvienphi() {
             label: (
                 <NavLink
                     className="menu-navlink form-input-label"
-                    to="/vienphi/danhmuc/nhomvienphihethong"
+                    to="/vienphi/dmnhomvienphihethong"
                 >
                     Nhóm viện phí hệ thống
                 </NavLink>
@@ -22,7 +22,7 @@ function Menuvienphi() {
             label: (
                 <NavLink
                     className="menu-navlink form-input-label"
-                    to="/vienphi/danhmuc/khaibaonhomchuyenkhoaBYT"
+                    to="/vienphi/dmkhaibaonhomchuyenkhoaBYT"
                 >
                     Khai báo nhóm chuyên khoa BYT
                 </NavLink>
@@ -33,7 +33,7 @@ function Menuvienphi() {
             label: (
                 <NavLink
                     className="menu-navlink form-input-label"
-                    to="/vienphi/danhmuc/khaibaonhomvienphipk"
+                    to="/vienphi/dmkhaibaonhomvienphipk"
                 >
                     Khai báo nhóm viện phí (PK)
                 </NavLink>
@@ -44,7 +44,7 @@ function Menuvienphi() {
             label: (
                 <NavLink
                     className="menu-navlink form-input-label"
-                    to="/vienphi/danhmuc/khaibaonhomin"
+                    to="/vienphi/dmkhaibaonhomin"
                 >
                     Khai báo nhóm in
                 </NavLink>
@@ -55,7 +55,7 @@ function Menuvienphi() {
             label: (
                 <NavLink
                     className="menu-navlink form-input-label"
-                    to="/vienphi/danhmuc/khaibaoloaivienphi"
+                    to="/vienphi/dmkhaibaoloaivienphi"
                 >
                     Khai báo nhóm loại viện phí
                 </NavLink>
@@ -66,7 +66,7 @@ function Menuvienphi() {
             label: (
                 <NavLink
                     className="menu-navlink form-input-label"
-                    to="/vienphi/danhmuc/khaibaodichvukythuat"
+                    to="/vienphi/dmkhaibaodichvukythuat"
                 >
                     Khai báo dịch vụ kỹ thuật
                 </NavLink>
@@ -77,7 +77,7 @@ function Menuvienphi() {
             label: (
                 <NavLink
                     className="menu-navlink form-input-label"
-                    to="/vienphi/danhmuc/khaibaogiadichvukythuat"
+                    to="/vienphi/dmkhaibaogiadichvukythuat"
                 >
                     Khai báo giá dịch vụ kỹ thuật
                 </NavLink>
@@ -88,7 +88,7 @@ function Menuvienphi() {
             label: (
                 <NavLink
                     className="menu-navlink form-input-label"
-                    to="/vienphi/danhmuc/khaibaogoidichvukythuat"
+                    to="/vienphi/dmkhaibaogoidichvukythuat"
                 >
                     Khai báo gói dịch vụ kỹ thuật
                 </NavLink>
@@ -99,7 +99,7 @@ function Menuvienphi() {
             label: (
                 <NavLink
                     className="menu-navlink form-input-label"
-                    to="/vienphi/danhmuc/khaibaodonvitinh"
+                    to="/vienphi/dmkhaibaodonvitinh"
                 >
                     Khai báo đơn vị tính
                 </NavLink>
@@ -110,7 +110,7 @@ function Menuvienphi() {
             label: (
                 <NavLink
                     className="menu-navlink form-input-label"
-                    to="/vienphi/danhmuc/khaibaoquyenso"
+                    to="/vienphi/dmkhaibaoquyenso"
                 >
                     Khai báo quyển số
                 </NavLink>
@@ -121,7 +121,7 @@ function Menuvienphi() {
             label: (
                 <NavLink
                     className="menu-navlink form-input-label"
-                    to="/vienphi/danhmuc/khaibaogioihanthoigianchidinhDVKT"
+                    to="/vienphi/dmkhaibaogioihanthoigianchidinhDVKT"
                 >
                     Khai báo giới hạn thời gian chỉ định DVKT
                 </NavLink>
@@ -132,7 +132,7 @@ function Menuvienphi() {
             label: (
                 <NavLink
                     className="menu-navlink form-input-label"
-                    to="/vienphi/danhmuc/khaibaoDVKTkhongchophepchidinhdongthoi"
+                    to="/vienphi/dmkhaibaoDVKTkhongchophepchidinhdongthoi"
                 >
                     Khai báo DVKT không cho phép chỉ định đồng thời
                 </NavLink>
@@ -143,7 +143,7 @@ function Menuvienphi() {
             label: (
                 <NavLink
                     className="menu-navlink form-input-label"
-                    to="/vienphi/danhmuc/khaibaodichvucanhcaovietghichutrongchidinh"
+                    to="/vienphi/dmkhaibaodichvucanhcaovietghichutrongchidinh"
                 >
                     Khai báo dịch vụ cảnh báo viết ghi chú trong chỉ định
                 </NavLink>
@@ -154,7 +154,7 @@ function Menuvienphi() {
             label: (
                 <NavLink
                     className="menu-navlink form-input-label"
-                    to="/vienphi/danhmuc/khaibaoDVKTbatbuoccoketquakhiKQđieutrituvong"
+                    to="/vienphi/dmkhaibaoDVKTbatbuoccoketquakhiKQđieutrituvong"
                 >
                     Khai báo DVKT bắt buộc có kết quả khi KQ điều trị tử vong
                 </NavLink>
@@ -165,7 +165,7 @@ function Menuvienphi() {
             label: (
                 <NavLink
                     className="menu-navlink form-input-label"
-                    to="/vienphi/danhmuc/mapdanhmucDVKTvoimaythuchiencanlamsan"
+                    to="/vienphi/dmmapdanhmucDVKTvoimaythuchiencanlamsan"
                 >
                     Map danh mục DVKT với máy thực hiện cận lâm sàn
                 </NavLink>
@@ -176,7 +176,7 @@ function Menuvienphi() {
             label: (
                 <NavLink
                     className="menu-navlink form-input-label"
-                    to="/vienphi/danhmuc/khaibaoDVKTthuchienphauthuatxuatXML5"
+                    to="/vienphi/dmkhaibaoDVKTthuchienphauthuatxuatXML5"
                 >
                     Khai báo DVKT thực hiện phẩu thuật xuất XML5{" "}
                 </NavLink>
@@ -188,14 +188,6 @@ function Menuvienphi() {
         <>
             <div className="vienphi-menu">
                 <div>
-                    {/* <Menu
-                        onClick={onClick}
-                        selectedKeys={[current]}
-                        mode="horizontal"
-                        items={itemmenu}
-                        activeKey={true}
-                        className="rounded b-header d-flex align-items-center"
-                    /> */}
                     <div className="d-flex mt-1">
                         <div className="d-flex menu-link-vienphi align-items-center">
                             <NavLink

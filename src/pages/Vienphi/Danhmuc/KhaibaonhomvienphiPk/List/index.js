@@ -1,42 +1,53 @@
-import { Table, Button, Dropdown, Form, Input } from "antd";
+import { Table, Button, Dropdown } from "antd";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-    faEdit,
-    faTrashCan,
-    faEye,
-    faPenToSquare,
-    faPlus,
-} from "@fortawesome/free-solid-svg-icons";
+import { faEdit, faTrashCan, faPenToSquare, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import "../../danhmuc.scss";
 import Menuvienphi from "../../../Menuvienphi";
 import ds from "../../../../../util/data";
 import CtkhaibaonhomvienphiPK from "../Detail";
+import Swal from "sweetalert2";
+import { useDispatch } from "react-redux";
+import { successInfo } from "../../../../../components/Dialog/Dialog";
+
 function Khaibaonhomvienphipk() {
     const [open, setOpen] = useState(false);
-    const [click, setClick] = useState(false);
-    const [activeModify, setActiveModify] = useState(false);
 
+    const dispatch = useDispatch();
     const handleDataCreate = () => {
         setOpen(true);
     };
-    const handleChange = (value) => {
-        console.log(`selected ${value}`);
+
+    const handleThaoTac = (e, record) => {
+        if (e.key === "update") {
+            // dispatch(setDataEmployee(record));
+            setOpen(true);
+        } else if (e.key === "delete") {
+            Swal.fire({
+                text: "Bạn có muốn xóa user này ?",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#0067ac",
+                cancelButtonColor: "#d33",
+                cancelButtonText: "Hủy",
+                confirmButtonText: "Đồng ý",
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // handleDelete(record.RowID);
+                    successInfo("Đã xóa thành công !");
+                }
+            });
+        }
     };
     const items = [
         {
             key: "1",
-            label: "Xem",
-            icon: <FontAwesomeIcon icon={faEye} />,
-        },
-        {
-            key: "2",
             label: "Xóa",
             icon: <FontAwesomeIcon icon={faTrashCan} />,
         },
         {
-            key: "3",
+            key: "2",
             label: "Sửa",
             icon: <FontAwesomeIcon icon={faPenToSquare} />,
         },
@@ -79,18 +90,14 @@ function Khaibaonhomvienphipk() {
                     <Dropdown
                         menu={{
                             items,
+                            onClick: (e) => handleThaoTac(e, record),
                         }}
                         placement="left"
                         arrow={{
                             pointAtCenter: true,
                         }}
                     >
-                        <Button
-                            className="bg-light vienphi-danhmuc-icon-modify"
-                            onClick={() => {
-                                setActiveModify(!activeModify);
-                            }}
-                        >
+                        <Button className="bg-light vienphi-danhmuc-icon-modify">
                             <FontAwesomeIcon
                                 icon={faEdit}
                                 style={{ fontSize: "10px" }}
