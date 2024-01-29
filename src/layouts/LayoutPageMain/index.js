@@ -1,5 +1,5 @@
 import { MenuUnfoldOutlined, MenuFoldOutlined } from "@ant-design/icons";
-import { Button, Layout, Menu, Dropdown } from "antd";
+import { Button, Layout, Menu, Dropdown, Tooltip } from "antd";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import {
@@ -32,6 +32,16 @@ import {
     faClockRotateLeft,
     faKey,
     faAngleUp,
+    faHouseMedical,
+    faNoteSticky,
+    faListCheck,
+    faPenToSquare,
+    faRectangleList,
+    faCircleArrowRight,
+    faSyringe,
+    faChartLine,
+    faBox,
+    faMinus,
 } from "@fortawesome/free-solid-svg-icons";
 import "./style.scss";
 import logo from "../../assets/image/logo.png";
@@ -62,7 +72,17 @@ library.add(
     faHorse,
     faDollarSign,
     faMoneyCheckDollar,
-    faCaretRight
+    faCaretRight,
+    faHouseMedical,
+    faNoteSticky,
+    faListCheck,
+    faPenToSquare,
+    faRectangleList,
+    faCircleArrowRight,
+    faSyringe,
+    faChartLine,
+    faBox,
+    faMinus
 );
 const { Sider, Content } = Layout;
 function LayoutPageMain({ children }) {
@@ -161,6 +181,7 @@ function LayoutPageMain({ children }) {
         return b;
     });
     let arr = a.filter((item) => item.Parent_MenuID === 0);
+
     ////////////////////////////////////
 
     useEffect(() => {
@@ -216,9 +237,11 @@ function LayoutPageMain({ children }) {
                     <FontAwesomeIcon icon={`solid + ${item.MenuIcon}`} />,
                     item.child.map((item1) =>
                         getItem(
-                            <NavLink className="menu-navlink-child" to={item1.MenuLink}>
-                                {item1.MenuName_Full}
-                            </NavLink>,
+                            <Tooltip title={item1.MenuName_Full} placement="right">
+                                <NavLink className="menu-navlink-child" to={item1.MenuLink}>
+                                    <div className="over-link w-100">{item1.MenuName_Full}</div>
+                                </NavLink>
+                            </Tooltip>,
                             item1.MenuID,
                             <FontAwesomeIcon icon={`solid + ${item.MenuIcon}`} />
                         )
@@ -258,7 +281,6 @@ function LayoutPageMain({ children }) {
 
     return (
         <Layout className="min-vh-100">
-            
             <Sider
                 breakpoint="lg"
                 width={250}

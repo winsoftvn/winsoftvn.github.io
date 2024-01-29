@@ -16,6 +16,7 @@ const videoConstraints = {
 const WebcamCapture = () => {
     const [anh, setAnh] = useState();
     const [dsanh, setDSAnh] = useState([]);
+    console.log('dsanh: ', dsanh);
     const [value, setValue] = useState(true);
     const [open, setOpen] = useState(false);
     const [openEditor, setOpenEditor] = useState(false);

@@ -4,24 +4,20 @@ import { faEdit, faTrashCan, faPenToSquare, faPlus } from "@fortawesome/free-sol
 import { useState } from "react";
 import { motion } from "framer-motion";
 import "../../danhmuc.scss";
-import Menuvienphi from "../../../Menuvienphi";
 import ds from "../../../../../util/data";
 import CtkhaibaonhomvienphiPK from "../Detail";
 import Swal from "sweetalert2";
-import { useDispatch } from "react-redux";
 import { successInfo } from "../../../../../components/Dialog/Dialog";
 
 function Khaibaonhomvienphipk() {
     const [open, setOpen] = useState(false);
 
-    const dispatch = useDispatch();
     const handleDataCreate = () => {
         setOpen(true);
     };
 
     const handleThaoTac = (e, record) => {
         if (e.key === "update") {
-            // dispatch(setDataEmployee(record));
             setOpen(true);
         } else if (e.key === "delete") {
             Swal.fire({
@@ -117,8 +113,6 @@ function Khaibaonhomvienphipk() {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0, transition: { duration: 0.8 } }}
             >
-                <Menuvienphi />
-
                 <div className="text-muted">
                     <div className="d-flex justify-content-between align-items-center mt-2 mx-2">
                         <div className="d-flex align-items-center ">

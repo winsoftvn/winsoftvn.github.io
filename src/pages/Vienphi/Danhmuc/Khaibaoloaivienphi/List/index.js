@@ -112,8 +112,6 @@ function Khaibaoloaivienphi() {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0, transition: { duration: 0.8 } }}
             >
-                <Menuvienphi />
-
                 <div className="text-muted">
                     <div className="d-flex justify-content-between align-items-center mt-2 mx-2">
                         <div className="d-flex align-items-center ">
@@ -132,7 +130,6 @@ function Khaibaoloaivienphi() {
                         <Table
                             columns={columns}
                             dataSource={ds}
-                            // loading={loading}
                             scroll={{ x: true }}
                             size="small"
                             pagination={{ pageSize: 20 }}

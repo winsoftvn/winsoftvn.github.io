@@ -1,7 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMoneyCheckDollar } from "@fortawesome/free-solid-svg-icons";
 import "./phieuthutamung.scss";
-import Menuvienphi from "../Menuvienphi";
 import { Tabs } from "antd";
 import Danhsachchothu from "./Danhsachchothu";
 import Bangkekhaitamung from "./Bangkethutien";
@@ -38,7 +37,7 @@ function Phieuthutien() {
 
     return (
         <>
-            <Menuvienphi />
+            {/* <Menuvienphi /> */}
             <div className="m-1">
                 <Tabs defaultActiveKey="1" type="card" size="small" items={tabvienphi} />
             </div>

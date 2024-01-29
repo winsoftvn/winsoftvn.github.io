@@ -1,4 +1,4 @@
-import { Table, Button, Dropdown, Form, Input } from "antd";
+import { Table, Button, Dropdown } from "antd";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
     faEdit,
@@ -10,18 +10,13 @@ import {
 import { useState } from "react";
 import { motion } from "framer-motion";
 import "../../danhmuc.scss";
-import Menuvienphi from "../../../Menuvienphi";
 import ds from "../../../../../util/data";
+import Ctkhaibaonhomin from "../Detail";
 function Khaibaonhomin() {
     const [open, setOpen] = useState(false);
-    const [click, setClick] = useState(false);
     const [activeModify, setActiveModify] = useState(false);
-
     const handleDataCreate = () => {
         setOpen(true);
-    };
-    const handleChange = (value) => {
-        console.log(`selected ${value}`);
     };
     const items = [
         {
@@ -98,20 +93,20 @@ function Khaibaonhomin() {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0, transition: { duration: 0.8 } }}
             >
-                <Menuvienphi />
-
                 <div className="text-muted">
                     <div className="d-flex justify-content-between align-items-center mt-2 mx-2">
                         <div className="d-flex align-items-center ">
                             <div className="vienphi-danhmuc-title mx-2">Khai báo nhóm in</div>
                         </div>
                         <div className="text-end">
-                            <Button className="form-btn bg">
+                            <Button className="form-btn bg" onClick={handleDataCreate}>
                                 <FontAwesomeIcon icon={faPlus} className="mx-1" />
                                 Thêm mới
                             </Button>
                         </div>
                     </div>
+                    <Ctkhaibaonhomin open={open} setOpen={setOpen} />
+
                     <hr className="w-100 my-1" />
                     <div className="m-1">
                         <Table

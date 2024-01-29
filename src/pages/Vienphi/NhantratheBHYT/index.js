@@ -3,7 +3,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { motion } from "framer-motion";
 import "./nhantrathebhyt.scss";
-import Menuvienphi from "../Menuvienphi";
 import ds from "../../../util/data";
 
 function Nhantrathebhyt() {
@@ -109,7 +108,7 @@ function Nhantrathebhyt() {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0, transition: { duration: 0.8 } }}
             >
-                <Menuvienphi />
+                {/* <Menuvienphi /> */}
                 <div className="text-muted">
                     <div className="d-flex align-items-center mt-2 ">
                         <div className="vienphi-danhmucy-title w-30 mx-2 fw-bold">

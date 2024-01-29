@@ -15,7 +15,8 @@ function Donthuoc() {
     const [red, setReds] = useState([]);
     const [form] = Form.useForm();
     const [valueInputThuoc, setValueInputThuoc] = useState();
-    // const [suaThongTin, setSuaThongTin] = useState(false);
+    const [clickTenThuoc, setClickTenThuoc] = useState(false);
+    console.log('clickTenThuoc: ', clickTenThuoc);
     //UseRef
     const refTenthuoc = useRef(null);
     const refNcap = useRef(null);
@@ -128,6 +129,11 @@ function Donthuoc() {
             dataIndex: "Sang",
             width: "5%",
             align: "center",
+            render: (Sang) => (
+                <div>
+                    <input className="form-control" defaultValue={Sang} />
+                </div>
+            ),
         },
 
         {
@@ -236,7 +242,7 @@ function Donthuoc() {
                     <div>
                         <div className="label-table">
                             <div className=" w-20">Tên thuốc</div>
-                            <div className=" w-5 text-center">H.lượng</div>
+                            <div className=" w-5 text-center">HL</div>
                             <div className=" w-5 text-center">ĐVT</div>
                             <div className=" w-5 text-center">N.cấp</div>
                             <div className=" w-5 text-center">Sáng</div>
@@ -266,6 +272,8 @@ function Donthuoc() {
                                             setReds={setReds}
                                             valueInputThuoc={valueInputThuoc}
                                             setValueInputThuoc={setValueInputThuoc}
+                                            clickTenThuoc={clickTenThuoc}
+                                            setClickTenThuoc={setClickTenThuoc}
                                             refNcap={refNcap}
                                             refTenthuoc={refTenthuoc}
                                         />
@@ -360,7 +368,6 @@ function Donthuoc() {
                                     locale={{ emptyText: "Chưa có dữ liệu" }}
                                     onRow={(record, rowIndex) => ({
                                         onClick: () => {
-                                            // setSuaThongTin(true);
                                             handleSuaThongTin(record, rowIndex);
                                         },
                                     })}

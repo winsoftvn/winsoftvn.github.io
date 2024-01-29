@@ -16,7 +16,6 @@ import {
     faPrint,
 } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
-
 import "./phauthuatthuthuat.scss";
 import Danhsachleft from "./Danhsachleft";
 import TextArea from "antd/es/input/TextArea";
@@ -183,7 +182,7 @@ function Phauthuatthuthuat() {
                 <div className={click ? "w-100 vh-100" : "w-75"}>
                     <Form>
                         {" "}
-                        <div className="d-flex color-border">
+                        <div className="d-flex color-border pb-2">
                             <div className="w-70">
                                 <div className="fw-bold bg-title p-1 text-center">
                                     LỊCH SỬ THỰC HIỆN
@@ -314,68 +313,74 @@ function Phauthuatthuthuat() {
                             <div className="w-30">
                                 <div className="fw-bold bg-title p-1 text-center">SINH HIỆU</div>
                                 <div className="px-2 border-line-left">
-                                    <div className="row form-row">
+                                    <div className="row form-row m-0 p-0">
                                         <Form.Item
                                             label={
                                                 <div className="form-input-label pttt-form-input-label-right  ">
                                                     Chỉ số BMI
                                                 </div>
                                             }
+                                            className="p-0"
                                         >
                                             <Input className="form-control" />
                                         </Form.Item>
                                     </div>
-                                    <div className="row form-row">
+                                    <div className="row form-row p-0 m-0">
                                         <Form.Item
                                             label={
                                                 <div className="form-input-label pttt-form-input-label-right ">
                                                     Huyết áp (mm/Hg)
                                                 </div>
                                             }
+                                            className="p-0"
                                         >
                                             <Input className="form-control" />
                                         </Form.Item>
                                     </div>
-                                    <div className="row form-row">
+                                    <div className="row form-row p-0 m-0">
                                         <Form.Item
                                             label={
                                                 <div className="form-input-label pttt-form-input-label-right ">
                                                     Nhịp tim (lần/phút)
                                                 </div>
                                             }
+                                            className="p-0"
                                         >
                                             <Input className="form-control" />
                                         </Form.Item>
                                     </div>
-                                    <div className="row form-row">
+                                    <div className="row form-row p-0 m-0">
                                         <Form.Item
                                             label={
                                                 <div className="form-input-label pttt-form-input-label-right ">
                                                     Nhiệt độ (<sup>o</sup>C)
                                                 </div>
                                             }
+                                            className="p-0"
                                         >
                                             <Input className="form-control" />
                                         </Form.Item>
                                     </div>
-                                    <div className="row form-row">
+                                    <div className="row form-row p-0 m-0">
                                         <Form.Item
                                             label={
                                                 <div className="form-input-label pttt-form-input-label-right ">
                                                     Chiều cao:
                                                 </div>
                                             }
+                                            className="p-0"
                                         >
                                             <Input className="form-control" />
                                         </Form.Item>
                                     </div>
-                                    <div className="row form-row">
+                                    <div className="row form-row p-0 m-0">
                                         <Form.Item
                                             label={
                                                 <div className="form-input-label pttt-form-input-label-right ">
                                                     Cân nặng:
                                                 </div>
                                             }
+                                            className="p-0"
                                         >
                                             <Input className="form-control" />
                                         </Form.Item>

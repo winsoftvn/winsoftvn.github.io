@@ -17,7 +17,6 @@ import { motion } from "framer-motion";
 import Menuvienphi from "../../../Menuvienphi";
 import ds from "../../../../../util/data";
 import "../../danhmuc.scss";
-import Search from "antd/es/input/Search";
 function Khaibaogoidichvukythuat() {
     const [open, setOpen] = useState(false);
     const [click, setClick] = useState(false);
@@ -74,33 +73,7 @@ function Khaibaogoidichvukythuat() {
             render: (TDVVT) => <div style={{ width: "200px" }}> {TDVVT} </div>,
         },
     ];
-    const column1 = [
-        {
-            title: "Loại dịch vụ",
-            dataIndex: "TDV",
-            fixed: "left",
-            render: (TDV) => <div style={{ width: "200px" }}> {TDV} </div>,
-        },
-        {
-            title: "Dịch vụ sử dụng",
-            dataIndex: "TDVVT",
-            render: (TDVVT) => <div style={{ width: "600px" }}> {TDVVT} </div>,
-        },
-        {
-            title: "Đơn giá",
-            dataIndex: "MADVKT",
-            render: (TDVVT) => (
-                <div style={{ width: "200px" }}>
-                    <Checkbox />
-                </div>
-            ),
-        },
-        {
-            title: "Phụ thu",
-            dataIndex: "TDVVT",
-            render: (TDVVT) => <div style={{ width: "200px" }}> {TDVVT} </div>,
-        },
-    ];
+  
     const items1 = [
         {
             label: "Thêm mới",

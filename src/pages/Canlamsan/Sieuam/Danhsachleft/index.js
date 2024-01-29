@@ -19,59 +19,7 @@ function Danhsachleft() {
         setChiTiet(a);
         setOpen(true);
     };
-    // const treeData = [
-    //     {
-    //         title: <div className="color-text fw-bold">18/05/2021</div>,
-    //         key: "0-0",
-    //         children: [
-    //             {
-    //                 title: "Loại xét nghiệp: Xét nghiệp huyết học",
-    //                 key: "0-0-0",
-    //                 children: [
-    //                     {
-    //                         title: "Tổng quan tinh tế bào máu ngoại vi",
-    //                         key: "0-0-0-0",
-    //                     },
-    //                     {
-    //                         title: "Tổng quan tinh tế bào máu ngoại vi",
-    //                         key: "0-0-0-1",
-    //                     },
-    //                 ],
-    //             },
-    //             {
-    //                 title: "Loại xét nghiệp: Xét nghiệp huyết học",
-    //                 key: "0-0-1",
-    //                 children: [
-    //                     {
-    //                         title: "Tổng quan tinh tế bào máu ngoại vi",
-    //                         key: "0-0-1-0",
-    //                     },
-    //                     {
-    //                         title: "Tổng quan tinh tế bào máu ngoại vi",
-    //                         key: "0-0-1-1",
-    //                     },
-    //                 ],
-    //             },
-    //         ],
-    //     },
-    // ];
-    // const items = [
-    //     {
-    //         key: "1",
-    //         label: "Xem",
-    //         icon: <FontAwesomeIcon icon={faEye} />,
-    //     },
-    //     {
-    //         key: "2",
-    //         label: "Xóa",
-    //         icon: <FontAwesomeIcon icon={faTrashCan} />,
-    //     },
-    //     {
-    //         key: "3",
-    //         label: "Sửa",
-    //         icon: <FontAwesomeIcon icon={faPenToSquare} />,
-    //     },
-    // ];
+
     const column0 = [
         {
             title: "STT",

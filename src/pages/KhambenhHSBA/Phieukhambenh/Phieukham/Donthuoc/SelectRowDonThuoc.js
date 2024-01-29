@@ -1,7 +1,14 @@
 import React, { useState, useEffect } from "react";
-
+import "./donthuoc.scss";
 function SelectRowDonThuoc(props) {
-    const { red, setValueThuocChon, setValueInputThuoc, valueInputThuoc, refNcap } = props;
+    const {
+        red,
+        setValueThuocChon,
+        setValueInputThuoc,
+        valueInputThuoc,
+        refNcap,
+        setClickTenThuoc,
+    } = props;
     const [selectedRowIndex, setSelectedRowIndex] = useState(0);
 
     const handleKeyDown = (e) => {
@@ -13,6 +20,7 @@ function SelectRowDonThuoc(props) {
         if (e.key === "Enter") {
             setValueThuocChon(red[selectedRowIndex]);
             setValueInputThuoc(false);
+            setClickTenThuoc(false);
             if (refNcap.current) {
                 refNcap.current.focus();
             }
@@ -41,7 +49,7 @@ function SelectRowDonThuoc(props) {
                     <div className=" w-25">Email</div>
                     <div className=" w-25">Phone</div>
                 </div>
-                <div className="scroll">
+                <div className="scroll-select">
                     <table onKeyDown={handleKeyDown} tabIndex="0" className="w-100">
                         <tbody className="form-input-label">
                             {red.map((row, index) => (
@@ -54,7 +62,7 @@ function SelectRowDonThuoc(props) {
                                 >
                                     <td className=" w-25 ">{row.name}</td>
                                     <td className=" w-25 ">{row.id}</td>
-                                    <td className=" w-25 ">{row.email}</td>{" "}
+                                    <td className=" w-25 ">{row.email}</td>
                                     <td className=" w-25 ">{row.phone}</td>
                                 </tr>
                             ))}

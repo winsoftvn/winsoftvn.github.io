@@ -35,7 +35,7 @@ const WebcamCapture = () => {
     }, [value]);
 
     const handleDeleteImage = (a) => {
-        let b = dsanh.filter((item) => item != a);
+        let b = dsanh.filter((item) => item !== a);
         setDSAnh(b);
         setValue(!value);
     };

@@ -1,5 +1,4 @@
 // import axios from "axios";
-import { useEffect, useState } from "react";
 import "./donthuoc.scss";
 import { Form, Input } from "antd";
 import SelectRowDonThuoc from "./SelectRowDonThuoc";
@@ -15,6 +14,8 @@ function SearchFilter(props) {
         valueInputThuoc,
         refNcap,
         refTenthuoc,
+        clickTenThuoc,
+        setClickTenThuoc,
     } = props;
 
     const column1 = [
@@ -66,17 +67,19 @@ function SearchFilter(props) {
                                 className="form-control"
                                 onChange={Filter}
                                 ref={refTenthuoc}
+                                onClick={() => setClickTenThuoc(!clickTenThuoc)}
                             />
                         </Form.Item>
                     </Form>
 
-                    {valueInputThuoc ? (
+                    {valueInputThuoc || clickTenThuoc ? (
                         red.length === 0 ? (
                             ""
                         ) : (
                             <div className="box-table-search ">
                                 <div className="table-search">
                                     <SelectRowDonThuoc
+                                        setClickTenThuoc={setClickTenThuoc}
                                         red={red}
                                         columns={column1}
                                         setValueThuocChon={setValueThuocChon}

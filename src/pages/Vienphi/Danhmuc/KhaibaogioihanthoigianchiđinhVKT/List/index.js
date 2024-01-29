@@ -1,4 +1,4 @@
-import { Table, Button, Dropdown, Form, Input } from "antd";
+import { Table, Button, Dropdown } from "antd";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
     faEdit,
@@ -15,15 +15,12 @@ import ds from "../../../../../util/data";
 import CtkhaibaogioihanthoigianchiđinhVKT from "../Detail";
 function KhaibaogioihanthoigianchidinhDVKT() {
     const [open, setOpen] = useState(false);
-    const [click, setClick] = useState(false);
     const [activeModify, setActiveModify] = useState(false);
 
     const handleDataCreate = () => {
         setOpen(true);
     };
-    const handleChange = (value) => {
-        console.log(`selected ${value}`);
-    };
+  
     const items = [
         {
             key: "1",

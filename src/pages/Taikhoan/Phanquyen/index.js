@@ -10,10 +10,8 @@ import loginAPI from "../../../services/loginApi";
 import phanquyenAPI from "../../../services/phanquyenAPI";
 import { successInfo } from "../../../components/Dialog/Dialog";
 import Swal from "sweetalert2";
-function Phanquyen() {
-    const [showLine, setShowLine] = useState(true);
-    const [showLeafIcon, setShowLeafIcon] = useState(false);
 
+function Phanquyen() {
     const [listMenu, setListMenu] = useState([]);
     const [listEmployee, setListEmployee] = useState([]);
     const [listGroup, setListGroup] = useState([]);
@@ -139,6 +137,7 @@ function Phanquyen() {
 
     //xử lý dữ liệu phân quyền menu
     let phanquyennhomuser = listGroup.map((item) => {
+        //
         let c = [];
         listEmployee.map((item1) => {
             if (item.GroupID === parseInt(item1.GroupID)) {
@@ -325,13 +324,7 @@ function Phanquyen() {
                                 )}
                             </div>
                             <Tree
-                                showLine={
-                                    showLine
-                                        ? {
-                                              showLeafIcon,
-                                          }
-                                        : false
-                                }
+                                showLine={true ? true : false}
                                 onSelect={onSelectUser}
                                 treeData={treeData}
                                 onExpand={onExpandUser}
@@ -365,13 +358,7 @@ function Phanquyen() {
                             </div>
                             <div className="treenode py-1">
                                 <Tree
-                                    showLine={
-                                        showLine
-                                            ? {
-                                                  showLeafIcon,
-                                              }
-                                            : false
-                                    }
+                                    showLine={true ? true : false}
                                     checkable
                                     onExpand={onExpandChucnang}
                                     expandedKeys={expandedKeysChucnang}

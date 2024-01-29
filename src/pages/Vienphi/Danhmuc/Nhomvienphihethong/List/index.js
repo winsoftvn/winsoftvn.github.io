@@ -1,4 +1,4 @@
-import { Table, Button, Dropdown, Form, Input } from "antd";
+import { Table, Button, Dropdown} from "antd";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
     faEdit,
@@ -10,19 +10,14 @@ import {
 import { useState } from "react";
 import { motion } from "framer-motion";
 import "../../danhmuc.scss";
-import Menuvienphi from "../../../Menuvienphi";
 import ds from "../../../../../util/data";
 import Ctkhaibaonhomvienphihethong from "../Detail";
 function Khaibaonhomvienphihethong() {
     const [open, setOpen] = useState(false);
-    const [click, setClick] = useState(false);
     const [activeModify, setActiveModify] = useState(false);
 
     const handleDataCreate = () => {
         setOpen(true);
-    };
-    const handleChange = (value) => {
-        console.log(`selected ${value}`);
     };
     const items = [
         {
@@ -99,7 +94,6 @@ function Khaibaonhomvienphihethong() {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0, transition: { duration: 0.8 } }}
             >
-                <Menuvienphi />
                 <div className="text-muted">
                     <div className="d-flex justify-content-between align-items-center mt-2 mx-2">
                         <div className="d-flex align-items-center ">

@@ -24,6 +24,7 @@ function Ekipthuchien() {
                     // loading={loading}
                     scroll={{ x: true, y: 400 }}
                     pagination={false}
+                    
                 />
             </div>
         </>

@@ -7,11 +7,8 @@ import "./menuduoc.scss";
 function Menuduoc() {
     //truyền props
 
-  
     const [current, setCurrent] = useState("0");
-  const onClick = (e) => {
-        setCurrent(e.key);
-    };
+
     const itemmenu = [
         {
             label: (
@@ -53,7 +50,7 @@ function Menuduoc() {
         {
             label: (
                 <div className="fw-bold d-flex align-items-center">
-                    <FontAwesomeIcon icon={faAngleDown} />{" "}
+                    <FontAwesomeIcon icon={faAngleDown} />
                     <div className="mx-2">Duyệt - Cấp phát thuốc</div>
                 </div>
             ),
@@ -65,7 +62,7 @@ function Menuduoc() {
                             className="menu-navlink"
                             to="/duoc/duyetcapphatthuoc/duyettoathuocBHYTDV"
                         >
-                            Duyệt toa thuốc BHYT - DV{" "}
+                            Duyệt toa thuốc BHYT - DV
                         </NavLink>
                     ),
                     key: "2.1",
@@ -121,7 +118,7 @@ function Menuduoc() {
                 {
                     label: (
                         <NavLink className="menu-navlink" to="/duoc/quanlykho/hoantranhacungcap">
-                            Hoàn trả nhà cung cấp{" "}
+                            Hoàn trả nhà cung cấp
                         </NavLink>
                     ),
                     key: "3.3",
@@ -178,7 +175,7 @@ function Menuduoc() {
         {
             label: (
                 <div className="fw-bold d-flex align-items-center">
-                    <FontAwesomeIcon icon={faAngleDown} />{" "}
+                    <FontAwesomeIcon icon={faAngleDown} />
                     <div className="mx-2">Cập nhật phiếu nhập</div>
                 </div>
             ),
@@ -205,7 +202,7 @@ function Menuduoc() {
         {
             label: (
                 <div className="fw-bold d-flex align-items-center">
-                    <FontAwesomeIcon icon={faAngleDown} />{" "}
+                    <FontAwesomeIcon icon={faAngleDown} />
                     <div className="mx-2">Liên thông dữ liệu QG</div>
                 </div>
             ),
@@ -213,7 +210,10 @@ function Menuduoc() {
             children: [
                 {
                     label: (
-                        <NavLink className="menu-navlink" to="/duoc/danhmuc/dmthuoclienthong">
+                        <NavLink
+                            className="menu-navlink"
+                            to="/duoc/lienthongdulieuqg/dmthuoclienthongthuocLTDLQG"
+                        >
                             DM thuốc liên thông dữ liệu quốc gia
                         </NavLink>
                     ),
@@ -223,7 +223,7 @@ function Menuduoc() {
                     label: (
                         <NavLink
                             className="menu-navlink"
-                            to="/duoc/lienthongdulieuqg/mapdanhmucthuoc"
+                            to="/duoc/lienthongdulieuqg/mapdanhmucthuocduocQG"
                         >
                             Map danh mục thuốc với DM thuốc dược QG
                         </NavLink>
@@ -234,7 +234,7 @@ function Menuduoc() {
                     label: (
                         <NavLink
                             className="menu-navlink"
-                            to="/duoc/lienthongdulieuqg/lienthonghdthuocbanle"
+                            to="/duoc/lienthongdulieuqg/lienthonghdthuocbanlecosoGPP"
                         >
                             Liên thông HĐ thuốc bán lẻ cơ sở GPP
                         </NavLink>
@@ -245,7 +245,7 @@ function Menuduoc() {
                     label: (
                         <NavLink
                             className="menu-navlink"
-                            to="/duoc/lienthongdulieuqg/lienthongphieunhap"
+                            to="/duoc/lienthongdulieuqg/lienthongphieunhaptuCSGPP"
                         >
                             Liên thông phiếu nhập từ cơ sở GPP
                         </NavLink>
@@ -256,7 +256,7 @@ function Menuduoc() {
                     label: (
                         <NavLink
                             className="menu-navlink"
-                            to="/duoc/lienthongdulieuqg/lienthongphieuxuat"
+                            to="/duoc/lienthongdulieuqg/lienthongphieuxuattuCSGPP"
                         >
                             Liên thông phiếu xuất từ cơ sở GPP
                         </NavLink>
@@ -283,8 +283,8 @@ function Menuduoc() {
                 },
                 {
                     label: (
-                        <NavLink className="menu-navlink" to="/duoc/danhmuc/duongung">
-                            Đường dùng{" "}
+                        <NavLink className="menu-navlink" to="/duoc/danhmuc/duongdung">
+                            Đường dùng
                         </NavLink>
                     ),
                     key: "6.2",
@@ -292,7 +292,7 @@ function Menuduoc() {
                 {
                     label: (
                         <NavLink className="menu-navlink" to="/duoc/danhmuc/cachdung">
-                            Cách dùng{" "}
+                            Cách dùng
                         </NavLink>
                     ),
                     key: "6.3",
@@ -300,7 +300,7 @@ function Menuduoc() {
                 {
                     label: (
                         <NavLink className="menu-navlink" to="/duoc/danhmuc/hangsanxuat">
-                            Hãng sản xuất{" "}
+                            Hãng sản xuất
                         </NavLink>
                     ),
                     key: "6.4",
@@ -308,7 +308,7 @@ function Menuduoc() {
                 {
                     label: (
                         <NavLink className="menu-navlink" to="/duoc/danhmuc/nuocsanxuat">
-                            Nước sản xuất{" "}
+                            Nước sản xuất
                         </NavLink>
                     ),
                     key: "6.5",

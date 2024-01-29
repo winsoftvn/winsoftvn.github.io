@@ -33,7 +33,6 @@ function Doctraketquasieuam(props) {
             ma: sieuam.ID,
             hoten: sieuam.TDV,
             ngaysinh: sieuam.TDV,
-
             gioitinh: sieuam.ID,
             doituong: sieuam.TDV,
         });

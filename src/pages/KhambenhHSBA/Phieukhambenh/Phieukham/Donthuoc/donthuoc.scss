@@ -73,15 +73,17 @@
             border: 1px solid #0067ac;
         }
     }
-    .scroll {
+    .scroll-select {
         overflow-y: scroll;
-        height: fit-content;
+        // height: fit-content;
         max-height: 100px;
+
     }
-    .scroll::-webkit-scrollbar {
-        display: none;
-    }
-    .scroll {
-        scrollbar-width: none;
-    }
+    // .scroll-select::-webkit-scrollbar {
+    //     display: none;
+    // }
+    // .scroll-select {
+    //     scrollbar-width: none;
+    // }
 }
+
