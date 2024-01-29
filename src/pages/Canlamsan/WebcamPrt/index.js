@@ -99,6 +99,7 @@ const WebcamCapture = () => {
                                           height={100}
                                           key={index}
                                           onClick={() => handleOpenEditor(item, index)}
+                                          alt="anh"
                                       />
                                       <div className="btn-close-webcam m-1">
                                           <Button

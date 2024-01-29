@@ -1,12 +1,6 @@
 import { Table, Button, Dropdown } from "antd";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-    faEdit,
-    faTrashCan,
-    faEye,
-    faPenToSquare,
-    
-} from "@fortawesome/free-solid-svg-icons";
+import { faEdit, faTrashCan, faEye, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import "../../danhmuc.scss";
@@ -57,7 +51,7 @@ function MapdanhmucDVKTvoimaythuchiencanlamsan() {
             dataIndex: "MADVKT",
             align: "center",
         },
-        ,
+
         {
             title: "Thao tác",
             dataIndex: "",
@@ -118,7 +112,6 @@ function MapdanhmucDVKTvoimaythuchiencanlamsan() {
             dataIndex: "MADVKT",
             align: "center",
         },
-        ,
         {
             title: "Thao tác",
             dataIndex: "",

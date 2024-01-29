@@ -1,4 +1,4 @@
-import { Table, Button, Dropdown, Form, Input, Radio, Tree } from "antd";
+import { Table, Button, Dropdown, Form, Input, Radio } from "antd";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
     faEdit,
@@ -13,49 +13,7 @@ import { motion } from "framer-motion";
 import "./danhsachleft.scss";
 import ds from "../../../util/data";
 function Danhsachleft() {
-    const [open, setOpen] = useState(false);
-    const [click, setClick] = useState(false);
     const [activeModify, setActiveModify] = useState(false);
-
-    const handleClick = () => {
-        setClick(!click);
-    };
-    const treeData = [
-        {
-            title: <div className="color-text fw-bold">18/05/2021</div>,
-            key: "0-0",
-            children: [
-                {
-                    title: "Loại xét nghiệp: Xét nghiệp huyết học",
-                    key: "0-0-0",
-                    children: [
-                        {
-                            title: "Tổng quan tinh tế bào máu ngoại vi",
-                            key: "0-0-0-0",
-                        },
-                        {
-                            title: "Tổng quan tinh tế bào máu ngoại vi",
-                            key: "0-0-0-1",
-                        },
-                    ],
-                },
-                {
-                    title: "Loại xét nghiệp: Xét nghiệp huyết học",
-                    key: "0-0-1",
-                    children: [
-                        {
-                            title: "Tổng quan tinh tế bào máu ngoại vi",
-                            key: "0-0-1-0",
-                        },
-                        {
-                            title: "Tổng quan tinh tế bào máu ngoại vi",
-                            key: "0-0-1-1",
-                        },
-                    ],
-                },
-            ],
-        },
-    ];
     const items = [
         {
             key: "1",
@@ -105,7 +63,7 @@ function Danhsachleft() {
             dataIndex: "MADVKT",
             align: "center",
         },
-        
+
         {
             title: "Thao tác",
             dataIndex: "",
@@ -139,91 +97,7 @@ function Danhsachleft() {
             ),
         },
     ];
-    const column1 = [
-        {
-            title: "",
-            dataIndex: "",
-            fixed: "left",
-            // render: (TDV) => <div style={{ width: "200px" }}> {TDV} </div>,
-        },
-        {
-            title: "Ngày khám",
-            dataIndex: "TDVVT",
-            render: (TDVVT) => <div style={{ width: "200px" }}> {TDVVT} </div>,
-        },
-        {
-            title: "ICD-10",
-            dataIndex: "MADVKT",
-            render: (TDVVT) => <div style={{ width: "200px" }}> {TDVVT} </div>,
-        },
-        {
-            title: "CD ICD10",
-            dataIndex: "TDVVT",
-            render: (TDVVT) => <div style={{ width: "200px" }}> {TDVVT} </div>,
-        },
-        {
-            title: "CĐ Sơ bộ",
-            dataIndex: "MADVKT",
-            align: "center",
-        },
-        {
-            title: "STT",
-            dataIndex: "MADVKT",
-            align: "center",
-        },
-        {
-            title: "P.Thực hiện",
-            dataIndex: "MADVKT",
-            align: "center",
-        },
-        {
-            title: "Ghi chú",
-            dataIndex: "MADVKT",
-            align: "center",
-        },
-        {
-            title: "Th.Hiện",
-            dataIndex: "MADVKT",
-            align: "center",
-        },
-        {
-            title: "TT",
-            dataIndex: "MADVKT",
-            align: "center",
-        },
-        {
-            title: "",
-            dataIndex: "",
-            align: "center",
-            fixed: "right",
-            render: (record) => (
-                <div className="d-flex justify-content-center">
-                    <Dropdown
-                        menu={{
-                            items,
-                        }}
-                        placement="left"
-                        arrow={{
-                            pointAtCenter: true,
-                        }}
-                    >
-                        <Button
-                            className="bg-light vienphi-danhmuc-icon-modify"
-                            onClick={() => {
-                                setActiveModify(!activeModify);
-                            }}
-                        >
-                            <FontAwesomeIcon
-                                icon={faEdit}
-                                style={{ fontSize: "10px" }}
-                                className="text-dark"
-                            />
-                        </Button>
-                    </Dropdown>
-                </div>
-            ),
-        },
-    ];
+
     return (
         <>
             <motion.div

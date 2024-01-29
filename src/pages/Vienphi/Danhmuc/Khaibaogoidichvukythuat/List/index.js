@@ -1,50 +1,50 @@
 import { Table, Button, Dropdown, Form, Input, Checkbox } from "antd";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-    faEdit,
-    faTrashCan,
-    faEye,
-    faPenToSquare,
+    // faEdit,
+    // faTrashCan,
+    // faEye,
+    // faPenToSquare,
     faPlus,
     faArrowRotateLeft,
     faPrint,
     faFileExport,
     faGear,
 } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
+// import { useState } from "react";
 import { motion } from "framer-motion";
 
 import Menuvienphi from "../../../Menuvienphi";
 import ds from "../../../../../util/data";
 import "../../danhmuc.scss";
 function Khaibaogoidichvukythuat() {
-    const [open, setOpen] = useState(false);
-    const [click, setClick] = useState(false);
-    const [activeModify, setActiveModify] = useState(false);
+    // const [open, setOpen] = useState(false);
+    // const [click, setClick] = useState(false);
+    // const [activeModify, setActiveModify] = useState(false);
 
-    const handleDataCreate = () => {
-        setOpen(true);
-    };
-    const handleChange = (value) => {
-        console.log(`selected ${value}`);
-    };
-    const items = [
-        {
-            key: "1",
-            label: "Xem",
-            icon: <FontAwesomeIcon icon={faEye} />,
-        },
-        {
-            key: "2",
-            label: "Xóa",
-            icon: <FontAwesomeIcon icon={faTrashCan} />,
-        },
-        {
-            key: "3",
-            label: "Sửa",
-            icon: <FontAwesomeIcon icon={faPenToSquare} />,
-        },
-    ];
+    // const handleDataCreate = () => {
+    //     setOpen(true);
+    // };
+    // const handleChange = (value) => {
+    //     console.log(`selected ${value}`);
+    // };
+    // const items = [
+    //     {
+    //         key: "1",
+    //         label: "Xem",
+    //         icon: <FontAwesomeIcon icon={faEye} />,
+    //     },
+    //     {
+    //         key: "2",
+    //         label: "Xóa",
+    //         icon: <FontAwesomeIcon icon={faTrashCan} />,
+    //     },
+    //     {
+    //         key: "3",
+    //         label: "Sửa",
+    //         icon: <FontAwesomeIcon icon={faPenToSquare} />,
+    //     },
+    // ];
     const column0 = [
         {
             title: "Mã gói",

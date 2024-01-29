@@ -195,6 +195,7 @@ function Khaibaouser() {
             render: (PositionID) => (
                 <div style={{ width: "200px" }}>
                     {listPosition.map((item) => {
+                        //thông báo map do mong đợi return
                         let b = PositionID.split(",");
                         let a = b.map((item1) => {
                             if (item.PositionID === parseInt(item1)) {

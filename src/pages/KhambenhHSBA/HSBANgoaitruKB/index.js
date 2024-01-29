@@ -204,10 +204,10 @@ function HSBANgoaitruKB() {
                             >
                                 <Radio.Group className="d-flex align-items-center justify-content-around">
                                     <Radio value={1} className="form-input-label">
-                                        Y tế
+                                        Y.tế
                                     </Radio>
                                     <Radio value={2} className="form-input-label">
-                                        Tự đến
+                                        T.đến
                                     </Radio>
                                 </Radio.Group>
                             </Form.Item>

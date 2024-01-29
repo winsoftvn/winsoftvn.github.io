@@ -113,9 +113,7 @@ function Phanquyen() {
             RowID_Employee: userPhanQuyen[0],
             RowID_Employee_IU: Number(userlogin?.RowID),
         };
-        let data = await phanquyenAPI.delete(a);
-        console.log("data: ", data);
-
+        await phanquyenAPI.delete(a);
         let arr = phanquyenMenu?.map((item) => {
             let b = {
                 ...a,
@@ -137,7 +135,7 @@ function Phanquyen() {
 
     //xử lý dữ liệu phân quyền menu
     let phanquyennhomuser = listGroup.map((item) => {
-        //
+        //thong báo map do mong đợi return
         let c = [];
         listEmployee.map((item1) => {
             if (item.GroupID === parseInt(item1.GroupID)) {
@@ -152,6 +150,7 @@ function Phanquyen() {
     });
 
     let phanquyenchucnang = listMenu.map((item) => {
+        //thông báo map do mong đợi return
         let c = [];
         listMenu.map((item1) => {
             if (item.MenuID === item1.Parent_MenuID) {

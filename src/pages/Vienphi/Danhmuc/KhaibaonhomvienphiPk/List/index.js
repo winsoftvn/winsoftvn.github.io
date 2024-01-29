@@ -58,7 +58,7 @@ function Khaibaonhomvienphipk() {
         {
             title: "Tên nhóm",
             dataIndex: "TDVVT",
-            render: (TDVVT) => <div style={{ width: "600px" }}> {TDVVT} </div>,
+            render: (TDVVT) => <div style={{ width: "500px" }}> {TDVVT} </div>,
         },
         {
             title: "Phân hệ",
@@ -75,7 +75,6 @@ function Khaibaonhomvienphipk() {
             dataIndex: "MADVKT",
             align: "center",
         },
-        ,
         {
             title: "Thao tác",
             dataIndex: "",

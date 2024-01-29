@@ -1,14 +1,4 @@
-import {
-    Dropdown,
-    Form,
-    Input,
-    Table,
-    Button,
-    Tabs,
-    Space,
-    Checkbox,
-    Select,
-} from "antd";
+import { Dropdown, Form, Input, Table, Button, Tabs, Space, Checkbox, Select } from "antd";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
     faPrint,
@@ -22,9 +12,9 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import TextArea from "antd/es/input/TextArea";
 import "./phieukham.scss";
-import ReactToPrint, { useReactToPrint } from "react-to-print";
+import { useReactToPrint } from "react-to-print";
 import Toathuoctaicho from "./Toathuoctaicho";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import Toamuangoai from "./Toamuangoai";
 import Thuoctutruc from "./Thuoctutruc";
 import Donthuoc from "./Donthuoc";
@@ -37,12 +27,12 @@ import Lapphieuchamsoc from "./Tienich/Lapphieuchamsoc";
 import Lapphieutheodoitruyendich from "./Tienich/Lapphieutheodoitruyendich";
 import InTest from "./Tienich/In/Intest";
 import Intheodoidieutri from "./Tienich/In/Intheodoidieutri";
-import Inphieuchamsoc from "./Tienich/In/Inphieuchamsoc";
-import Incongkhaisudungthuoc from "./Tienich/In/Incongkhaisudungthuoc";
-import Intheodoichucnangsong from "./Tienich/In/Intheodoichucnangsong";
-import Intheodoitruyendich from "./Tienich/In/Intheodoitruyendich";
-import Inphieukhambenh from "./Tienich/In/Inphieukhambenh";
-import Inhosongoaitru from "./Tienich/In/Inhosongoaitru";
+// import Inphieuchamsoc from "./Tienich/In/Inphieuchamsoc";
+// import Incongkhaisudungthuoc from "./Tienich/In/Incongkhaisudungthuoc";
+// import Intheodoichucnangsong from "./Tienich/In/Intheodoichucnangsong";
+// import Intheodoitruyendich from "./Tienich/In/Intheodoitruyendich";
+// import Inphieukhambenh from "./Tienich/In/Inphieukhambenh";
+// import Inhosongoaitru from "./Tienich/In/Inhosongoaitru";
 import ds from "../../../../util/data";
 
 function Phieukham() {
@@ -58,12 +48,12 @@ function Phieukham() {
 
     const [refInTest, setRefInTest] = useState("");
     const [refIntheodoidieutri, setRefIntheodoidieutri] = useState("");
-    const [refInphieuchamsoc, setRefInphieuchamsoc] = useState("");
-    const [refIncongkhaisudungthuoc, setRefIncongkhaisudungthuoc] = useState("");
-    const [refIntheodoichucnangsong, setRefIntheodoichucnangsong] = useState("");
-    const [refIntheodoitruyendich, setRefIntheodoitruyendich] = useState("");
-    const [refInphieukhambenh, setRefInphieukhambenh] = useState("");
-    const [refInhosongoaitru, setRefInhosongoaitru] = useState("");
+    // const [refInphieuchamsoc, setRefInphieuchamsoc] = useState("");
+    // const [refIncongkhaisudungthuoc, setRefIncongkhaisudungthuoc] = useState("");
+    // const [refIntheodoichucnangsong, setRefIntheodoichucnangsong] = useState("");
+    // const [refIntheodoitruyendich, setRefIntheodoitruyendich] = useState("");
+    // const [refInphieukhambenh, setRefInphieukhambenh] = useState("");
+    // const [refInhosongoaitru, setRefInhosongoaitru] = useState("");
 
     const handlePrint1 = useReactToPrint({
         content: () => refInTest,
@@ -76,7 +66,7 @@ function Phieukham() {
         onafterprint: () => alert("Print Success"),
     });
     const handleSetOpen = (a) => {
-       if (a === "1") {
+        if (a === "1") {
             setModelToathuoctainha(true);
         } else if (a === "2") {
             setModelToamuangoai(true);
@@ -100,7 +90,6 @@ function Phieukham() {
         }
     };
     const items1 = [
-       
         {
             label: <div className="form-input-label">Toa thuốc tại chổ</div>,
             key: "1",
@@ -317,7 +306,6 @@ function Phieukham() {
             ),
         },
     ];
-    
 
     const column1 = [
         {
@@ -658,7 +646,7 @@ function Phieukham() {
                                 items={tabphieukham}
                             />
                         </div>
-                        <div className="phieukham-input-position d-flex align-items-center mx-1">
+                        <div className="phieukham-input-position">
                             <Form>
                                 <div className="row m-0">
                                     <Form.Item
@@ -695,12 +683,12 @@ function Phieukham() {
             <div className="d-none">
                 <InTest setRef={setRefInTest}></InTest>
                 <Intheodoidieutri setRef={setRefIntheodoidieutri}></Intheodoidieutri>
-                <Inphieuchamsoc setRef={setRefInphieuchamsoc}></Inphieuchamsoc>
+                {/* <Inphieuchamsoc setRef={setRefInphieuchamsoc}></Inphieuchamsoc>
                 <Incongkhaisudungthuoc setRef={setRefIncongkhaisudungthuoc}></Incongkhaisudungthuoc>
                 <Intheodoichucnangsong setRef={setRefIntheodoichucnangsong}></Intheodoichucnangsong>
                 <Intheodoitruyendich setRef={setRefIntheodoitruyendich}></Intheodoitruyendich>
                 <Inphieukhambenh setRef={setRefInphieukhambenh}></Inphieukhambenh>
-                <Inhosongoaitru setRef={setRefInhosongoaitru}></Inhosongoaitru>
+                <Inhosongoaitru setRef={setRefInhosongoaitru}></Inhosongoaitru> */}
             </div>
         </>
     );

@@ -1,8 +1,6 @@
-import { Modal, Tabs, Button, Form, Input, Checkbox, Table } from "antd";
+import { Tabs, Button, Form, Input, Checkbox, Table } from "antd";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-    faBook,
-    faCalendarCheck,
     faFileExcel,
     faPenToSquare,
     faReply,
@@ -12,16 +10,13 @@ import {
     faAngleLeft,
     faDroplet,
     faSpinner,
-    faBars,
 } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
-
 import "./vltl_yhct.scss";
 import Danhsachleft from "./Danhsachleft";
 import TextArea from "antd/es/input/TextArea";
 import ds from "../../util/data";
 import Thongtinkythuat from "./Thongtinkythuat";
-
 function VLTL_YHCT() {
     //khaibao
     const [click, setClick] = useState(false);

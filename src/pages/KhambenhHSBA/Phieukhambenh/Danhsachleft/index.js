@@ -5,7 +5,6 @@ import {
     faTrashCan,
     faEye,
     faPenToSquare,
-
     faArrowsRotate,
     faBroom,
 } from "@fortawesome/free-solid-svg-icons";
@@ -16,7 +15,6 @@ import ds from "../../../../util/data";
 function Danhsachleft() {
     const [activeModify, setActiveModify] = useState(false);
 
-    
     const items = [
         {
             key: "1",
@@ -66,7 +64,6 @@ function Danhsachleft() {
             dataIndex: "MADVKT",
             align: "center",
         },
-        ,
         {
             title: "Thao tác",
             dataIndex: "",
@@ -244,7 +241,7 @@ function Danhsachleft() {
                                 columns={column0}
                                 dataSource={ds}
                                 // loading={loading}
-                                scroll={{ x: true, y: 300 }}
+                                scroll={{ x: true, y: 285 }}
                                 size="small"
                                 pagination={false}
                             />

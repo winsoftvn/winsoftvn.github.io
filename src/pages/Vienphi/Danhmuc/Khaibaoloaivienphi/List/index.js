@@ -4,7 +4,6 @@ import { faEdit, faTrashCan, faPenToSquare, faPlus } from "@fortawesome/free-sol
 import { useState } from "react";
 import { motion } from "framer-motion";
 import "../../danhmuc.scss";
-import Menuvienphi from "../../../Menuvienphi";
 import ds from "../../../../../util/data";
 import Ctkhaibaonhomloaivienphi from "../Detail";
 import Swal from "sweetalert2";

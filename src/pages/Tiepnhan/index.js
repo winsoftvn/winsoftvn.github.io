@@ -3,13 +3,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
     faCalendarPlus,
     faStethoscope,
-    faUserPlus,
     faSave,
     faPenToSquare,
-    faArrowRight,
     faPrint,
-    faReply,
-    faPlus,
     faXmarkCircle,
     faAdd,
 } from "@fortawesome/free-solid-svg-icons";
@@ -95,7 +91,7 @@ function Tiepnhan() {
     ];
     return (
         <>
-            <div className=" vh-100 h-100">
+            <div className=" h-100">
                 <div className="div-shadow v3">
                     <div className="d-flex justify-content-end p-1">
                         <div className="d-flex">
